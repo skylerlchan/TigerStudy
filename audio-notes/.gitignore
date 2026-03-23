@@ -1,0 +1,5 @@
+# Exclude audio files (can be large)
+audio/
+
+# Include markdown notes
+!*.md

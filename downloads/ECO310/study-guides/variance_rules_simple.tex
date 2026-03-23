@@ -1,0 +1,479 @@
+\documentclass[12pt]{article}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{enumitem}
+
+\title{\LARGE Variance Rules - Simple Guide}
+\author{ECO 310}
+\date{}
+
+\setlength{\parskip}{0.5em}
+
+\begin{document}
+
+\maketitle
+
+\section*{\Large The 3 Most Important Rules}
+
+\subsection*{\large Rule 1: Constants Get Squared}
+
+\begin{center}
+\colorbox{yellow!30}{
+\Large
+$\text{var}(aX) = a^2 \cdot \text{var}(X)$
+}
+\end{center}
+
+\textbf{In words:} When you multiply a random variable by a number, square that number.
+
+\vspace{1em}
+
+\textbf{Example:}
+\begin{itemize}[leftmargin=2cm]
+    \item If $\text{var}(X) = 4$
+    \item Then $\text{var}(3X) = 3^2 \times 4 = 9 \times 4 = 36$
+\end{itemize}
+
+\vspace{1em}
+
+\textbf{Common mistake:} $\text{var}(3X) \neq 3 \times 4$ ~~~ You must square the 3!
+
+\vspace{2em}
+
+\subsection*{\large Rule 2: Adding Constants Does Nothing}
+
+\begin{center}
+\colorbox{yellow!30}{
+\Large
+$\text{var}(X + c) = \text{var}(X)$
+}
+\end{center}
+
+\textbf{In words:} Adding or subtracting a constant doesn't change variance.
+
+\vspace{1em}
+
+\textbf{Example:}
+\begin{itemize}[leftmargin=2cm]
+    \item If $\text{var}(X) = 9$
+    \item Then $\text{var}(X + 100) = 9$
+    \item And $\text{var}(X - 50) = 9$
+\end{itemize}
+
+\vspace{1em}
+
+\textbf{Why?} Variance measures spread. Shifting everything by the same amount doesn't change the spread.
+
+\newpage
+
+\subsection*{\large Rule 3: The Big Formula (Most Important!)}
+
+\begin{center}
+\colorbox{red!20}{
+\LARGE
+$\text{var}(aX + bY) = a^2\text{var}(X) + b^2\text{var}(Y) + 2ab\text{cov}(X,Y)$
+}
+\end{center}
+
+\vspace{1em}
+
+\textbf{Special case - If X and Y are independent:}
+
+\begin{center}
+\colorbox{green!20}{
+\LARGE
+$\text{var}(aX + bY) = a^2\text{var}(X) + b^2\text{var}(Y)$
+}
+\end{center}
+
+(The covariance term disappears!)
+
+\vspace{2em}
+
+\section*{\Large Step-by-Step Example}
+
+\subsection*{Problem:}
+
+You invest in two assets:
+\begin{itemize}[leftmargin=2cm]
+    \item Asset A: $\text{var}(A) = 0.25$
+    \item Asset B: risk-free, so $\text{var}(B) = 0$
+    \item You put fraction $\alpha = 0.5$ in A, and $(1-\alpha) = 0.5$ in B
+\end{itemize}
+
+\textbf{Find:} $\text{var}(\alpha A + (1-\alpha)B)$
+
+\vspace{1em}
+
+\subsection*{Solution:}
+
+\textbf{Step 1:} Write down the formula
+\[
+\text{var}(\alpha A + (1-\alpha)B) = \alpha^2\text{var}(A) + (1-\alpha)^2\text{var}(B) + 2\alpha(1-\alpha)\text{cov}(A,B)
+\]
+
+\textbf{Step 2:} Since B is risk-free, $\text{var}(B) = 0$ and $\text{cov}(A,B) = 0$
+\[
+\text{var}(\alpha A + (1-\alpha)B) = \alpha^2\text{var}(A)
+\]
+
+\textbf{Step 3:} Plug in numbers
+\[
+= (0.5)^2 \times 0.25 = 0.25 \times 0.25 = 0.0625
+\]
+
+\textbf{Answer:} Portfolio variance = 0.0625
+
+\newpage
+
+\section*{\Large Common Patterns}
+
+\subsection*{\large Pattern 1: Just Adding Two Variables}
+
+\begin{center}
+\Large
+$\text{var}(X + Y)$ = ?
+\end{center}
+
+\vspace{1em}
+
+\textbf{If independent:}
+\[
+\text{var}(X + Y) = \text{var}(X) + \text{var}(Y)
+\]
+
+\textbf{If NOT independent:}
+\[
+\text{var}(X + Y) = \text{var}(X) + \text{var}(Y) + 2\text{cov}(X,Y)
+\]
+
+\vspace{2em}
+
+\subsection*{\large Pattern 2: Subtracting Variables}
+
+\begin{center}
+\Large
+$\text{var}(X - Y)$ = ?
+\end{center}
+
+\vspace{1em}
+
+\textbf{If independent:}
+\[
+\text{var}(X - Y) = \text{var}(X) + \text{var}(Y)
+\]
+
+\textbf{Notice:} It's PLUS var(Y), not minus!
+
+\textbf{If NOT independent:}
+\[
+\text{var}(X - Y) = \text{var}(X) + \text{var}(Y) - 2\text{cov}(X,Y)
+\]
+
+\newpage
+
+\section*{\Large Quick Reference}
+
+\begin{center}
+\begin{tabular}{|p{5cm}|p{8cm}|}
+\hline
+\textbf{\large What You Have} & \textbf{\large Variance} \\
+\hline
+\hline
+A constant $c$ & $0$ \\
+\hline
+$X + 5$ & $\text{var}(X)$ \\
+\hline
+$3X$ & $9 \cdot \text{var}(X)$ \\
+\hline
+$X + Y$ (independent) & $\text{var}(X) + \text{var}(Y)$ \\
+\hline
+$X - Y$ (independent) & $\text{var}(X) + \text{var}(Y)$ \\
+\hline
+$2X + 3Y$ (independent) & $4\text{var}(X) + 9\text{var}(Y)$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{2em}
+
+\section*{\Large The 3 Biggest Mistakes}
+
+\subsection*{Mistake 1: Forgetting to Square}
+
+\textbf{WRONG:} $\text{var}(5X) = 5 \cdot \text{var}(X)$
+
+\textbf{RIGHT:} $\text{var}(5X) = 25 \cdot \text{var}(X)$
+
+\vspace{1em}
+
+\subsection*{Mistake 2: Subtracting Variances}
+
+\textbf{WRONG:} $\text{var}(X - Y) = \text{var}(X) - \text{var}(Y)$
+
+\textbf{RIGHT:} $\text{var}(X - Y) = \text{var}(X) + \text{var}(Y)$ (if independent)
+
+\vspace{1em}
+
+\subsection*{Mistake 3: Assuming Independence}
+
+\textbf{WRONG:} Always using $\text{var}(X + Y) = \text{var}(X) + \text{var}(Y)$
+
+\textbf{RIGHT:} Only works if X and Y are independent! Otherwise need the covariance term.
+
+\newpage
+
+\section*{\Large Practice Problems}
+
+Given: $\text{var}(X) = 16$, $\text{var}(Y) = 9$, and X and Y are independent.
+
+\vspace{1em}
+
+\textbf{Problem 1:} Find $\text{var}(2X)$
+
+\textbf{Solution:} $\text{var}(2X) = 2^2 \times 16 = 4 \times 16 = 64$
+
+\vspace{2em}
+
+\textbf{Problem 2:} Find $\text{var}(X + 7)$
+
+\textbf{Solution:} $\text{var}(X + 7) = \text{var}(X) = 16$
+
+\vspace{2em}
+
+\textbf{Problem 3:} Find $\text{var}(X + Y)$
+
+\textbf{Solution:} Since independent: $\text{var}(X + Y) = 16 + 9 = 25$
+
+\vspace{2em}
+
+\textbf{Problem 4:} Find $\text{var}(3X - 2Y)$
+
+\textbf{Solution:}
+\begin{align*}
+\text{var}(3X - 2Y) &= 3^2\text{var}(X) + (-2)^2\text{var}(Y) \\
+&= 9 \times 16 + 4 \times 9 \\
+&= 144 + 36 \\
+&= 180
+\end{align*}
+
+\vspace{2em}
+
+\textbf{Problem 5:} Find $\text{var}(0.5X + 0.5Y)$
+
+\textbf{Solution:}
+\begin{align*}
+\text{var}(0.5X + 0.5Y) &= (0.5)^2\text{var}(X) + (0.5)^2\text{var}(Y) \\
+&= 0.25 \times 16 + 0.25 \times 9 \\
+&= 4 + 2.25 \\
+&= 6.25
+\end{align*}
+
+\newpage
+
+\section*{\Large For the Midterm}
+
+\subsection*{What You Need to Remember:}
+
+\begin{enumerate}[leftmargin=2cm, itemsep=1em]
+    \item \textbf{Square the constants:} $\text{var}(aX) = a^2\text{var}(X)$
+
+    \item \textbf{The big formula:}
+    \[
+    \text{var}(aX + bY) = a^2\text{var}(X) + b^2\text{var}(Y) + 2ab\text{cov}(X,Y)
+    \]
+
+    \item \textbf{If independent:} Drop the covariance term
+
+    \item \textbf{Risk-free asset:} Has variance = 0
+
+    \item \textbf{Standard deviation:} $\sigma = \sqrt{\text{variance}}$
+\end{enumerate}
+
+\vspace{2em}
+
+\subsection*{The Portfolio Problem Pattern:}
+
+If you invest $\alpha$ in risky asset A and $(1-\alpha)$ in risk-free asset B:
+
+\begin{center}
+\colorbox{blue!10}{
+\large
+$\text{var}(\text{portfolio}) = \alpha^2 \text{var}(A)$
+}
+\end{center}
+
+\vspace{1em}
+
+And standard deviation:
+
+\begin{center}
+\colorbox{blue!10}{
+\large
+$\sigma_{\text{portfolio}} = |\alpha| \cdot \sigma_A$
+}
+\end{center}
+
+\newpage
+
+\section*{\LARGE MC Problem 4: Full Solution}
+
+\subsection*{\large The Problem}
+
+There are two assets available:
+\begin{itemize}[leftmargin=2cm]
+    \item \textbf{Risk-free asset:} 10\% return rate
+    \item \textbf{Risky asset:} 20\% expected return rate and variance = $\frac{1}{4}$
+\end{itemize}
+
+\vspace{1em}
+
+You divide your money between the two assets so that the \textbf{standard deviation} of your overall investment is $\frac{1}{4}$.
+
+\vspace{1em}
+
+\textbf{Question:} What is your overall expected return rate?
+
+\begin{enumerate}[label=(\alph*), leftmargin=2cm]
+    \item 0.15
+    \item 0.1
+    \item 0.2
+    \item None of these is correct
+\end{enumerate}
+
+\vspace{2em}
+
+\subsection*{\large Step 1: Set Up the Portfolio}
+
+Let $\alpha$ = fraction of money in the risky asset
+
+Then $(1-\alpha)$ = fraction in the risk-free asset
+
+\vspace{1em}
+
+Your portfolio return is:
+\[
+R = \alpha R_{\text{risky}} + (1-\alpha) R_{\text{risk-free}}
+\]
+
+\vspace{2em}
+
+\subsection*{\large Step 2: Find the Variance of the Risky Asset's Standard Deviation}
+
+We're given: $\text{var}(R_{\text{risky}}) = \frac{1}{4}$
+
+Therefore:
+\[
+\sigma_{\text{risky}} = \sqrt{\frac{1}{4}} = \frac{1}{2}
+\]
+
+\newpage
+
+\subsection*{\large Step 3: Find Portfolio Variance}
+
+Since the risk-free asset has NO variance:
+\[
+\text{var}(R_{\text{risk-free}}) = 0
+\]
+
+Using our formula:
+\begin{align*}
+\text{var}(\text{portfolio}) &= \text{var}(\alpha R_{\text{risky}} + (1-\alpha) R_{\text{risk-free}}) \\
+&= \alpha^2 \text{var}(R_{\text{risky}}) + (1-\alpha)^2 \text{var}(R_{\text{risk-free}}) \\
+&= \alpha^2 \times \frac{1}{4} + (1-\alpha)^2 \times 0 \\
+&= \alpha^2 \times \frac{1}{4}
+\end{align*}
+
+\vspace{1em}
+
+Therefore, portfolio standard deviation is:
+\[
+\sigma_{\text{portfolio}} = \sqrt{\alpha^2 \times \frac{1}{4}} = \alpha \times \frac{1}{2}
+\]
+
+\vspace{2em}
+
+\subsection*{\large Step 4: Use the Given Information}
+
+We're told the portfolio standard deviation is $\frac{1}{4}$:
+
+\[
+\alpha \times \frac{1}{2} = \frac{1}{4}
+\]
+
+Solve for $\alpha$:
+\[
+\alpha = \frac{1/4}{1/2} = \frac{1}{4} \times \frac{2}{1} = \frac{1}{2}
+\]
+
+\vspace{1em}
+
+\begin{center}
+\colorbox{yellow!30}{
+\large
+So you invest \textbf{50\%} in the risky asset and \textbf{50\%} in the risk-free asset.
+}
+\end{center}
+
+\newpage
+
+\subsection*{\large Step 5: Calculate Expected Return}
+
+Expected return is a \textbf{weighted average}:
+
+\begin{align*}
+E[R] &= \alpha \times E[R_{\text{risky}}] + (1-\alpha) \times E[R_{\text{risk-free}}] \\
+&= \frac{1}{2} \times 0.20 + \frac{1}{2} \times 0.10 \\
+&= 0.10 + 0.05 \\
+&= 0.15
+\end{align*}
+
+\vspace{2em}
+
+\begin{center}
+\colorbox{green!20}{
+\LARGE
+\textbf{Answer: (a) 0.15 or 15\%}
+}
+\end{center}
+
+\vspace{2em}
+
+\subsection*{\large Key Takeaways from MC4}
+
+\begin{enumerate}[leftmargin=2cm, itemsep=1em]
+    \item \textbf{Risk-free means zero variance:} $\text{var}(R_{\text{risk-free}}) = 0$
+
+    \item \textbf{Portfolio with one risk-free asset:}
+    \[
+    \sigma_{\text{portfolio}} = \alpha \cdot \sigma_{\text{risky}}
+    \]
+    (Just multiply the fraction by the risky asset's std dev)
+
+    \item \textbf{Standard deviation is the square root of variance:}
+    \[
+    \sigma = \sqrt{\text{var}}
+    \]
+
+    \item \textbf{Expected return is a weighted average:}
+    \[
+    E[R] = \alpha \times r_1 + (1-\alpha) \times r_2
+    \]
+    (No need for variance here, just multiply fractions by returns)
+\end{enumerate}
+
+\vspace{2em}
+
+\subsection*{\large Why This Works}
+
+When you mix a risky asset with a risk-free asset:
+\begin{itemize}[leftmargin=2cm]
+    \item The risk-free part contributes \textbf{nothing to variance} (it's constant)
+    \item Only the risky part adds variance
+    \item So portfolio variance = $\alpha^2 \times$ (risky variance)
+    \item The $\alpha$ controls how much risk you take on
+\end{itemize}
+
+\end{document}

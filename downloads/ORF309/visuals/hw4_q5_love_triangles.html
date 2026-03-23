@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORF 309 HW4 Q5 - Variance of Love Triangles</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --text: #1a1a2e;
+    --card-bg: #f8f9fa;
+    --card-border: #dee2e6;
+    --accent: #e63946;
+    --accent2: #457b9d;
+    --accent3: #2a9d8f;
+    --accent4: #e9c46a;
+    --highlight: #fff3cd;
+    --code-bg: #e9ecef;
+    --muted: #6c757d;
+    --edge-color: #adb5bd;
+    --success: #2a9d8f;
+    --warning: #e76f51;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0d1117;
+      --text: #e6edf3;
+      --card-bg: #161b22;
+      --card-border: #30363d;
+      --accent: #ff6b6b;
+      --accent2: #64b5f6;
+      --accent3: #4ecdc4;
+      --accent4: #ffd93d;
+      --highlight: #2d2000;
+      --code-bg: #1c2333;
+      --muted: #8b949e;
+      --edge-color: #484f58;
+      --success: #4ecdc4;
+      --warning: #ff8a65;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+  h2 { font-size: 1.35rem; margin-bottom: 0.75rem; color: var(--accent2); }
+  h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .subtitle { color: var(--muted); margin-bottom: 2rem; font-size: 0.95rem; }
+  .section {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px; height: 32px;
+    background: var(--accent2);
+    color: #fff;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+  }
+  .step-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  .formula {
+    background: var(--code-bg);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    font-family: 'Cambria Math', 'Times New Roman', serif;
+    font-size: 1.15rem;
+    margin: 0.75rem 0;
+    text-align: center;
+    overflow-x: auto;
+  }
+  .formula-small {
+    background: var(--code-bg);
+    border-radius: 6px;
+    padding: 0.5rem 0.75rem;
+    font-family: 'Cambria Math', 'Times New Roman', serif;
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    display: inline-block;
+  }
+  .key-insight {
+    background: var(--highlight);
+    border-left: 4px solid var(--accent4);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+  }
+  .key-insight strong { color: var(--accent); }
+
+  /* SVG diagrams */
+  svg { display: block; margin: 0 auto; }
+  .node {
+    fill: var(--accent2);
+    stroke: var(--card-border);
+    stroke-width: 2;
+  }
+  .node-label {
+    fill: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    text-anchor: middle;
+    dominant-baseline: central;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  .edge {
+    stroke: var(--edge-color);
+    stroke-width: 2;
+    stroke-dasharray: 6 4;
+  }
+  .edge-active {
+    stroke: var(--accent);
+    stroke-width: 3;
+    stroke-dasharray: none;
+  }
+  .edge-shared {
+    stroke: var(--accent4);
+    stroke-width: 4;
+    stroke-dasharray: none;
+  }
+  .triangle-fill {
+    fill: var(--accent);
+    opacity: 0.12;
+  }
+  .triangle-fill-2 {
+    fill: var(--accent2);
+    opacity: 0.12;
+  }
+
+  /* Cases grid */
+  .cases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .case-card {
+    background: var(--bg);
+    border: 2px solid var(--card-border);
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+  .case-card.zero-cov { border-color: var(--muted); opacity: 0.7; }
+  .case-card.has-cov { border-color: var(--accent); }
+  .case-card.has-cov-self { border-color: var(--accent3); }
+  .case-label {
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+  .case-label.zero { color: var(--muted); }
+  .case-label.nonzero { color: var(--accent); }
+  .case-label.self { color: var(--accent3); }
+  .case-detail { font-size: 0.9rem; color: var(--muted); margin-top: 0.5rem; }
+
+  .final-box {
+    background: var(--code-bg);
+    border: 2px solid var(--accent2);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-top: 1rem;
+  }
+  .final-box .formula {
+    background: transparent;
+    font-size: 1.2rem;
+    padding: 0.5rem 0;
+  }
+
+  p { margin-bottom: 0.5rem; }
+  ul { padding-left: 1.25rem; margin-bottom: 0.5rem; }
+  li { margin-bottom: 0.25rem; }
+</style>
+</head>
+<body>
+
+<h1>HW4 Q5: Variance of the Number of Love Triangles</h1>
+<p class="subtitle">ORF 309 &mdash; A step-by-step visual walkthrough</p>
+
+<!-- ============ STEP 1: SETUP ============ -->
+<div class="section">
+  <div class="step-header"><span class="step-num">1</span><h2>Setup &amp; Notation</h2></div>
+  <p><b>n</b> people on a dating site. Each pair is independently "hooked up" with probability <b>p</b>.</p>
+  <p>A <b>love triangle</b> = 3 people who are ALL mutually hooked up (all 3 edges present).</p>
+
+  <svg width="280" height="200" viewBox="0 0 280 200">
+    <!-- Triangle example -->
+    <polygon points="140,30 50,170 230,170" class="triangle-fill"/>
+    <line x1="140" y1="30" x2="50" y2="170" class="edge-active"/>
+    <line x1="140" y1="30" x2="230" y2="170" class="edge-active"/>
+    <line x1="50" y1="170" x2="230" y2="170" class="edge-active"/>
+    <circle cx="140" cy="30" r="18" class="node"/>
+    <text x="140" y="30" class="node-label">u</text>
+    <circle cx="50" cy="170" r="18" class="node"/>
+    <text x="50" y="170" class="node-label">v</text>
+    <circle cx="230" cy="170" r="18" class="node"/>
+    <text x="230" y="170" class="node-label">w</text>
+    <!-- Labels on edges -->
+    <text x="80" y="90" fill="var(--accent)" font-size="13" font-weight="600" font-family="serif">p</text>
+    <text x="198" y="90" fill="var(--accent)" font-size="13" font-weight="600" font-family="serif">p</text>
+    <text x="140" y="190" fill="var(--accent)" font-size="13" font-weight="600" font-family="serif">p</text>
+  </svg>
+
+  <p>Define an <b>indicator variable</b> for each triple {i, j, k}:</p>
+  <div class="formula">
+    I<sub>{u,v,w}</sub> = 1 if all 3 edges are present, &ensp; 0 otherwise
+  </div>
+  <p>Then the total number of love triangles N is:</p>
+  <div class="formula">
+    N = &Sigma;<sub>{u,v,w}</sub> I<sub>{u,v,w}</sub>
+  </div>
+  <p>From HW3, you already know:</p>
+  <div class="formula">
+    E[N] = C(n,3) &middot; p<sup>3</sup>
+  </div>
+  <p>because P(I<sub>{u,v,w}</sub> = 1) = p<sup>3</sup> (3 independent edges each with prob p).</p>
+</div>
+
+<!-- ============ STEP 2: EXPANDING N² ============ -->
+<div class="section">
+  <div class="step-header"><span class="step-num">2</span><h2>Expanding N&sup2; to Get Var(N)</h2></div>
+  <p>We use <b>Var(N) = E[N&sup2;] &minus; (E[N])&sup2;</b>. We already have E[N], so we need E[N&sup2;].</p>
+  <p>Squaring the sum gives a <b>double sum</b> over all pairs of triples:</p>
+  <div class="formula">
+    N&sup2; = (&Sigma;<sub>{u,v,w}</sub> I<sub>{u,v,w}</sub>)(&Sigma;<sub>{u',v',w'}</sub> I<sub>{u',v',w'}</sub>) = &Sigma;<sub>{u,v,w}</sub> &Sigma;<sub>{u',v',w'}</sub> I<sub>{u,v,w}</sub> &middot; I<sub>{u',v',w'}</sub>
+  </div>
+  <p>Taking expectation:</p>
+  <div class="formula">
+    E[N&sup2;] = &Sigma;<sub>{u,v,w}</sub> &Sigma;<sub>{u',v',w'}</sub> E[I<sub>{u,v,w}</sub> &middot; I<sub>{u',v',w'}</sub>]
+  </div>
+  <p>So to compute E[N&sup2;], we need to evaluate <b>E[I &middot; I']</b> for every pair of triples. This depends on how many people the two triples share.</p>
+  <div class="key-insight">
+    <strong>Key question:</strong> When does E[I<sub>{u,v,w}</sub> &middot; I<sub>{u',v',w'}</sub>] &ne; E[I] &middot; E[I'] = p&sup6;? Only when the two triples <b>share an edge</b> (i.e., share at least 2 people). If they share 0 or 1 people, their edges are all independent, so the product factors: E[I &middot; I'] = p&sup6;.
+  </div>
+</div>
+
+<!-- ============ STEP 3: OVERLAP CASES ============ -->
+<div class="section">
+  <div class="step-header"><span class="step-num">3</span><h2>How Can Two Triples Overlap?</h2></div>
+  <p>Two triples of people can share 0, 1, 2, or 3 people. Let's see which cases matter:</p>
+
+  <div class="cases-grid">
+
+    <!-- Case 0: no overlap -->
+    <div class="case-card zero-cov">
+      <div class="case-label zero">0 shared people</div>
+      <svg width="200" height="120" viewBox="0 0 200 120">
+        <polygon points="40,15 15,75 65,75" class="triangle-fill"/>
+        <line x1="40" y1="15" x2="15" y2="75" class="edge-active"/>
+        <line x1="40" y1="15" x2="65" y2="75" class="edge-active"/>
+        <line x1="15" y1="75" x2="65" y2="75" class="edge-active"/>
+        <circle cx="40" cy="15" r="10" class="node"/><circle cx="15" cy="75" r="10" class="node"/><circle cx="65" cy="75" r="10" class="node"/>
+        <polygon points="160,15 135,75 185,75" class="triangle-fill-2"/>
+        <line x1="160" y1="15" x2="135" y2="75" stroke="var(--accent2)" stroke-width="3"/>
+        <line x1="160" y1="15" x2="185" y2="75" stroke="var(--accent2)" stroke-width="3"/>
+        <line x1="135" y1="75" x2="185" y2="75" stroke="var(--accent2)" stroke-width="3"/>
+        <circle cx="160" cy="15" r="10" fill="var(--accent2)" stroke="var(--card-border)" stroke-width="2"/><circle cx="135" cy="75" r="10" fill="var(--accent2)" stroke="var(--card-border)" stroke-width="2"/><circle cx="185" cy="75" r="10" fill="var(--accent2)" stroke="var(--card-border)" stroke-width="2"/>
+      </svg>
+      <p>6 distinct edges, all independent</p>
+      <div class="formula-small">E[I<sub>1</sub>I<sub>2</sub>] = p<sup>6</sup> = E[I<sub>1</sub>]E[I<sub>2</sub>]</div>
+      <div class="case-detail">Cov = 0 &rarr; <em>doesn't matter</em></div>
+      <div class="case-detail"># of pairs: <em>irrelevant</em></div>
+    </div>
+
+    <!-- Case 1: 1 shared person -->
+    <div class="case-card zero-cov">
+      <div class="case-label zero">1 shared person</div>
+      <svg width="200" height="120" viewBox="0 0 200 120">
+        <polygon points="100,15 45,75 85,95" class="triangle-fill"/>
+        <line x1="100" y1="15" x2="45" y2="75" class="edge-active"/>
+        <line x1="100" y1="15" x2="85" y2="95" class="edge-active"/>
+        <line x1="45" y1="75" x2="85" y2="95" class="edge-active"/>
+        <polygon points="100,15 155,75 115,95" class="triangle-fill-2"/>
+        <line x1="100" y1="15" x2="155" y2="75" stroke="var(--accent2)" stroke-width="3"/>
+        <line x1="100" y1="15" x2="115" y2="95" stroke="var(--accent2)" stroke-width="3"/>
+        <line x1="155" y1="75" x2="115" y2="95" stroke="var(--accent2)" stroke-width="3"/>
+        <!-- shared node on top -->
+        <circle cx="100" cy="15" r="11" fill="var(--accent4)" stroke="var(--text)" stroke-width="2"/>
+        <circle cx="45" cy="75" r="10" class="node"/><circle cx="85" cy="95" r="10" class="node"/>
+        <circle cx="155" cy="75" r="10" fill="var(--accent2)" stroke="var(--card-border)" stroke-width="2"/>
+        <circle cx="115" cy="95" r="10" fill="var(--accent2)" stroke="var(--card-border)" stroke-width="2"/>
+      </svg>
+      <p>5 people, but still 6 <em>distinct</em> edges</p>
+      <div class="formula-small">E[I<sub>1</sub>I<sub>2</sub>] = p<sup>6</sup> = E[I<sub>1</sub>]E[I<sub>2</sub>]</div>
+      <div class="case-detail">Cov = 0 &rarr; <em>doesn't matter</em></div>
+      <div class="case-detail"># of pairs: <em>irrelevant</em></div>
+    </div>
+
+    <!-- Case 2: 2 shared people = 1 shared edge (THE KEY CASE) -->
+    <div class="case-card has-cov">
+      <div class="case-label nonzero">2 shared people (1 shared edge)</div>
+      <svg width="220" height="130" viewBox="0 0 220 130">
+        <!-- shared edge -->
+        <line x1="70" y1="30" x2="150" y2="30" class="edge-shared"/>
+        <!-- triangle 1 edges -->
+        <polygon points="70,30 150,30 110,110" class="triangle-fill"/>
+        <line x1="70" y1="30" x2="110" y2="110" class="edge-active"/>
+        <line x1="150" y1="30" x2="110" y2="110" class="edge-active"/>
+        <!-- triangle 2 edges (going up) -->
+        <polygon points="70,30 150,30 30,100" class="triangle-fill-2"/>
+        <line x1="70" y1="30" x2="30" y2="100" stroke="var(--accent2)" stroke-width="3"/>
+        <line x1="150" y1="30" x2="30" y2="100" stroke="var(--accent2)" stroke-width="3"/>
+        <!-- OR other direction -->
+        <polygon points="70,30 150,30 190,100" class="triangle-fill-2"/>
+        <line x1="70" y1="30" x2="190" y2="100" stroke="var(--accent2)" stroke-width="3"/>
+        <line x1="150" y1="30" x2="190" y2="100" stroke="var(--accent2)" stroke-width="3"/>
+        <!-- nodes -->
+        <circle cx="70" cy="30" r="11" fill="var(--accent4)" stroke="var(--text)" stroke-width="2"/>
+        <circle cx="150" cy="30" r="11" fill="var(--accent4)" stroke="var(--text)" stroke-width="2"/>
+        <circle cx="110" cy="110" r="10" class="node"/>
+        <circle cx="30" cy="100" r="10" fill="var(--accent2)" stroke="var(--card-border)" stroke-width="2"/>
+        <circle cx="190" cy="100" r="10" fill="var(--accent2)" stroke="var(--card-border)" stroke-width="2"/>
+        <text x="110" y="16" fill="var(--accent4)" font-size="11" font-weight="700" text-anchor="middle" font-family="sans-serif">SHARED EDGE</text>
+      </svg>
+      <p>4 people, 5 distinct edges (1 shared!)</p>
+      <div class="formula-small">E[I<sub>1</sub>I<sub>2</sub>] = p<sup>5</sup> &ne; p<sup>6</sup></div>
+      <div class="case-detail" style="color:var(--accent);font-weight:600;">Cov = p<sup>5</sup> &minus; p<sup>6</sup> = p<sup>5</sup>(1&minus;p) &ne; 0</div>
+      <div class="case-detail" style="color:var(--accent);font-weight:700;font-size:1rem;margin-top:0.75rem;border-top:1px solid var(--card-border);padding-top:0.5rem;">
+        # of pairs: C(n,2) &middot; C(n&minus;2, 2)
+      </div>
+      <div class="case-detail" style="font-size:0.85rem;">
+        Pick the 2 shared people: C(n,2)<br>
+        Pick 2 others (one per triple): C(n&minus;2, 2)
+      </div>
+    </div>
+
+    <!-- Case 3: same triple -->
+    <div class="case-card has-cov-self">
+      <div class="case-label self">3 shared (same triple)</div>
+      <svg width="200" height="120" viewBox="0 0 200 120">
+        <polygon points="100,15 50,95 150,95" class="triangle-fill"/>
+        <polygon points="100,15 50,95 150,95" class="triangle-fill-2"/>
+        <line x1="100" y1="15" x2="50" y2="95" class="edge-shared"/>
+        <line x1="100" y1="15" x2="150" y2="95" class="edge-shared"/>
+        <line x1="50" y1="95" x2="150" y2="95" class="edge-shared"/>
+        <circle cx="100" cy="15" r="11" fill="var(--accent4)" stroke="var(--text)" stroke-width="2"/>
+        <circle cx="50" cy="95" r="11" fill="var(--accent4)" stroke="var(--text)" stroke-width="2"/>
+        <circle cx="150" cy="95" r="11" fill="var(--accent4)" stroke="var(--text)" stroke-width="2"/>
+      </svg>
+      <p>Same triple &mdash; this is the diagonal term</p>
+      <div class="formula-small">E[I&sup2;] = E[I] = p<sup>3</sup></div>
+      <div class="case-detail" style="color:var(--success);font-weight:600;">Contributes to diagonal</div>
+      <div class="case-detail" style="color:var(--success);font-weight:700;font-size:1rem;margin-top:0.75rem;border-top:1px solid var(--card-border);padding-top:0.5rem;">
+        # of pairs: C(n, 3)
+      </div>
+      <div class="case-detail" style="font-size:0.85rem;">
+        One for each triple
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============ STEP 4: WHY 0 AND 1 DON'T MATTER ============ -->
+<div class="section">
+  <div class="step-header"><span class="step-num">4</span><h2>Why Only the "2 Shared" Case Creates Dependence</h2></div>
+  <p>Two indicators I<sub>{u,v,w}</sub> and I<sub>{u',v',w'}</sub> are independent when they depend on <b>completely separate coin flips</b>.</p>
+  <ul>
+    <li><b>0 shared people:</b> 6 people, 6 distinct edges &rarr; 6 independent coins &rarr; E[I<sub>1</sub>I<sub>2</sub>] = p<sup>3</sup> &middot; p<sup>3</sup> = p<sup>6</sup></li>
+    <li><b>1 shared person:</b> 5 people, but still 6 <em>distinct</em> edges (no edge is shared!) &rarr; still independent &rarr; p<sup>6</sup></li>
+    <li><b>2 shared people:</b> 4 people, but only 5 distinct edges (the shared pair's edge is used by <em>both</em> triangles). The two indicators are <b>not independent</b> because if the shared edge is "off," <em>both</em> triangles fail &rarr; E[I<sub>1</sub>I<sub>2</sub>] = p<sup>5</sup></li>
+  </ul>
+  <div class="key-insight">
+    <strong>The intuition:</strong> Sharing a person doesn't create dependence &mdash; sharing an <em>edge</em> does. Two people must be shared before any edge is shared, because edges connect pairs.
+  </div>
+</div>
+
+<!-- ============ STEP 5: COUNTING ============ -->
+<div class="section">
+  <div class="step-header"><span class="step-num">5</span><h2>Counting the Pairs</h2></div>
+
+  <h3>Diagonal: how many triples?</h3>
+  <div class="formula">C(n, 3) triples total</div>
+  <p>Each contributes Var(I) = p<sup>3</sup>(1 &minus; p<sup>3</sup>) to the diagonal.</p>
+
+  <h3 style="margin-top:1rem;">Off-diagonal: how many unordered pairs of triples share exactly 2 people?</h3>
+  <p>Count them by construction:</p>
+  <ol style="padding-left:1.5rem; margin-bottom:0.5rem;">
+    <li>Choose the 2 shared people: <b>C(n, 2)</b> ways</li>
+    <li>Choose 2 different non-shared people (one for each triple): <b>C(n&minus;2, 2)</b> ways</li>
+  </ol>
+  <div class="formula">
+    Number of pairs sharing exactly 2 people = C(n, 2) &middot; C(n&minus;2, 2)
+  </div>
+  <p>Each contributes Cov = p<sup>5</sup>(1 &minus; p) to the off-diagonal (multiplied by 2 for the symmetric sum).</p>
+</div>
+
+<!-- ============ STEP 6: FINAL ANSWER ============ -->
+<div class="section">
+  <div class="step-header"><span class="step-num">6</span><h2>Putting It All Together</h2></div>
+
+  <div class="formula">
+    Var(N) = &Sigma;<sub>i</sub> Var(I<sub>i</sub>) + 2 &Sigma;<sub>i &lt; j, share 2 people</sub> Cov(I<sub>i</sub>, I<sub>j</sub>)
+  </div>
+
+  <div class="final-box">
+    <div class="formula" style="font-size:1.3rem;">
+      Var(N) = C(n,3) &middot; p<sup>3</sup>(1 &minus; p<sup>3</sup>) &ensp;+&ensp; 2 &middot; C(n,2) &middot; C(n&minus;2,2) &middot; p<sup>5</sup>(1 &minus; p)
+    </div>
+    <p style="text-align:center; color:var(--muted); font-size:0.9rem; margin-top:0.5rem;">
+      diagonal (each triple's own variance) &ensp;+&ensp; off-diagonal (pairs of triples sharing an edge)
+    </p>
+  </div>
+</div>
+
+<!-- ============ STEP 7: SUMMARY ROADMAP ============ -->
+<div class="section">
+  <div class="step-header"><span class="step-num">&check;</span><h2>Roadmap for Writing Your Solution</h2></div>
+  <ol style="padding-left:1.5rem;">
+    <li>Define N = &Sigma;<sub>{u,v,w}</sub> I<sub>{u,v,w}</sub> and write Var(N) = &Sigma; Var(I) + 2&Sigma; Cov(I<sub>i</sub>, I<sub>j</sub>)</li>
+    <li>Compute Var(I<sub>{u,v,w}</sub>) = E[I<sup>2</sup>] &minus; (E[I])<sup>2</sup> = p<sup>3</sup> &minus; p<sup>6</sup></li>
+    <li>Classify pairs of distinct triples by overlap (0, 1, or 2 shared people)</li>
+    <li>Show Cov = 0 for 0 or 1 shared people (independence of edges)</li>
+    <li>Show E[I<sub>1</sub>I<sub>2</sub>] = p<sup>5</sup> for 2 shared people &rarr; Cov = p<sup>5</sup> &minus; p<sup>6</sup></li>
+    <li>Count pairs sharing exactly 2 people: C(n,2) &middot; C(n&minus;2, 2)</li>
+    <li>Combine into the final formula</li>
+  </ol>
+</div>
+
+</body>
+</html>

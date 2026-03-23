@@ -1,0 +1,114 @@
+{
+  "sp23_mc1": "yellow",
+  "sp23_mc2": "green",
+  "sp23_mc3": "yellow",
+  "sp25_mc1": {
+    "status": "green",
+    "notes": ""
+  },
+  "sp23_mc4": "yellow",
+  "sp23_mc5": "red",
+  "sp23_mc6": "green",
+  "sp23_sa2ai": "green",
+  "sp23_sa2aii": "red",
+  "sp23_sa2b": "green",
+  "sp23_sa4c": "green",
+  "sp23_sa4bii": "yellow",
+  "sp23_sa4bi": "green",
+  "sp23_sa4a": "green",
+  "sp23_sa3d": "red",
+  "sp23_sa3c": "yellow",
+  "sp23_sa3b": "green",
+  "sp23_sa3a": "red",
+  "sp25_mc2": {
+    "status": "green",
+    "notes": ""
+  },
+  "sp25_mc5": "red",
+  "sp25_mc6": "red",
+  "sp25_mc3": "yellow",
+  "sp25_mc4": "yellow",
+  "sp25_sa1a": "yellow",
+  "sp25_sa1b": "yellow",
+  "sp25_sa1c": "yellow",
+  "sp25_sa2ai": "green",
+  "sp25_sa2aii": "yellow",
+  "sp25_sa2b": "yellow",
+  "sp25_sa3a": "yellow",
+  "sp25_sa3bi": "green",
+  "sp25_sa3bii": "red",
+  "sp25_sa3c": "red",
+  "sp24_mc1": {
+    "status": "red",
+    "notes": ""
+  },
+  "sp24_mc2": {
+    "status": "red",
+    "notes": ""
+  },
+  "sp24_mc3": {
+    "status": "red",
+    "notes": ""
+  },
+  "sp24_mc4": {
+    "status": "green",
+    "notes": ""
+  },
+  "sp24_mc5": {
+    "status": "red",
+    "notes": ""
+  },
+  "sp24_mc6": {
+    "status": "red",
+    "notes": ""
+  },
+  "sp24_mc8": {
+    "status": "green",
+    "notes": ""
+  },
+  "sp24_mc7": {
+    "status": "green",
+    "notes": ""
+  },
+  "sp24_mc9": {
+    "status": "yellow",
+    "notes": ""
+  },
+  "sp24_mc10": {
+    "status": "green",
+    "notes": ""
+  },
+  "sp24_sa3d": {
+    "status": "red",
+    "notes": ""
+  },
+  "sp24_sa2a": {
+    "status": "yellow",
+    "notes": ""
+  },
+  "sp24_sa2ba": {
+    "status": "green",
+    "notes": ""
+  },
+  "sp24_sa2bb": {
+    "status": "yellow",
+    "notes": ""
+  },
+  "sp24_sa3a": {
+    "status": "yellow",
+    "notes": ""
+  },
+  "sp24_sa3b": {
+    "status": "yellow",
+    "notes": ""
+  },
+  "sp24_sa3c": {
+    "status": "red",
+    "notes": ""
+  },
+  "sp22_q1a": {
+    "status": "gray",
+    "notes": ""
+  },
+  "tracker_id": "ECO310"
+}

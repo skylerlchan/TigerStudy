@@ -1,0 +1,174 @@
+\documentclass[8pt,landscape]{extarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.2in,top=0.25in,bottom=0.15in]{geometry}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{titlesec}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\columnsep}{8pt}
+
+\titlespacing*{\section}{0pt}{2pt}{0.5pt}
+\titlespacing*{\subsection}{0pt}{1.5pt}{0pt}
+\titleformat{\section}{\normalfont\footnotesize\bfseries}{\thesection}{0.4em}{}
+\titleformat{\subsection}{\normalfont\scriptsize\bfseries}{\thesubsection}{0.4em}{}
+
+\setlist[itemize]{leftmargin=*,noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt,itemsep=0pt}
+
+\pagestyle{empty}
+
+\begin{document}
+\begin{multicols}{4}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{15pt}
+
+\begin{center}
+\textbf{\Large EC 310 - Midterm Review Sheet}
+\end{center}
+
+\section*{1 Main Concepts}
+
+\subsection*{1. Choice}
+\textbf{definition:} choices are rationalizable if they could be the result of a consumer with complete and transitive preferences, who always chooses the best option(s)
+
+\textbf{theorem:} choices are rationalizable iff they satisfy WARP, which says: if ever you reveal $x \succsim y$ by choosing $x$ when $y$ is also feasible (eg costs weakly less), then you can never reveal $y \succ x$ which would be the case if you chose $y$ and said you were unwilling to choose $x$, or if you chose $y$ and paid extra for it
+
+\textbf{theorem:} choices satisfy WARP iff they satisfy Sen's $\alpha$ and $\beta$ axioms:
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $\alpha$ says: if you choose $x$ from a big world $A$, then you should also be willing to choose it from small world $B \subseteq A$. (This is sometimes called IIA, or independence of irrelevant alternatives: if $x$ is a good choice in big world $A$, then removing the ``irrelevant'' options in $B \setminus A$ shouldn't suddenly render $x$ an undesirable choice).
+\item $\beta$ says: if you are willing to choose both $x$ and $y$ from a small world $B$, and one of them is also a good choice in big world $A \supseteq B$, then the other is also a good choice in big world $A$
+\end{itemize}
+
+\textbf{prices version of WARP:} you violate it if there are options $x$ and $y$ such that in one setting you pay weakly extra to get $x$, and in another setting you pay strictly extra to get $y$.
+
+\subsection*{2. Marginal utility}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item to calculate marginal utility of a good, calculate the partial derivative of the utility function with respect to that good
+\item interpretation: how much do you benefit from getting a bit more of the good
+\item example: if $u(x_1,x_2) = x_1^2 x_2$, then $MU_1 = 2x_1 x_2$ and $MU_2 = x_1^2$
+\end{itemize}
+
+\subsection*{3. Marginal Rate of Substitution:}
+$$MRS_{1,2} = \frac{MU_1}{MU_2} \equiv \frac{\partial u/dx_1}{\partial u/dx_2}$$
+
+\textbf{interpretation:} the ``value of good 1 compared to good 2'' (usually depends on the amounts of each good), which is also the amount of good 2 you'd give up for an extra unit of good 1---i.e., the negative slope of your indifference curve. For example, if good 1 has thrice the value of good 2, then to get one more unit of it you'd be willing to drop 3 units of good 2.
+
+\subsection*{4. Budget Line:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item typical form, $p_1 x_1 + p_2 x_2 = m$; amount you spend equals the amount you have
+\item price ratio, $\frac{p_1}{p_2}$; tells you the cost of 1 compared to the cost of good 1
+\end{itemize}
+
+\subsection*{5. VERY IMPORTANT RELATIONSHIP: MRS compared to price ratio}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item if $\frac{MU_1}{MU_2} > \frac{p_1}{p_2}$, you are at a point where the value of good 1 (compared to 2) is higher than the cost of good 1 (compared to good 2): Then:
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item if you currently have positive amounts of both goods, you are not at an optimal point: good 1 is the ``better deal''---it has a higher value-to-cost ratio, i.e. bang-per-buck---so you should sell some of your overpriced good 2, and use it to buy more good 1
+\item if you already have $x_2 = 0$, then you are at an optimal corner solution: you are buying as much of the ``better bang-per-buck'' good 1 as you can, since you're already spending all your money on it
+\end{itemize}
+\item if $\frac{MU_1}{MU_2} < \frac{p_1}{p_2}$, you are at a point where good 2 has a higher bang-per-buck than good 1, i.e. $\frac{MU_2}{p_2} > \frac{MU_1}{p_1}$
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item a point like this is not optimal if you have positive amounts of both goods: you should sell some good 1 to buy more good 2, which does more for your utility per dollar spent
+\item a point like this could only be optimal if you are already at a corner solution with $x_1 = 0$, so that it's not possible to sell good 1 to buy more good 2
+\end{itemize}
+\item if preferences are convex---mathematically, this is the case whenever $\frac{MU_1}{MU_2}$ decreases as $x_1 \uparrow$ and/or $x_2 \downarrow$---then the optimal consumption point is where $\frac{MU_1}{MU_2} = \frac{p_1}{p_2}$, unless this violates nonnegativity constraints (in which case, go for the next best corner solution). If this convexity test is unclear, another check is to substitute the budget constraint (solving for one good in terms of the other) into utility, to obtain a function of one good only. If this function has a negative second derivative, i.e. is concave, then preferences are convex (note: this is not a typo that one says concave and the other says convex).
+\item if preferences are concave---mathematically, this is the case if $\frac{MU_1}{MU_2}$ increases as $x_1 \uparrow$ and/or $x_2 \downarrow$---then the optimal consumption point is a corner solution. Whichever gives a higher utility among all money on good 1, or all money on good 2.
+\end{itemize}
+
+\subsection*{6. (Marshallian) Demand---these are our ``normal'' demand bundles}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item if you have a utility function $u(x_1,x_2)$ and face the budget constraint $p_1 x_1 + p_2 x_2 \leq m$, the Marshallian demand functions $x_1(p_1,p_2,m)$ and $x_2(p_1,p_2,m)$ tell you the optimal amount to buy of each good, as functions of prices and wealth.
+\item to calculate them, you want to find the amounts $x_1,x_2$ that maximize your utility function $u(x_1,x_2)$, subject to the constraint $p_1 x_1 + p_2 x_2 \leq m$
+\item if preferences are convex and you do not hit a corner, here are 3 methods to solve this problem:
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item \textbf{Method \#1 (intuitive):} solve the two equations (1) $\frac{MU_1}{MU_2} = \frac{p_1}{p_2}$ and (2) $p_1 x_1 + p_2 x_2 = m$ for the two unknowns, $x_1$ and $x_2$. This is your optimal bundle, i.e. the demand function
+\item \textbf{Method \#2 (substitution method):} solve the budget line for $x_2$ in terms of $x_1$: $x_2 = \frac{m - p_1 x_1}{p_2}$. Substitute this expression for $x_2$ into your utility function, so that it depends only on $x_1$ (which you get to choose) and the budget variables $p_1,p_2,m$. Take the F.O.C. for $x_1$ (differentiate w.r.t. $x_1$ and set equal to zero); this gives you your Marshallian demand function for $x_1$; then sub it into your budget-line equation to get $x_2$.
+\item \textbf{Method \#3 (Lagrangian):} set up the Lagrangian; ignoring nonnegativity constraints, it is $\mathcal{L} = u(x_1,x_2) - \lambda(p_1 x_1 + p_2 x_2 - m)$. Solve the FOC's $\frac{\partial \mathcal{L}}{\partial x_1} = 0$, $\frac{\partial \mathcal{L}}{\partial x_2} = 0$, $\frac{\partial \mathcal{L}}{\partial \lambda} = 0$. Comparing the first two FOC's implies $\frac{MU_1}{MU_2} = \frac{p_1}{p_2}$, and the third one $\frac{\partial \mathcal{L}}{\partial \lambda} = 0$ simply gives the budget constraint.
+\end{itemize}
+\item You will want a corner solution in 2 possible cases:
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item if preferences are concave: $\frac{MU_1}{MU_2}$ increases as $x_1 \uparrow$ and $x_2 \downarrow$: (for example, the utility function $u(x_1,x_2) = x_1^2 + x_2$, which yields $\frac{MU_1}{MU_2} = 2x_1$, increasing in $x_1$): Here, you either want to spend all your money on $x_1$ (and set $x_2 = 0$), or spend all your money on good 2 (and set $x_1 = 0$); simply check which corner is better.
+\item if preferences are convex, but even if you spend all your money on one good, you STILL want more of it. The math will tell you that you should have $x_i = 0$ in the following possible ways:
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item if you use the intuitive solution, the optimal bundle involves $x_i^* = 0$ if at this point---i.e. spending nothing on good $i$ and all money on other goods---good $i$ has less bang-per-buck $MU_i/p_i$ than any other good.
+\item if you use a Lagrangian, the optimal bundle involves $x_i^* = 0$ if either (i) you ignore non-negativity constraints and find that at $x_i = 0$, $\frac{\partial \mathcal{L}}{\partial x_i} < 0$; (ii) OR, you include the nonnegativity constraint for good $i$, namely add the term $\lambda_i x_i$ into your Lagrangian expression, and get a solution where $\lambda_i > 0$.
+\end{itemize}
+\end{itemize}
+\item last caveat: before jumping into the math, check if there is an obvious solution. Namely: if one good is neutral, then it is optimal to buy zero of that good. And if you have perfect complements, with utility function $u(x_1,x_2) = \min\{x_1,x_2\}$, which have $\frac{MU_1}{MU_2} = 0$ (if $x_1 > x_2$) or $\infty$ (if $x_1 < x_2$), it is not possible to set $\frac{MU_1}{MU_2} = \frac{p_1}{p_2}$; instead of using this as your ``optimal spending'' condition, use $x_1 = x_2$. (For the intuitively obvious reason: it would be dumb to buy more right shoes than left shoes, you should instead try to get as many pairs as possible).
+\end{itemize}
+
+\subsection*{7. Compensated (or ``Hicksian'') Demand:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item here, instead of trying to maximize utility subject to a budget constraint, your goal is to minimize the cost of getting a particular utility level $u^*$
+\item that is, the Hicksian demand functions $x_1^c(p_1,p_2,u^*)$ and $x_2^c(p_1,p_2,u^*)$ solve for the amounts of $x_1,x_2$ that solve the following problem: choose $x_1,x_2$ to minimize $p_1 x_1 + p_2 x_2$ subject to the constraint $u(x_1,x_2) \geq u^*$
+\item if preferences are convex, find these by setting $\frac{MU_1}{MU_2} = \frac{p_1}{p_2}$ (this shows the most efficient way to spend your money), and $u(x_1,x_2) = u^*$. This gives you 2 equations which depend on 2 unknowns $(x_1,x_2)$ and 3 parameters $(p_1,p_2,u^*)$; solve the two equations for $x_1$ and $x_2$ (to get them in terms of $p_1,p_2,u^*$). These are your Hicksian demand functions
+\item if you have perfect substitutes, perfect complements, neutral goods, or addictive goods, the ``optimal spending'' condition $\frac{MU_1}{MU_2} = \frac{p_1}{p_2}$ is replaced by the same one you used when calculating Marshallian demand. (respectively: buy only the cheapest good; buy equal amounts of the two goods; buy only the good you value; buy only one good, but you can't be sure which one without checking both corners).
+\end{itemize}
+
+\subsection*{8. Income Effect, Substitution Effect, and Compensating Variation}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item this all deals with the effects of an increase in the price of some good, say $p_1$ increases to $p_1'$
+\item to calculate these, you first need to calculate your original optimal bundle: that is, solve the two equations (i) $\frac{MU_1}{MU_2} = \frac{p_1}{p_2}$ and (ii) $p_1 x_1 + p_2 x_2 = m$ for $x_1$ and $x_2$. Call your original optimal bundle $(x_1^o,x_2^o)$
+\item compensating variation is $m' - m$, where $m'$ is the cost of the bundle $(x_1^c,x_2^c)$ that satisfies two conditions: (i) $\frac{MU_1}{MU_2} = \frac{p_1'}{p_2}$ (note: NEW price of good 1 here) (ii) $u(x_1^c,x_2^c) = u(x_1^o,x_2^o)$. (You are trying to see how much extra money you need to buy a bundle that is AS GOOD AS your original bundle, but which spends money efficiently at the new prices $p_1',p_2$).
+\item substitution effect is $x_1^c - x_1^o$ (amount of good 1 bought at new prices if compensated as in previous bullet point, minus original amount of good 1)
+\item income effect is $x_1(p_1',p_2,m) - x_1^c$: the second term here is the amount of good 1 calculated two bullet points up, and first term must be calculated: it is the amount of good 1 that is optimal at the new prices, but with your original (uncompensated) income $m$.
+\item one way to do this is to calculate the general compensated demand functions first (see point 6 above), and then note that the $x_1^c$ calculated here in point 7 is just $x_1^c(p_1',p_2,u^o)$---the compensated demand bundle at new prices that gets you original utility level.
+\item change due to substitution effect is ALWAYS (at least) weakly negative, and total change = change due to subst effect + change due to income effect
+\end{itemize}
+
+\subsection*{9. Expenditure Function:}
+just calculate the cost of the Hicksian demand bundles, i.e. $p_1 x_1^c(p_1,p_2,u^*) + p_2 x_2^c(p_1,p_2,u^*)$. This function tells you how much it costs to get utility level $u^*$, assuming you spend money in the most efficient possible way. If you are given the expenditure function, Shepard's Lemma tells us that you can use it to calculate Hicksian demand: $x_i^c = \partial e/\partial p_i$.
+
+\subsection*{10. Expectations:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item to calculate the expectation of something, just calculate the weighted sum of the possible values, with the weights equal to the probabilities of getting the values
+\item for example, if you are given possible return rates $r_1,r_2,\ldots,r_N$ which happen with probabilities $p_1,p_2,\ldots,p_N$, and are asked to calculate the expected return rate, it is $p_1 r_1 + p_2 r_2 + \cdots + p_N r_N$
+\item if you are given possible final wealth levels $w_1,w_2,\ldots,w_N$ which happen with probabilities $p_1,p_2,\ldots,p_N$ and are asked to calculate the expected wealth, it is $p_1 w_1 + p_2 w_2 + \cdots + p_N w_N$
+\item if you are given the example from the previous bullet point, as well as a utility-of-wealth function $u(w)$, and are asked to calculate expected utility, it is $p_1 u(w_1) + p_2 u(w_2) + \cdots + p_N u(w_N)$
+\end{itemize}
+
+\subsection*{11. Assets:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item if you put fraction $\alpha$ of your wealth in an asset with expected return rate $r_1$, and fraction $(1-\alpha)$ of your wealth in an asset with expected return rate $r_2$, the overall expected return rate is $\alpha r_1 + (1-\alpha)r_2$. And if the first asset is risk-free and the other has variance $\sigma_2^2$, your overall risk is $(1-\alpha)^2 \sigma_2^2$
+\item return rate $r$ means that if you invest \$$w$, it will be worth \$$w(1+r)$ at the end (i.e. your ``final wealth'' will be \$$w(1+r)$). The change in wealth is simply the return rate times the amount invested.
+\end{itemize}
+
+\subsection*{12. Variance:}
+if $X$ takes on possible values $x_1,\ldots,x_N$, which happen with probabilities $p_1,\ldots,p_N$, the variance is the expected value of $(X - E[X])^2$: i.e.,
+$$p_1(x_1 - \bar{x})^2 + p_2(x_2 - \bar{x})^2 + \cdots + p_N(x_N - \bar{x})^2$$
+where $\bar{x}$ is the expected value of $X$, $\bar{x} = p_1 x_1 + \cdots + p_N x_N$. And standard deviation is the square root of this. You will get the same answer using the alternate formula, $E[X^2] - (E[X])^2$, i.e.
+$$p_1 x_1^2 + p_2 x_2^2 + \cdots + p_N x_N^2 - \bar{x}^2$$
+
+\subsection*{13. Concepts with Expected Utility:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item always assume individuals are trying to maximize utility
+\item if a yes/no decision is involved (eg deliver a risky package or not, accept a gamble or not), an EU-maximizer chooses whichever decision yields a higher expected utility
+\item if there is a decision like choosing the optimal amount of insurance, write the expected utility as a function of what you get to choose. The optimal choice, i.e. the one that maximizes expected utility, solves the FOC: the derivative of EU with respect to what you choose equals zero.
+\end{itemize}
+
+\subsection*{14. Risk Aversion and Certainty Equivalent}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item most people are risk-averse. This means $u(E[w]) > EU$, i.e. you'd rather get your expected wealth handed to you risk-free than play the game. (The utility of the expected wealth beats the expected utility of playing the game). Mathematically, this happens whenever $u'' < 0$, which means that $u'$ is decreasing. For example, a person with the concave utility function $u(w) = \sqrt{w}$ would rather get \$50 for sure, then have a 50-50 shot at either \$0 or \$100.
+\item for a gamble, the CE is defined by $u(CE) = EU$: what certain wealth is exactly as good as playing the gamble. For a risk-averse person, the CE is smaller than expected wealth, via $u(CE) = EU < u(E[w])$. In the example from the previous bullet point, the CE to a 50-50 chance of \$0 or \$100 (assuming initial wealth \$0) is
+$$\sqrt{CE} = \frac{1}{2}\sqrt{100} + \frac{1}{2}\sqrt{0} \Rightarrow CE = \$25$$
+So this individual is indifferent between a 50-50 chance at \$0 or \$100 (which pays \$50 in expectation), and between simply getting \$25 handed to him for sure.
+\item relatedly, the risk premium $\pi$ for a gamble with expected wealth $E[W]$ is defined by $u(E[W] - \pi) = EU$. How much would you be willing to sacrifice in expected value, to get a risk-free gamble.
+\item some people are risk-loving. This means that for any gamble, you'd rather get it via a risky game than as a lump-sum payment, i.e. $EU > u(E[w])$. Mathematically, this happens if $u'' \geq 0$, and for people like this, the certainty equivalent exceeds expected wealth.
+\item finally, some people are risk-neutral. These people have linear utility functions, e.g. $u(w) = w$, and are indifferent between playing a game or getting its expected value risk-free: $EU = u(E[w])$. For these people, the certainty equivalent equals expected wealth.
+\end{itemize}
+
+\section*{1.1 Smaller Concepts (probably for multiple choice questions)}
+
+\textbf{1. Properties of ``nice'' preferences:} transitive, meaning that if $[x \succsim y$ and $y \succsim z]$ implies $x \succsim z$; and complete, meaning that you can compare any two choices $x,y$ (either $x \succsim y$ or $y \succsim x$ or both)
+
+\textbf{2. Normal/Inferior, Luxury/Necessity Goods, Giffen/Ordinary Goods, and Income Elasticity of Demand}
+
+Income elasticity of demand $\eta_x = \frac{\%\Delta x}{\%\Delta m} = \frac{dx}{dm}\frac{m}{x}$; if bigger than 1, ``luxury''; smaller than 1, ``necessity''; $\frac{dx}{dm} > 0$ means ``normal'', $\frac{dx}{dm} < 0$ means inferior. A Giffen good is one where demand increases as price increases (it is necessarily an inferior good).
+
+\end{multicols}
+\end{document}

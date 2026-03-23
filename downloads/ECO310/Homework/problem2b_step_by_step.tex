@@ -1,0 +1,274 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tcolorbox}
+
+\title{Problem 2b: Step-by-Step Calculation \\ (Getting $\lambda_1$)}
+\author{ECO 310 - Detailed Walkthrough}
+\date{February 23, 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{The Setup}
+
+\textbf{The Lagrangian (Convention 2):}
+\begin{equation}
+\mathcal{L} = -p_1 x_1 - p_2 x_2 + \lambda_1 x_1 + \lambda_2 x_2 + \lambda_3(x_1 + x_2 - u^*)
+\end{equation}
+
+\textbf{The guess we're testing:}
+\begin{itemize}
+\item Utility constraint is binding: $x_1 + x_2 = u^*$
+\item Nonnegativity on good 1 is binding: $x_1 = 0$
+\item Nonnegativity on good 2 is non-binding: $x_2 > 0$
+\end{itemize}
+
+\textbf{What this means:}
+\begin{itemize}
+\item Since $x_1 = 0$, we're buying NO good 1
+\item Since $x_2 > 0$, we're buying SOME good 2
+\item Combined with $x_1 + x_2 = u^*$, we get $x_2 = u^*$ (buy only good 2)
+\end{itemize}
+
+This guess makes sense when \textbf{good 2 is cheaper}: $p_2 < p_1$
+
+\section{The General Optimality Conditions}
+
+From taking derivatives of the Lagrangian:
+
+\textbf{FOC with respect to $x_1$:}
+\begin{equation}
+\frac{\partial \mathcal{L}}{\partial x_1} = -p_1 + \lambda_1 + \lambda_3 \leq 0, \quad x_1 \geq 0, \quad x_1(-p_1 + \lambda_1 + \lambda_3) = 0
+\end{equation}
+
+\textbf{FOC with respect to $x_2$:}
+\begin{equation}
+\frac{\partial \mathcal{L}}{\partial x_2} = -p_2 + \lambda_2 + \lambda_3 \leq 0, \quad x_2 \geq 0, \quad x_2(-p_2 + \lambda_2 + \lambda_3) = 0
+\end{equation}
+
+\textbf{FOC with respect to $\lambda_3$:}
+\begin{equation}
+\frac{\partial \mathcal{L}}{\partial \lambda_3} = x_1 + x_2 - u^* \geq 0, \quad \lambda_3 \geq 0, \quad \lambda_3(x_1 + x_2 - u^*) = 0
+\end{equation}
+
+\section{Step 1: Use Complementary Slackness for $x_2$}
+
+Since $x_2 > 0$ (strictly positive), the complementary slackness condition says:
+\begin{equation}
+x_2 \cdot (-p_2 + \lambda_2 + \lambda_3) = 0
+\end{equation}
+
+Because $x_2 > 0$, we need:
+\begin{equation}
+-p_2 + \lambda_2 + \lambda_3 = 0
+\end{equation}
+
+The term in parentheses MUST equal zero (not just $\leq 0$).
+
+\section{Step 2: Use Complementary Slackness for $\lambda_2$}
+
+We also have complementary slackness for the constraint $x_2 \geq 0$:
+\begin{equation}
+\lambda_2 \cdot x_2 = 0
+\end{equation}
+
+Since $x_2 > 0$, we must have:
+\begin{equation}
+\lambda_2 = 0
+\end{equation}
+
+\section{Step 3: Solve for $\lambda_3$}
+
+Substitute $\lambda_2 = 0$ into equation (6):
+\begin{align}
+-p_2 + 0 + \lambda_3 &= 0 \\
+\lambda_3 &= p_2
+\end{align}
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black,title=Key Result]
+$$\lambda_3 = p_2$$
+
+This is the marginal cost of utility. Since we're buying only good 2, each extra unit of utility costs $p_2$.
+\end{tcolorbox}
+
+\section{Step 4: Apply the $x_1$ Condition}
+
+Since $x_1 = 0$ (binding constraint), we have the inequality:
+\begin{equation}
+-p_1 + \lambda_1 + \lambda_3 \leq 0
+\end{equation}
+
+Substitute $\lambda_3 = p_2$:
+\begin{align}
+-p_1 + \lambda_1 + p_2 &\leq 0 \\
+\lambda_1 + p_2 &\leq p_1 \\
+\lambda_1 &\leq p_1 - p_2
+\end{align}
+
+\section{Step 5: Determine $\lambda_1$}
+
+At the optimal solution, this inequality typically \textbf{binds} (holds with equality):
+\begin{equation}
+\lambda_1 = p_1 - p_2
+\end{equation}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=orange!75!black,title=Important!]
+\textbf{The answer is:}
+$$\lambda_1 = p_1 - p_2$$
+
+\textbf{NOT} $\lambda_1 = p_2 - p_1$ (I had an error in the previous guide!)
+\end{tcolorbox}
+
+\section{Step 6: Check Validity}
+
+For this solution to be valid, we need $\lambda_1 \geq 0$:
+\begin{align}
+\lambda_1 &\geq 0 \\
+p_1 - p_2 &\geq 0 \\
+p_1 &\geq p_2
+\end{align}
+
+\textbf{Wait, something seems wrong!}
+
+If we're buying only good 2 ($x_1 = 0$, $x_2 = u^*$), this should happen when good 2 is \textit{cheaper}, meaning $p_2 < p_1$.
+
+But our condition says $p_1 \geq p_2$, which is the same thing!
+
+So actually, the solution IS valid when $p_1 > p_2$ (good 1 is more expensive than good 2).
+
+\section{Concrete Example}
+
+\textbf{Setup:}
+\begin{itemize}
+\item Good 1 (coffee) costs \$5: $p_1 = 5$
+\item Good 2 (tea) costs \$3: $p_2 = 3$
+\item Target utility: $u^* = 10$
+\end{itemize}
+
+\textbf{Guess:} Buy only good 2 (tea is cheaper)
+\begin{itemize}
+\item $x_1 = 0$ (no coffee)
+\item $x_2 = 10$ (10 teas)
+\end{itemize}
+
+\textbf{Calculate shadow prices:}
+
+From Step 3:
+\begin{equation}
+\lambda_3 = p_2 = 3
+\end{equation}
+
+From Step 5:
+\begin{equation}
+\lambda_1 = p_1 - p_2 = 5 - 3 = 2
+\end{equation}
+
+Also:
+\begin{equation}
+\lambda_2 = 0
+\end{equation}
+
+\textbf{Check validity:}
+\begin{equation}
+\lambda_1 = 2 > 0 \quad \checkmark
+\end{equation}
+
+\textbf{Economic interpretation:}
+\begin{itemize}
+\item $\lambda_1 = 2$: If you could buy "negative coffee" (get money back for not buying coffee), each unit would save you \$2
+
+Actually, that doesn't quite make sense. Let me think about this differently...
+
+\item $\lambda_1 = 2$ measures how much your cost would \textit{increase} if you were forced to buy 1 unit of good 1
+
+\item Since coffee costs \$5 but tea costs \$3, replacing 1 tea with 1 coffee increases cost by $5 - 3 = 2$ dollars
+
+\item $\lambda_3 = 3$: Marginal cost of utility is \$3 (the price of tea, which you're buying)
+\end{itemize}
+
+\section{Summary: Step-by-Step Process}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=How to Solve Problem 2b]
+
+\textbf{Given the guess:} $x_1 = 0$, $x_2 > 0$, $x_1 + x_2 = u^*$
+
+\textbf{Step 1:} Use complementary slackness
+\begin{itemize}
+\item Since $x_2 > 0$: the $x_2$ FOC holds with equality
+\item Since $x_2 > 0$: we have $\lambda_2 = 0$
+\end{itemize}
+
+\textbf{Step 2:} Solve for $\lambda_3$
+\begin{itemize}
+\item From $x_2$ FOC: $-p_2 + \lambda_2 + \lambda_3 = 0$
+\item Substitute $\lambda_2 = 0$: $\lambda_3 = p_2$
+\end{itemize}
+
+\textbf{Step 3:} Solve for $\lambda_1$
+\begin{itemize}
+\item From $x_1$ FOC: $-p_1 + \lambda_1 + \lambda_3 \leq 0$
+\item Substitute $\lambda_3 = p_2$: $\lambda_1 \leq p_1 - p_2$
+\item At optimum: $\lambda_1 = p_1 - p_2$
+\end{itemize}
+
+\textbf{Step 4:} Find $x_1$ and $x_2$
+\begin{itemize}
+\item From guess: $x_1 = 0$
+\item From utility constraint: $x_2 = u^*$
+\end{itemize}
+
+\textbf{Step 5:} Check validity
+\begin{itemize}
+\item Need $\lambda_1 \geq 0$: requires $p_1 \geq p_2$
+\item This makes sense: we buy only good 2 when it's cheaper
+\end{itemize}
+
+\end{tcolorbox}
+
+\section{Why Does $-p_1 + \lambda_1 + \lambda_3 \leq 0$ Become $\lambda_1 = p_1 - p_2$?}
+
+Let me break down this algebra very carefully:
+
+\textbf{Starting equation:}
+\begin{equation}
+-p_1 + \lambda_1 + \lambda_3 \leq 0
+\end{equation}
+
+\textbf{Add $p_1$ to both sides:}
+\begin{equation}
+\lambda_1 + \lambda_3 \leq p_1
+\end{equation}
+
+\textbf{Subtract $\lambda_3$ from both sides:}
+\begin{equation}
+\lambda_1 \leq p_1 - \lambda_3
+\end{equation}
+
+\textbf{Substitute $\lambda_3 = p_2$:}
+\begin{equation}
+\lambda_1 \leq p_1 - p_2
+\end{equation}
+
+\textbf{At the optimum, assume this binds (equality):}
+\begin{equation}
+\lambda_1 = p_1 - p_2
+\end{equation}
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black,title=Final Answer]
+Given the guess that $x_1 = 0$, $x_2 = u^*$:
+
+\begin{align}
+x_1 &= 0 \\
+x_2 &= u^* \\
+\lambda_1 &= p_1 - p_2 \\
+\lambda_2 &= 0 \\
+\lambda_3 &= p_2
+\end{align}
+
+Valid when $p_1 \geq p_2$ (good 1 is at least as expensive as good 2)
+\end{tcolorbox}
+
+\end{document}

@@ -1,0 +1,115 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{parskip}
+
+\geometry{margin=1in}
+
+\title{Binomial Distribution\\{\large ORF 309 --- Based on Slides07}}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+%---------------------------------------------------------------
+\section*{1. Start with a Bernoulli Random Variable}
+
+A \textbf{Bernoulli RV} is any random variable that takes only the values $0$ or $1$.
+
+\[
+X_i = \begin{cases} 1 & \text{``success'' (e.g.\ heads), with probability } p \\ 0 & \text{``failure'' (e.g.\ tails), with probability } q = 1 - p \end{cases}
+\]
+
+A \textbf{Bernoulli Process} is an infinite sequence $X_1, X_2, X_3, \ldots$ of independent, identically distributed Bernoulli RVs, each with the same parameter $p$.
+
+%---------------------------------------------------------------
+\section*{2. Counting Successes: $S_n$}
+
+Define the random variable
+\[
+S_n = X_1 + X_2 + \cdots + X_n,
+\]
+which counts the \textbf{total number of successes in $n$ trials}. $S_n$ takes values in $\{0, 1, 2, \ldots, n\}$.
+
+%---------------------------------------------------------------
+\section*{3. The Probability Formula: $P(S_n = k)$}
+
+\textbf{Step 1.} Each specific sequence with exactly $k$ successes and $n - k$ failures has probability
+\[
+p^k \cdot (1-p)^{n-k}.
+\]
+For example, with $n = 8$, $k = 2$: the sequence $\mathtt{ssffffff}$ has probability $p^2(1-p)^6$.
+
+\textbf{Step 2.} Every such sequence has the \emph{same} probability (just the positions of the $k$ successes rearranged).
+
+\textbf{Step 3.} Count how many distinct arrangements exist:
+\[
+\binom{n}{k} = \frac{n!}{k!\,(n-k)!}
+\qquad \text{(read: ``$n$ choose $k$'')}
+\]
+For $n=8$, $k=2$: $\binom{8}{2} = \frac{8 \times 7}{2 \times 1} = 28$ arrangements.
+
+\textbf{Putting it together:}
+\[
+\boxed{P(S_n = k) = \binom{n}{k}\, p^k\,(1-p)^{n-k}}
+\]
+
+%---------------------------------------------------------------
+\section*{4. Formal Definition}
+
+A random variable $X$ with values $\{0, 1, 2, \ldots, n\}$ has the \textbf{Binomial Distribution} if
+\[
+P(X = k) = \binom{n}{k}\, p^k\,(1-p)^{n-k}, \qquad k = 0, 1, \ldots, n,
+\]
+where $p \in [0,1]$ and $q = 1-p$. We write $X \sim \mathrm{Binomial}(n, p)$.
+
+\textbf{Sanity check} (probabilities sum to 1):
+\[
+\sum_{k=0}^{n} \binom{n}{k} p^k (1-p)^{n-k} = (p + (1-p))^n = 1^n = 1. \checkmark
+\]
+
+%---------------------------------------------------------------
+\section*{5. Expected Value: $E[X] = np$}
+
+\subsection*{Method 1 (long way)}
+
+Plug the formula directly into $E[X] = \sum_{k=0}^{n} k \cdot P(X = k)$ and simplify algebraically. It works, but it is tedious.
+
+\subsection*{Method 2 (indicator trick --- the one to use)}
+
+Write $X$ as a sum of indicator RVs:
+\[
+X = X_1 + X_2 + \cdots + X_n.
+\]
+By \textbf{linearity of expectation} (no independence required):
+\[
+E[X] = E[X_1] + E[X_2] + \cdots + E[X_n].
+\]
+Each $E[X_i] = P(X_i = 1) = p$, so
+\[
+\boxed{E[X] = \underbrace{p + p + \cdots + p}_{n \text{ terms}} = np.}
+\]
+
+%---------------------------------------------------------------
+\section*{6. Application to Q3a (HW3)}
+
+\textbf{Setup.} You draw one coin and flip it \textbf{twice} independently. Let $X$ = number of heads.
+
+Conditioned on the coin type, the flips are independent and each has the same $p$, so $X \mid \text{coin type} \sim \mathrm{Binomial}(2,\, p)$.
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Condition & $n$ & $p$ & $E[X] = np$ \\
+\midrule
+Fair coin     & 2 & 0.50 & $2 \times 0.50 = \mathbf{1}$ \\
+Canadian coin & 2 & 0.65 & $2 \times 0.65 = \mathbf{1.3}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+You do \emph{not} need to compute $P(X=0)$, $P(X=1)$, $P(X=2)$ individually. The indicator trick gives the answer immediately.
+
+\end{document}

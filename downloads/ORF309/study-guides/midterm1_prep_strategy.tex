@@ -1,0 +1,175 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{titlesec}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{microtype}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{hyperref}
+
+\hypersetup{colorlinks=true, linkcolor=MidnightBlue, urlcolor=MidnightBlue}
+
+% Color definitions
+\definecolor{mustknow}{HTML}{D4EDDA}
+\definecolor{high}{HTML}{FFF3CD}
+\definecolor{medium}{HTML}{E2E3E5}
+\definecolor{accentblue}{HTML}{1A3A5C}
+\definecolor{lightgray}{HTML}{F5F5F5}
+
+\titleformat{\section}{\Large\bfseries\color{accentblue}}{}{0em}{}[\vspace{2pt}\color{accentblue}\rule{\textwidth}{0.8pt}]
+\titleformat{\subsection}{\large\bfseries\color{accentblue!80!black}}{}{0em}{}
+
+\setlist[itemize]{leftmargin=1.5em, itemsep=3pt}
+\setlist[enumerate]{leftmargin=1.5em, itemsep=4pt}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries\color{accentblue} ORF 309 Midterm 1 --- Preparation Strategy}\\[6pt]
+{\large Slides 01--09 $\mid$ Through Section 2.3 $\mid$ March 6, 2026}\\[4pt]
+{\normalsize Based on analysis of \textbf{8 years} of past midterms (2017--2025) and all 9 slide decks}
+\end{center}
+
+\vspace{12pt}
+
+\section{Topic Frequency Analysis}
+
+The table below shows how often each topic has appeared across all available past midterms. Use this to prioritize your study time.
+
+\vspace{6pt}
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{>{\raggedright\arraybackslash}p{5.5cm} c l}
+\toprule
+\textbf{Topic} & \textbf{Appeared in} & \textbf{Priority} \\
+\midrule
+\rowcolor{mustknow} Bayes' Theorem / LOTP & \textbf{every single exam} & Must-know \\
+\rowcolor{mustknow} Counting / Combinatorics & \textbf{every exam} & Must-know \\
+\rowcolor{mustknow} Expectation (linearity, indicators) & \textbf{every exam} & Must-know \\
+\rowcolor{mustknow} Geometric distribution + series & 7/8 exams & Must-know \\
+\rowcolor{mustknow} Binomial distribution & 6/8 exams & Must-know \\
+\rowcolor{high} Variance computation & 5/8 exams & High \\
+\rowcolor{high} Independence (verify/use) & 5/8 exams & High \\
+\rowcolor{high} Poisson (PMF, approx, thinning) & 5/8 exams & High \\
+\rowcolor{medium} Exponential + memoryless & 3/8 exams & Medium \\
+\rowcolor{medium} Joint PMF / conditional PMF & 3/8 exams & Medium \\
+\rowcolor{medium} Covariance / correlation & 2/8 exams & Medium \\
+\rowcolor{medium} Normal / standardization & 2/8 exams & Medium \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{8pt}
+
+\section{4-Step Study Plan}
+
+\subsection{Step 1: Copy the Cheat Sheet by Hand}
+
+This is itself study. As you write each formula, think about \emph{when} you would use it. The act of transcribing forces you to engage with every formula rather than passively reading. The highlighted formulas on the cheat sheet are the ones that appear on nearly every exam---give them extra attention.
+
+\subsection{Step 2: Work Every Practice Exam Under Timed Conditions}
+
+Give yourself \textbf{50 minutes} per exam (matching the real exam length). After each one:
+\begin{itemize}
+\item Check which formulas you needed that you couldn't quickly find on your sheet.
+\item Rearrange or annotate your hand-written sheet accordingly.
+\item Grade yourself against the solutions---understand every step you missed.
+\end{itemize}
+
+\textbf{Priority order for practice exams} (most recent = closest to current style):
+\begin{enumerate}
+\item \textbf{Spring 2025} and \textbf{Fall 2025} --- most recent, do these first
+\item \textbf{Spring 2024} --- recent and well-aligned with current curriculum
+\item \textbf{Fall 2023} and \textbf{Fall 2022} --- good for additional reps
+\item \textbf{2021, 2019, 2017} --- older but still valuable for pattern recognition
+\end{enumerate}
+
+\subsection{Step 3: Drill These Specific Problem Patterns}
+
+These patterns appear almost every year. You should be able to execute each one mechanically:
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+
+\item \textbf{Bayes with sequential updating.} Given a prior, compute posterior after observing evidence. Then use the posterior as the new prior for the next observation. Appears in medical testing problems, defective-item problems, and similar setups.
+\begin{itemize}
+\item Key formula: $P(B_j \mid A) = \frac{P(A \mid B_j)\,P(B_j)}{\sum_i P(A \mid B_i)\,P(B_i)}$
+\item Practice: F2023 Q2, every medical testing variant
+\end{itemize}
+
+\item \textbf{Indicator trick for $E[X]$.} Write $X = \sum \mathbf{1}_{A_i}$, then use linearity: $E[X] = \sum P(A_i)$. Works even when the indicators are \emph{dependent}. This sidesteps messy PMF calculations entirely.
+\begin{itemize}
+\item Appears in: counting problems (expected number of fixed points, matches, etc.)
+\end{itemize}
+
+\item \textbf{Geometric series evaluation.} Almost every exam has at least one infinite sum you need to simplify. Know these cold:
+\[
+\sum_{k=0}^{\infty} r^k = \frac{1}{1-r}, \quad \sum_{k=1}^{\infty} k r^{k-1} = \frac{1}{(1-r)^2}, \quad \sum_{k=0}^{\infty} \frac{\lambda^k}{k!} = e^{\lambda}
+\]
+
+\item \textbf{First-step analysis.} Condition on what happens on trial 1, write a recursion for the probability or expectation, then solve the resulting equation.
+\begin{itemize}
+\item Classic example: Gambler's Ruin (2019 Q2c)
+\item Template: Let $p_i = P(\text{reach target} \mid \text{start at } i)$. Write $p_i$ in terms of $p_{i-1}$ and $p_{i+1}$, solve with boundary conditions.
+\end{itemize}
+
+\item \textbf{The $E[X^2]$ identity.} $E[X^2] = \text{Var}(X) + (E[X])^2$. The single most useful identity for computing second moments. Use it whenever a problem asks for variance or involves $E[X^2]$.
+\begin{itemize}
+\item Practice: 2022 Q2b and many variance problems
+\end{itemize}
+
+\item \textbf{LOTP decomposition.} When a probability depends on a random quantity $N$, you \textbf{must} condition on $N$:
+\[
+P(A) = \sum_n P(A \mid N=n)\,P(N=n)
+\]
+Similarly for expectations: $E[X] = \sum_n E[X \mid N=n]\,P(N=n)$.
+
+\end{enumerate}
+
+\subsection{Step 4: Memorize the Common Traps}
+
+Grading comments across all past solutions reveal that students lose the most points on these mistakes:
+
+\begin{enumerate}[label=\textbf{Trap \arabic*:}]
+
+\item \textbf{Assuming independence when it doesn't hold.} If the problem doesn't explicitly state independence, you cannot use $P(A \cap B) = P(A)\,P(B)$ or $\text{Var}(X+Y) = \text{Var}(X) + \text{Var}(Y)$. Always check.
+
+\item \textbf{Not conditioning on random quantities via LOTP.} If a count or parameter is itself random, you must condition on it. Skipping this step is the most common structural error.
+
+\item \textbf{Confusing $E[X^2]$ with $(E[X])^2$.} These are \emph{not} equal unless $\text{Var}(X) = 0$. The difference is exactly the variance.
+
+\item \textbf{Forgetting to divide by $P(\text{conditioning event})$.} When computing $P(A \mid B)$, always divide $P(A \cap B)$ by $P(B)$. Students frequently compute the numerator correctly but forget the denominator.
+
+\item \textbf{Leaving geometric series unsimplified.} The exam expects closed-form answers. Know the series formulas and apply them. Leaving an infinite sum as your final answer will cost points.
+
+\item \textbf{Mutually exclusive $\neq$ independent.} If $A \cap B = \emptyset$ and both have positive probability, they are \emph{dependent}, not independent. This distinction appears in true/false and conceptual questions.
+
+\item \textbf{$P(A \mid B) + P(A \mid B^c) \neq 1$.} The correct identity is $P(A \mid B) + P(A^c \mid B) = 1$. Mixing up the conditioning event vs.\ the target event is a common error.
+
+\item \textbf{Linearity of expectation needs NO independence; variance of a sum DOES.} $E[X+Y] = E[X] + E[Y]$ always holds. But $\text{Var}(X+Y) = \text{Var}(X) + \text{Var}(Y)$ requires independence (or at minimum uncorrelatedness). In general: $\text{Var}(X+Y) = \text{Var}(X) + \text{Var}(Y) + 2\text{Cov}(X,Y)$.
+
+\end{enumerate}
+
+\section{Exam Day Checklist}
+
+\begin{itemize}
+\item Bring your hand-written cheat sheet (one letter-size page, both sides).
+\item No calculators, phones, or other aids.
+\item Read each problem completely before starting to write.
+\item \textbf{Name the distribution} before computing anything---this frames your approach and earns partial credit.
+\item \textbf{State what you're conditioning on} when using LOTP or Bayes---be explicit.
+\item \textbf{Justify each step:} cite the formula, name the theorem, state independence when you use it.
+\item If stuck, move on and return later. Each problem is worth equal effort.
+\item Double-check that final answers are simplified (especially geometric series and combinatorial expressions).
+\end{itemize}
+
+\vfill
+\begin{center}
+\small\color{gray} Compiled from analysis of 8 years of ORF 309 midterms (2017--2025) and Slides 01--09.
+\end{center}
+
+\end{document}

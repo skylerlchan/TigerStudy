@@ -1,0 +1,132 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+
+\title{Detailed Breakdown of Question 3c\\2021 ORF309 Midterm 1}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem Statement}
+
+Find the probability that you get exposed to COVID \textbf{before} receiving your first dose of the vaccine.
+
+\section{Key Random Variables}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Random Variables]
+\begin{enumerate}[label=\textbf{\arabic*.}]
+    \item $X_i$: Indicator random variable for COVID exposure on day $i$
+    \begin{itemize}
+        \item $P(X_i = 1) = 0.01$ (exposed on day $i$)
+        \item $P(X_i = 0) = 0.99$ (not exposed on day $i$)
+    \end{itemize}
+
+    \item $N$: The day you receive your first vaccine dose
+    \begin{itemize}
+        \item $N \sim \text{Geometric}(0.05)$
+        \item Each day you have a 5\% chance of getting a vaccine slot
+    \end{itemize}
+
+    \item $A$: The event that you do \textbf{NOT} get exposed to COVID before the first dose
+\end{enumerate}
+\end{tcolorbox}
+
+\section{Solution Strategy}
+
+The solution uses the \textbf{Law of Total Probability}, conditioning on when you receive the vaccine ($N = n$).
+
+\subsection{Why Condition on $N$?}
+
+Since $N$ is a \emph{random variable} (you don't know in advance when you'll get the vaccine), we must consider all possible days $n = 1, 2, 3, \ldots$ and weight each by its probability.
+
+\section{Step-by-Step Calculation}
+
+\subsection{Step 1: Express probability for a specific day $n$}
+
+Using the Law of Total Probability:
+\begin{equation}
+P(A) = \sum_{n=1}^{\infty} P\left(\sum_{i=1}^{n-1} X_i = 0 \,\Big|\, N = n\right) \cdot P(N = n)
+\end{equation}
+
+The term $\sum_{i=1}^{n-1} X_i = 0$ means you were \textbf{NOT} exposed on any day from 1 to $n-1$.
+
+\subsection{Step 2: Use independence}
+
+Since $X_i$ and $N$ are independent events:
+\begin{equation}
+P\left(\sum_{i=1}^{n-1} X_i = 0 \,\Big|\, N = n\right) = P\left(\sum_{i=1}^{n-1} X_i = 0\right) = 0.99^{n-1}
+\end{equation}
+
+This is because you need to avoid exposure for $(n-1)$ consecutive days, each with probability $0.99$.
+
+\subsection{Step 3: Apply Geometric distribution for $N$}
+
+For a Geometric$(p)$ random variable with parameter $p = 0.05$:
+\begin{equation}
+P(N = n) = 0.05 \cdot 0.95^{n-1}
+\end{equation}
+
+\subsection{Step 4: Combine and simplify}
+
+Substituting into the equation from Step 1:
+\begin{align}
+P(A) &= \sum_{n=1}^{\infty} 0.99^{n-1} \cdot 0.05 \cdot 0.95^{n-1}\\
+&= \sum_{n=1}^{\infty} 0.05 \cdot (0.99 \cdot 0.95)^{n-1}\\
+&= 0.05 \cdot \sum_{n=1}^{\infty} (0.9405)^{n-1}
+\end{align}
+
+\subsection{Step 5: Use geometric series formula}
+
+For $|r| < 1$, the geometric series formula gives:
+\begin{equation}
+\sum_{n=1}^{\infty} r^{n-1} = \frac{1}{1-r}
+\end{equation}
+
+Applying this with $r = 0.9405$:
+\begin{align}
+P(A) &= \frac{0.05}{1 - 0.95 \cdot 0.99}\\
+&= \frac{0.05}{1 - 0.9405}\\
+&= \frac{0.05}{0.0595}\\
+&\approx 0.8403
+\end{align}
+
+\subsection{Final Answer}
+
+The probability of getting exposed \textbf{before} the first dose is:
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black,title=Final Answer]
+\begin{equation}
+P(\text{exposed before first dose}) = 1 - P(A) = 1 - \frac{0.05}{1 - 0.95 \cdot 0.99} \approx 0.1597
+\end{equation}
+
+Or equivalently: $\boxed{1 - \frac{0.05}{1 - 0.95 \cdot 0.99}}$
+\end{tcolorbox}
+
+\section{Key Insights}
+
+\begin{enumerate}
+    \item \textbf{Why condition on $N$?} Because $N$ is random---you don't know when you'll get the vaccine, so you must account for all possible days.
+
+    \item \textbf{Why use independence?} $X_i$ (daily COVID exposure) and $N$ (vaccine arrival) are independent events, which allows us to separate the conditional probability.
+
+    \item \textbf{Physical interpretation}: There's roughly an 84\% chance you avoid COVID exposure before getting your first vaccine dose, which means about a 16\% chance you get exposed before being vaccinated.
+\end{enumerate}
+
+\section{Common Mistakes (from Grading Comments)}
+
+\begin{itemize}
+    \item \textbf{Treating $N$ as fixed} (loses 4.0 points): Some students fixed the date $N = n$ and computed the probability only for that specific $n$, without recognizing that $N$ itself is a random variable.
+
+    \item \textbf{Not using Law of Total Probability}: This is essential when dealing with a random variable that affects the outcome.
+
+    \item \textbf{Computational errors}: Mistakes in applying the geometric series formula or combining terms.
+\end{itemize}
+
+\end{document}

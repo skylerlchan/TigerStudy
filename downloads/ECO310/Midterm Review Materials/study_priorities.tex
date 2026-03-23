@@ -1,0 +1,255 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{booktabs}
+
+% Define colors
+\definecolor{darkgreen}{RGB}{0,128,0}
+\definecolor{darkyellow}{RGB}{204,153,0}
+\definecolor{darkred}{RGB}{178,34,34}
+
+% Custom commands for status
+\newcommand{\green}[1]{\textcolor{darkgreen}{\textbf{#1}}}
+\newcommand{\yellow}[1]{\textcolor{darkyellow}{\textbf{#1}}}
+\newcommand{\red}[1]{\textcolor{darkred}{\textbf{#1}}}
+
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries ECO 310 Midterm Study Priorities}\\[0.3cm]
+{\large Final Push for 2026 Exam}\\[0.2cm]
+{\normalsize Updated: March 4, 2026}
+\end{center}
+
+\section*{Current Exam Readiness: 75--80\%}
+
+\subsection*{\green{Excellent Progress!}}
+
+You've made major improvements since your last review. Many high-priority concepts have moved to green, including critical topics like substitution effects, perfect substitutes, and Hicksian demand.
+
+\section{\green{Concepts You've Mastered}}
+
+\subsection*{Recent Wins (Previously Red, Now Green)}
+
+\begin{itemize}[leftmargin=*]
+    \item \green{Perfect substitutes bang-per-buck} (sp25\_mc5) --- Was RED!
+    \item \green{Substitution effect decomposition} (sp25\_mc6) --- Was RED!
+    \item \green{Hicksian demand with expenditure} (sp25\_sa3c) --- Was RED!
+    \item \green{Hicksian with perfect complements} (sp25\_mc3)
+    \item \green{Certainty equivalent} (sp24\_sa2a)
+    \item \green{Risk aversion definition} (sp24\_mc6)
+    \item \green{WARP} (sp24\_mc9)
+    \item \green{Corner solutions \& Cobb-Douglas} (sp24\_mc2, mc3)
+    \item \green{Portfolio optimization} (sp24\_sa2bb)
+\end{itemize}
+
+\subsection*{Core Strengths}
+
+\begin{itemize}[leftmargin=*]
+    \item \green{Cobb-Douglas spending rule} --- All questions green
+    \item \green{Risk aversion applications} --- Multiple questions mastered
+    \item \green{Writing EU expressions} --- sp23\_sa4a, sp24\_sa2ba
+    \item \green{Basic FOC optimization} --- sp23\_sa4bi
+    \item \green{WARP basics} --- sp23\_mc2, sp24\_mc4
+    \item \green{Perfect substitutes} --- sp24\_mc10, sp25\_mc5
+\end{itemize}
+
+\section{\red{Critical Gaps --- Urgent Attention Needed}}
+
+\subsection*{High Priority for 2026 Exam}
+
+\begin{enumerate}[leftmargin=*]
+    \item \red{sp24\_mc5: Income effect with perfect complements}
+
+    \textbf{Why critical:} Review session emphasized perfect complements heavily
+
+    \textbf{Key concept:} With $u(x_1, x_2) = \min\{x_1, x_2\}$, substitution effect = 0, so ALL change is income effect.
+
+    \textbf{Action:} Review 2024 MC5 solution completely
+
+    \item \red{sp25\_mc4: Portfolio risk/return calculation}
+
+    \textbf{Why critical:} Asset allocation appears in review session
+
+    \textbf{Key formulas:}
+    \begin{itemize}
+        \item Portfolio $\sigma = \alpha \times$ risky asset $\sigma$
+        \item Expected return $= \alpha r_{\text{risky}} + (1-\alpha) r_{\text{rf}}$
+        \item Remember: variance $\neq$ standard deviation!
+    \end{itemize}
+
+    \item \red{sp24\_sa3d: Hicksian demand (intertemporal)}
+
+    \textbf{Why critical:} Expenditure minimization was in 2026 review Q1
+
+    \textbf{Action:} Similar to your now-green sp25\_sa3c, but with time twist
+\end{enumerate}
+
+\subsection*{Lower Priority Red (Less Likely on Exam)}
+
+\begin{itemize}[leftmargin=*]
+    \item \red{sp23\_mc5:} Independence axiom violation (appeared in 2026 review, possible MC)
+    \item \red{sp23\_sa2aii:} EU proofs with weighted sums (complex, lower probability)
+    \item \red{sp24\_mc1:} Rationality/transitivity (lexicographic example in review)
+    \item \red{sp23\_sa3a, sp23\_sa3d:} Non-standard utility (only 2023, less likely)
+    \item \red{sp24\_sa3c:} Marshallian intertemporal (light in recent years)
+\end{itemize}
+
+\section{\yellow{Yellow Status --- Quick Review Needed}}
+
+\subsection*{Most Important}
+
+\begin{enumerate}[leftmargin=*]
+    \item \yellow{sp25\_sa1a, 1b, 1c: CES utility (all three parts)}
+
+    Quick review of limits:
+    \begin{itemize}
+        \item $s \to 0$: perfect complements
+        \item $s \to 1$: Cobb-Douglas
+        \item $s \to \infty$: perfect substitutes
+    \end{itemize}
+
+    \item \yellow{sp25\_sa3bii: Corner solution explanation}
+
+    Related to $p \geq 1/2$ derivation for interior solutions
+
+    \item \yellow{sp25\_sa2b: Log utility wealth threshold}
+
+    Appeared in both 2024 \& 2025
+
+    \item \yellow{sp23\_sa4bii: Corner solutions in EU}
+
+    Related to portfolio problems
+\end{enumerate}
+
+\section{Today's Study Plan (Next 2--3 Hours)}
+
+\subsection*{Session 1: Perfect Complements Income Effect (30 min)}
+
+\textbf{Review 2024 MC5:}
+\begin{itemize}
+    \item Original: $L = R = 5$ at $(p_L = 1, p_R = 1)$, income $m = 10$
+    \item New: $p_R$ rises to 4
+    \item New optimal: $L = R = \frac{10}{1+4} = 2$
+    \item \textbf{Substitution effect = 0} (no reoptimization with $\min\{\}$)
+    \item \textbf{Income effect = total change = 2 - 5 = -3}
+\end{itemize}
+
+\subsection*{Session 2: Portfolio Calculations (30 min)}
+
+\textbf{Key concepts:}
+\begin{itemize}
+    \item Variance vs. standard deviation: $\sigma = \sqrt{\text{variance}}$
+    \item Portfolio std dev: $\sigma_p = \alpha \cdot \sigma_{\text{risky}}$
+    \item Portfolio expected return: $E[r_p] = \alpha E[r_{\text{risky}}] + (1-\alpha) r_{\text{rf}}$
+\end{itemize}
+
+\textbf{Practice: 2025 MC4}
+
+\subsection*{Session 3: Hicksian with Time (45 min)}
+
+\textbf{Work through 2024 SA3d:}
+\begin{itemize}
+    \item Similar structure to 2026 review Q1
+    \item Minimize cost subject to utility constraint
+    \item Compare to your now-green sp25\_sa3c
+\end{itemize}
+
+\subsection*{Session 4: Quick CES Review (30 min)}
+
+Review the three limit cases and practice identifying which form applies
+
+\section{2026 Exam Predictions}
+
+Based on the official review session:
+
+\subsection*{Almost Guaranteed Topics}
+
+\begin{itemize}
+    \item \textbf{Perfect complements:} Marshallian, Hicksian, and expenditure function
+    \item \textbf{Compensating variation:} Possibly with perfect substitutes
+    \item \textbf{Expected utility:} Multi-state problem with probability trees
+    \item \textbf{Certainty equivalent \& risk premium:} Using correct definition $u(w_0 + CE) = EU$
+    \item \textbf{FOC for portfolio/betting:} With corner solution analysis
+    \item \textbf{WARP:} With numerical price/bundle data
+\end{itemize}
+
+\subsection*{Very Likely}
+
+\begin{itemize}
+    \item Cobb-Douglas spending rule (MC)
+    \item Perfect substitutes corner solutions (MC)
+    \item Substitution vs. income effects
+    \item Independence axiom or continuity (MC)
+\end{itemize}
+
+\section{Key Formulas \& Concepts}
+
+\subsection*{Perfect Complements: $u(x_1, x_2) = \min\{\alpha x_1, \beta x_2\}$}
+
+\textbf{Optimal spending:} $\alpha x_1 = \beta x_2$
+
+\textbf{Marshallian:} $x_1 = \frac{\beta m}{\alpha p_1 + \beta p_2}$, $x_2 = \frac{\alpha m}{\alpha p_1 + \beta p_2}$
+
+\textbf{Hicksian:} $x_1^c = \frac{\beta u^*}{\alpha}$, $x_2^c = \frac{\alpha u^*}{\beta}$
+
+\textbf{Expenditure:} $e(p_1, p_2, u^*) = \left(\frac{\beta p_1}{\alpha} + p_2\right) \cdot \frac{\alpha u^*}{\beta}$
+
+\textbf{Key insight:} Substitution effect = 0 (no reoptimization possible)
+
+\subsection*{Cobb-Douglas: $u(x_1, x_2) = x_1^\alpha x_2^\beta$}
+
+\textbf{Magic rule:} Spend $\frac{\alpha}{\alpha + \beta}$ of income on good 1
+
+\subsection*{Perfect Substitutes: $u(x_1, x_2) = \alpha x_1 + \beta x_2$}
+
+\textbf{Bang-per-buck:} Buy only good 1 if $\frac{\alpha}{p_1} > \frac{\beta}{p_2}$
+
+\subsection*{Risk Aversion}
+
+\textbf{Definition:} $u(E[W]) > EU$ (utility of expected wealth beats expected utility)
+
+\textbf{Implies:} $u''(w) \leq 0$ (concave utility)
+
+\textbf{Certainty equivalent:} $u(w_0 + CE) = EU$
+
+\textbf{Risk premium:} $\pi = E[W] - CE$
+
+\subsection*{Portfolio Optimization}
+
+\textbf{EU maximization:} Choose $x$ to maximize $EU(x)$
+
+\textbf{Interior solution:} $EU'(x) = 0$
+
+\textbf{Corner solution:} If $EU'(0) < 0$, invest nothing; if $EU'(x_{\max}) > 0$, invest maximum
+
+\section*{Final Checklist Before Exam}
+
+\begin{itemize}[leftmargin=*]
+    \item[$\square$] Master sp24\_mc5 (income effect with perfect complements)
+    \item[$\square$] Master sp25\_mc4 (portfolio variance/std dev)
+    \item[$\square$] Review sp24\_sa3d (Hicksian intertemporal)
+    \item[$\square$] Quick CES limits review (sp25\_sa1b)
+    \item[$\square$] Verify corner solution logic (sp25\_sa3bii)
+    \item[$\square$] Review 2026 lecture Q1 (perfect complements all three demands)
+    \item[$\square$] Review 2026 lecture Q2 (CV with perfect substitutes)
+    \item[$\square$] Review Eagles/Chiefs betting example (FOC \& interpretation)
+\end{itemize}
+
+\vspace{1cm}
+
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{\centering
+\textbf{You're 75--80\% ready!}\\[0.2cm]
+Focus on the critical red topics and you'll be fully prepared.\\
+Your recent progress has been excellent --- keep up the momentum!
+}}
+\end{center}
+
+\end{document}

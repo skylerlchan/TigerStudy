@@ -1,0 +1,139 @@
+=== PAGE 1 ===
+,Princeton University
+Mathematical Intermediate Microeconomics (ECO 310)
+Midterm Spring 2024
+Instructions: You have 85 minutes to complete this exam, plus 10 minutes to upload your
+answers. There are 10 multiple choice questions and 2 short answer questions. In the Multiple
+Choice section, simply indicate the correct answer. In the Short Answer section, show
+your work and explain your answers for full credit!
+• The exam is open-note, and calculators are permitted. However, please work alone.
+• If you are unsure whether you’re interpreting a question correctly, state your
+interpretation and proceed (or email me if you prefer).
+The honor code applies, as usual.
+1
+
+
+=== PAGE 2 ===
+Q1: Multiple Choice (40 points, 4 each)
+1. Jake cares about three attributes of cars: price, quality, and color. When comparing two cars,
+he prefers whichever is better in two attributes. Jake is:
+(a) Rational
+(b) Irrational because these preferences are incomplete
+(c) Irrational because these preferences are intransitive
+(d) Two of these are correct
+2. In which of the following situations might (depending on prices and income) it be optimal to
+spend your entire budget on good 1?
+(a) If u(x1, x2) = x1 + x2
+2
+(b) If u(x1, x2) = x2
+1 + x2
+(c) If u(x1, x2) = x2
+1x2
+(d) In two of these situations
+(e) In three of these situations
+3. A consumer’s preferences over good 1 and good 2 are described by u(x1, x2) = x1x3
+2. If this
+consumer behaves optimally, he will:
+(a) Buy 3 times as much good 2 as good 1.
+(b) Buy 4 times as much good 2 as good 1.
+(c) Spend 4 times as much on good 2 as good 1.
+(d) None of these is correct.
+4. A consumer initially buys 5 oranges and 10 apples. Then an apple tax increases the price per
+apple by $0.50, but the consumer is at the same time given a $5 fruit subsidy. Which of the
+following best describes this situation?
+(a) The consumer is most likely better oﬀnow (with the tax and subsidy) than he was
+originally.
+(b) The consumer is most likely worse oﬀnow (with the tax and subsidy) than he was
+originally.
+(c) The consumer is deﬁnitely indiﬀerent between his original and current situations.
+5. A consumer gets utility u(L, R) = min{L, R} from L left shoes and R right shoes. If m = 10,
+pL = 1, and pR increases from 1 to 4, the change in demand for right shoes due to the income
+eﬀect is:
+(a) 0
+(b) -1
+(c) −2
+(d) −3
+2
+
+
+=== PAGE 3 ===
+(e) None of these is correct
+6. A consumer expects to end up with ﬁnal wealth w0 −200 if an accident occurs (this happens
+with probability p), and w0 + 100 otherwise. They tell you that their expected utility from
+accepting this gamble is 100. Which of the following would let you conclude that the consumer
+is risk-averse?
+(a) If you knew that u (w0 + 100 −300p) > 100
+(b) If you knew that u(w0 + 100 −300p) < 100
+(c) If you knew that u(w0 −200) < 100
+(d) None of these is correct
+7. In Lecture 10, we saw the following “paradox”: many people prefer saving 200 of 600 people
+for sure, to a risky option with a 1
+3 chance of saving all 600 people and a 2
+3 chance of saving
+nobody. But they prefer a risky option with a 1
+3 chance of killing nobody and a 2
+3 chance of
+killing everybody, to an option that kills 400 people for sure.
+If people care about the # people alive in the end, then
+(a) This is inconsistent with EU maximization
+(b) This violates consequentialism
+(c) This violates independence
+(d) Two of these are true
+(e) All of these are true
+8. Which of the following would a risk-averse consumer deﬁnitely prefer to a 50-50 $0 or $200
+gamble? Pick ALL that apply.
+(a) $90 lump-sum
+(b) $110 lump-sum
+(c) A 50-50 $50 or $150 gamble
+(d) A 50-50 $10 or $190 gamble.
+9. On Monday, Homer Simpson buys a bundle of food and drink that costs $100. On Tuesday,
+he buys a diﬀerent bundle, for $80, which would have cost $100 on Monday. In which of the
+following situations does Homer violate WARP?
+(a) If the Monday bundle would cost more than $80 at Tuesday’s prices.
+(b) If the Monday bundle would cost less than $80 at Tuesday’s prices.
+(c) If the Monday bundle would cost less than $100 at Tuesday’s prices
+(d) Homer does not violate WARP
+(e) Not enough information given.
+10. Jessica has perfect substitute preferences over pens and pencils: she wants as many things to
+write with as possible, but doesn’t care whether pens or pencils. She sets up a Lagrangian to
+ﬁnd her best aﬀordable bundle. Which of the following best describes which non-negativity
+constraints will bind, assuming pens are cheaper?
+3
+
+
+=== PAGE 4 ===
+(a) Non-negativity constraints bind for both pens and pencils
+(b) Non-negativity constraints are NON-binding for both pens and pencils.
+(c) Non-negativity constraints bind for pencils but not pens
+(d) Non-negativity constraints bind for pens but not pencils
+(e) Not enough information given to answer this question
+4
+
+
+=== PAGE 5 ===
+Short Answer
+Q2: Expected Utility
+Consider a decision-maker with utility from wealth u(w) = w1−α.
+a. (10) For a gamble that oﬀers equal chances of either $0 or $200, write out the equation de-
+scribing the certainty equivalent (assuming no initial wealth for this part only). If α increases,
+does the certainty equivalent increase or decrease?
+b. Now suppose the DM can invest as much of their initial wealth w0 as they like in a double-
+or-nothing asset: their investment doubles in value with chance p, but if this doesn’t happen,
+they lose everything they invested. (For example, $100 either grows to $200 or vanishes).
+(a) (8) Write out the expected utility from investing $x.
+(b) (12) Find (or characterize) the optimal investment $x.
+Q3: Demand
+Melsi (my puppy) has preferences over cookie consumption today (C1 ) and cookie consumption
+tomorrow (C2) given by u(C1, C2) = v(C1) + v(C2), where v : R →R is an increasing and concave
+function (eg log or square root).
+She has w1 cookies today. She expects any cookies that she saves to magically double overnight,
+but otherwise does not expect to receive any additional cookies tomorrow.
+a. (5) Write out her budget constraint. (If she eats C1 cookies today, how many does she save,
+and then how many can she eat tomorrow?)
+b. (6) Are her preferences over bundles (C1, C2) convex? Explain.
+c. (9) Describe, as precisely as you can, how to ﬁnd her best aﬀordable bundle (C1, C2) as a
+function of w1. (You can’t solve for it exactly without knowing v, but write out the equations
+you would solve if you did know v. You may use any method).
+d. (10) For this part only, specialize to v(C) = ln C. What bundle (C1, C2) most eﬃciently i.e.
+cheaply attains utility u∗?
+5

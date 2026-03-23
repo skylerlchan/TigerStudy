@@ -1,0 +1,248 @@
+\documentclass[12pt]{article}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+
+\title{\textbf{Where Does $p \geq \frac{1}{2}$ Come From?}}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{The Setup}
+
+Let me show you where the $p \geq \frac{1}{2}$ condition actually comes from by deriving the FOC.
+
+\subsection*{The Problem}
+
+You have initial wealth $w_0$. You choose how much $x$ to invest in a risky asset:
+
+\begin{itemize}
+\item With probability $p$: risky asset succeeds, you get back $Rx$ (where $R > 1$ is the return)
+\item With probability $(1-p)$: risky asset fails, you get back $0$
+\item The remaining $(w_0 - x)$ stays safe
+\end{itemize}
+
+Your final wealth is:
+\begin{itemize}
+\item \textbf{Good state (prob $p$):} $w_G = w_0 - x + Rx = w_0 + (R-1)x$
+\item \textbf{Bad state (prob $1-p$):} $w_B = w_0 - x$
+\end{itemize}
+
+Your utility: CRRA with $u(w) = \frac{w^{1-\sigma}}{1-\sigma}$
+
+\section*{Setting Up Expected Utility}
+
+\begin{align*}
+EU(x) &= p \cdot u(w_G) + (1-p) \cdot u(w_B) \\
+&= p \cdot \frac{[w_0 + (R-1)x]^{1-\sigma}}{1-\sigma} + (1-p) \cdot \frac{[w_0 - x]^{1-\sigma}}{1-\sigma}
+\end{align*}
+
+\section*{Taking the First-Order Condition}
+
+Take derivative with respect to $x$ and set equal to zero:
+
+\begin{align*}
+\frac{dEU}{dx} &= p \cdot \frac{[w_0 + (R-1)x]^{-\sigma}}{1-\sigma} \cdot (R-1) \\
+&\quad + (1-p) \cdot \frac{[w_0 - x]^{-\sigma}}{1-\sigma} \cdot (-1) = 0
+\end{align*}
+
+Cancel out $\frac{1}{1-\sigma}$ (assuming $\sigma \neq 1$):
+
+\begin{align*}
+p(R-1)[w_0 + (R-1)x]^{-\sigma} &= (1-p)[w_0 - x]^{-\sigma}
+\end{align*}
+
+\section*{Rearranging}
+
+\begin{align*}
+\frac{p(R-1)}{1-p} &= \frac{[w_0 - x]^{-\sigma}}{[w_0 + (R-1)x]^{-\sigma}} \\
+\frac{p(R-1)}{1-p} &= \left(\frac{w_0 + (R-1)x}{w_0 - x}\right)^{\sigma}
+\end{align*}
+
+Raise both sides to power $\frac{1}{\sigma}$:
+
+\begin{align*}
+\left[\frac{p(R-1)}{1-p}\right]^{1/\sigma} &= \frac{w_0 + (R-1)x}{w_0 - x}
+\end{align*}
+
+\newpage
+
+\section*{Solving for $x$}
+
+Let $K = \left[\frac{p(R-1)}{1-p}\right]^{1/\sigma}$ for simplicity.
+
+\begin{align*}
+K(w_0 - x) &= w_0 + (R-1)x \\
+Kw_0 - Kx &= w_0 + (R-1)x \\
+Kw_0 - w_0 &= Kx + (R-1)x \\
+w_0(K - 1) &= x[K + (R-1)] \\
+\end{align*}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=orange!75!black]
+\textbf{The Solution:}
+\[
+\boxed{x^* = \frac{w_0(K - 1)}{K + (R-1)}}
+\]
+
+where $K = \left[\frac{p(R-1)}{1-p}\right]^{1/\sigma}$
+\end{tcolorbox}
+
+\section*{When is $x^* \geq 0$?}
+
+For $x^* \geq 0$, we need:
+\[
+\frac{w_0(K - 1)}{K + (R-1)} \geq 0
+\]
+
+Since $w_0 > 0$ and $K + (R-1) > 0$ always (both positive), we need:
+\[
+K - 1 \geq 0 \quad \Rightarrow \quad K \geq 1
+\]
+
+That is:
+\[
+\left[\frac{p(R-1)}{1-p}\right]^{1/\sigma} \geq 1
+\]
+
+Raise both sides to power $\sigma$ (assuming $\sigma > 0$):
+\[
+\frac{p(R-1)}{1-p} \geq 1
+\]
+
+\begin{align*}
+p(R-1) &\geq 1-p \\
+p(R-1) + p &\geq 1 \\
+pR &\geq 1 \\
+\end{align*}
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black]
+\textbf{General Condition:}
+\[
+\boxed{p \geq \frac{1}{R}}
+\]
+
+For $x^* \geq 0$, you need the probability of success to be at least $\frac{1}{R}$.
+\end{tcolorbox}
+
+\newpage
+
+\section*{The Special Case: $R = 2$}
+
+In your specific problem, if the risky asset \textbf{doubles your money} (pays back \$2 for every \$1 invested), then $R = 2$.
+
+Substituting:
+\[
+p \geq \frac{1}{2}
+\]
+
+\textbf{That's where the $p \geq \frac{1}{2}$ comes from!}
+
+\section*{Intuition}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
+\textbf{General Intuition:}
+
+For the risky asset to be worth investing in at all, its \textbf{expected gross return} must be at least 1:
+
+\[
+pR + (1-p) \cdot 0 \geq 1
+\]
+
+This gives: $pR \geq 1$, or $p \geq \frac{1}{R}$
+
+\vspace{0.3cm}
+
+\textbf{In words:} "The probability of success times the payoff must be at least 1 for me to break even in expectation."
+\end{tcolorbox}
+
+\subsection*{Examples}
+
+\textbf{Example 1: $R = 2$ (doubles your money)}
+\begin{itemize}
+\item Need $p \geq \frac{1}{2}$ (succeeds at least 50\% of the time)
+\item Expected return: $2p \geq 1$
+\end{itemize}
+
+\textbf{Example 2: $R = 4$ (quadruples your money)}
+\begin{itemize}
+\item Need $p \geq \frac{1}{4}$ (succeeds at least 25\% of the time)
+\item Even though success rate is lower, the bigger payoff ($R=4$) compensates
+\end{itemize}
+
+\textbf{Example 3: $R = 1.5$ (50\% return)}
+\begin{itemize}
+\item Need $p \geq \frac{1}{1.5} = \frac{2}{3} \approx 0.67$ (succeeds at least 67\% of the time)
+\item Smaller payoff means you need higher success probability
+\end{itemize}
+
+\newpage
+
+\section*{What if $p < \frac{1}{R}$?}
+
+If $p < \frac{1}{R}$, then the FOC would give $x^* < 0$.
+
+\textbf{What does negative $x$ mean?}
+\begin{itemize}
+\item Mathematically: you want to "invest negative amount" = short sell the risky asset
+\item In reality: you can't do this (constraint $x \geq 0$)
+\end{itemize}
+
+So when $p < \frac{1}{R}$, the optimal choice given the constraint is:
+\[
+x^* = 0 \quad \text{(corner solution)}
+\]
+
+\textbf{Intuition:} The risky asset is such a bad bet (low probability of success relative to the payoff) that you shouldn't invest at all.
+
+\section*{Summary}
+
+\begin{tcolorbox}[colback=yellow!20!white,colframe=orange!75!black]
+\textbf{The Complete Picture:}
+
+\vspace{0.3cm}
+
+\textbf{General condition:} $p \geq \frac{1}{R}$ for $x^* \geq 0$
+
+\vspace{0.3cm}
+
+\textbf{Your specific problem:} If $R = 2$, then $p \geq \frac{1}{2}$
+
+\vspace{0.3cm}
+
+\textbf{Decision rule:}
+\begin{itemize}
+\item If $p \geq \frac{1}{R}$: Use the FOC to get interior solution $x^* > 0$
+\item If $p < \frac{1}{R}$: Corner solution, set $x^* = 0$ (don't invest)
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Why?} When $p < \frac{1}{R}$, the expected gross return $pR < 1$, meaning you expect to lose money on average. A risk-averse person definitely won't invest!
+\end{tcolorbox}
+
+\section*{Check Your Understanding}
+
+\textbf{Q: Why do we need $p \geq \frac{1}{R}$ and not just $pR > 0$?}
+
+A: Because we also keep $(w_0 - x)$ safe. The risky asset needs to beat the \textbf{outside option} of keeping money safe (which has return 1). So we need:
+\[
+\text{Expected return of risky asset} = pR \geq 1
+\]
+
+\vspace{0.3cm}
+
+\textbf{Q: Does this mean if $p \geq \frac{1}{R}$, everyone invests the same amount?}
+
+A: No! The exact amount $x^*$ depends on:
+\begin{itemize}
+\item $p$ (higher $p$ $\Rightarrow$ invest more)
+\item $\sigma$ (higher risk aversion $\Rightarrow$ invest less)
+\item $R$ (higher return $\Rightarrow$ invest more)
+\item $w_0$ (more initial wealth $\Rightarrow$ invest more in absolute terms)
+\end{itemize}
+
+\end{document}

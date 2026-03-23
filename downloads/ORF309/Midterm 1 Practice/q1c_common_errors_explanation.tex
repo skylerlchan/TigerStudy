@@ -1,0 +1,127 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+
+\title{ORF309 Midterm 1 Q1c: Understanding the Common Errors}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{The Question}
+
+Let $N$ be the number of times during one week that you eat banana yogurt \textbf{but do not get a rash}. Find $\mathbb{E}[N]$.
+
+\section*{What You Did (and Why It's Problematic)}
+
+You calculated $n \times p = 7 \times 0.35 = 2.45$ and got the \textbf{right answer}.
+
+\textbf{However}, this suggests you were thinking of $N$ as a \textbf{Binomial distribution} with parameters $(n=7, p=0.35)$, where:
+\begin{itemize}
+    \item $n = 7$ trials (days)
+    \item $p = 0.35$ is the probability of ``success'' (eating banana yogurt and not getting a rash) on each day
+\end{itemize}
+
+\begin{tcolorbox}[colback=red!10, colframe=red!50!black, title=The Problem]
+\textbf{Binomial distributions require independence between trials.}
+
+The question \textbf{never states} that the days are independent. In fact, it's reasonable to think the yogurt choices might be dependent (e.g., they might run out of banana yogurt if someone takes it all on Monday).
+\end{tcolorbox}
+
+\section*{The Correct Approach: Linearity of Expectation}
+
+\subsection*{Step 1: Define Indicator Variables}
+
+For each day $i \in \{1, 2, \ldots, 7\}$, define:
+\[
+N_i = \begin{cases}
+1 & \text{if you eat banana yogurt AND don't get a rash on day } i \\
+0 & \text{otherwise}
+\end{cases}
+\]
+
+Each $N_i$ is a \textbf{Bernoulli random variable} with parameter $p = 0.35$.
+
+\subsection*{Step 2: Express $N$ as a Sum}
+
+The total number of times you eat banana yogurt without getting a rash in the week is:
+\[
+N = \sum_{i=1}^{7} N_i
+\]
+
+\subsection*{Step 3: Apply Linearity of Expectation}
+
+\begin{tcolorbox}[colback=green!10, colframe=green!50!black, title=Key Insight]
+\textbf{Linearity of expectation} states:
+\[
+\mathbb{E}\left[\sum_{i=1}^{7} N_i\right] = \sum_{i=1}^{7} \mathbb{E}[N_i]
+\]
+
+\textbf{This does NOT require independence!}
+\end{tcolorbox}
+
+Since each $N_i$ is a Bernoulli random variable with $p = 0.35$:
+\[
+\mathbb{E}[N_i] = p = P(\text{eat banana yogurt AND no rash on day } i)
+\]
+
+\subsection*{Step 4: Calculate the Probability $p$}
+
+From the problem:
+\begin{align*}
+p &= P(\text{eat banana yogurt AND no rash}) \\
+&= P(\text{no rash} \mid \text{banana yogurt}) \times P(\text{banana yogurt}) \\
+&= P(NR \mid E_2) \times P(E_2) \\
+&= 0.7 \times 0.5 \\
+&= 0.35
+\end{align*}
+
+\subsection*{Step 5: Compute the Final Answer}
+
+\[
+\mathbb{E}[N] = \sum_{i=1}^{7} \mathbb{E}[N_i] = \sum_{i=1}^{7} 0.35 = 7 \times 0.35 = 2.45
+\]
+
+\section*{Why Your Answer is Right but Your Reasoning is Wrong}
+
+\begin{center}
+\begin{tabular}{|p{0.45\textwidth}|p{0.45\textwidth}|}
+\hline
+\textbf{Your Approach (Binomial)} & \textbf{Correct Approach (Linearity)} \\
+\hline
+$N \sim \text{Binomial}(7, 0.35)$ & Define $N = \sum_{i=1}^{7} N_i$ \\
+\hline
+$\mathbb{E}[N] = n \times p = 7 \times 0.35$ & $\mathbb{E}[N] = \sum_{i=1}^{7} \mathbb{E}[N_i] = 7 \times 0.35$ \\
+\hline
+\textcolor{red}{\textbf{Requires independence}} & \textcolor{green}{\textbf{No independence needed}} \\
+\hline
+\textcolor{red}{Not justified by the problem} & \textcolor{green}{Valid reasoning} \\
+\hline
+\end{tabular}
+\end{center}
+
+\section*{Summary}
+
+\begin{enumerate}[leftmargin=*]
+    \item Your calculation $7 \times 0.35 = 2.45$ is \textbf{numerically correct}.
+
+    \item However, if you assumed $N \sim \text{Binomial}(7, 0.35)$, you implicitly assumed \textbf{independence}, which is \textbf{not stated in the problem}.
+
+    \item The \textbf{correct justification} is \textbf{linearity of expectation}, which works \textbf{without requiring independence}.
+
+    \item This is a subtle but important distinction: \textbf{the formula $\mathbb{E}[N] = np$ for binomial distributions happens to equal the linearity of expectation result, but the reasoning matters!}
+\end{enumerate}
+
+\begin{tcolorbox}[colback=blue!10, colframe=blue!50!black, title=Takeaway]
+\textbf{Always use linearity of expectation when calculating $\mathbb{E}[\text{sum of indicators}]$, because it doesn't require independence.}
+
+Only invoke binomial distributions when you can explicitly justify independence.
+\end{tcolorbox}
+
+\end{document}

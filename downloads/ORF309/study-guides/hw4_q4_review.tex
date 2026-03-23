@@ -1,0 +1,115 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+
+\hypersetup{colorlinks=true, linkcolor=blue}
+
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\E}{\mathbb{E}}
+
+\title{HW4 Q4 Review --- Relevant Lecture Material\\[4pt]
+\large From Slides09: Bernoulli Processes III --- Law of Large Numbers}
+\author{ORF309/MAT380}
+\date{}
+
+\begin{document}
+\maketitle
+
+\noindent All content below is drawn from \textbf{ORF309\_MAT380\_S26\_Slides09} (pp.\ 47--56). These are the concepts needed for Q4 parts (a) and (b).
+
+\section*{Q4(a): Law of Large Numbers}
+
+\subsection*{Setup: The Sample Average}
+
+Given an original random variable $X$ with $\E[X]$ defined, we repeat the experiment $n$ times to get i.i.d.\ copies $X_1, X_2, \ldots, X_n$. The \textbf{sample average} is:
+\[
+\frac{1}{n}\sum_{k=1}^{n} X_k
+\]
+This is itself a random variable for every finite $n$.
+
+\subsection*{Expectation of the Sample Average (Slides09, p.\ 14)}
+
+\[
+\E\!\left[\frac{1}{n}\sum_{k=1}^{n} X_k\right] = \frac{1}{n}\sum_{k=1}^{n}\E[X_k] = \frac{1}{n}\cdot n\cdot \E[X] = \E[X]
+\]
+The expectation of the sample average equals $\E[X]$ for \emph{any} $n$ (no limit needed).
+
+\subsection*{Theorem: Law of Large Numbers (Slides09, p.\ 16--18)}
+
+\begin{tcolorbox}[colback=blue!5, colframe=blue!50!black, title=Law of Large Numbers for Random Variables]
+With probability 1:
+\[
+\lim_{n\to\infty} \frac{1}{n}\sum_{k=1}^{n} X_k = \E[X]
+\]
+\end{tcolorbox}
+
+\noindent Key observations from slides:
+\begin{itemize}[nosep]
+    \item For every finite $n$, the sample average $\frac{1}{n}\sum_{k=1}^n X_k$ is \textbf{random}.
+    \item In the limit $n\to\infty$, the sample average is \textbf{not random} --- it equals $\E[X]$.
+\end{itemize}
+
+\bigskip
+\noindent\textit{Think about how the Monte Carlo estimator $\hat{Z}_N = \frac{1}{N}\sum_{k=1}^N Z_k$ relates to this theorem.}
+
+%--------------------------------------------------------------
+\section*{Q4(b): Variance and the Proof of LLN}
+
+\subsection*{Definition of Variance (Slides09, p.\ 24)}
+
+\[
+\Var(X) = \E\!\left[\big(X - \E[X]\big)^2\right]
+\]
+A random variable becomes ``less random'' when it is closer to its expectation (i.e., the squared deviations shrink).
+
+\subsection*{Key Variance Properties (Slides09, p.\ 25)}
+
+\begin{tcolorbox}[colback=green!5, colframe=green!50!black, title=Variance Properties]
+\begin{enumerate}[nosep]
+    \item $\Var(X) \geq 0$
+    \item $\Var(X) = 0$ if and only if $X$ is not random
+    \item $\Var(X) = \E[X^2] - \big(\E[X]\big)^2$
+    \item If $X \perp Y$, then $\Var(X + Y) = \Var(X) + \Var(Y)$
+    \item $\Var(\alpha X) = \alpha^2\,\Var(X)$, for all $\alpha \in \mathbb{R}$
+\end{enumerate}
+\end{tcolorbox}
+
+\subsection*{Variance of the Sample Average (Slides09, pp.\ 27--31)}
+
+The proof of LLN computes the variance of $S_n/n$ (the sample average). The slides work through this for indicator RVs, but the same logic applies to any i.i.d.\ random variables. The key computation pattern is:
+
+\[
+\Var\!\left(\frac{1}{n}\sum_{k=1}^n X_k\right)
+\;\xrightarrow{\text{Prop.\ 5}}\;
+\frac{1}{n^2}\,\Var\!\left(\sum_{k=1}^n X_k\right)
+\;\xrightarrow{\text{Prop.\ 4}}\;
+\frac{1}{n^2}\sum_{k=1}^n \Var(X_k)
+\]
+
+Since the $X_k$ are i.i.d.\ with $\Var(X_k) = \Var(X)$:
+
+\begin{tcolorbox}[colback=orange!5, colframe=orange!50!black, title=Variance of the Sample Average]
+\[
+\Var\!\left(\frac{1}{n}\sum_{k=1}^n X_k\right) = \frac{1}{n^2}\cdot n\cdot \Var(X) = \frac{\Var(X)}{n}
+\]
+\end{tcolorbox}
+
+\subsection*{Connection to Mean Square Error}
+
+Recall from the slides (p.\ 27) that the proof of LLN uses:
+\[
+\E\!\left[\left(\frac{S_n}{n} - p\right)^{\!2}\right] = \Var\!\left(\frac{S_n}{n}\right)
+\]
+This works because $\E[S_n/n] = p$, so the squared deviation from the true mean \emph{is} the variance. The same logic connects to the MSE definition in Q4(b):
+\[
+\text{MSE}(N) = \E\!\Big[\big(\E[Z] - \hat{Z}_N\big)^2\Big]
+\]
+
+\bigskip
+\noindent\textit{Use the expectation result (sample average is unbiased) and the variance result above to compute MSE$(N)$ in terms of $\Var(Z)$ and $N$.}
+
+\end{document}

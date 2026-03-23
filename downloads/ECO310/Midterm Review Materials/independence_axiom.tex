@@ -1,0 +1,168 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+
+\title{The Independence Axiom in Expected Utility Theory}
+\author{ECO310 Midterm Review}
+\date{March 5, 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction to Expected Utility}
+
+Expected Utility Theory provides a framework for understanding decision-making under uncertainty. For preferences over lotteries to be represented by expected utility, they must satisfy four key conditions:
+
+\begin{enumerate}
+    \item \textbf{Completeness}: For any two lotteries $p$ and $q$, either $p \succeq q$ or $q \succeq p$ (or both)
+    \item \textbf{Transitivity}: If $p \succeq q$ and $q \succeq r$, then $p \succeq r$
+    \item \textbf{Continuity}: Small changes in probabilities lead to small changes in preferences
+    \item \textbf{Independence Axiom}: The critical condition for expected utility
+\end{enumerate}
+
+\section{The Independence Axiom}
+
+\subsection{Formal Statement}
+
+The independence axiom states that if you prefer lottery $p$ to lottery $q$, then you should still prefer $p$ to $q$ even when both are mixed with some third lottery $r$ in the same proportion.
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Independence Axiom]
+If $p \succ q$, then for any lottery $r$ and probability $\alpha \in (0,1)$:
+$$\alpha p + (1-\alpha)r \succ \alpha q + (1-\alpha)r$$
+\end{tcolorbox}
+
+\subsection{Intuition}
+
+The independence axiom captures the idea that your preference between two lotteries should not depend on what happens in states that are common to both. If you prefer $p$ to $q$, mixing both with the same lottery $r$ shouldn't reverse your preference.
+
+Think of it this way: if you prefer apples to oranges, then you should still prefer "80\% chance of apples, 20\% chance of bananas" to "80\% chance of oranges, 20\% chance of bananas."
+
+\section{Sally's Example: Violating Independence}
+
+\subsection{The Setup}
+
+Consider three outcomes with monetary values:
+\begin{itemize}
+    \item $x_1 = \$1,000,000$
+    \item $x_2 = \$5,000,000$
+    \item $x_3 = \$0$
+\end{itemize}
+
+Sally expresses the following preferences over lotteries (where each lottery is written as $(P(x_1), P(x_2), P(x_3))$):
+
+\begin{align}
+\text{Preference 1:} \quad &(0, 1, 0) \succ (0.01, 0.89, 0.10) \label{eq:pref1}\\
+\text{Preference 2:} \quad &(0.90, 0, 0.10) \succ (0.89, 0.11, 0) \label{eq:pref2}
+\end{align}
+
+\subsection{Interpreting the Preferences}
+
+\textbf{Preference 1:} Sally prefers a guaranteed \$5,000,000 to a lottery with:
+\begin{itemize}
+    \item 1\% chance of \$1,000,000
+    \item 89\% chance of \$5,000,000
+    \item 10\% chance of \$0
+\end{itemize}
+
+This shows Sally is somewhat risk-averse—she'd rather have the sure thing than take a 10\% chance of getting nothing.
+
+\textbf{Preference 2:} Sally prefers a lottery with 90\% chance of \$1,000,000 and 10\% chance of \$0 to a lottery with 89\% chance of \$1,000,000 and 11\% chance of \$5,000,000.
+
+This seems to show Sally is willing to give up a potential extra \$4,000,000 to increase her chance of winning something from 89\% to 90\%.
+
+\subsection{The Key Insight}
+
+Here's the crucial observation: \textbf{the two left-hand-side lotteries add up to the same total as the two right-hand-side lotteries}.
+
+Let's verify:
+\begin{align*}
+(0, 1, 0) + (0.90, 0, 0.10) &= (0.90, 1.00, 0.10)\\
+(0.01, 0.89, 0.10) + (0.89, 0.11, 0) &= (0.90, 1.00, 0.10)
+\end{align*}
+
+They're identical!
+
+\section{Proving the Violation}
+
+\subsection{What Expected Utility Would Require}
+
+If Sally's preferences could be represented by expected utility, there would exist a utility function $u$ such that preferences are determined by expected utility values.
+
+\textbf{From Preference 1:}
+\begin{align*}
+u(x_2) &> 0.01u(x_1) + 0.89u(x_2) + 0.10u(x_3)\\
+u(x_2) - 0.89u(x_2) &> 0.01u(x_1) + 0.10u(x_3)\\
+0.11u(x_2) &> 0.01u(x_1) + 0.10u(x_3)
+\end{align*}
+
+\textbf{From Preference 2:}
+\begin{align*}
+0.90u(x_1) + 0.10u(x_3) &> 0.89u(x_1) + 0.11u(x_2)\\
+0.90u(x_1) - 0.89u(x_1) + 0.10u(x_3) &> 0.11u(x_2)\\
+0.01u(x_1) + 0.10u(x_3) &> 0.11u(x_2)
+\end{align*}
+
+\subsection{The Contradiction}
+
+We have derived:
+\begin{align*}
+\text{From Preference 1:} \quad &0.11u(x_2) > 0.01u(x_1) + 0.10u(x_3)\\
+\text{From Preference 2:} \quad &0.01u(x_1) + 0.10u(x_3) > 0.11u(x_2)
+\end{align*}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,title=Contradiction!]
+These two inequalities cannot both be true! We have:
+$$0.11u(x_2) > 0.01u(x_1) + 0.10u(x_3) > 0.11u(x_2)$$
+which implies $0.11u(x_2) > 0.11u(x_2)$, a logical impossibility.
+\end{tcolorbox}
+
+\subsection{Why Independence Fails}
+
+The independence axiom would say: if we can write Preference 1 as a mixture of two lotteries where one lottery appears in Preference 2, then the preferences should be consistent.
+
+Notice that we can decompose the lotteries as:
+\begin{align*}
+(0, 1, 0) &= 0.11 \times (0, 1, 0) + 0.89 \times (0, 1, 0)\\
+(0.01, 0.89, 0.10) &= 0.11 \times (0, 0, 1) + 0.89 \times (0, 1, 0) + 0.01 \times (1, 0, 0)
+\end{align*}
+
+The mixing structure reveals the inconsistency when combined with Preference 2.
+
+\section{Implications}
+
+\subsection{Real-World Behavior}
+
+Sally's preferences are an example of the famous \textbf{Allais Paradox}, which demonstrates that real people often violate the independence axiom. This suggests:
+
+\begin{itemize}
+    \item Expected utility theory may not perfectly describe actual human decision-making
+    \item People treat certainty (100\% probability) differently than near-certainty (89\% or 90\%)
+    \item Alternative models like Prospect Theory have been developed to account for such violations
+\end{itemize}
+
+\subsection{Why Independence Matters}
+
+The independence axiom is crucial because:
+\begin{enumerate}
+    \item It's necessary (along with the other axioms) for preferences to be representable by expected utility
+    \item It ensures logical consistency in decision-making
+    \item Violations lead to predictable patterns of behavior that can be exploited
+    \item It separates rational choice theory from descriptive theories of actual behavior
+\end{enumerate}
+
+\section{Summary}
+
+\begin{itemize}
+    \item The \textbf{independence axiom} states that preferences between lotteries should not change when both are mixed with a third lottery in the same proportion
+    \item Sally's preferences show: $(0, 1, 0) \succ (0.01, 0.89, 0.10)$ and $(0.90, 0, 0.10) \succ (0.89, 0.11, 0)$
+    \item These preferences lead to a \textbf{mathematical contradiction} when we try to represent them with expected utility
+    \item The contradiction proves Sally violates the independence axiom
+    \item Such violations are common in real-world decision-making and motivate alternative theories
+\end{itemize}
+
+\end{document}

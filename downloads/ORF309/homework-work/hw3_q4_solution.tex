@@ -1,0 +1,133 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{enumitem}
+\usepackage{parskip}
+
+\title{ORF 309 Homework 3 -- Question 4: Love Triangles}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Problem Setup}
+
+A dating website has $n$ people signed up. For every pair of people, the website independently flips a coin that comes up heads with probability $p$. If heads, the pair is matched. A \textbf{love triangle} is a set of three people who are all mutually matched.
+
+\section*{Part (a): Expected Number of Hookups for a Given Individual}
+
+\textbf{Step 1: Identify the random experiment.}
+
+Fix a particular person, call them Person 1. There are $n - 1$ other people on the site. For each of these $n-1$ people, the website independently flips a coin with probability $p$ of heads.
+
+\textbf{Step 2: Define indicator variables.}
+
+For each person $j \in \{2, 3, \ldots, n\}$, define:
+\[
+X_j = \begin{cases} 1 & \text{if Person 1 is matched with Person } j \\ 0 & \text{otherwise} \end{cases}
+\]
+Each $X_j$ is a Bernoulli random variable with $P(X_j = 1) = p$, so $E[X_j] = p$.
+
+\textbf{Step 3: Express total hookups as a sum.}
+
+The total number of hookups Person 1 has is:
+\[
+H = \sum_{j=2}^{n} X_j
+\]
+
+\textbf{Step 4: Apply linearity of expectation.}
+\[
+E[H] = E\left[\sum_{j=2}^{n} X_j\right] = \sum_{j=2}^{n} E[X_j] = \sum_{j=2}^{n} p = (n-1)p
+\]
+
+\begin{center}
+\framebox{\textbf{Answer: } $E[\text{hookups}] = (n-1)p$}
+\end{center}
+
+\section*{Part (b): Probability of More Than One Hookup}
+
+\textbf{Step 1: Identify the distribution.}
+
+From Part (a), $H = \sum_{j=2}^{n} X_j$ where each $X_j$ is an independent Bernoulli($p$). The sum of $n-1$ independent Bernoulli($p$) variables follows a \textbf{Binomial distribution}:
+\[
+H \sim \text{Binomial}(n-1,\; p)
+\]
+
+\textbf{Step 2: Use the complement.}
+\[
+P(H > 1) = 1 - P(H = 0) - P(H = 1)
+\]
+
+\textbf{Step 3: Compute $P(H = 0)$.}
+\[
+P(H = 0) = \binom{n-1}{0} p^0 (1-p)^{n-1} = (1-p)^{n-1}
+\]
+This is the probability that \emph{none} of the $n-1$ coin flips come up heads.
+
+\textbf{Step 4: Compute $P(H = 1)$.}
+\[
+P(H = 1) = \binom{n-1}{1} p^1 (1-p)^{n-2} = (n-1)\,p\,(1-p)^{n-2}
+\]
+This is the probability that exactly one of the $n-1$ flips comes up heads.
+
+\textbf{Step 5: Combine.}
+\[
+P(H > 1) = 1 - (1-p)^{n-1} - (n-1)\,p\,(1-p)^{n-2}
+\]
+
+\begin{center}
+\framebox{\textbf{Answer: } $P(\text{more than one hookup}) = 1 - (1-p)^{n-1} - (n-1)\,p\,(1-p)^{n-2}$}
+\end{center}
+
+\section*{Part (c): Expected Number of Love Triangles}
+
+\textbf{Step 1: Enumerate all possible triangles.}
+
+A love triangle requires choosing 3 people out of $n$. The number of ways to do this is:
+\[
+\binom{n}{3} = \frac{n(n-1)(n-2)}{6}
+\]
+
+\textbf{Step 2: Define indicator variables for each triple.}
+
+For each triple of people $\{i, j, k\}$, define:
+\[
+T_{ijk} = \begin{cases} 1 & \text{if } \{i, j, k\} \text{ form a love triangle} \\ 0 & \text{otherwise} \end{cases}
+\]
+The total number of love triangles on the site is:
+\[
+L = \sum_{\{i,j,k\}} T_{ijk}
+\]
+where the sum is over all $\binom{n}{3}$ triples.
+
+\textbf{Step 3: Compute $P(T_{ijk} = 1)$ for a given triple.}
+
+For $\{i, j, k\}$ to be a love triangle, \textbf{all three pairs} must be matched:
+\begin{itemize}[nosep]
+    \item Pair $(i,j)$ matched with probability $p$
+    \item Pair $(i,k)$ matched with probability $p$
+    \item Pair $(j,k)$ matched with probability $p$
+\end{itemize}
+Since the coin flips for different pairs are \textbf{independent}:
+\[
+P(T_{ijk} = 1) = p \cdot p \cdot p = p^3
+\]
+
+\textbf{Step 4: Apply linearity of expectation.}
+\[
+E[L] = E\left[\sum_{\{i,j,k\}} T_{ijk}\right] = \sum_{\{i,j,k\}} E[T_{ijk}] = \sum_{\{i,j,k\}} p^3 = \binom{n}{3} \cdot p^3
+\]
+
+\textit{Note:} Linearity of expectation applies regardless of whether the $T_{ijk}$ are independent---and they are \textbf{not} independent, since triangles can share edges. This is precisely why linearity of expectation is so powerful here.
+
+\textbf{Step 5: Simplify.}
+\[
+E[L] = \frac{n(n-1)(n-2)}{6} \cdot p^3
+\]
+
+\begin{center}
+\framebox{\textbf{Answer: } $\displaystyle E[\text{love triangles}] = \frac{n(n-1)(n-2)}{6}\, p^3$}
+\end{center}
+
+\end{document}

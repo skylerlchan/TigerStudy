@@ -1,0 +1,284 @@
+=== PAGE 1 ===
+,Princeton University
+Mathematical Intermediate Microeconomics (ECO 310)
+Midterm Spring 2023
+Instructions: You have 80 minutes to complete this exam, plus 10 minutes to upload your
+answers. There are 6 multiple choice questions and 3 short answer questions. In the Multiple
+Choice section, simply indicate the correct answer. In the Short Answer section, show
+your work and explain your answers for full credit!
+• The exam is open-book, and calculators are permitted. However, please work alone.
+• If you are unsure whether you’re interpreting a question correctly, state your
+interpretation and proceed (or email me if you prefer).
+The honor code applies, as usual.
+1
+
+
+=== PAGE 2 ===
+Q1: Multiple Choice (24 points, 4 each)
+B C A A D D
+1. Jake tells you that when comparing any two numbers a and b, he prefers a if and only if it’s
+at least as large as b + 1. Jake is:
+(a) Rational
+(b) Irrational because these preferences are incomplete
+(c) Irrational because these preferences are intransitive
+(d) Two of these are correct
+Answer: B. These are incomplete, eg if the numbers are 1 and 1.5, he is unable to compare
+them (it’s not true that 1 ≥1.5 + 1, and it’s not true that 1.5 ≥1 + 1). But they are
+transitive: if a ≿b and b ≿c, it means a ≥b + 1 and b ≥c + 1; together this implies
+a ≥c + 2 > c + 1, so a ≿c.
+2. A consumer’s preferences over good 1 and good 2 are described by u(x1, x2) = x
+1
+2
+1 x2. If this
+consumer behaves optimally, he will:
+(a) Spend 1
+3 of income on good 2.
+(b) Spend 1
+2 of income on good 2.
+(c) Spend 2
+3 of income on good 2.
+(d) None of these is correct.
+Answer: C. Raising to the power 2
+3 to get exponents that sum to 1, these are equivalent
+to preferences represented by utility x
+1
+3
+1 x
+2
+3
+2 ; so by the Cobb Douglas magic rule this
+consumer optimally spends 2
+3 of their income on good 2
+3. A consumer initially buys 5 oranges and 10 apples. Then an apple tax increases the price per
+apple by $0.50, but the consumer is at the same time given a $5 fruit subsidy. Which of the
+following best describes this situation?
+(a) The consumer is most likely better oﬀnow (with the tax and subsidy) than he was
+originally.
+(b) The consumer is most likely worse oﬀnow (with the tax and subsidy) than he was
+originally.
+(c) The consumer is deﬁnitely indiﬀerent between his original and current situations.
+Answer: A. With the apple tax, the original bundle now costs $5 more than it did
+before. So if the consumer gets a $5 fruit subsidy, they are able to get exactly their
+original bundle. But there is likely a more eﬃcient way to spend money than by sticking
+with the original bundle, so this consumer can likely do better.
+4. A consumer gets utility u(L, R) = min{L, R} from L left shoes and R right shoes. If m = 10,
+pL = 1, and pR increases from 1 to 4, the change in demand for right shoes due to the
+substitution eﬀect is:
+(a) 0
+2
+
+
+=== PAGE 3 ===
+(b) -1
+(c) −2
+(d) −3
+(e) None of these is correct
+Answer: A. With perfect complements, if compensated to get something as good as the
+original bundle, the most eﬃcient way to do this is to get exactly the original bundle
+(you still want L=R, so to maintain utility you need to buy the same # pairs of shoes
+as before). No reoptimization means no substitution eﬀect.
+5. At the end of Lecture 10, we saw the following “paradox”: many people prefer saving 200 of
+600 people for sure, to a risky option with a 1
+3 chance of saving all 600 people and a 2
+3 chance
+of saving nobody. But they prefer a risky option with a 1
+3 chance of killing nobody and a 2
+3
+chance of killing everybody, to an option that kills 400 people for sure.
+If people care about the # people alive in the end, then
+(a) This is inconsistent with EU maximization
+(b) This violates consequentialism
+(c) This violates independence
+(d) Two of these are true
+(e) All of these are true
+Answer: D. When it’s phrased as saving lives, they prefer having 200 people deﬁnitely
+alive, to a risky option with 200 alive in expectation. But when it’s phrased as killing
+people, they prefer a risky option that leaves 200 alive in expectation, over a safe option
+that leaves 200 alive (400 killed) for sure. This violates consequentialism, since they way
+we frame the lottery aﬀects the choice, people do not simply care about ﬁnal distributions
+over outcomes.
+But there is no violation of independence (here we’re talking about
+the same two lotteries described diﬀerently).
+Of course this is inconsistent with EU
+maximization, which inherently cares only about probability distributions over ﬁnal
+outcomes.
+6. Which of the following would a risk-averse consumer deﬁnitely prefer to a 50-50 $0 or $200
+gamble:
+(a) $90 lump-sum
+(b) $110 lump-sum
+(c) A 50-50 $50 or $150 gamble
+(d) Two of a-c are deﬁnitely preferred
+(e) Three of a-c are deﬁnitely preferred
+Answer: D. The gamble has an expected value of $100, but with risk. So $90 may or may
+not be better, it’s safe (good) but with a lower return (bad). $110 is deﬁnitely better,
+higher value and less risk. Option C is also better, since this has the same expected
+value $100, but bringing the outcomes in closer together reduces the risk.
+3
+
+
+=== PAGE 4 ===
+Q2: Proofs and General Concepts (20 Points)
+a. (12) Assume that Melsi and Mavi (my dogs) are equally wealthy. Both are risk-averse, but
+Mavi is more risk-averse.
+Prove through the following steps that any time Mavi prefers
+accepting a risky bet (to rejecting it), so does Melsi:
+i. (6) Show that someone prefers accepting (rather than rejecting) a risky bet if and only
+if their certainty equivalent for the gamble exceeds their initial wealth.
+Answer: accepting the bet implies that its EU, which equals u(CE) by deﬁnition, exceeds
+u(w0); since utility increases with wealth, u(CE) > u(w0) ⇒CE > w0. And conversely
+if CE > w0, then u(CE) > u(w0) since u is increasing, while EU = u(CE) by deﬁnition
+of the certainty equivalent; so EU > u(w0), and so this person prefers to take the bet
+since it yields a higher utility EU than sticking with initial wealth.
+ii. (6) If Mavi is more risk-averse than Melsi, then from Lecture 10, her risk premium is
+higher for every gamble. Prove that this implies that for a particular gamble, Melsi’s
+certainty equivalent is higher than Mavi’s.
+Answer: The risk premium π is deﬁned by EU = u(E[W]−π), i.e. the amount of wealth
+π that the decision-maker would sacriﬁce to get a sure thing. We also have EU = u(CE),
+and so comparing gives E[W] −CE = π. So for any gamble, Mavi’s π is higher than
+Melsi’s; since E[W] is the same (they are facing the same gamble), it follows that Mavi’s
+CE is lower than Melsi’s.
+Since they are initially equally wealthy, this means by (a) that whenever Mavi’s CE
+exceeds initial wealth w0 and so she accepts the bet by (a), so does Melsi’s.
+b. (8) You are working for a law ﬁrm that represents an elderly man who wants to leave his
+fortune to his dog. His evil family plans to have him committed if he is caught violating
+WARP. Previously, he consumed (4, 2) when prices were (1, 3). Prices are now (3, 5). Which
+bundles (x1, x2) would get him committed if he purchased them now? (Just write out the
+inequality(ies) that must hold, no need to simplify).
+He would get committed if he bought (4, 2) over (x1, x2) when it costs more, and then now
+buys (x1, x2) over (4,2) when it costs more (at least one “more” meaning “strictly more”):
+i.e. if
+(1, 3) · (4, 2)
+≥
+(1, 3)(x1, x2) ⇔10 ≥x1 + 3x2
+&(3, 5) · (4, 2)
+≤
+(3, 5) · (x1, x2) ⇔22 ≤3x1 + 5x2
+(With at least one of these inequalities strict).
+4
+
+
+=== PAGE 5 ===
+Q3: Demand (37 Points)
+Harry’s preferences over netﬂix hours (N) and cable hours (C) are represented by
+u(N, C) = Cα + 2CN
+where α > 0 is a parameter.
+a. (8) Show that if α ≤2, then these preferences are convex.
+Answer: here
+MUC
+MUN =
+αCα−1+2N
+2C
+=
+α
+2 Cα−2 + N
+C .
+We would like this to fall as C ↑and
+N ↓. First of all, increasing C and decreasing N reduces N
+C (numerator falls, denominator
+rises). And if α ≤2, then increasing C also weakly reduces Cα−2, as its derivative in C is
+(α −2)Cα−3, which is ≤0 for α ≤2. So convexity holds in this range.
+b. (5) Write the equation for Harry’s indiﬀerence curve through the point (1, 1). (No need to
+simplify).
+Answer: this is all points (C, N) yielding the same utility as (1, 1), i.e.
+Cα + 2CN = 1α + 2 · 1 · 1 = 3
+c. (12) Find Harry’s (Marshallian) demand function if α = 2, assuming income m and prices pC
+and pN per hour of cable and netﬂix.
+Answer: Answer: he wants to spend all his money and allocate it optimally between goods.
+The optimal allocation condition is
+MUC
+MUN
+= pC
+pN
+⇒1 + N
+C = pC
+pN
+⇒N
+C = pC −pN
+pN
+⇒pNN = (pC −pN)C
+(This is nonnegative for N so long as pC ≥pN, assume this for now). Now substitute this
+into the budget line, pCC + pNN = m, to get
+pCC + (pC −pN)C = m ⇒(2pC −pN)C = m ⇒C =
+m
+2pC −pN
+Then substitute this back into the bang per buck condition to get
+N = 1
+pN
+pC −pN
+2pC −pN
+m
+Finally, checking nonnegativity conditions: if pC ≥pN, this all works. If pC < pN, then bang
+per buck gave a negative quantity of N, so go for the next best thing, N = 0. Substituting
+this into the budget constraint then gives C = m
+pC .
+d. (12) Finally, suppose Harry’s limited resource is time rather than money: Netﬂix and cable
+are both oﬀered free of charge in his dorm room, but he has limited time available to watch
+them. (i) What is his budget constraint if he has T hours available? (ii) Again assuming that
+α = 2, how much time T does he need to get utility u∗?
+Answer to (i) his budget constraint is now C + N ≤T (comparing to the one in (d), eﬀective
+prices are pC = 1 and pN = 1). For (ii), this is asking about the expenditure function: to get
+utility u∗in the most eﬃcient way, he ﬁrstly equates bang per buck across goods, so
+MUC
+MUN
+= pC
+pN
+= 1 ⇒1 + N
+C = 1 ⇒N = 0
+So he will not buy any netﬂix. Then his actual utility is [Cα + 2CN] |α=2,N=0 = C2. So to
+get utility u∗in the most eﬃcient way possible, he sets C2 = u∗⇒C =
+√
+u∗, along with
+N = 0. Therefore the time needed for this is T =
+√
+u∗hours.
+5
+
+
+=== PAGE 6 ===
+Q4: Expected Utility (31 Points)
+Suppose you are risk-averse, have $100 (no wealth besides this), and are considering investing some
+of your $100 in an asset with 3 possible return rates: r1 = −1 (which happens with probability
+q ≤1
+2), r2 = 1 (which also happens with probability q ≤1
+2), and r3 = 2 (this happens whenever the
+other two possible return rates do not). Your other option is to hide the money in a sock drawer.
+Recall that $x invested at return rate r changes your wealth by $xr.
+a. (12) Write out your expected utility from investing $x of your $100 in this asset, and keeping
+the remaining $100-x in a sock drawer. (Hint: consider drawing a probability tree, with one
+branch for each way the uncertainty can resolve; at the end of each branch ﬁgure out your
+ﬁnal utility if this happens.)
+Answer: following the hint, 3 return rates means 3 ways the uncertainty can resolve, so the
+probability tree has 3 branches. On the branch with return rate r, ﬁnal wealth = initial
+wealth + change in wealth = 100 + xr. So here is the probability tree:
+and then EU is the probability-weighted average of the ﬁnal utility levels:
+EU = qu(100 −x) + qu(100 + x) + (1 −2q)u(100 + 2x)
+Comment: amazingly few people got this, I wish more had followed the hint.
+b. (14) If you can invest any amount x between $0 and $100 (inclusive, decimals allowed),
+i. (5) Explain: at q = 0, you should invest your entire $100 in the asset.
+Answer: at q = 0, EU above simpliﬁes to simply u(100 + 2x); this is increasing in x, so
+you would like to make x as large as possible.
+ii. (9) Find all values of q (if any) for which it is optimal to keep all money in your sock
+drawer.
+Answer: you want to keep all money in the sock drawer, i.e. invest x = 0, if either
+EU′(0) = 0 (your FOC for the optimal x is maximized exactly at x = 0), or if EU′(0) ≤0
+(even with x = 0, EU is ↓in x, implying that the more you invest the worse it is; this
+is where you’d invest a negative x if possible, but since this isn’t allowed, you go for the
+best corner x = 0). From (a),
+EU′(x) = −qu′(100 −x) + qu′(100 + x) + 2(1 −2q)u′(100 + 2x)
+6
+
+
+=== PAGE 7 ===
+Evaluating at x = 0,
+EU′(0) = −qu′(100) + qu′(100) + 2(1 −2q)u′(100) = 2(1 −2q)u′(100)
+This equals zero at q = 1
+2, and is strictly positive if q < 1
+2 (and we were given the range
+q ≤1
+2). So this only happens at q = 1
+2.
+c. (5) If your only options were to invest $20 or $80, how would you ﬁgure out which is better?
+Answer: you would pick $20 if EU(20) > EU(80), invest $80 if the reverse inequality holds,
+and are indiﬀerent if these two EU expressions are equal. (Where EU(20) is what you get by
+evaluating the EU expression in (a) at x = 20, and similarly for EU(80)).
+7

@@ -1,0 +1,185 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+
+\title{Guide to Problem 1a: Compensated Demand for Perfect Substitutes}
+\author{ECO 310 Problem Set 2}
+\date{February 23, 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem Statement}
+
+Calculate the compensated demand bundle $(x_1^c(p_1, p_2, u^*), x_2^c(p_1, p_2, u^*))$ for perfect substitute preferences with $u(x_1, x_2) = x_1 + x_2$.
+
+\textbf{Hint:} You should have a piecewise function, depending on which good is cheaper.
+
+\section{Key Concepts}
+
+\subsection{Perfect Substitute Preferences}
+
+With utility function $u(x_1, x_2) = x_1 + x_2$:
+
+\begin{itemize}
+\item The goods are \textbf{perfect substitutes} - the consumer is willing to trade them one-for-one
+\item Indifference curves are \textbf{straight lines} with slope $-1$
+\item The MRS (marginal rate of substitution) is constant: $MRS = -1$
+\item Solutions are typically \textbf{corner solutions} - buy only one good
+\end{itemize}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Intuition]
+If you like apples and oranges equally, and apples are cheaper, why would you ever buy oranges? You'd spend all your money on apples!
+\end{tcolorbox}
+
+\subsection{Compensated (Hicksian) Demand}
+
+Compensated demand solves the \textbf{expenditure minimization problem}:
+
+\begin{equation}
+\min_{x_1, x_2} \quad p_1 x_1 + p_2 x_2
+\end{equation}
+
+subject to:
+\begin{align}
+x_1 + x_2 &\geq u^* \quad \text{(utility constraint)} \\
+x_1, x_2 &\geq 0 \quad \text{(non-negativity)}
+\end{align}
+
+This asks: \textbf{What's the cheapest way to reach utility level $u^*$?}
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black,title=Key Difference]
+\textbf{Regular (Marshallian) demand:} Maximize utility subject to budget constraint \\
+\textbf{Compensated (Hicksian) demand:} Minimize expenditure subject to utility constraint
+\end{tcolorbox}
+
+\section{Solving the Problem}
+
+\subsection{Step 1: Set Up the Problem}
+
+We want to minimize $p_1 x_1 + p_2 x_2$ subject to $x_1 + x_2 \geq u^*$.
+
+Since we want to reach exactly $u^*$ at minimum cost, the utility constraint will bind:
+\begin{equation}
+x_1 + x_2 = u^*
+\end{equation}
+
+\subsection{Step 2: Use the Constraint}
+
+From the utility constraint: $x_2 = u^* - x_1$
+
+Substitute into the objective function:
+\begin{equation}
+\text{Cost} = p_1 x_1 + p_2(u^* - x_1) = p_1 x_1 + p_2 u^* - p_2 x_1 = (p_1 - p_2)x_1 + p_2 u^*
+\end{equation}
+
+\subsection{Step 3: Minimize Cost}
+
+The cost function is \textbf{linear in $x_1$}:
+\begin{equation}
+\text{Cost} = (p_1 - p_2)x_1 + p_2 u^*
+\end{equation}
+
+\begin{itemize}
+\item If $p_1 - p_2 < 0$ (i.e., $p_1 < p_2$): coefficient of $x_1$ is negative, so increase $x_1$ as much as possible
+\item If $p_1 - p_2 > 0$ (i.e., $p_1 > p_2$): coefficient of $x_1$ is positive, so decrease $x_1$ as much as possible
+\item If $p_1 = p_2$: cost doesn't depend on $x_1$, so any combination works
+\end{itemize}
+
+\subsection{Step 4: Apply Non-Negativity Constraints}
+
+Remember: $x_1 \geq 0$ and $x_2 \geq 0$
+
+From $x_2 = u^* - x_1 \geq 0$, we get $x_1 \leq u^*$
+
+So: $0 \leq x_1 \leq u^*$
+
+\subsection{Step 5: Find Corner Solutions}
+
+\textbf{Case 1: If $p_1 < p_2$ (good 1 is cheaper)}
+\begin{itemize}
+\item Maximize $x_1$: set $x_1 = u^*$
+\item Then $x_2 = u^* - x_1 = 0$
+\item Buy only good 1 (the cheaper good)
+\end{itemize}
+
+\textbf{Case 2: If $p_1 > p_2$ (good 2 is cheaper)}
+\begin{itemize}
+\item Minimize $x_1$: set $x_1 = 0$
+\item Then $x_2 = u^* - 0 = u^*$
+\item Buy only good 2 (the cheaper good)
+\end{itemize}
+
+\textbf{Case 3: If $p_1 = p_2$ (goods cost the same)}
+\begin{itemize}
+\item Any combination where $x_1 + x_2 = u^*$ minimizes cost
+\item Could choose $x_1 \in [0, u^*]$ and $x_2 = u^* - x_1$
+\end{itemize}
+
+\section{Final Answer}
+
+The compensated demand bundle is:
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=orange!75!black,title=Compensated Demand for Perfect Substitutes]
+\begin{equation}
+(x_1^c(p_1, p_2, u^*), x_2^c(p_1, p_2, u^*)) =
+\begin{cases}
+(u^*, 0) & \text{if } p_1 < p_2 \\
+(0, u^*) & \text{if } p_1 > p_2 \\
+\text{any } (x_1, u^* - x_1) \text{ with } x_1 \in [0, u^*] & \text{if } p_1 = p_2
+\end{cases}
+\end{equation}
+\end{tcolorbox}
+
+\section{Economic Intuition}
+
+\begin{enumerate}[leftmargin=*]
+\item \textbf{Perfect substitutes $\Rightarrow$ corner solutions:} Since goods are equally valuable per unit consumed, always buy the cheaper one
+
+\item \textbf{Why it's "piecewise":} The optimal choice discontinuously jumps from all good 1 to all good 2 as relative prices change
+
+\item \textbf{The $u^*$ appears:} We need to consume exactly $u^*$ total units to reach the target utility level
+
+\item \textbf{Comparison to Marshallian demand:} Regular demand depends on income $m$; compensated demand depends on target utility $u^*$
+\end{enumerate}
+
+\section{Connection to Part (b): Expenditure Function}
+
+Once you have compensated demand, the expenditure function is straightforward:
+
+\begin{equation}
+e(p_1, p_2, u^*) = p_1 \cdot x_1^c + p_2 \cdot x_2^c
+\end{equation}
+
+Substituting our answer:
+\begin{itemize}
+\item If $p_1 < p_2$: $e = p_1 \cdot u^* + p_2 \cdot 0 = p_1 u^*$
+\item If $p_1 > p_2$: $e = p_1 \cdot 0 + p_2 \cdot u^* = p_2 u^*$
+\item If $p_1 = p_2$: $e = p_1 u^*$ (or equivalently $p_2 u^*$)
+\end{itemize}
+
+This simplifies to: $e(p_1, p_2, u^*) = \min\{p_1, p_2\} \cdot u^*$
+
+\section{Graphical Representation}
+
+Imagine a graph with $x_1$ on the horizontal axis and $x_2$ on the vertical axis:
+
+\begin{itemize}
+\item \textbf{Budget line:} $p_1 x_1 + p_2 x_2 = E$ (slope = $-p_1/p_2$)
+\item \textbf{Indifference curve:} $x_1 + x_2 = u^*$ (slope = $-1$)
+\end{itemize}
+
+The minimum expenditure point is where:
+\begin{itemize}
+\item If budget line is steeper than IC ($-p_1/p_2 < -1$, i.e., $p_1 < p_2$): corner at $(u^*, 0)$
+\item If budget line is flatter than IC ($-p_1/p_2 > -1$, i.e., $p_1 > p_2$): corner at $(0, u^*)$
+\item If slopes are equal: entire segment of IC from $(0, u^*)$ to $(u^*, 0)$ is optimal
+\end{itemize}
+
+\end{document}

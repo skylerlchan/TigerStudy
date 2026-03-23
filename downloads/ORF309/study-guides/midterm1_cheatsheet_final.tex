@@ -1,0 +1,408 @@
+\documentclass[6pt]{article}
+\usepackage[landscape,margin=0.25in,top=0.3in,bottom=0.25in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{microtype}
+\usepackage[dvipsnames]{xcolor}
+
+% Highlight box for most-tested formulas
+\newcommand{\hi}[1]{\colorbox{yellow!25}{\ensuremath{#1}}}
+\newcommand{\hitext}[1]{\colorbox{yellow!25}{#1}}
+
+% Ultra-compact spacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt plus 0.5pt}
+\setlength{\columnsep}{8pt}
+\setlength{\columnseprule}{0.2pt}
+\titlespacing*{\section}{0pt}{3pt}{1pt}
+\titlespacing*{\subsection}{0pt}{2pt}{0.5pt}
+\titleformat{\section}{\normalsize\bfseries}{}{0em}{}[\vspace{-2pt}\rule{\columnwidth}{0.3pt}]
+\titleformat{\subsection}{\small\bfseries}{}{0em}{}
+
+\setlist{nosep, leftmargin=1em, topsep=0pt, partopsep=0pt}
+
+\pagestyle{empty}
+
+\begin{document}
+
+% ============== SIDE 1 (FRONT) ==============
+\begin{multicols}{4}
+
+\begin{center}
+{\large\textbf{ORF 309 Midterm 1 Cheat Sheet}}\\[-2pt]
+{\scriptsize Slides 01--09 $\mid$ Through Section 2.3}
+\end{center}
+
+\section{Probability Foundations}
+
+\textbf{Sample space} $\Omega$: set of all outcomes. \textbf{Event}: $A \subseteq \Omega$.
+
+\textbf{Set ops:} $A \cup B$, $A \cap B$, $A^c$, $A \setminus B = A \cap B^c$.
+
+\textbf{De Morgan:} $(A \cup B)^c = A^c \cap B^c$;\; $(A \cap B)^c = A^c \cup B^c$.
+
+\textbf{Partition:} $B_1,\ldots,B_n$ disjoint, $\bigcup B_i = \Omega$.
+
+\subsection{Kolmogorov Axioms}
+(1) $P(A) \geq 0$\; (2) $P(\Omega)=1$\; (3) If $A_i$ pairwise disjoint: $P(\bigcup A_i) = \sum P(A_i)$
+
+\textbf{Consequences:} $P(\emptyset)=0$; $P(A^c)=1-P(A)$; $A\subseteq B \Rightarrow P(A)\leq P(B)$
+
+$P(A\cup B) = P(A)+P(B)-P(A\cap B)$
+
+\textbf{Inclusion--Exclusion:}
+$P\!\left(\bigcup_{i=1}^n A_i\right) = \sum_i P(A_i) - \sum_{i<j} P(A_i\cap A_j) + \cdots$
+
+\textbf{Union Bound:} $P(\bigcup A_i) \leq \sum P(A_i)$
+
+\textbf{Continuity:} $A_n\uparrow A \Rightarrow P(A_n)\to P(A)$; same for $\downarrow$.
+
+\section{Counting}
+
+\textbf{Equally likely:} $P(A)=|A|/|\Omega|$
+
+\textbf{Multiplication rule:} $k$ stages with $n_i$ choices $\Rightarrow \prod n_i$ total.
+
+\textbf{Permutations} (ordered, no repl): $P(n,k)=\frac{n!}{(n-k)!}$
+
+\textbf{Combinations} (unordered, no repl): $\binom{n}{k}=\frac{n!}{k!(n-k)!}$
+
+\textbf{Multinomial:} $\binom{n}{k_1,\ldots,k_r}=\frac{n!}{k_1!\cdots k_r!}$, $\sum k_i=n$
+
+\textbf{Stars \& bars:} $n$ balls into $k$ bins: $\binom{n+k-1}{k-1}$
+
+\textbf{Binomial thm:} $(x+y)^n = \sum_{k=0}^n \binom{n}{k}x^k y^{n-k}$
+
+$\binom{n}{k}=\binom{n}{n-k}$;\; $\sum_{k=0}^n\binom{n}{k}=2^n$
+
+\textbf{Vandermonde:} $\binom{m+n}{k}=\sum_j \binom{m}{j}\binom{n}{k-j}$
+
+\textbf{Derangements:} $D_n = n!\sum_{k=0}^n \frac{(-1)^k}{k!}$\\
+Exactly $k$ fixed pts: $\binom{n}{k}\cdot D_{n-k}$
+
+\textbf{Lattice paths} $(0,0)\to(m,n)$: $\binom{m+n}{n}$\\
+Through $(a,b)$: $\binom{a+b}{b}\cdot\binom{(m-a)+(n-b)}{n-b}$
+
+\section{Conditional Probability}
+
+\hi{P(A\mid B) = \frac{P(A\cap B)}{P(B)}}, \; $P(B)>0$
+
+\textbf{Multiplication:} $P(A\cap B)=P(A\mid B)\,P(B)$
+
+\textbf{Chain rule:} $P(\bigcap_{i=1}^n A_i) = P(A_1)\prod_{i=2}^n P(A_i\mid \bigcap_{j<i}A_j)$
+
+\textbf{Law of Total Probability (LOTP):}\\
+\hi{P(A)=\sum_i P(A\mid B_i)\,P(B_i)} \;($B_i$ partition $\Omega$)
+
+Two-event: $P(A)=P(A\mid B)P(B)+P(A\mid B^c)P(B^c)$
+
+\textbf{Bayes' Rule:}
+\hi{P(B_j\mid A) = \frac{P(A\mid B_j)\,P(B_j)}{\sum_i P(A\mid B_i)\,P(B_i)}}
+
+\textit{Prior} $P(B_i)$ $\to$ \textit{Posterior} $P(B_i\mid A)$ via \textit{likelihood} $P(A\mid B_i)$.
+
+\textbf{Sequential Bayes:} Use posterior as new prior for next observation.
+
+\section{Independence}
+
+$A\perp B \iff P(A\cap B)=P(A)P(B)$
+
+Equiv: $P(A\mid B)=P(A)$ when $P(B)>0$.
+
+$A\perp B \Rightarrow A\perp B^c$, $A^c\perp B$, $A^c\perp B^c$.
+
+\textbf{Mutually exclusive $\neq$ independent!}\\
+If $A\cap B=\emptyset$ and $P(A),P(B)>0$: $A,B$ are \textbf{dependent}.
+
+\textbf{Mutual independence:} For \emph{every} subset $S\subseteq\{1,\ldots,n\}$, $|S|\geq 2$:
+$P(\bigcap_{i\in S} A_i) = \prod_{i\in S} P(A_i)$
+
+Pairwise $\not\Rightarrow$ mutual independence.
+
+\textbf{Cond.\ indep:} $A\perp B\mid C \iff P(A\cap B\mid C)=P(A\mid C)P(B\mid C)$
+
+Does \textbf{not} imply unconditional independence (or vice versa).
+
+\section{Discrete Random Variables}
+
+\textbf{RV:} $X:\Omega\to\mathbb{R}$.
+
+\textbf{PMF:} $p_X(x)=P(X=x)$. \;$p_X(x)\geq0$, $\sum_x p_X(x)=1$.
+
+\textbf{CDF:} $F_X(x)=P(X\leq x)$.\\
+Non-decreasing, right-continuous, $F(-\infty)=0$, $F(\infty)=1$.\\
+$P(a<X\leq b)=F(b)-F(a)$;\; $P(X>a)=1-F(a)$.\\
+Discrete: step function, jump at $x_i$ = $p_X(x_i)$.
+
+\textbf{Functions of RVs:} $Y=g(X)$: $p_Y(y)=\sum_{x:g(x)=y} p_X(x)$
+
+\textbf{Indicator:} $\mathbf{1}_A = \begin{cases}1 & \omega\in A\\0 & \text{else}\end{cases}$;\; $E[\mathbf{1}_A]=P(A)$.
+
+\textbf{Independence of RVs:} $X\perp Y \iff$ for all $x,y$:\\
+$P(X{=}x,Y{=}y)=P(X{=}x)\,P(Y{=}y)$
+
+\section{Named Discrete Distributions}
+
+\subsection{Bernoulli$(p)$}
+$X\in\{0,1\}$. $P(X{=}1)=p$. $E[X]=p$, $\text{Var}=p(1{-}p)$.
+
+\subsection{Binomial$(n,p)$}
+$X=\#$ successes in $n$ indep.\ Bern$(p)$ trials.
+\hi{P(X{=}k)=\binom{n}{k}p^k(1{-}p)^{n-k}}, $k=0,\ldots,n$\\
+\hi{E[X]=np}, $\text{Var}=np(1{-}p)$.\\
+Sum: $\text{Bin}(n,p)+\text{Bin}(m,p)=\text{Bin}(n{+}m,p)$ (indep).
+
+\subsection{Geometric$(p)$}
+$T_1=$ trial of 1st success. $T_1\in\{1,2,3,\ldots\}$.\\
+\hi{P(T_1{=}k)=(1{-}p)^{k-1}p};\; \hi{P(T_1>k)=(1{-}p)^k}\\
+\hi{E[T_1]=1/p}, $\text{Var}=(1{-}p)/p^2$.\\
+\hitext{\textbf{Memoryless:} $P(T_1>m{+}n\mid T_1>m)=P(T_1>n)$}\\
+Only discrete memoryless distribution.
+
+\subsection{Negative Binomial$(r,p)$}
+$T_r=$ trial of $r$-th success. $T_r\in\{r,r{+}1,\ldots\}$.\\
+$P(T_r{=}n)=\binom{n-1}{r-1}p^r(1{-}p)^{n-r}$\\
+$E[T_r]=r/p$, $\text{Var}=r(1{-}p)/p^2$.\\
+$T_r = $ sum of $r$ i.i.d.\ Geom$(p)$. NegBin$(1,p)=$Geom$(p)$.
+
+\subsection{Poisson$(\lambda)$}
+\hi{P(X{=}k)=e^{-\lambda}\frac{\lambda^k}{k!}}, $k=0,1,2,\ldots$\\
+\hi{E[X]=\lambda}, $\text{Var}=\lambda$.\\
+\textbf{Poisson approx:} $n$ large, $p$ small, $\lambda=np$: Bin$(n,p)\approx$ Pois$(\lambda)$.\\
+\textbf{Sum:} Pois$(\lambda_1)+$Pois$(\lambda_2)=$Pois$(\lambda_1{+}\lambda_2)$ (indep).\\
+\textbf{Thinning:} Mark each w.p.\ $p$ indep $\Rightarrow$ Pois$(\lambda p)$.\\
+\textbf{Splitting:} Given $N(s{+}t)=n$: $N(s)\sim$Bin$(n,s/(s{+}t))$.
+
+\subsection{Hypergeometric}
+Pop $N$: $K$ success, $N{-}K$ fail. Draw $n$ w/o replacement.\\
+$P(X{=}k)=\frac{\binom{K}{k}\binom{N-K}{n-k}}{\binom{N}{n}}$;\; $E[X]=nK/N$
+
+\section{Expectation}
+
+$E[X]=\sum_x x\,p_X(x)$
+
+\textbf{LOTUS:} $E[g(X)]=\sum_x g(x)\,p_X(x)$ (no need for PMF of $g(X)$)
+
+\textbf{Linearity} (always, no indep needed):\\
+\hi{E[aX+bY+c]=aE[X]+bE[Y]+c}
+
+$X\perp Y \Rightarrow E[XY]=E[X]\,E[Y]$ (converse false)
+
+\textbf{Conditional expectation:}
+$E[X\mid B]=\sum_x x\,P(X{=}x\mid B)$
+
+\textbf{Tower / Law of Total Expectation:}\\
+\hi{E[X]=\sum_i E[X\mid B_i]\,P(B_i)}\; ($B_i$ partition)\\
+\hi{E[X]=E[E[X\mid Y]]}
+
+\textbf{Tail sum formula} ($X\in\{0,1,2,\ldots\}$):\\
+$E[X]=\sum_{k=1}^{\infty} P(X\geq k) = \sum_{k=0}^{\infty} P(X>k)$
+
+\hitext{\textbf{Indicator trick:} Write $X=\sum \mathbf{1}_{A_i}$, then $E[X]=\sum P(A_i)$.} Works even if dependent!
+
+\section{Variance}
+
+\hi{\text{Var}(X)=E[(X-\mu)^2]=E[X^2]-(E[X])^2}
+
+$\text{SD}(X)=\sqrt{\text{Var}(X)}$
+
+$\text{Var}(X)\geq 0$; $=0$ iff $X$ is constant a.s.
+
+$\text{Var}(aX+b)=a^2\text{Var}(X)$
+
+\hi{E[X^2]=\text{Var}(X)+(E[X])^2} \quad(\textbf{key identity!})
+
+$X\perp Y$: $\text{Var}(X+Y)=\text{Var}(X)+\text{Var}(Y)$
+
+General: $\text{Var}(X+Y)=\text{Var}(X)+\text{Var}(Y)+2\text{Cov}(X,Y)$
+
+$\text{Var}(\sum_i X_i)=\sum_i\text{Var}(X_i)+2\sum_{i<j}\text{Cov}(X_i,X_j)$
+
+\textbf{Bin var via indicators:} $X=\sum I_i$ (indep Bern),\\
+$\text{Var}(X)=n\,p(1{-}p)$.
+
+\section{Covariance \& Correlation}
+
+\hi{\text{Cov}(X,Y)=E[XY]-E[X]E[Y]}
+
+$\text{Cov}(X,X)=\text{Var}(X)$;\; $\text{Cov}(X,Y)=\text{Cov}(Y,X)$
+
+$\text{Cov}(aX+b,cY+d)=ac\,\text{Cov}(X,Y)$
+
+$\text{Cov}(X+Y,Z)=\text{Cov}(X,Z)+\text{Cov}(Y,Z)$ (bilinear)
+
+$X\perp Y \Rightarrow \text{Cov}(X,Y)=0$ (converse false)
+
+$\rho(X,Y)=\frac{\text{Cov}(X,Y)}{\text{SD}(X)\,\text{SD}(Y)}$;\; $-1\leq\rho\leq 1$
+
+$|\rho|=1 \iff Y=aX+b$ (perfect linear).
+
+Uncorrelated ($\rho=0$) $\neq$ independent.
+
+\textbf{Var of linear combo:}\\
+\hi{\text{Var}(aX+bY)=a^2\text{Var}(X)+b^2\text{Var}(Y)+2ab\,\text{Cov}(X,Y)}
+
+\section{Moment Generating Functions}
+
+$M_X(t)=E[e^{tX}]$ \;(defined near $t=0$)
+
+$E[X^k]=M_X^{(k)}(0)$ ($k$-th derivative at 0)
+
+MGF uniquely determines distribution.
+
+$M_{aX+b}(t)=e^{bt}M_X(at)$
+
+$X\perp Y$: $M_{X+Y}(t)=M_X(t)\cdot M_Y(t)$
+
+\textbf{MGFs:} Bern$(p)$: $1-p+pe^t$. Bin$(n,p)$: $(1-p+pe^t)^n$.\\
+Geom$(p)$: $\frac{pe^t}{1-(1-p)e^t}$. Pois$(\lambda)$: $e^{\lambda(e^t-1)}$.
+
+\section{Continuous Random Variables}
+
+\textbf{PDF:} $f_X(x)\geq 0$, $\int_{-\infty}^{\infty} f_X(x)\,dx=1$
+
+$P(a\leq X\leq b)=\int_a^b f_X(x)\,dx$;\; $P(X=a)=0$
+
+\textbf{CDF:} $F_X(x)=\int_{-\infty}^x f_X(t)\,dt$;\; $f_X(x)=F_X'(x)$
+
+\textbf{Expectation:} $E[X]=\int x\,f_X(x)\,dx$
+
+\textbf{LOTUS:} $E[g(X)]=\int g(x)\,f_X(x)\,dx$
+
+\textbf{Variance:} $\text{Var}(X)=\int (x-\mu)^2 f_X(x)\,dx = E[X^2]-(E[X])^2$
+
+\subsection{Uniform $U(a,b)$}
+$f(x)=\frac{1}{b-a}$ for $a\leq x\leq b$, else 0.\\
+$E[X]=\frac{a+b}{2}$, $\text{Var}=\frac{(b-a)^2}{12}$.
+
+\subsection{Exponential $\text{Exp}(\lambda)$}
+\hi{f(x)=\lambda e^{-\lambda x}}, $x\geq 0$. \hi{F(x)=1-e^{-\lambda x}}.\\
+\hi{P(X>t)=e^{-\lambda t}}.\\
+\hi{E[X]=1/\lambda}, $\text{Var}=1/\lambda^2$.\\
+\hitext{\textbf{Memoryless:} $P(X>s+t\mid X>s)=P(X>t)$}.\\
+Only continuous memoryless distribution.\\
+MGF: $M(t)=\lambda/(\lambda-t)$, $t<\lambda$.
+
+\subsection{Normal $N(\mu,\sigma^2)$}
+$f(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-(x-\mu)^2/(2\sigma^2)}$\\
+$E[X]=\mu$, $\text{Var}=\sigma^2$.\\
+\hitext{\textbf{Standardize:} $Z=\frac{X-\mu}{\sigma}\sim N(0,1)$}.\\
+\hi{P(a<X<b)=\Phi\!\left(\frac{b-\mu}{\sigma}\right)-\Phi\!\left(\frac{a-\mu}{\sigma}\right)}\\
+$\Phi(-z)=1-\Phi(z)$. \;$P(|Z|\leq z)=2\Phi(z)-1$.\\
+$aX+b\sim N(a\mu+b, a^2\sigma^2)$.\\
+Sum: $X\perp Y$, $X\sim N(\mu_1,\sigma_1^2)$, $Y\sim N(\mu_2,\sigma_2^2)$:\\
+$X+Y\sim N(\mu_1+\mu_2,\sigma_1^2+\sigma_2^2)$.\\
+MGF: $M(t)=\exp(\mu t+\sigma^2 t^2/2)$.
+
+\subsection{Functions of Continuous RVs}
+\textbf{CDF method:} $F_Y(y)=P(g(X)\leq y)$, then differentiate.
+
+\textbf{Monotone transform:} If $Y=g(X)$, $g$ strictly monotone:\\
+$f_Y(y)=f_X(g^{-1}(y))\cdot |{(g^{-1})'(y)}|$
+
+\textbf{Quantiles:} $q$-th quantile $x_q$: $F(x_q)=q$. Median: $q=0.5$.
+
+\section{Joint Distributions (Discrete)}
+
+\textbf{Joint PMF:} $p_{X,Y}(x,y)=P(X{=}x,Y{=}y)$
+
+\textbf{Marginals:} $p_X(x)=\sum_y p_{X,Y}(x,y)$;\; $p_Y(y)=\sum_x p_{X,Y}(x,y)$
+
+\textbf{Conditional:} $p_{X|Y}(x|y)=p_{X,Y}(x,y)/p_Y(y)$
+
+\textbf{Independence:} $p_{X,Y}(x,y)=p_X(x)\,p_Y(y)$ for all $x,y$.
+
+$E[g(X,Y)]=\sum_x\sum_y g(x,y)\,p_{X,Y}(x,y)$
+
+\textbf{Convolution (discrete):}\\
+$P(X{+}Y{=}k)=\sum_j P(X{=}j)\,P(Y{=}k{-}j)$
+
+\textbf{Multinomial:} $n$ trials, $k$ outcomes w/ probs $p_1,\ldots,p_k$:\\
+$P(X_1{=}n_1,\ldots,X_k{=}n_k)=\frac{n!}{n_1!\cdots n_k!}p_1^{n_1}\cdots p_k^{n_k}$
+
+Marginals of multinomial are binomial.
+
+\section{Joint Distributions (Continuous)}
+
+\textbf{Joint PDF:} $f_{X,Y}(x,y)\geq 0$, $\iint f\,dx\,dy=1$
+
+$P((X,Y)\in A)=\iint_A f_{X,Y}(x,y)\,dx\,dy$
+
+\textbf{Marginals:} $f_X(x)=\int f_{X,Y}(x,y)\,dy$
+
+\textbf{Conditional:} $f_{X|Y}(x|y)=f_{X,Y}(x,y)/f_Y(y)$
+
+\textbf{Independence:} $f_{X,Y}(x,y)=f_X(x)\,f_Y(y)$ for all $x,y$.
+
+\textbf{Factorization test:} If $f_{X,Y}(x,y)=g(x)\,h(y)$ over a \emph{rectangular} domain, then $X\perp Y$.
+
+\textbf{Convolution (continuous):}\\
+$f_{X+Y}(z)=\int f_X(x)\,f_Y(z-x)\,dx$
+
+$E[g(X,Y)]=\iint g(x,y)\,f_{X,Y}(x,y)\,dx\,dy$
+
+\section{Inequalities \& Limit Theorems}
+
+\textbf{Markov:} $X\geq 0$: $P(X\geq a)\leq E[X]/a$
+
+\textbf{Chebyshev:} \hi{P(|X-\mu|\geq a)\leq \text{Var}(X)/a^2}
+
+\textbf{Weak LLN:} i.i.d.\ $X_i$, $E[X_i]=\mu$, $\text{Var}(X_i)=\sigma^2$:\\
+$\bar{X}_n=\frac{1}{n}\sum X_i \xrightarrow{P} \mu$
+
+Proof: $P(|\bar{X}_n-\mu|\geq\epsilon)\leq \frac{\sigma^2}{n\epsilon^2}\to 0$.
+
+\section{Useful Series}
+
+\hi{\sum_{k=0}^{\infty}r^k=\frac{1}{1-r}}, $|r|<1$\quad
+\hi{\sum_{k=1}^{\infty}kr^{k-1}=\frac{1}{(1-r)^2}}
+
+$\sum_{k=0}^{\infty}kr^k=\frac{r}{(1-r)^2}$\quad
+$\sum_{k=0}^{\infty}\frac{\lambda^k}{k!}=e^{\lambda}$
+
+$\sum_{k=0}^n\binom{n}{k}=2^n$
+
+\section{Problem-Solving Techniques}
+
+\textbf{1. Indicator trick:} $X=\sum\mathbf{1}_{A_i} \Rightarrow E[X]=\sum P(A_i)$. For Var, need independence.
+
+\textbf{2. LOTP:} Partition and sum $P(A|B_i)P(B_i)$.
+
+\textbf{3. First-step analysis:} Condition on 1st step, write recursion for $P(A)$, solve.
+
+\textbf{4. Tail sum:} $E[X]=\sum_{k\geq 1}P(X\geq k)$ for $X\in\{0,1,\ldots\}$.
+
+\textbf{5. $E[X^2]=\text{Var}+\mu^2$:} Always use this to recover second moments.
+
+\textbf{6. Tower property:} $E[X]=E[E[X|Y]]$ to decompose by cases.
+
+\textbf{7. MGF method:} Multiply MGFs of indep RVs, recognize distribution.
+
+\textbf{8. Poisson approx:} $n$ large, $p$ small $\Rightarrow$ Bin$(n,p)\approx$Pois$(np)$.
+
+\textbf{9. Sequential Bayes:} Use posterior as new prior.
+
+\textbf{10. Complementary counting:} $P(A)=1-P(A^c)$.
+
+\section{Common Exam Traps}
+
+$\bullet$ Linearity of $E$ needs NO independence; $\text{Var}$ of sum DOES.
+
+$\bullet$ Mutually exclusive $\neq$ independent.
+
+$\bullet$ $P(A|B)+P(A|B^c)\neq 1$. Correct: $P(A|B)+P(A^c|B)=1$.
+
+$\bullet$ $E[X^2]\neq (E[X])^2$ unless $\text{Var}=0$.
+
+$\bullet$ Geometric starts at $k=1$; NegBin$(r,p)$ at $k=r$.
+
+$\bullet$ When probability depends on a random $N$: \textbf{must condition} on $N$ using LOTP.
+
+$\bullet$ Always \textbf{justify} steps: name distributions, cite formulas, state independence.
+
+$\bullet$ Don't forget to divide by $P(\text{conditioning event})$.
+
+\end{multicols}
+\end{document}

@@ -1,0 +1,310 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{tikz}
+
+\title{Understanding the von Neumann-Morgenstern Axioms: \\ An Intuitive Guide}
+\author{}
+\date{}
+
+\newtheorem{axiom}{Axiom}
+\newtheorem{example}{Example}
+
+\definecolor{examplecolor}{RGB}{230,240,255}
+\definecolor{intuitioncolor}{RGB}{255,250,230}
+
+\begin{document}
+
+\maketitle
+
+\section{What Are the vNM Axioms?}
+
+The \textbf{von Neumann-Morgenstern (vNM) axioms} are a set of assumptions about how rational people make decisions when facing uncertainty. If someone's preferences satisfy these axioms, we can represent their choices using an \textbf{expected utility function}.
+
+\textbf{Why do we care?} These axioms let us mathematically model decision-making under risk. If you satisfy these axioms, your preferences can be represented by calculating expected utilities—just like how you might compare gambles by computing their expected values, but accounting for risk attitudes.
+
+\vspace{0.3cm}
+
+\noindent\textbf{The Four Axioms:}
+\begin{enumerate}
+\item \textbf{Completeness} — You can always compare any two lotteries
+\item \textbf{Transitivity} — Your preferences are consistent
+\item \textbf{Continuity} — No lottery is infinitely better or worse than others
+\item \textbf{Independence} — Your preferences between two lotteries don't change when you mix both with a third lottery
+\end{enumerate}
+
+Let's explore each one with intuition and examples.
+
+\newpage
+
+\section{Axiom 1: Completeness}
+
+\begin{axiom}[Completeness]
+For any two lotteries $L$ and $M$, you can always say one of the following:
+\begin{itemize}
+\item $L \succeq M$ (you prefer $L$ to $M$ or are indifferent), OR
+\item $M \succeq L$ (you prefer $M$ to $L$ or are indifferent)
+\end{itemize}
+\end{axiom}
+
+\begin{tcolorbox}[colback=intuitioncolor,colframe=orange!75!black,title=Intuition]
+You're never "stuck" when comparing two gambles. You can always make a choice (even if it's "I don't care, they're equally good"). You don't refuse to compare them or say "these are incomparable."
+\end{tcolorbox}
+
+\begin{example}[Completeness]
+Consider two lotteries:
+\begin{itemize}
+\item \textbf{Lottery A:} Win \$100 with 50\% probability, \$0 with 50\% probability
+\item \textbf{Lottery B:} Win \$50 with certainty
+\end{itemize}
+
+Completeness says you can compare these. You might prefer A (if you like risk), or prefer B (if you're risk-averse), or be indifferent. But you can't say "I refuse to compare them."
+
+\vspace{0.2cm}
+
+\textbf{Violation Example:} If you said "I literally cannot compare getting money versus getting time off work—they're incomparable," that would violate completeness.
+\end{example}
+
+\newpage
+
+\section{Axiom 2: Transitivity}
+
+\begin{axiom}[Transitivity]
+If you prefer lottery $L$ to lottery $M$, and you prefer lottery $M$ to lottery $N$, then you must prefer lottery $L$ to lottery $N$.
+
+Mathematically: If $L \succeq M$ and $M \succeq N$, then $L \succeq N$.
+\end{axiom}
+
+\begin{tcolorbox}[colback=intuitioncolor,colframe=orange!75!black,title=Intuition]
+Your preferences don't have cycles. You can't have a situation where you prefer A to B, B to C, but then C to A—that would be inconsistent and open you up to being exploited (Dutch book).
+\end{tcolorbox}
+
+\begin{example}[Transitivity]
+Consider three lotteries:
+\begin{itemize}
+\item \textbf{Lottery A:} \$100 for sure
+\item \textbf{Lottery B:} \$80 for sure
+\item \textbf{Lottery C:} \$60 for sure
+\end{itemize}
+
+If you prefer A to B, and B to C, then transitivity requires that you prefer A to C. This seems obvious with money!
+
+\vspace{0.2cm}
+
+\textbf{Violation Example (the "money pump"):} Suppose you:
+\begin{itemize}
+\item Prefer an apple to a banana
+\item Prefer a banana to a cherry
+\item Prefer a cherry to an apple (cycle!)
+\end{itemize}
+
+I could exploit you: Start with a cherry, offer to trade for an apple (you pay me 1 cent for the upgrade), then offer a banana (you pay another cent), then offer a cherry (you pay another cent), and we're back where we started—but you're 3 cents poorer! I can repeat this forever.
+\end{example}
+
+\newpage
+
+\section{Axiom 3: Continuity}
+
+\begin{axiom}[Continuity]
+Suppose $L \succ M \succ N$ (you strictly prefer $L$ to $M$ and $M$ to $N$). Then there exists some probability $p \in (0,1)$ such that you're indifferent between:
+\begin{itemize}
+\item Getting $M$ for sure, versus
+\item A lottery that gives $L$ with probability $p$ and $N$ with probability $1-p$
+\end{itemize}
+
+We write: $M \sim pL + (1-p)N$
+\end{axiom}
+
+\begin{tcolorbox}[colback=intuitioncolor,colframe=orange!75!black,title=Intuition]
+No outcome is infinitely better or infinitely worse than another. Even if you really love $L$ and hate $N$, there's some probability that makes you willing to gamble on getting $L$ vs. $N$ rather than taking $M$ for sure.
+
+This rules out "lexicographic" preferences (e.g., "I care infinitely more about my health than money—no amount of money could compensate for any health loss").
+\end{tcolorbox}
+
+\begin{example}[Continuity]
+Suppose:
+\begin{itemize}
+\item \textbf{L:} Win \$1000
+\item \textbf{M:} Win \$500
+\item \textbf{N:} Win \$0
+\end{itemize}
+
+You prefer $L \succ M \succ N$. Continuity says there's some probability $p$ where you'd be indifferent between:
+\begin{itemize}
+\item Taking \$500 for sure
+\item A gamble: \$1000 with probability $p$, \$0 with probability $1-p$
+\end{itemize}
+
+Maybe for you, $p = 0.6$ makes you indifferent. That means:
+$$M \sim 0.6L + 0.4N$$
+
+\vspace{0.2cm}
+
+\textbf{Violation Example:} "I will never, under any circumstances, risk my life for money. Even a 99.99999\% chance of surviving for \$1 billion is worse than staying safe." This violates continuity because you're treating life as infinitely valuable compared to money.
+\end{example}
+
+\newpage
+
+\section{Axiom 4: Independence}
+
+\begin{axiom}[Independence]
+Suppose you prefer lottery $L$ to lottery $M$: $L \succ M$. Now consider mixing both lotteries with a third lottery $N$ using the same probability $p$.
+
+Then you must prefer:
+$$pL + (1-p)N \succ pM + (1-p)N$$
+
+In other words, your preference between $L$ and $M$ is preserved when you "mix" both with the same third option.
+\end{axiom}
+
+\begin{tcolorbox}[colback=intuitioncolor,colframe=orange!75!black,title=Intuition]
+The "common consequence" shouldn't matter. If you prefer L to M, then mixing both with some irrelevant third option N (with the same probability) shouldn't flip your preference.
+
+Think of it this way: If I prefer chocolate to vanilla ice cream, I should still prefer a lottery that gives "chocolate or nothing" to one that gives "vanilla or nothing" when both have the same probability of getting nothing.
+\end{tcolorbox}
+
+\begin{example}[Independence]
+Suppose you prefer:
+\begin{itemize}
+\item \textbf{Lottery L:} \$100 for sure
+\item over \textbf{Lottery M:} \$50 for sure
+\end{itemize}
+
+Now consider a third lottery:
+\begin{itemize}
+\item \textbf{Lottery N:} \$0 for sure
+\end{itemize}
+
+Independence says you should also prefer:
+\begin{itemize}
+\item \textbf{0.5L + 0.5N:} 50\% chance of \$100, 50\% chance of \$0
+\item over \textbf{0.5M + 0.5N:} 50\% chance of \$50, 50\% chance of \$0
+\end{itemize}
+
+This makes sense! If you like the first lottery better, mixing both with the same "bad" outcome shouldn't change your mind.
+\end{example}
+
+\newpage
+
+\subsection{Famous Violations: The Allais Paradox}
+
+Many people violate independence in systematic ways. Here's a famous example:
+
+\begin{tcolorbox}[colback=examplecolor,colframe=blue!75!black,title=The Allais Paradox]
+\textbf{Choice 1:} Which do you prefer?
+\begin{itemize}
+\item \textbf{Option A:} \$1 million for sure
+\item \textbf{Option B:} \$5 million with 10\% chance, \$1 million with 89\% chance, \$0 with 1\% chance
+\end{itemize}
+
+Most people choose \textbf{A} (the sure thing).
+
+\vspace{0.3cm}
+
+\textbf{Choice 2:} Which do you prefer?
+\begin{itemize}
+\item \textbf{Option C:} \$1 million with 11\% chance, \$0 with 89\% chance
+\item \textbf{Option D:} \$5 million with 10\% chance, \$0 with 90\% chance
+\end{itemize}
+
+Most people choose \textbf{D} (the risky gamble).
+
+\vspace{0.3cm}
+
+\textbf{Why is this a violation?}
+
+Notice that:
+\begin{align*}
+\text{Option A} &= \$1M \text{ for sure} \\
+\text{Option B} &= 0.1 \times (\$5M) + 0.89 \times (\$1M) + 0.01 \times (\$0)
+\end{align*}
+
+We can rewrite:
+\begin{align*}
+\text{Option A} &= 0.11 \times (\$1M) + 0.89 \times (\$1M) \\
+\text{Option B} &= 0.11 \times [0.1/0.11 \times \$5M + 0.01/0.11 \times \$0] + 0.89 \times (\$1M)
+\end{align*}
+
+Options C and D are just A and B with the "common consequence" (the 89\% chance of \$1M) replaced with \$0!
+
+If you follow independence, preferring A to B means you should prefer C to D. But most people reverse their preferences—a violation of independence.
+\end{tcolorbox}
+
+\newpage
+
+\section{Putting It All Together: Expected Utility}
+
+\subsection{The Big Result}
+
+If your preferences satisfy all four vNM axioms, then there exists a utility function $u$ such that you rank lotteries by their \textbf{expected utility}.
+
+For a lottery $L$ that gives outcome $x_i$ with probability $p_i$:
+$$U(L) = \sum_{i} p_i \cdot u(x_i)$$
+
+You prefer lottery $L$ to lottery $M$ if and only if:
+$$U(L) > U(M)$$
+
+\subsection{What This Means}
+
+\begin{itemize}
+\item The utility function $u$ assigns numbers to outcomes (e.g., amounts of money)
+\item You evaluate lotteries by computing the probability-weighted average of these utilities
+\item This is NOT the same as expected monetary value (unless you're risk-neutral)
+\item The utility function captures your risk attitudes:
+\begin{itemize}
+\item \textbf{Concave $u$} (e.g., $u(x) = \sqrt{x}$): risk-averse
+\item \textbf{Linear $u$} (e.g., $u(x) = x$): risk-neutral
+\item \textbf{Convex $u$} (e.g., $u(x) = x^2$): risk-loving
+\end{itemize}
+\end{itemize}
+
+\subsection{Concrete Example}
+
+Suppose your utility function is $u(x) = \sqrt{x}$ (risk-averse).
+
+Compare:
+\begin{itemize}
+\item \textbf{Lottery A:} \$100 for sure
+\item \textbf{Lottery B:} \$400 with 50\% chance, \$0 with 50\% chance
+\end{itemize}
+
+Expected monetary values:
+\begin{align*}
+E[\text{Lottery A}] &= \$100 \\
+E[\text{Lottery B}] &= 0.5(400) + 0.5(0) = \$200
+\end{align*}
+
+But expected utilities:
+\begin{align*}
+U(\text{Lottery A}) &= \sqrt{100} = 10 \\
+U(\text{Lottery B}) &= 0.5\sqrt{400} + 0.5\sqrt{0} = 0.5(20) + 0 = 10
+\end{align*}
+
+You're \textbf{indifferent} between the sure \$100 and the risky \$200 (in expectation)! That's risk aversion.
+
+\newpage
+
+\section{Summary}
+
+\begin{tcolorbox}[colback=green!10,colframe=green!50!black,title=Key Takeaways]
+\begin{enumerate}
+\item \textbf{Completeness:} You can compare any two lotteries
+\item \textbf{Transitivity:} Your preferences don't have cycles
+\item \textbf{Continuity:} No outcome is infinitely better/worse
+\item \textbf{Independence:} Mixing both lotteries with a third doesn't flip your preference
+\end{enumerate}
+
+\vspace{0.2cm}
+
+If you satisfy these axioms, your choices can be represented by maximizing expected utility with some utility function $u$.
+
+\vspace{0.2cm}
+
+\textbf{Real-world note:} Many people violate these axioms (especially independence) in predictable ways. Behavioral economics studies these violations (e.g., Allais paradox, framing effects). But vNM axioms remain the foundation of rational choice theory under uncertainty.
+\end{tcolorbox}
+
+\end{document}

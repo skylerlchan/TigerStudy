@@ -1,0 +1,44 @@
+{
+  "f21_q1a": "green",
+  "f21_q1b": "green",
+  "f21_q1c": {
+    "status": "red",
+    "notes": "understand the assumptions "
+  },
+  "f21_q2a": {
+    "status": "yellow",
+    "notes": ""
+  },
+  "f21_q2b": {
+    "status": "red",
+    "notes": "understand independence "
+  },
+  "f21_q2c": {
+    "status": "red",
+    "notes": "very difficult, use diagram \n"
+  },
+  "f21_q3a": {
+    "status": "red",
+    "notes": "binomial distribution set up\n"
+  },
+  "f21_q3b": {
+    "status": "red",
+    "notes": "what is geom distribution? \n"
+  },
+  "f21_q3c": {
+    "status": "red",
+    "notes": "how to work out complex prob!!!"
+  },
+  "sp25_q1a": {
+    "status": "green",
+    "notes": ""
+  },
+  "sp25_q1b": {
+    "status": "green",
+    "notes": ""
+  },
+  "sp25_q1c": {
+    "status": "red",
+    "notes": ""
+  }
+}

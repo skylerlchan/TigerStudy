@@ -1,0 +1,279 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{tikz}
+
+\title{Spring 2025 MC Problem 3: Perfect Complements\\Marshallian vs. Hicksian Demand}
+\author{ECO 310}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{The Problem}
+
+Assume utility $u(x_1, x_2) = \min\{4x_1, x_2\}$. The Hicksian demand bundle is given by:
+
+\begin{enumerate}
+    \item[(a)] $(4u^*, u^*)$
+    \item[(b)] $\left(\frac{u^*}{4}, u^*\right)$ \quad \textcolor{red}{$\checkmark$ CORRECT}
+    \item[(c)] $\left(u^*, \frac{u^*}{4}\right)$
+    \item[(d)] $(u^*, 4u^*)$
+\end{enumerate}
+
+The problem asks for \textbf{Hicksian demand}, but let's compare it with Marshallian demand to understand the difference.
+
+\section{Perfect Complements Intuition}
+
+With $u(x_1, x_2) = \min\{4x_1, x_2\}$, goods are consumed in a \textbf{fixed ratio} to avoid waste.
+
+\subsection{The Kink Condition}
+
+Utility is determined by the minimum of $4x_1$ and $x_2$. To maximize utility without wasting money:
+\[
+\boxed{4x_1 = x_2}
+\]
+
+This is like left shoes and right shoes: you need them in a specific ratio. Here, for every 1 unit of good 1, you need 4 units of good 2.
+
+\subsection{Graphical Representation}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.2]
+% Axes
+\draw[->] (0,0) -- (5,0) node[right] {$x_1$};
+\draw[->] (0,0) -- (0,5) node[above] {$x_2$};
+
+% Indifference curves (L-shaped)
+\draw[thick, blue] (0.5, 5) -- (0.5, 2) -- (5, 2);
+\node[blue, right] at (5, 2) {$u = 2$};
+
+\draw[thick, blue] (1, 5) -- (1, 4) -- (5, 4);
+\node[blue, right] at (5, 4) {$u = 4$};
+
+% Optimal consumption line
+\draw[thick, red, dashed] (0, 0) -- (4, 4);
+\node[red, above right] at (2.5, 2.5) {$x_2 = 4x_1$};
+
+% Kink points
+\filldraw[blue] (0.5, 2) circle (2pt);
+\filldraw[blue] (1, 4) circle (2pt);
+
+% Labels
+\node[below] at (0.5, 0) {$0.5$};
+\node[below] at (1, 0) {$1$};
+\node[left] at (0, 2) {$2$};
+\node[left] at (0, 4) {$4$};
+
+\end{tikzpicture}
+\end{center}
+
+The consumer always chooses bundles along the line $x_2 = 4x_1$ (the red dashed line where the kinks occur).
+
+\section{Marshallian Demand (Income Fixed)}
+
+\subsection{The Problem}
+
+\textbf{Maximize} utility subject to a budget constraint:
+\[
+\max_{x_1, x_2} \, \min\{4x_1, x_2\} \quad \text{subject to} \quad p_1 x_1 + p_2 x_2 = m
+\]
+
+\textbf{What's fixed:} Income $m$ and prices $(p_1, p_2)$
+
+\textbf{Question:} ``Given my income $m$, what should I buy?''
+
+\subsection{Solution}
+
+\textbf{Step 1:} Set the kink condition $4x_1 = x_2$ (optimal allocation)
+
+\textbf{Step 2:} Substitute into the budget constraint:
+\begin{align*}
+p_1 x_1 + p_2 x_2 &= m \\
+p_1 x_1 + p_2(4x_1) &= m \\
+x_1(p_1 + 4p_2) &= m
+\end{align*}
+
+\textbf{Step 3:} Solve for $x_1$ and $x_2$:
+\[
+\boxed{x_1^*(p_1, p_2, m) = \frac{m}{p_1 + 4p_2}}
+\]
+\[
+\boxed{x_2^*(p_1, p_2, m) = 4x_1^* = \frac{4m}{p_1 + 4p_2}}
+\]
+
+\subsection{Properties}
+
+\begin{itemize}
+    \item Depends on \textbf{income $m$} and \textbf{prices}
+    \item Observable in real markets
+    \item Also called ``uncompensated demand''
+\end{itemize}
+
+\section{Hicksian Demand (Utility Fixed)}
+
+\subsection{The Problem}
+
+\textbf{Minimize} expenditure subject to achieving a target utility:
+\[
+\min_{x_1, x_2} \, p_1 x_1 + p_2 x_2 \quad \text{subject to} \quad \min\{4x_1, x_2\} = u^*
+\]
+
+\textbf{What's fixed:} Target utility $u^*$ and prices $(p_1, p_2)$
+
+\textbf{Question:} ``What's the cheapest way to achieve utility $u^*$?''
+
+\subsection{Solution}
+
+\textbf{Step 1:} Set the kink condition $4x_1 = x_2$ (optimal allocation)
+
+\textbf{Step 2:} Substitute into the utility constraint:
+\[
+u^* = \min\{4x_1, x_2\} = \min\{4x_1, 4x_1\} = 4x_1
+\]
+
+\textbf{Step 3:} Solve for $x_1$:
+\[
+x_1 = \frac{u^*}{4}
+\]
+
+\textbf{Step 4:} Use the kink condition to find $x_2$:
+\[
+x_2 = 4x_1 = 4 \cdot \frac{u^*}{4} = u^*
+\]
+
+\subsection{Final Answer}
+
+\[
+\boxed{h_1(p_1, p_2, u^*) = \frac{u^*}{4}}
+\]
+\[
+\boxed{h_2(p_1, p_2, u^*) = u^*}
+\]
+
+This is answer \textbf{(b)}: $\left(\frac{u^*}{4}, u^*\right)$
+
+\subsection{Properties}
+
+\begin{itemize}
+    \item Depends on \textbf{target utility $u^*$} (not income!)
+    \item For perfect complements, \textbf{independent of prices} (the ratio is always fixed)
+    \item Also called ``compensated demand''
+    \item Theoretical construct, not directly observable
+\end{itemize}
+
+\section{Key Difference: Prices Don't Affect Hicksian for Perfect Complements}
+
+Notice something surprising: Hicksian demand $\left(\frac{u^*}{4}, u^*\right)$ doesn't depend on $p_1$ or $p_2$!
+
+\textbf{Why?} With perfect complements, you \textbf{must} consume in the fixed ratio $x_2 = 4x_1$ no matter what. If you want utility $u^*$, you need exactly:
+\begin{itemize}
+    \item $\frac{u^*}{4}$ units of good 1
+    \item $u^*$ units of good 2
+\end{itemize}
+
+There's no substitution possible. Prices only affect the \textbf{total cost}, not the \textbf{quantities}.
+
+\section{Comparison Table}
+
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Feature} & \textbf{Marshallian} & \textbf{Hicksian} \\
+\hline
+Problem & Max $u$ s.t. $p \cdot x = m$ & Min $p \cdot x$ s.t. $u = u^*$ \\
+\hline
+Fixed variable & Income $m$ & Utility $u^*$ \\
+\hline
+Kink condition & $x_2 = 4x_1$ & $x_2 = 4x_1$ \\
+\hline
+$x_1$ demand & $\dfrac{m}{p_1 + 4p_2}$ & $\dfrac{u^*}{4}$ \\
+\hline
+$x_2$ demand & $\dfrac{4m}{p_1 + 4p_2}$ & $u^*$ \\
+\hline
+Depends on prices? & Yes & No (for perfect compl.) \\
+\hline
+Depends on income? & Yes & No \\
+\hline
+Depends on utility? & No (achieved, not fixed) & Yes (fixed) \\
+\hline
+\end{tabular}
+\end{center}
+
+\section{Numerical Example}
+
+Let $p_1 = 1$, $p_2 = 2$, and $m = 18$.
+
+\subsection{Marshallian Approach}
+
+Find the optimal bundle given income $m = 18$:
+\begin{align*}
+x_1^* &= \frac{18}{1 + 4(2)} = \frac{18}{9} = 2 \\
+x_2^* &= \frac{4(18)}{1 + 4(2)} = \frac{72}{9} = 8
+\end{align*}
+
+Check: $p_1 x_1 + p_2 x_2 = 1(2) + 2(8) = 18$ \checkmark
+
+Achieved utility: $u^* = \min\{4(2), 8\} = \min\{8, 8\} = 8$
+
+\subsection{Hicksian Approach}
+
+Now suppose we want to achieve utility $u^* = 8$ as cheaply as possible:
+\begin{align*}
+h_1 &= \frac{8}{4} = 2 \\
+h_2 &= 8
+\end{align*}
+
+Total expenditure: $e(p_1, p_2, u^*) = 1(2) + 2(8) = 18$
+
+\subsection{Duality}
+
+Notice: Both approaches give the \textbf{same bundle} $(2, 8)$!
+
+This demonstrates the duality relationship:
+\[
+x^*(p, m) = h(p, u^*) \quad \text{where } u^* = u(x^*(p, m))
+\]
+
+The Marshallian demand at income $m$ equals the Hicksian demand at the utility level achieved with income $m$.
+
+\section{Why Answer (b) is Correct}
+
+The question asks for Hicksian demand with utility $u^*$. Using the constraint $\min\{4x_1, x_2\} = u^*$ and the kink condition $4x_1 = x_2$:
+
+\begin{align*}
+u^* &= 4x_1 = x_2 \\
+\Rightarrow x_1 &= \frac{u^*}{4} \\
+\Rightarrow x_2 &= u^*
+\end{align*}
+
+Therefore, the Hicksian demand bundle is: $\boxed{\left(\frac{u^*}{4}, u^*\right)}$ which is answer \textbf{(b)}.
+
+\section{Common Mistakes}
+
+\begin{enumerate}
+    \item \textbf{Confusing Marshallian with Hicksian:} Marshallian depends on $m$, Hicksian depends on $u^*$
+
+    \item \textbf{Getting the ratio backwards:} The constraint is $u = \min\{4x_1, x_2\}$, so we need $4x_1 = x_2$, which means $x_1 = \frac{x_2}{4}$ or equivalently $x_1 = \frac{u^*}{4}$
+
+    \item \textbf{Forgetting prices don't matter:} For perfect complements, Hicksian demand doesn't depend on prices because the ratio is fixed
+\end{enumerate}
+
+\section{Summary}
+
+\begin{itemize}
+    \item \textbf{Perfect complements} require fixed consumption ratio: $x_2 = 4x_1$
+
+    \item \textbf{Marshallian demand}: Given income $m$, buy $\left(\frac{m}{p_1 + 4p_2}, \frac{4m}{p_1 + 4p_2}\right)$
+
+    \item \textbf{Hicksian demand}: To achieve utility $u^*$, buy $\left(\frac{u^*}{4}, u^*\right)$
+
+    \item For perfect complements, Hicksian demand is \textbf{independent of prices}
+
+    \item The two demands are related through duality: same bundle at corresponding income/utility levels
+\end{itemize}
+
+\end{document}

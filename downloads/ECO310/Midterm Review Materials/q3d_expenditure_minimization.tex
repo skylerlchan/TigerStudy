@@ -1,0 +1,223 @@
+\documentclass[12pt]{article}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+
+\title{\textbf{Q3d: Expenditure Minimization with Log Utility}}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{The Question}
+
+\textbf{Given:} Melsi has preferences $u(C_1, C_2) = v(C_1) + v(C_2)$ where $v$ is increasing and concave.
+
+For part (d), we specialize to $v(C) = \ln C$.
+
+\vspace{0.3cm}
+
+\textbf{Question:} What bundle $(C_1, C_2)$ most efficiently (i.e., cheaply) attains utility $u^*$?
+
+\section*{What This Question Is Really Asking}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
+This is an \textbf{expenditure minimization problem}, NOT a utility maximization problem!
+
+\vspace{0.3cm}
+
+\textbf{Standard problem:} Given prices and income, maximize utility
+\[\max_{C_1, C_2} \quad u(C_1, C_2) \quad \text{subject to} \quad p_1 C_1 + p_2 C_2 = m\]
+
+\vspace{0.3cm}
+
+\textbf{This problem (dual):} Given prices and a target utility level $u^*$, minimize expenditure
+\[\min_{C_1, C_2} \quad p_1 C_1 + p_2 C_2 \quad \text{subject to} \quad u(C_1, C_2) = u^*\]
+\end{tcolorbox}
+
+\textbf{Key difference:}
+\begin{itemize}
+\item Standard: "Here's your budget, get the most utility"
+\item Expenditure minimization: "Here's the utility you need to reach, spend as little as possible"
+\end{itemize}
+
+\newpage
+
+\section*{Step-by-Step Solution}
+
+\subsection*{Step 1: Recall the setup from part (c)}
+
+From the budget constraint in standard form: $2C_1 + C_2 \leq 2w_1$
+
+So the prices are:
+\begin{itemize}
+\item $p_1 = 2$ (price of $C_1$)
+\item $p_2 = 1$ (price of $C_2$)
+\end{itemize}
+
+With $v(C) = \ln C$, the utility function is:
+\[u(C_1, C_2) = \ln C_1 + \ln C_2\]
+
+\subsection*{Step 2: Set up the expenditure minimization problem}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=orange!75!black]
+We want to:
+\[\min_{C_1, C_2} \quad 2C_1 + C_2\]
+subject to:
+\[\ln C_1 + \ln C_2 = u^*\]
+\end{tcolorbox}
+
+\subsection*{Step 3: Find the optimal condition (MRS = price ratio)}
+
+At the optimal bundle, the marginal rate of substitution must equal the price ratio:
+\[\frac{MU_1}{MU_2} = \frac{p_1}{p_2}\]
+
+Calculate marginal utilities:
+\begin{align*}
+MU_1 &= \frac{\partial u}{\partial C_1} = \frac{\partial}{\partial C_1}(\ln C_1 + \ln C_2) = \frac{1}{C_1} \\
+MU_2 &= \frac{\partial u}{\partial C_2} = \frac{\partial}{\partial C_2}(\ln C_1 + \ln C_2) = \frac{1}{C_2}
+\end{align*}
+
+So the optimal condition is:
+\[\frac{MU_1}{MU_2} = \frac{1/C_1}{1/C_2} = \frac{C_2}{C_1} = \frac{p_1}{p_2} = \frac{2}{1} = 2\]
+
+\begin{tcolorbox}[colback=green!10!white,colframe=green!75!black]
+\textbf{First condition:}
+\[\frac{C_2}{C_1} = 2 \quad \Rightarrow \quad \boxed{C_2 = 2C_1}\]
+\end{tcolorbox}
+
+\newpage
+
+\subsection*{Step 4: Use the utility constraint}
+
+The second condition is that we must achieve utility $u^*$:
+\[\ln C_1 + \ln C_2 = u^*\]
+
+\subsection*{Step 5: Substitute $C_2 = 2C_1$ into the utility constraint}
+
+\begin{align*}
+\ln C_1 + \ln(2C_1) &= u^* \\
+\ln C_1 + \ln 2 + \ln C_1 &= u^* \quad \text{(using } \ln(ab) = \ln a + \ln b\text{)} \\
+2\ln C_1 + \ln 2 &= u^* \\
+\ln(C_1^2) + \ln 2 &= u^* \quad \text{(using } n\ln a = \ln(a^n)\text{)} \\
+\ln(2C_1^2) &= u^* \quad \text{(using } \ln a + \ln b = \ln(ab)\text{)}
+\end{align*}
+
+\subsection*{Step 6: Solve for $C_1$}
+
+Exponentiate both sides:
+\[2C_1^2 = e^{u^*}\]
+
+Divide by 2:
+\[C_1^2 = \frac{e^{u^*}}{2} = \frac{1}{2}e^{u^*}\]
+
+Take the square root:
+\[C_1 = \sqrt{\frac{1}{2}e^{u^*}}\]
+
+We can rewrite this using exponent rules: $\sqrt{ab} = \sqrt{a}\sqrt{b}$ and $\sqrt{e^{u^*}} = e^{u^*/2}$
+
+\begin{tcolorbox}[colback=yellow!20!white,colframe=orange!75!black]
+\textbf{Solution for $C_1$:}
+\[C_1 = \sqrt{\frac{1}{2}}e^{u^*/2} = \frac{1}{\sqrt{2}}e^{u^*/2} = \boxed{\sqrt{\frac{1}{2}e^{u^*/2}}}\]
+
+Or equivalently:
+\[\boxed{C_1 = \frac{e^{u^*/2}}{\sqrt{2}}}\]
+\end{tcolorbox}
+
+\newpage
+
+\subsection*{Step 7: Find $C_2$}
+
+Using $C_2 = 2C_1$:
+\begin{align*}
+C_2 &= 2C_1 \\
+&= 2 \cdot \sqrt{\frac{1}{2}e^{u^*/2}} \\
+&= 2 \cdot \frac{1}{\sqrt{2}} \cdot e^{u^*/2} \\
+&= \frac{2}{\sqrt{2}} \cdot e^{u^*/2} \\
+&= \sqrt{2} \cdot e^{u^*/2} \quad \text{(since } \frac{2}{\sqrt{2}} = \frac{2\sqrt{2}}{2} = \sqrt{2}\text{)}
+\end{align*}
+
+We can also write this as:
+\[C_2 = \sqrt{2 \cdot e^{u^*/2}}\]
+
+\begin{tcolorbox}[colback=yellow!20!white,colframe=orange!75!black]
+\textbf{Solution for $C_2$:}
+\[\boxed{C_2 = \sqrt{2}e^{u^*/2} = \sqrt{2e^{u^*/2}}}\]
+\end{tcolorbox}
+
+\section*{Final Answer}
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black]
+The bundle that most cheaply attains utility $u^*$ is:
+
+\[C_1 = \sqrt{\frac{1}{2}e^{u^*/2}} = \frac{e^{u^*/2}}{\sqrt{2}}\]
+
+\[C_2 = \sqrt{2e^{u^*/2}} = \sqrt{2}e^{u^*/2}\]
+
+\vspace{0.3cm}
+
+\textbf{Check the ratio:}
+\[\frac{C_2}{C_1} = \frac{\sqrt{2}e^{u^*/2}}{\frac{e^{u^*/2}}{\sqrt{2}}} = \sqrt{2} \cdot \sqrt{2} = 2 \quad \checkmark\]
+
+\textbf{Check the utility:}
+\begin{align*}
+\ln C_1 + \ln C_2 &= \ln\left(\frac{e^{u^*/2}}{\sqrt{2}}\right) + \ln\left(\sqrt{2}e^{u^*/2}\right) \\
+&= \left(\frac{u^*}{2} - \frac{1}{2}\ln 2\right) + \left(\frac{1}{2}\ln 2 + \frac{u^*}{2}\right) \\
+&= \frac{u^*}{2} + \frac{u^*}{2} \\
+&= u^* \quad \checkmark
+\end{align*}
+\end{tcolorbox}
+
+\newpage
+
+\section*{Why This Makes Economic Sense}
+
+\subsection*{The Optimal Ratio}
+
+The condition $C_2 = 2C_1$ tells us:
+\begin{itemize}
+\item Good 1 costs twice as much as good 2 ($p_1 = 2$, $p_2 = 1$)
+\item To minimize cost while staying on the same indifference curve, we should consume twice as much of the cheaper good
+\item This is because with log utility, the MRS equals the consumption ratio: $\frac{C_2}{C_1} = \frac{p_1}{p_2}$
+\end{itemize}
+
+\subsection*{Connection to Standard Problem}
+
+In the standard utility maximization problem:
+\begin{itemize}
+\item We're given income $m$ and prices $(p_1, p_2)$
+\item We maximize $u(C_1, C_2)$ subject to $p_1 C_1 + p_2 C_2 = m$
+\item We find the optimal bundle $(C_1^*, C_2^*)$ that achieves some utility level $u^*$
+\end{itemize}
+
+In the expenditure minimization problem (this question):
+\begin{itemize}
+\item We're given the target utility $u^*$ and prices $(p_1, p_2)$
+\item We minimize $p_1 C_1 + p_2 C_2$ subject to $u(C_1, C_2) = u^*$
+\item We find the cheapest bundle that achieves $u^*$
+\end{itemize}
+
+\textbf{Key insight:} These two problems give the \textit{same} bundle! The optimal bundle from utility maximization with income $m$ is also the cheapest way to achieve the resulting utility level.
+
+\section*{Alternative Approach: Lagrangian}
+
+You can also solve this using the Lagrangian method:
+
+\[\mathcal{L} = 2C_1 + C_2 - \lambda(\ln C_1 + \ln C_2 - u^*)\]
+
+First-order conditions:
+\begin{align*}
+\frac{\partial \mathcal{L}}{\partial C_1} &= 2 - \frac{\lambda}{C_1} = 0 \quad \Rightarrow \quad \lambda = 2C_1 \\
+\frac{\partial \mathcal{L}}{\partial C_2} &= 1 - \frac{\lambda}{C_2} = 0 \quad \Rightarrow \quad \lambda = C_2 \\
+\frac{\partial \mathcal{L}}{\partial \lambda} &= \ln C_1 + \ln C_2 - u^* = 0
+\end{align*}
+
+From the first two conditions: $2C_1 = C_2$, which matches what we found!
+
+Then substitute into the constraint and solve as before.
+
+\end{document}

@@ -1,0 +1,541 @@
+\documentclass[11pt, letterpaper]{article}
+
+\usepackage[margin=1in, headheight=22pt, headsep=12pt]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{microtype}
+\usepackage{parskip}
+\usepackage{booktabs}
+\usepackage{sectsty}
+\usepackage{amssymb}
+
+% --- Color Definitions ---
+\definecolor{accent}{HTML}{2C3E6B}
+\definecolor{subaccent}{HTML}{5B7BA5}
+\definecolor{rulecolor}{HTML}{CCCCCC}
+\definecolor{darktext}{HTML}{1A1A1A}
+\definecolor{greenzone}{HTML}{2E7D32}
+\definecolor{yellowzone}{HTML}{F9A825}
+\definecolor{redzone}{HTML}{C62828}
+\definecolor{grayzone}{HTML}{616161}
+\definecolor{lightbg}{HTML}{F5F5F5}
+
+% --- Hyperlink Setup ---
+\hypersetup{
+    colorlinks=true,
+    linkcolor=accent,
+    urlcolor=subaccent,
+    pdftitle={Week 2: Big Bands and the Swing Era - Quiz Study Guide},
+    pdfauthor={MUS 262},
+}
+
+% --- Section Formatting ---
+\titleformat{\section}
+    {\Large\bfseries\color{accent}}
+    {\thesection}{1em}{}
+    [\vspace{-0.5em}\textcolor{rulecolor}{\rule{\textwidth}{0.4pt}}]
+
+\titleformat{\subsection}
+    {\large\bfseries\color{subaccent}}
+    {\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+    {\normalsize\bfseries\color{accent}}
+    {\thesubsubsection}{1em}{}
+
+\titlespacing*{\section}{0pt}{1.5em}{0.75em}
+\titlespacing*{\subsection}{0pt}{1em}{0.5em}
+\titlespacing*{\subsubsection}{0pt}{0.75em}{0.4em}
+
+% --- Header/Footer ---
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{rulecolor}\leaders\hrule height \headrulewidth\hfill}}
+\fancyhead[L]{\small\color{gray}MUS 262 --- Week 2: Big Bands \& Swing}
+\fancyhead[R]{\small\color{gray}Quiz Study Guide}
+\fancyfoot[C]{\small\color{gray}\thepage}
+
+% --- List Formatting ---
+\setlist[itemize]{leftmargin=1.5em, itemsep=3pt, parsep=0pt, topsep=4pt}
+\setlist[itemize,2]{leftmargin=1.5em, itemsep=2pt}
+\setlist[enumerate]{leftmargin=1.5em, itemsep=3pt, parsep=0pt, topsep=4pt}
+
+% --- Custom Commands ---
+\newcommand{\listenbox}[1]{\vspace{0.5em}\noindent\fcolorbox{rulecolor}{lightbg}{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule}{\small\textbf{Listen For:} #1}}\vspace{0.5em}}
+
+% --- Body Text ---
+\color{darktext}
+
+\begin{document}
+
+% --- Title Block ---
+\thispagestyle{empty}
+\begin{center}
+    \vspace*{0.5cm}
+    {\Huge\bfseries\color{accent} Week 2: Big Bands \&\\[0.3em] the Swing Era}\\[0.5em]
+    {\Large\color{subaccent} Quiz Study Guide}\\[1em]
+    \textcolor{rulecolor}{\rule{0.6\textwidth}{0.8pt}}\\[0.8em]
+    {\color{gray}\small MUS/AAS 262 --- Jazz History: Many Sounds, Many Voices\\[0.3em]
+    The Big Bands and Swing (1925--1945)}
+    \vspace{1cm}
+\end{center}
+
+\tableofcontents
+\newpage
+
+% ============================================================
+\section{Knowledge Tracker}
+% ============================================================
+
+\textit{Move items between sections as you study. The goal is to get everything into Green.}
+
+\subsection*{\textcolor{greenzone}{Green --- Know From Memory}}
+\begin{itemize}[label=$\square$]
+    \item (move items here as you master them)
+\end{itemize}
+
+\subsection*{\textcolor{yellowzone}{Yellow --- Partial / Need Notes}}
+\begin{itemize}[label=$\square$]
+    \item Fletcher Henderson = innovated 15-piece big band format ($\sim$1924): 3 trumpets, 3 trombones, 5 saxes, 4 rhythm (piano, bass, drums, guitar)
+    \item Duke Ellington coined ``swing'' via ``It Don't Mean a Thing If It Ain't Got That Swing'' (1931 composition, 1932 recording)
+    \item ``Ellington effect'' = coined by Billy Strayhorn (1940); moaning, sustaining passages underneath trumpet melodies
+    \item Contrafact = writing a new melody over a pre-existing chord progression to create a new composition
+    \item ``Rhythm changes'' = chord progression from Gershwin's ``I Got Rhythm''; most commonly used progression in jazz alongside the blues
+\end{itemize}
+
+\subsection*{\textcolor{redzone}{Red --- Didn't Know / Got Wrong}}
+\begin{itemize}[label=$\square$]
+    \item Cotton Club: Ellington was resident composer in Harlem in the 1930s; all performers were Black, all patrons were white
+    \item ``Jungle style'' = pejorative 1930s term for Ellington's West African-inspired sound (plunger mutes, growling brass)
+    \item Papa Joe Jones moved four-on-the-floor from bass drum to hi-hat, creating lighter swing feel; influenced bebop
+    \item Benny Goodman = ``King of Swing'' (controversial; Black bandleaders overlooked); one of first to integrate his band (hired Lionel Hampton, Teddy Wilson, Charlie Christian, Cootie Williams)
+    \item Saxophone replaced clarinet as most prominent wind instrument in jazz during swing era
+\end{itemize}
+
+\subsection*{\textcolor{grayzone}{Not Yet Tested}}
+\begin{itemize}[label=$\square$]
+    \item Duke Ellington (1899--1974): born Washington, DC, upper-middle-class, classically trained; led orchestra 50 years (1923--1974)
+    \item Count Basie (1904--1984): born New Jersey; took over Benny Moten's band in Kansas City after Moten died (1935)
+    \item Head arrangements = compositions created spontaneously in rehearsal ``from the top of your head''
+    \item Riff = short melodic phrase that's repeated; Basie placed much greater emphasis on riffs
+    \item Basie = minimalist (opposite of Ellington's elaborate compositions and harmonies)
+    \item All-American Rhythm Section (1937--1947): Basie (piano), Papa Joe Jones (drums), Walter Page (bass), Freddie Green (guitar)
+    \item Four on the floor = bass drum hitting every quarter note; originated as ``Big Four'' in New Orleans jazz
+    \item Billy Strayhorn wrote ``Take the A Train'' (not Ellington); became Ellington's theme song in the 1940s
+    \item Ellington's five compositional functions: dance songs, jungle style (Cotton Club), mood pieces, pop tunes, abstract compositions
+    \item Big Three tenor saxophonists: Coleman Hawkins (Henderson's band), Lester Young (Basie's band), Ben Webster (Ellington's band)
+    \item Johnny Hodges = Ellington's lead alto saxophonist; dominant voice on alto until Charlie Parker in 1940s
+    \item 32-bar AABA form = standard popular song form (B section = bridge)
+    \item Billie Holiday (1915--1959): voice like an instrument/horn; exchanged nicknames with Lester Young (``Lady Day'' and ``Prez'')
+    \item Ella Fitzgerald (1917--1996): ``First Lady of Song''; four-octave range; master of scat singing
+    \item Coleman Hawkins = ``Father of the Jazz Tenor Saxophone''; vertical approach (playing up and down chord changes)
+    \item Lester Young = ``cool'' sound; horizontal/melodic approach (contrast with Hawkins' ``hot''/vertical style)
+    \item Swing music spread via radio, movies, and recordings; jazz WAS popular music in the 1930s because it was dance music
+    \item Lindy Hop = popular swing-era dance style
+    \item Harlem Renaissance saw Ellington as ``New School'' of Black Americans vs.\ Armstrong as ``old school''
+    \item LeRoi Jones (Amiri Baraka), \textit{Blues People} (1963) = one of first books by an African American scholar on jazz history
+    \item Gunther Schuller wrote \textit{The Swing Era} (companion to \textit{Early Jazz})
+    \item ``Strange Fruit'' (1939) = one of first protest songs in jazz, about lynching; written by Abel Meeropol; Holiday's record company tried to ban it
+\end{itemize}
+
+\newpage
+
+% ============================================================
+\section{The Era: Big Bands and Swing (1925--1945)}
+% ============================================================
+
+\subsection{What This Movement Contributes}
+\begin{enumerate}
+    \item \textbf{Big Band Format} --- Fletcher Henderson created the 15-piece template ($\sim$1924) that remains standard today
+    \item \textbf{Swing as Dance Music} --- jazz became America's popular music; people danced to it (Lindy Hop)
+    \item \textbf{The Saxophone's Rise} --- saxophone overtook clarinet as the dominant jazz wind instrument
+    \item \textbf{Compositional Sophistication} --- Ellington elevated jazz composition (mood pieces, abstract works, descriptive pieces)
+    \item \textbf{The Soloist Within the Ensemble} --- star soloists emerged from big bands (Hawkins, Young, Webster, Hodges)
+    \item \textbf{Contrafact Tradition} --- jazz musicians began building new compositions on existing chord progressions (``rhythm changes'')
+\end{enumerate}
+
+\subsection{Era Characteristics}
+\begin{itemize}
+    \item \textbf{Rhythmic Feel:} Swing rhythm; four-on-the-floor (bass drum or hi-hat); beats 2 and 4
+    \item \textbf{Ensemble Style:} Large bands (15 pieces); section-based writing (brass vs.\ reeds); call-and-response between sections
+    \item \textbf{Improvisation:} Extended solos within arranged frameworks; head arrangements (Basie) vs.\ elaborate compositions (Ellington)
+    \item \textbf{Key Forms:} 32-bar AABA (popular songs, ``rhythm changes''); 12-bar blues still prominent
+    \item \textbf{Technology:} Radio broadcasts, sound film (early 1930s), and recordings spread swing nationally and globally
+    \item \textbf{Sound:} Section playing (saxes in unison, brass in unison); ``hot'' vs.\ ``cool'' soloist approaches
+\end{itemize}
+
+\subsection{Key Concepts}
+\begin{itemize}
+    \item \textbf{Big Band Format:} 3 trumpets, 3 trombones, 5 saxophones, 4 rhythm (piano, bass, drums, guitar)
+    \item \textbf{Ellington Effect:} Moaning, sustaining accompaniment passages underneath trumpet melodies (coined by Billy Strayhorn)
+    \item \textbf{Jungle Style:} Pejorative 1930s term for Ellington's West African-inspired sound; plunger mutes, growling brass (Bubber Miley)
+    \item \textbf{Head Arrangement:} Composition created spontaneously during rehearsal; melody often emerges last
+    \item \textbf{Riff:} Short melodic phrase that repeats; central to Basie's approach
+    \item \textbf{Contrafact:} New melody written over pre-existing chord progression (e.g., ``Cottontail'' uses ``I Got Rhythm'' changes)
+    \item \textbf{Rhythm Changes:} Chord progression from Gershwin's ``I Got Rhythm''; most commonly used progression in jazz alongside blues
+    \item \textbf{Four on the Floor:} Bass drum (or hi-hat) on every quarter note; Papa Joe Jones moved it from bass drum to hi-hat
+    \item \textbf{Hot vs.\ Cool:} ``Hot'' (Hawkins, Webster) = aggressive, vertical, influenced by Armstrong; ``Cool'' (Young) = relaxed, horizontal, melodic
+    \item \textbf{Vertical vs.\ Horizontal Improvisation:} Vertical = playing up and down chord tones (Hawkins); Horizontal = playing melodic lines across chords (Young)
+\end{itemize}
+
+\newpage
+
+% ============================================================
+\section{Artists and Songs --- Syllabus Listening}
+% ============================================================
+
+% --- TAKE THE A TRAIN ---
+\subsection{Duke Ellington --- ``Take the A Train'' (1941)}
+
+\textbf{Era:} Swing / Big Band (1940s)
+
+\subsubsection*{Key Facts}
+\begin{enumerate}
+    \item Written by Billy Strayhorn (NOT Ellington); became Ellington's theme song in the 1940s
+    \item Strayhorn was Ellington's pianist and composer-collaborator
+    \item Features the ``Ellington effect'' --- moaning, sustaining passages underneath the melody
+    \item Notable use of dynamics throughout the arrangement
+    \item Demonstrates Ellington's ability to showcase band as a cohesive orchestral unit
+    \item 32-bar AABA form
+\end{enumerate}
+
+\textbf{Instrumentation:} Full big band --- trumpet section, trombone section, saxophone section, rhythm section (piano, bass, drums, guitar)\\
+\textbf{Song Form:} 32-bar AABA
+
+\listenbox{Catchy opening melody (trumpet), Ellington effect (sustained sax/trombone passages under melody), dynamic contrasts (loud/soft), full band vs.\ solo sections, polished arrangement, swinging rhythm section}
+
+\bigskip
+\textcolor{rulecolor}{\rule{\textwidth}{0.2pt}}
+
+% --- COTTONTAIL ---
+\subsection{Duke Ellington --- ``Cottontail'' (1940)}
+
+\textbf{Era:} Swing / Big Band (1940s)
+
+\subsubsection*{Key Facts}
+\begin{enumerate}
+    \item Based on ``I Got Rhythm'' chord changes --- a \textbf{contrafact}
+    \item Features tenor saxophonist Ben Webster as primary soloist
+    \item Ben Webster exemplifies the ``hot sound'' on saxophone, influenced by Louis Armstrong's hot trumpet style
+    \item Webster was one of the Big Three tenor saxophonists (with Hawkins and Young)
+    \item Demonstrates how jazz musicians built new compositions on pre-existing chord progressions
+    \item 32-bar AABA form (same structure as ``I Got Rhythm'')
+\end{enumerate}
+
+\textbf{Instrumentation:} Full big band with Ben Webster (tenor sax) as featured soloist\\
+\textbf{Song Form:} 32-bar AABA (rhythm changes / ``I Got Rhythm'' chord progression)
+
+\listenbox{Ben Webster's ``hot'' tenor sax solo (aggressive, breathy, Armstrong-influenced), new melody over familiar chord changes, call-and-response between sax section and brass section, energetic swing feel, arranged ensemble passages between solos}
+
+\bigskip
+\textcolor{rulecolor}{\rule{\textwidth}{0.2pt}}
+
+% --- ONE O'CLOCK JUMP ---
+\subsection{Count Basie --- ``One O'Clock Jump'' (1937)}
+
+\textbf{Era:} Swing / Big Band / Kansas City Jazz (late 1930s)
+
+\subsubsection*{Key Facts}
+\begin{enumerate}
+    \item A blues-based \textbf{head arrangement} --- created spontaneously during rehearsal, not from a written score
+    \item The melody doesn't appear until near the very end of the piece (characteristic of head arrangements)
+    \item Features Lester Young on tenor saxophone with a ``cool'' sound (contrast with Ben Webster's ``hot'' sound)
+    \item Demonstrates Basie's minimalist piano style
+    \item Papa Joe Jones moves four-on-the-floor from bass drum to hi-hat, creating lighter, more buoyant feeling
+    \item Freddie Green's guitar provides the underlying four-feel rhythm
+    \item Texture variety: band drops out during quieter solos, Papa Joe Jones switches between ride cymbal and hi-hat
+\end{enumerate}
+
+\textbf{Instrumentation:} Full big band --- All-American Rhythm Section: Basie (piano), Papa Joe Jones (drums), Walter Page (bass), Freddie Green (guitar); plus horn sections with Lester Young (tenor sax) featured\\
+\textbf{Song Form:} 12-bar blues; head arrangement structure (solos first, melody last)
+
+\listenbox{Lester Young's ``cool'' relaxed tenor sax tone, Basie's spare/minimalist piano comping, hi-hat timekeeping (not bass drum), Freddie Green's steady guitar pulse, texture changes (band drops out for piano solo, swells for ensemble), riff-based melody arriving late in the arrangement, blues form throughout}
+
+\bigskip
+\textcolor{rulecolor}{\rule{\textwidth}{0.2pt}}
+
+% --- OH LADY BE GOOD ---
+\subsection{Count Basie / Lester Young --- ``Oh! Lady Be Good'' (1936)}
+
+\textbf{Era:} Swing / Big Band / Kansas City Jazz (mid-1930s)
+
+\subsubsection*{Key Facts}
+\begin{enumerate}
+    \item Features Lester Young as primary soloist --- quintessential example of his ``cool'' approach
+    \item Lester Young's horizontal/melodic improvisation style contrasts with Coleman Hawkins' vertical/chordal approach
+    \item Young played in Count Basie's band; one of the Big Three tenor saxophonists
+    \item Young's relaxed, laid-back phrasing influenced the ``cool jazz'' movement of the 1950s
+    \item Exchanged nicknames with Billie Holiday: she called him ``Prez'' (president of the saxophone), he called her ``Lady Day''
+\end{enumerate}
+
+\textbf{Instrumentation:} Small group or big band with Lester Young (tenor sax) featured\\
+\textbf{Song Form:} 32-bar AABA (standard popular song form)
+
+\listenbox{Lester Young's light, airy, ``cool'' tone (contrast with Hawkins' heavier vibrato), melodic/horizontal approach to improvisation (lines flow across chord changes rather than outlining individual chords), relaxed behind-the-beat phrasing, smooth legato lines, minimal vibrato compared to Hawkins}
+
+\bigskip
+\textcolor{rulecolor}{\rule{\textwidth}{0.2pt}}
+
+% --- BODY AND SOUL ---
+\subsection{Coleman Hawkins --- ``Body and Soul'' (1939)}
+
+\textbf{Era:} Swing (late 1930s)
+
+\subsubsection*{Key Facts}
+\begin{enumerate}
+    \item Considered the first great jazz tenor saxophone solo
+    \item Hawkins = ``Father of the Jazz Tenor Saxophone''; nicknames ``Hawk'' and ``Bean'' (for being intellectual)
+    \item Features mostly improvisation with only brief quotation of the original melody
+    \item Demonstrates \textbf{vertical approach} to improvisation --- playing up and down chord changes
+    \item Hawkins emerged from Fletcher Henderson's band (1923--1934), spent 1934--1939 in London, recorded this upon return
+    \item Extended saxophone technique into the altissimo register (extreme high range)
+    \item Extensive vibrato throughout notes; smooth tone with jumping quality and texture
+    \item Tenor saxophone often considered the instrument closest to the human voice
+    \item Hawkins was pivotal in the transition from swing to bebop; reportedly the first to hire Thelonious Monk
+\end{enumerate}
+
+\textbf{Instrumentation:} Tenor saxophone (Hawkins) with rhythm section (piano, bass, drums)\\
+\textbf{Song Form:} 32-bar AABA; Hawkins largely abandons the melody and improvises over the chord changes
+
+\listenbox{Almost entirely improvised (melody barely stated), vertical/chordal improvisation (arpeggios moving through chord tones), extensive vibrato, altissimo register passages, smooth but active melodic movement, romantic ballad interpretation, lush tone quality}
+
+\bigskip
+\textcolor{rulecolor}{\rule{\textwidth}{0.2pt}}
+
+% --- SING SING SING ---
+\subsection{Benny Goodman --- ``Sing, Sing, Sing'' (1937)}
+
+\textbf{Era:} Swing (late 1930s)
+
+\subsubsection*{Key Facts}
+\begin{enumerate}
+    \item One of the most iconic pieces in jazz history
+    \item Goodman (1909--1986) = ``King of Swing''; born in Chicago to Jewish immigrant parents from Poland
+    \item Classically trained clarinetist who started playing professionally at age 14
+    \item Unique as a drum feature centered around Gene Krupa's drumming
+    \item Over seven minutes long, split across two sides of a record (unusual for the three-minute standard)
+    \item The drum rhythm is one of the most frequently quoted elements in American music
+    \item Fletcher Henderson was Goodman's arranger (same Henderson who worked with Armstrong and Hawkins)
+    \item ``King of Swing'' title was controversial --- Black bandleaders (Ellington, Basie, Henderson, Cab Calloway) were overlooked
+    \item Goodman was one of the first white bandleaders to integrate his band: hired Teddy Wilson (piano), Lionel Hampton (vibraphone), Charlie Christian (guitar), Cootie Williams (trumpet)
+    \item Goodman's clarinet: beautiful classical tone combined with blues feeling and active melodic movement
+\end{enumerate}
+
+\textbf{Instrumentation:} Full big band with Gene Krupa (drums) and Benny Goodman (clarinet) as featured soloists\\
+\textbf{Song Form:} Extended form (unusual for the era); built around recurring drum patterns
+
+\listenbox{Gene Krupa's driving tom-tom rhythm (the iconic drum pattern), extensive call-and-response between drums and horns, Goodman's clarinet solo (classical tone + blues feeling), extended length (7+ minutes), building energy and intensity, drum-dominated texture (unusual for jazz)}
+
+\bigskip
+\textcolor{rulecolor}{\rule{\textwidth}{0.2pt}}
+
+% --- GOD BLESS THE CHILD ---
+\subsection{Billie Holiday --- ``God Bless the Child'' (1942)}
+
+\textbf{Era:} Swing (early 1940s)
+
+\subsubsection*{Key Facts}
+\begin{enumerate}
+    \item Holiday's most famous self-composed song
+    \item Billie Holiday (1915--1959): died young at age 44
+    \item Voice was like an instrument/horn --- fragile and distinct timbre, relatively small vocal range but immense feeling
+    \item Vocal characteristics: very legato phrasing, words spilling into each other, unique timbre, yearning quality, wide vowel placement
+    \item Exchanged nicknames with Lester Young: she was ``Lady Day,'' he was ``Prez''
+    \item Catapulted jazz vocals to new level of fame
+    \item Raw emotional quality and unique tone distinguished her from other vocalists
+    \item Use of dynamics: quieter moments building to louder endings
+    \item Voice described as woeful, wistful, reminiscent, sober
+    \item 32-bar ABA form
+\end{enumerate}
+
+\textbf{Instrumentation:} Voice (Holiday) with small ensemble accompaniment\\
+\textbf{Song Form:} 32-bar ABA
+
+\listenbox{Legato phrasing (words flow into each other), unique/fragile vocal timbre (horn-like quality), yearning emotional quality, dynamic contrast (quiet to loud), behind-the-beat phrasing, wide vowel placement, minimal but effective vibrato, storytelling delivery}
+
+\bigskip
+\textcolor{rulecolor}{\rule{\textwidth}{0.2pt}}
+
+% --- BLUE SKIES ---
+\subsection{Ella Fitzgerald --- ``Blue Skies'' (1958)}
+
+\textbf{Era:} Swing / Post-Swing (late 1950s)\\
+\textit{from Ella Fitzgerald Sings the Irving Berlin Songbook}
+
+\subsubsection*{Key Facts}
+\begin{enumerate}
+    \item Ella Fitzgerald (1917--1996) = ``First Lady of Song''
+    \item Four-octave vocal range; very clear, big voice
+    \item Considered the master of scat singing (though Louis Armstrong created the technique)
+    \item Uses chromaticism and runs up and down chords --- vertical approach similar to Coleman Hawkins
+    \item Incorporates humor through quotation in her scatting (quotes the bridal march, Gershwin tunes, etc.)
+    \item Approach contrasts with Holiday's: Fitzgerald = virtuosic/vertical (like Hawkins); Holiday = emotional/intimate (like Webster in ballads)
+\end{enumerate}
+
+\textbf{Instrumentation:} Voice (Fitzgerald) with ensemble/big band accompaniment\\
+\textbf{Song Form:} 32-bar AABA (standard Irving Berlin song form); includes extended scat sections
+
+\listenbox{Scat singing (improvised syllables), chromaticism and rapid melodic runs, four-octave range on display, quotation of other melodies within scat solos (humor), clear and powerful tone, rhythmic precision, contrast with Holiday's fragile intimacy --- Fitzgerald is virtuosic and exuberant}
+
+\newpage
+
+% ============================================================
+\section{Additional Pieces Discussed in Class}
+% ============================================================
+
+\textit{Not on the syllabus listening list but discussed in lecture --- may appear on quizzes.}
+
+\bigskip
+
+% --- IT DON'T MEAN A THING ---
+\subsection{Duke Ellington --- ``It Don't Mean a Thing If It Ain't Got That Swing'' (1932)}
+
+\begin{enumerate}
+    \item Gave the entire swing movement its name
+    \item Composed 1931, recorded 1932
+    \item 32-bar AABA song form
+    \item Features elaborate singing and an alto saxophone solo by Johnny Hodges
+    \item Hodges was Ellington's lead alto saxophonist and dominant voice on alto until Charlie Parker
+\end{enumerate}
+
+\listenbox{AABA form, Johnny Hodges' alto sax solo, vocal scatting, the word ``swing'' used to define the rhythmic feel of an entire era}
+
+\bigskip
+\textcolor{rulecolor}{\rule{\textwidth}{0.2pt}}
+
+% --- DAYBREAK EXPRESS ---
+\subsection{Duke Ellington --- ``Daybreak Express'' (1934)}
+
+\begin{enumerate}
+    \item Abstract composition deliberately mimicking the sound of a train on tracks
+    \item Uses chromatic scales to create intensity and the Doppler effect
+    \item Demonstrates Ellington's compositional ambition beyond dance music --- a descriptive/programmatic piece
+\end{enumerate}
+
+\listenbox{Train sounds/imagery, chromatic scales, building intensity, Doppler-like effects, orchestral approach to jazz composition}
+
+\bigskip
+\textcolor{rulecolor}{\rule{\textwidth}{0.2pt}}
+
+% --- EAST ST LOUIS TOODLE-OO ---
+\subsection{Duke Ellington --- ``East St. Louis Toodle-oo'' (1927)}
+
+\begin{enumerate}
+    \item Best example of the ``Ellington effect''
+    \item Features Bubber Miley's trumpet with moaning saxophone and tuba accompaniment underneath
+    \item Miley used a plunger mute and growling technique = ``jungle style''
+\end{enumerate}
+
+\listenbox{Plunger-muted trumpet (Bubber Miley), growling brass, moaning sustained accompaniment under trumpet melody, dark timbral quality}
+
+\bigskip
+\textcolor{rulecolor}{\rule{\textwidth}{0.2pt}}
+
+% --- STRANGE FRUIT ---
+\subsection{Billie Holiday --- ``Strange Fruit'' (1939)}
+
+\begin{enumerate}
+    \item One of the first protest songs in jazz history --- about lynching in America
+    \item Written by Abel Meeropol (not Holiday)
+    \item Record company tried to ban her from performing it; she refused and continued, leading to jail time
+    \item Sung in minor key, straightforward delivery, no vibrato, confrontational
+    \item Ominous piano introduction; meant to make audience uncomfortable
+    \item Matter-of-fact tone was mocking and accusatory
+\end{enumerate}
+
+\listenbox{Minor key, ominous piano intro, absence of vibrato (unlike her other singing), stark/confrontational delivery, uncomfortable silences, dramatic contrast with typical swing-era entertainment music}
+
+\bigskip
+\textcolor{rulecolor}{\rule{\textwidth}{0.2pt}}
+
+% --- RUBY MY DEAR ---
+\subsection{Coleman Hawkins --- ``Ruby My Dear'' (1957, with Thelonious Monk)}
+
+\begin{enumerate}
+    \item Showcases Hawkins' romantic ballad style later in his career
+    \item Stays within chord tones; demonstrates unbelievable tone quality
+    \item Hawkins was supportive of new music and reportedly the first to hire Monk
+\end{enumerate}
+
+\listenbox{Romantic ballad interpretation, rich warm tone, vibrato, chord-tone-based improvisation, interplay with Monk's angular piano}
+
+\bigskip
+\textcolor{rulecolor}{\rule{\textwidth}{0.2pt}}
+
+% --- TIME ON MY HANDS ---
+\subsection{Ben Webster --- ``Time On My Hands'' (mid-1950s)}
+
+\begin{enumerate}
+    \item Webster known more as a balladeer than uptempo player
+    \item Vocal quality with crying sound and extensive use of air/breath in tone
+    \item Very early and fast vibrato adding yearning quality
+    \item Album \textit{Soulville} recommended for more of this style
+\end{enumerate}
+
+\listenbox{Breathy/airy tone, crying quality, fast vibrato, extreme tenderness and nuance, vocal-like phrasing, dynamic subtlety}
+
+\newpage
+
+% ============================================================
+\section{Listening Response Template}
+% ============================================================
+
+Name, composer, and year are PROVIDED on the quiz. Focus on what you HEAR. Aim for 5 observations:
+
+\begin{enumerate}
+    \item \textbf{Instrumentation/Ensemble} --- Big band or small group? Which sections (brass, reeds, rhythm)? Who is the soloist?
+    \item \textbf{Era/Style} --- Swing, Kansas City, big band? What clues? (full band = swing era; riff-based = Basie; lush orchestration = Ellington; drum feature = Goodman)
+    \item \textbf{Rhythm/Feel} --- Swinging? Four-on-the-floor (bass drum or hi-hat)? Riff-based? Light/heavy?
+    \item \textbf{Melody/Improvisation} --- Head arrangement or composed? Contrafact? Vertical or horizontal soloist? Scat singing? Hot or cool?
+    \item \textbf{Texture/Form/Special} --- 32-bar AABA or 12-bar blues? Call-and-response between sections? Ellington effect? Dynamic contrasts? Plunger mute? Extended length?
+    \item \textbf{Emotion/Context} --- Dance music or art music? Protest? How does it connect to readings?
+\end{enumerate}
+
+\noindent\fcolorbox{rulecolor}{lightbg}{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule}{\small\textbf{Template:} ``This piece features [ensemble type] with [soloist] as the primary voice. The style is [era/style] based on [clues]. The form is [form], evidenced by [what you hear]. A notable feature is [detail], which connects to [course concept].''}}
+
+% ============================================================
+\section{General Understanding}
+% ============================================================
+
+\subsection{Movement's Place in History}
+\begin{itemize}
+    \item Big band format (Henderson, $\sim$1924) standardized jazz into large ensemble music
+    \item Swing era = jazz as America's popular music; people danced to it
+    \item Technology (radio, film, recordings) spread swing nationally and globally
+    \item Saxophone overtook clarinet as dominant wind instrument; planted seeds for modern jazz
+    \item Star soloists emerged from big bands, setting the stage for small-group bebop in the 1940s
+\end{itemize}
+
+\subsection{Cultural Context}
+\begin{itemize}
+    \item Cotton Club: Ellington's creative incubator, but with racist dynamic (Black performers, white-only audience)
+    \item ``King of Swing'' controversy: Benny Goodman (white) received title while Black innovators were overlooked
+    \item Goodman also one of first to integrate his band --- hired Hampton, Wilson, Christian, Williams despite criticism
+    \item Harlem Renaissance: Ellington = ``New School'' of Black Americans; Armstrong = ``old school''
+    \item 1930s paradox: African American music celebrated while African Americans themselves were not embraced by society
+    \item LeRoi Jones (Amiri Baraka), \textit{Blues People} (1963): one of first African American scholarly treatments of jazz history
+\end{itemize}
+
+\subsection{Musical Evolution}
+\begin{itemize}
+    \item Ellington: elaborate compositions, orchestral ambition, five compositional functions, ``Ellington effect''
+    \item Basie: minimalist, head arrangements, riff-based, lighter swing (hi-hat instead of bass drum)
+    \item Contrafact tradition: new melodies over existing chord progressions became fundamental jazz practice
+    \item Hot vs.\ Cool dichotomy: Hawkins/Webster (hot, vertical) vs.\ Young (cool, horizontal) --- this tension carries into bebop and cool jazz
+    \item Papa Joe Jones' hi-hat innovation directly influenced bebop drumming in the 1940s
+\end{itemize}
+
+\subsection{Key Tensions}
+\begin{itemize}
+    \item \textbf{Composed vs.\ Spontaneous:} Ellington's elaborate scores vs.\ Basie's head arrangements
+    \item \textbf{Hot vs.\ Cool:} Hawkins/Webster's aggressive approach vs.\ Young's laid-back melodicism
+    \item \textbf{Entertainment vs.\ Art:} Swing was dance music, but Ellington pushed toward abstract composition (``Daybreak Express'')
+    \item \textbf{Black Innovation, White Recognition:} Henderson arranged for Goodman; Goodman got the ``King of Swing'' title
+    \item \textbf{Virtuosity vs.\ Emotion:} Fitzgerald's four-octave scat vs.\ Holiday's fragile intimacy
+\end{itemize}
+
+\end{document}

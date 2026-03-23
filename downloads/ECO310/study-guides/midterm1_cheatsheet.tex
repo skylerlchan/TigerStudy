@@ -1,0 +1,350 @@
+\documentclass[8pt,landscape]{extarticle}
+\usepackage[margin=0.3in]{geometry}
+\usepackage{multicol}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{soul}
+\usepackage{colortbl}
+
+% Ultra-compact spacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt}
+\setlength{\columnsep}{6pt}
+\setlength{\columnseprule}{0.2pt}
+\setlength{\abovedisplayskip}{2pt}
+\setlength{\belowdisplayskip}{2pt}
+\setlength{\abovedisplayshortskip}{1pt}
+\setlength{\belowdisplayshortskip}{1pt}
+
+% Compact sections
+\titleformat{\section}{\normalfont\bfseries\small}{}{0pt}{}
+\titlespacing*{\section}{0pt}{3pt}{1pt}
+\titleformat{\subsection}{\normalfont\bfseries\scriptsize}{}{0pt}{}
+\titlespacing*{\subsection}{0pt}{2pt}{0.5pt}
+
+% Compact lists
+\setlist{nosep,leftmargin=8pt,topsep=0pt,itemsep=0pt,parsep=0pt}
+
+% Highlight command for frequently tested
+\newcommand{\HI}[1]{\colorbox{yellow!30}{#1}}
+\newcommand{\HIm}[1]{\colorbox{yellow!30}{$#1$}}
+
+\pagestyle{empty}
+
+\begin{document}
+\begin{multicols}{4}
+
+% ============================================
+\section{1. Preferences \& Axioms}
+% ============================================
+
+\textbf{Rational preferences:} Complete + Transitive.
+
+\textbf{Completeness:} $\forall x,y$: $x\succsim y$ or $y\succsim x$ (or both).
+
+\textbf{Transitivity:} $x\succsim y$, $y\succsim z \Rightarrow x\succsim z$.
+
+\textbf{Strict pref:} $x\succ y$ iff $x\succsim y$ and not $y\succsim x$.
+
+\textbf{Indifference:} $x\sim y$ iff $x\succsim y$ and $y\succsim x$.
+
+\textbf{Monotonicity:} More of any good $\Rightarrow$ strictly better. Implies ICs slope down.
+
+\textbf{LNS:} $\forall x, \forall\varepsilon>0$, $\exists y$ s.t.\ $\|y-x\|<\varepsilon$ and $y\succ x$. No thick ICs. Consumer spends full budget.
+
+\textbf{Convexity:} UCS $\{y:y\succsim x\}$ is convex. Mixtures $\geq$ extremes. $\Leftrightarrow$ diminishing $|$MRS$|$.
+
+\textbf{Strict convexity:} Strict mixtures of distinct equally-good bundles are strictly better. $\Rightarrow$ unique optimum.
+
+\textbf{Continuity:} UCS and LCS are closed. Needed for utility representation.
+
+\subsection{Utility Representation}
+Rational + continuous $\Rightarrow$ $\exists$ continuous $u$ representing $\succsim$.
+
+\textbf{Ordinal:} Only ranking matters. If $f$ strictly increasing, $v=f(u)$ represents same $\succsim$. MRS invariant to monotone transforms.
+
+\subsection{WARP / Revealed Preference}
+\HI{\textbf{WARP:}} If $x$ chosen when $y$ affordable, then $y$ never chosen when $x$ affordable and cheaper.
+
+\textbf{Revealed pref:} $x \succsim^* y$ if $\exists B$: $x,y\in B$ and $x\in C(B)$.
+
+\textbf{Check WARP:} At period-1 prices, is period-1 bundle $\geq$ cost of period-2 bundle? And vice versa at period-2 prices? If both hold with $\geq 1$ strict $\Rightarrow$ WARP violated.
+
+\textbf{IIA ($\alpha$):} Chosen from big set $\Rightarrow$ chosen from any subset.
+
+\textbf{Sen's $\beta$:} If $x,y$ both chosen from $B\subseteq A$ and $x\in C(A)$, then $y\in C(A)$.
+
+$\alpha + \beta \Leftrightarrow$ Rationalizable $\Leftrightarrow$ WARP.
+
+% ============================================
+\section{2. Utility Functions \& MRS}
+% ============================================
+
+\HI{\textbf{MRS}} $= \dfrac{MU_1}{MU_2} = -\dfrac{dx_2}{dx_1}\Big|_{\text{IC}}$
+
+From total diff: $MU_1\,dx_1 + MU_2\,dx_2 = 0$.
+
+\subsection{Cobb-Douglas: $u=x_1^a x_2^b$}
+\HI{$\text{MRS} = \dfrac{a\,x_2}{b\,x_1}$}
+
+Equiv: $v = a\ln x_1 + b\ln x_2$.
+
+Smooth, strictly convex ICs. Always interior.
+
+\subsection{Perfect Substitutes: $u=ax_1+bx_2$}
+$\text{MRS} = a/b$ (constant). Straight-line ICs.
+
+\subsection{Perfect Complements: $u=\min\{ax_1, bx_2\}$}
+L-shaped ICs. Kink at $ax_1 = bx_2$.
+
+MRS: 0 on horizontal, $-\infty$ on vertical, undefined at kink.
+
+\subsection{Quasilinear: $u=v(x_1)+x_2$}
+$\text{MRS} = v'(x_1)$. Depends only on $x_1$. ICs are vertical translates. No income effect for $x_1$ (at interior).
+
+\subsection{CES: $u=(x_1^r + x_2^r)^{1/r}$}
+$\text{MRS} = (x_2/x_1)^{1-r}$. Nests: $r\to 0$ Cobb-Douglas, $r\to -\infty$ complements, $r=1$ substitutes.
+
+% ============================================
+\section{3. Consumer Choice (UMP)}
+% ============================================
+
+\textbf{Budget:} $p_1 x_1 + p_2 x_2 \leq m$. Slope $= -p_1/p_2$.
+
+Intercepts: $m/p_1$, $m/p_2$.
+
+\subsection{Interior Optimum (Tangency)}
+\HI{$\dfrac{MU_1}{p_1} = \dfrac{MU_2}{p_2}$} \quad (bang-per-buck)
+
+Equivalently: $\text{MRS} = p_1/p_2$.
+
+\subsection{Lagrangian Method}
+$\mathcal{L} = u(x_1,x_2) + \lambda[m - p_1 x_1 - p_2 x_2]$
+
+FOCs: $MU_i = \lambda p_i$ for $i=1,2$; budget binds.
+
+$\lambda$ = marginal utility of income.
+
+\subsection{\HI{Cobb-Douglas Demand (Magic Rule)}}
+$u = x_1^a x_2^b$:
+
+\HI{$x_1^* = \dfrac{a}{a+b}\cdot\dfrac{m}{p_1}$}, \quad \HI{$x_2^* = \dfrac{b}{a+b}\cdot\dfrac{m}{p_2}$}
+
+Spend fraction $\frac{a}{a+b}$ on good 1, $\frac{b}{a+b}$ on good 2.
+
+3 goods: $u=x^a y^b z^c \Rightarrow$ spend $\frac{a}{a+b+c}$ on $x$, etc.
+
+\subsection{\HI{Perfect Complements Demand}}
+$u = \min\{ax_1, bx_2\}$. Set $ax_1 = bx_2$ + budget:
+
+\HI{$x_1^* = \dfrac{bm}{bp_1 + ap_2}$}, \quad $x_2^* = \dfrac{am}{bp_1 + ap_2}$
+
+\subsection{Perfect Substitutes Demand}
+Compare $MU_1/p_1$ vs $MU_2/p_2$:
+\begin{itemize}
+\item $a/p_1 > b/p_2$: all on good 1: $x_1=m/p_1$
+\item $a/p_1 < b/p_2$: all on good 2: $x_2=m/p_2$
+\item Equal: any point on budget line
+\end{itemize}
+
+\subsection{Corner Solutions}
+If interior FOC gives $x_i < 0$, go to corner: $x_i = 0$, spend all on other good. Common with quasilinear (low income) and perfect subs.
+
+\textbf{KT:} $MU_i - \lambda p_i \leq 0$, equality if $x_i > 0$.
+
+% ============================================
+\section{4. Demand Properties \& Duality}
+% ============================================
+
+\subsection{Marshallian Demand $x_i(p,m)$}
+Homogeneous degree 0 in $(p,m)$. Walras' law: $p\cdot x = m$.
+
+\subsection{Indirect Utility $v(p,m)$}
+$v(p,m) = u(x^*(p,m))$. Decreasing in $p_i$, increasing in $m$.
+
+\textbf{Roy's Identity:} $x_i^* = -\dfrac{\partial v/\partial p_i}{\partial v/\partial m}$
+
+\subsection{Expenditure Min (EMP)}
+$\min p\cdot x$ s.t.\ $u(x)\geq \bar{u}$.
+
+\HI{\textbf{Hicksian demand}} $h_i(p,\bar{u})$: demand at prices $p$ to reach utility $\bar{u}$.
+
+\textbf{Expenditure fn:} $e(p,\bar{u}) = p\cdot h(p,\bar{u})$.
+
+\textbf{Shephard's Lemma:} $h_i = \partial e/\partial p_i$.
+
+\subsection{Duality Relations}
+$v(p, e(p,\bar{u})) = \bar{u}$; \quad $e(p, v(p,m)) = m$.
+
+$x_i(p,m) = h_i(p, v(p,m))$; \quad $h_i(p,\bar{u}) = x_i(p, e(p,\bar{u}))$.
+
+% ============================================
+\section{5. Income \& Substitution Effects}
+% ============================================
+
+\HI{\textbf{Slutsky decomposition:}} Total $=$ Sub $+$ Income.
+
+Price of good 1 rises: \textbf{Sub effect} always $\leq 0$ (buy less). Income effect depends on normal/inferior.
+
+\textbf{Compensated bundle:} At \emph{new} prices, find bundle on \emph{old} IC (tangent at new price ratio).
+
+\HI{\textbf{Perfect complements:} Sub effect $= 0$.} Entire change is income effect. (No reoptimization at kink.)
+
+\textbf{Normal good:} Income effect reinforces sub effect (demand falls when price rises).
+
+\textbf{Inferior good:} Income effect opposes sub effect. \textbf{Giffen:} Income effect dominates.
+
+% ============================================
+\section{6. Choice Under Uncertainty}
+% ============================================
+
+\subsection{Expected Utility (vNM)}
+\HI{$EU(L) = \sum p_i\, u(c_i)$}
+
+Axioms: Completeness, Transitivity, Continuity, Independence.
+
+vNM utility unique up to \textbf{positive affine} transforms: $\tilde{u} = a + bu$, $b>0$. (NOT arbitrary monotone!)
+
+\subsection{\HI{Risk Attitudes}}
+\textbf{Risk averse} $\Leftrightarrow$ $u$ concave $\Leftrightarrow u''>0$
+
+$u(E[x]) \geq E[u(x)]$ (Jensen's inequality)
+
+\textbf{Risk neutral} $\Leftrightarrow$ $u$ linear. \textbf{Risk loving} $\Leftrightarrow$ $u$ convex.
+
+\subsection{\HI{Certainty Equivalent \& Risk Premium}}
+$u(\text{CE}) = EU(L) \;\Rightarrow\; \text{CE} = u^{-1}(EU)$
+
+\HI{$\text{RP} = E[x] - \text{CE}$}
+
+Risk averse: $\text{CE} < E[x]$, $\text{RP} > 0$.
+
+\subsection{Arrow-Pratt Measures}
+\HI{$r_A(x) = -\dfrac{u''(x)}{u'(x)}$} \quad (Absolute RA)
+
+$r_R(x) = x\cdot r_A(x) = -\dfrac{x\,u''(x)}{u'(x)}$ \quad (Relative RA)
+
+\textbf{Approx:} $\text{RP} \approx \frac{1}{2}r_A(\bar{x})\cdot\sigma^2$.
+
+More risk averse $\Leftrightarrow$ higher $r_A$ everywhere $\Leftrightarrow$ lower CE $\Leftrightarrow$ higher RP $\Leftrightarrow$ $u_2 = g(u_1)$, $g$ concave.
+
+\subsection{Common Utility Functions}
+\textbf{CARA:} $u=-e^{-\alpha x}$, $r_A=\alpha$ (const).
+
+\textbf{CRRA:} $u=\frac{x^{1-\rho}}{1-\rho}$ ($\rho\neq 1$); $u=\ln x$ ($\rho=1$). $r_R=\rho$.
+
+\textbf{Log:} $r_A=1/x$ (DARA), $r_R=1$.
+
+\textbf{DARA:} $r_A'<0$ -- more willing to take fixed-\$ gamble as wealth rises (most realistic).
+
+% ============================================
+\section{7. Insurance \& Portfolio}
+% ============================================
+
+\subsection{Insurance}
+Wealth: $w$, loss $D$ w.p.\ $\pi$. Premium $q$, payout $K$.
+
+$EU = (1-\pi)u(w-q) + \pi\,u(w-q-D+K)$
+
+\HI{\textbf{Fair ins} ($q=\pi K$):} Risk-averse $\Rightarrow$ \textbf{full insurance} ($K=D$).
+
+Unfair ($q>\pi K$): partial insurance ($K<D$).
+
+\subsection{Portfolio Choice}
+Invest $a$ in risky (return $\tilde{r}$), rest at $r_f$.
+
+$\tilde{W} = w(1+r_f) + a(\tilde{r}-r_f)$
+
+FOC: $E[u'(\tilde{W})(\tilde{r}-r_f)]=0$
+
+If $E[\tilde{r}]>r_f$: risk-averse invests $a^*>0$.
+
+\textbf{Portfolio std dev:} $\sigma_P = \alpha\cdot\sigma_{\text{risky}}$ where $\alpha$ = fraction in risky. Expected return: $\alpha E[\tilde{r}] + (1-\alpha)r_f$.
+
+\subsection{Contingent Consumption}
+States $s=1,\ldots,S$ w.p.\ $\pi_s$. $EU = \sum \pi_s u(c_s)$.
+
+$\text{MRS}_{12} = \dfrac{\pi_1 u'(c_1)}{\pi_2 u'(c_2)}$
+
+On 45$^\circ$ line ($c_1=c_2$): MRS $= \pi_1/\pi_2$.
+
+Fair prices ($q_s = \pi_s$): risk-averse $\Rightarrow$ $c_1=c_2$ (full insurance).
+
+\subsection{Stochastic Dominance}
+\textbf{FOSD:} $F(x)\leq G(x)$ $\forall x$ $\Rightarrow$ all $u'>0$ prefer $F$.
+
+\textbf{SOSD:} $\int_{-\infty}^t F(x)dx \leq \int_{-\infty}^t G(x)dx$ $\forall t$ $\Rightarrow$ all risk-averse prefer $F$. Same mean: $G$ is mean-preserving spread of $F$.
+
+% ============================================
+\section{8. Markets (Gen. Equilibrium)}
+% ============================================
+
+\textbf{Edgeworth box:} 2 consumers, 2 goods. Dimensions: total endowments.
+
+\textbf{Feasible:} $x_1+x_2=E^x$, $y_1+y_2=E^y$.
+
+\textbf{Pareto efficient:} No Pareto improvement exists. Interior condition: \HI{$\text{MRS}_1 = \text{MRS}_2$}.
+
+\textbf{Contract curve:} Set of all PE allocations.
+
+\textbf{Comp.\ Equil:} Each max utility s.t.\ budget $p\cdot x_i = p\cdot e_i$, markets clear. Only relative prices matter (normalize $p_y=1$).
+
+\textbf{Walras' Law:} $p_x\cdot ED_x + p_y\cdot ED_y = 0$. If $n-1$ markets clear, $n$-th clears.
+
+\textbf{Solving:} (1) Set $p_y=1$. (2) Solve each consumer: MRS$_i = p$, budget. (3) Market clearing in one good. (4) Solve for $p^*$.
+
+\textbf{1st Welfare Thm:} CE $\Rightarrow$ Pareto efficient (needs LNS).
+
+\textbf{2nd Welfare Thm:} Any PE can be CE with transfers (needs convexity).
+
+% ============================================
+\section{9. Problem-Solving Techniques}
+% ============================================
+
+\HI{\textbf{Demand derivation recipe:}}
+\begin{enumerate}[leftmargin=10pt]
+\item ID utility type (CD, subs, comp, quasi, CES)
+\item CD: magic rule. Comp: set min args equal. Subs: compare bang/buck. Quasi: solve $v'(x_1)=p_1/p_2$, check $x_2\geq 0$.
+\item General: Lagrangian or MRS$=p_1/p_2$ + budget.
+\item Always check $x_i \geq 0$.
+\end{enumerate}
+
+\HI{\textbf{EU problem recipe:}}
+\begin{enumerate}[leftmargin=10pt]
+\item ID states, probabilities, wealth in each state.
+\item Write $EU = \sum p_s\, u(w_s)$.
+\item Take FOC w.r.t.\ choice variable, solve.
+\item Check corners (e.g., $x=0$ or $x=w$).
+\end{enumerate}
+
+\textbf{CE calculation:} Compute $EU$, then $u(\text{CE})=EU$, invert.
+
+\textbf{WARP check:} (1) Cost of bundle A at B's prices vs B's cost. (2) Cost of B at A's prices vs A's cost. (3) Both reveal pref w/ $\geq$1 strict $\Rightarrow$ violation.
+
+\textbf{Sub/Inc effect:} (1) Find original bundle. (2) Find compensated bundle (new prices, old utility). (3) Sub $=$ comp $-$ orig. (4) Inc $=$ new $-$ comp.
+
+\textbf{Convexity check:} Show $|\text{MRS}|$ decreasing along IC (as $x_1\uparrow$). Or show UCS is convex.
+
+% ============================================
+\section{10. Common Exam Traps}
+% ============================================
+
+\begin{itemize}[leftmargin=6pt]
+\item \HI{Marshallian $\neq$ Hicksian.} UMP gives $x(p,m)$; EMP gives $h(p,\bar{u})$. Don't confuse.
+\item \HI{Perfect comp: sub effect $=0$.} Entire change is income effect.
+\item \HI{WARP inequalities:} ``Revealed preferred'' $=$ chosen bundle costs $\geq$ alternative \emph{at those prices}.
+\item \HI{EU states:} Follow probability tree. Final wealth $=$ initial $\pm$ gains/losses.
+\item \HI{Corners:} If FOC gives $x_i<0$, set $x_i=0$.
+\item ``Spend $k\times$'' $\neq$ ``Buy $k\times$'' unless prices equal.
+\item CD exponents must be \textbf{normalized} to get spending shares: $\alpha = a/(a+b)$.
+\item vNM utility: only \emph{affine} transforms ($a+bu$) preserve EU rankings. Not general monotone!
+\item Portfolio: $\sigma^2$ (variance) $\neq$ $\sigma$ (std dev). Square root!
+\item Quasilinear: interior $x_1$ demand independent of $m$, but check $x_2\geq 0$.
+\item Risk averse $\Rightarrow$ prefers any mean-preserving contraction.
+\item \$90 certain vs 50-50 \$0/\$200 is \textbf{ambiguous} for risk-averse (lower EV but no risk).
+\end{itemize}
+
+\end{multicols}
+\end{document}

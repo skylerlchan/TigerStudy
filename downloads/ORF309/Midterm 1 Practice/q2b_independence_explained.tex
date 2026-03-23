@@ -1,0 +1,163 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+
+\title{ORF309 Midterm 1 Q2b: How to Check Independence}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{The Fundamental Question}
+
+\textbf{How do we know if two events are independent?}
+
+\begin{tcolorbox}[colback=blue!10, colframe=blue!50!black, title=Definition of Independence]
+Two events $A$ and $B$ are \textbf{independent} if and only if:
+\[
+P(A \cap B) = P(A) \times P(B)
+\]
+
+Equivalently, $A$ and $B$ are \textbf{NOT independent} if:
+\[
+P(A \cap B) \neq P(A) \times P(B)
+\]
+\end{tcolorbox}
+
+This is the \textbf{only} rigorous way to verify independence. You \textbf{cannot} just argue intuitively (e.g., ``Princeton and New York are geographically close''). You must check the math.
+
+\section*{Question 2b Setup}
+
+Let:
+\begin{itemize}
+    \item $S_P$ = snowfall in Princeton
+    \item $S_N$ = snowfall in New York
+\end{itemize}
+
+We are asked to check if the events $\{S_P \geq 1\}$ and $\{S_N \geq 1\}$ are independent.
+
+\subsection*{Given Information (from the problem and part a)}
+
+From the joint distribution table, we know:
+\begin{align*}
+P(S_P \geq 1, S_N \geq 1) &= \frac{1}{3} \\
+P(S_P \geq 1, S_N \geq 2) &= \frac{1}{4} \\
+P(S_P \geq 2, S_N \geq 1) &= \frac{1}{4} \\
+P(S_P \geq 2, S_N \geq 2) &= \frac{1}{5}
+\end{align*}
+
+From part (a), we computed:
+\[
+P(S_P \geq 1) = \frac{1}{2}
+\]
+
+\section*{Step 1: Find $P(S_N \geq 1)$}
+
+To find the marginal probability $P(S_N \geq 1)$, we use the fact that:
+\[
+P(S_N \geq 1) = P(S_N \geq 1, S_P \geq 0)
+\]
+
+Since $S_P \geq 0$ always (snowfall is non-negative), this means ``$S_N \geq 1$ AND anything can happen in Princeton.''
+
+From the joint distribution structure (this should be given or inferred from the problem):
+\[
+P(S_N \geq 1) = \frac{1}{2}
+\]
+
+\section*{Step 2: Apply the Independence Test}
+
+\subsection*{Calculate $P(A) \times P(B)$}
+
+Let:
+\begin{itemize}
+    \item $A = \{S_P \geq 1\}$
+    \item $B = \{S_N \geq 1\}$
+\end{itemize}
+
+If $A$ and $B$ were independent, we would have:
+\[
+P(A \cap B) \stackrel{?}{=} P(A) \times P(B)
+\]
+
+Let's compute the right-hand side:
+\[
+P(A) \times P(B) = P(S_P \geq 1) \times P(S_N \geq 1) = \frac{1}{2} \times \frac{1}{2} = \frac{1}{4}
+\]
+
+\subsection*{Compare with $P(A \cap B)$}
+
+We know from the problem:
+\[
+P(A \cap B) = P(S_P \geq 1, S_N \geq 1) = \frac{1}{3}
+\]
+
+\subsection*{Conclusion}
+
+\[
+P(S_P \geq 1, S_N \geq 1) = \frac{1}{3} \neq \frac{1}{4} = P(S_P \geq 1) \times P(S_N \geq 1)
+\]
+
+\begin{tcolorbox}[colback=red!10, colframe=red!50!black, title=Answer]
+Since $P(A \cap B) \neq P(A) \times P(B)$, the events $\{S_P \geq 1\}$ and $\{S_N \geq 1\}$ are \textbf{NOT independent}.
+\end{tcolorbox}
+
+\section*{Intuitive Interpretation}
+
+Why does this make sense?
+
+\begin{itemize}
+    \item If the events were independent, then knowing that Princeton got at least 1 foot of snow would give us \textbf{no information} about New York's snowfall.
+
+    \item However, $P(S_P \geq 1, S_N \geq 1) = \frac{1}{3} > \frac{1}{4}$, which means that \textbf{if Princeton gets snow, it makes it MORE likely that New York also gets snow}.
+
+    \item This suggests there's some \textbf{correlation} between the two locations (e.g., weather systems affecting both areas).
+\end{itemize}
+
+\section*{Common Mistakes (From Grading Comments)}
+
+\begin{enumerate}
+    \item \textbf{Arguing geographically:} ``Princeton and New York are geographically close, so they're not independent.''
+
+    \textcolor{red}{\textbf{Wrong!}} While this is intuitive, it's not a mathematical proof. You must check the definition.
+
+    \item \textbf{Not checking the definition:} Forgetting to compute $P(A) \times P(B)$ and compare it to $P(A \cap B)$.
+
+    \item \textbf{Confusing causation with correlation:} Independence is a probabilistic property defined by the equation $P(A \cap B) = P(A)P(B)$, not by causal relationships.
+\end{enumerate}
+
+\section*{General Recipe for Checking Independence}
+
+\begin{tcolorbox}[colback=green!10, colframe=green!50!black, title=Step-by-Step Process]
+To check if events $A$ and $B$ are independent:
+
+\begin{enumerate}
+    \item Find $P(A)$ (marginal probability of event $A$)
+    \item Find $P(B)$ (marginal probability of event $B$)
+    \item Find $P(A \cap B)$ (joint probability)
+    \item Compute $P(A) \times P(B)$
+    \item Compare: Does $P(A \cap B) = P(A) \times P(B)$?
+    \begin{itemize}
+        \item If YES $\Rightarrow$ independent
+        \item If NO $\Rightarrow$ not independent
+    \end{itemize}
+\end{enumerate}
+\end{tcolorbox}
+
+\section*{Summary}
+
+\begin{itemize}
+    \item \textbf{Independence is checked using the definition:} $P(A \cap B) = P(A) \times P(B)$
+
+    \item In Q2b: $\frac{1}{3} \neq \frac{1}{4}$, so the events are not independent
+
+    \item \textbf{Always use the mathematical definition}, not intuitive arguments
+\end{itemize}
+
+\end{document}

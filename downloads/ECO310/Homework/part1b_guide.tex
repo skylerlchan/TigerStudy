@@ -1,0 +1,256 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+
+\title{Problem 1b: The Expenditure Function \\ (Starting from Scratch)}
+\author{ECO 310 - For People Who Skipped Lecture}
+\date{February 23, 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{What Are We Doing Again?}
+
+Part (a) asked: "What should you buy to reach utility $u^*$ cheaply?"
+
+Part (b) asks: "Okay, now how much does that cost?"
+
+That's it! The expenditure function is just the cost of what you found in part (a).
+
+\section{Super Basic Definition}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Expenditure Function]
+\textbf{Expenditure function} = How much money you need to spend to reach utility level $u^*$
+
+It's literally: (price of good 1) $\times$ (amount of good 1) + (price of good 2) $\times$ (amount of good 2)
+\end{tcolorbox}
+
+\textbf{Formula:}
+$$e(p_1, p_2, u^*) = p_1 \cdot x_1^c + p_2 \cdot x_2^c$$
+
+where $x_1^c$ and $x_2^c$ are from your answer to part (a).
+
+\section{Starting with Examples (Coffee and Tea)}
+
+Let's use actual numbers first, then write the general formula.
+
+\subsection{Example 1: Coffee is Cheaper}
+
+\textbf{Given:}
+\begin{itemize}
+\item Coffee costs \$3 per cup ($p_1 = 3$)
+\item Tea costs \$5 per cup ($p_2 = 5$)
+\item You want utility 10 ($u^* = 10$)
+\item Utility function: $u = \text{coffee} + \text{tea}$
+\end{itemize}
+
+\textbf{From Part (a):} Since coffee is cheaper ($3 < 5$), you buy:
+$$(x_1^c, x_2^c) = (10, 0)$$
+That means: 10 coffees, 0 teas.
+
+\textbf{Part (b) - Calculate expenditure:}
+\begin{align*}
+e(3, 5, 10) &= (\text{price of coffee}) \times (\text{coffees bought}) + (\text{price of tea}) \times (\text{teas bought}) \\
+&= 3 \times 10 + 5 \times 0 \\
+&= 30 + 0 \\
+&= \$30
+\end{align*}
+
+\textbf{Answer:} It costs \$30 to reach utility level 10.
+
+\subsection{Example 2: Tea is Cheaper}
+
+\textbf{Given:}
+\begin{itemize}
+\item Coffee costs \$5 per cup ($p_1 = 5$)
+\item Tea costs \$2 per cup ($p_2 = 2$)
+\item You want utility 10 ($u^* = 10$)
+\end{itemize}
+
+\textbf{From Part (a):} Since tea is cheaper ($2 < 5$), you buy:
+$$(x_1^c, x_2^c) = (0, 10)$$
+That means: 0 coffees, 10 teas.
+
+\textbf{Part (b) - Calculate expenditure:}
+\begin{align*}
+e(5, 2, 10) &= 5 \times 0 + 2 \times 10 \\
+&= 0 + 20 \\
+&= \$20
+\end{align*}
+
+\textbf{Answer:} It costs \$20 to reach utility level 10.
+
+\subsection{Example 3: Different Utility Target}
+
+\textbf{Given:}
+\begin{itemize}
+\item Coffee costs \$3 per cup ($p_1 = 3$)
+\item Tea costs \$5 per cup ($p_2 = 5$)
+\item You want utility 25 ($u^* = 25$)
+\end{itemize}
+
+\textbf{From Part (a):} Since coffee is cheaper, you buy:
+$$(x_1^c, x_2^c) = (25, 0)$$
+
+\textbf{Part (b) - Calculate expenditure:}
+\begin{align*}
+e(3, 5, 25) &= 3 \times 25 + 5 \times 0 \\
+&= 75 + 0 \\
+&= \$75
+\end{align*}
+
+\textbf{Answer:} It costs \$75 to reach utility level 25.
+
+\section{See the Pattern?}
+
+Look at the examples:
+\begin{itemize}
+\item When coffee is cheaper (\$3 vs \$5): cost = (\$3) $\times$ (utility target)
+\item When tea is cheaper (\$2 vs \$5): cost = (\$2) $\times$ (utility target)
+\end{itemize}
+
+\textbf{Pattern:} cost = (cheaper price) $\times$ (utility target)
+
+\section{Writing the General Formula}
+
+Now let's do this without specific numbers. Use $p_1$, $p_2$, and $u^*$ as variables.
+
+\subsection{Recall Part (a) Answer}
+
+From part (a), compensated demand is:
+
+$$(x_1^c, x_2^c) = \begin{cases}
+(u^*, 0) & \text{if } p_1 < p_2 \\
+(0, u^*) & \text{if } p_1 > p_2
+\end{cases}$$
+
+\subsection{Calculate Expenditure for Each Case}
+
+The expenditure function is: $e(p_1, p_2, u^*) = p_1 \cdot x_1^c + p_2 \cdot x_2^c$
+
+\textbf{Case 1: If $p_1 < p_2$ (good 1 is cheaper)}
+
+From part (a): $(x_1^c, x_2^c) = (u^*, 0)$
+
+Plug into expenditure formula:
+\begin{align*}
+e(p_1, p_2, u^*) &= p_1 \cdot u^* + p_2 \cdot 0 \\
+&= p_1 u^*
+\end{align*}
+
+\textbf{Case 2: If $p_1 > p_2$ (good 2 is cheaper)}
+
+From part (a): $(x_1^c, x_2^c) = (0, u^*)$
+
+Plug into expenditure formula:
+\begin{align*}
+e(p_1, p_2, u^*) &= p_1 \cdot 0 + p_2 \cdot u^* \\
+&= p_2 u^*
+\end{align*}
+
+\textbf{Case 3: If $p_1 = p_2$ (same price)}
+
+From part (a): any combination works, like $(u^*, 0)$ or $(0, u^*)$ or $(u^*/2, u^*/2)$
+
+But they all cost the same:
+\begin{align*}
+e(p_1, p_2, u^*) &= p_1 u^* = p_2 u^* \quad \text{(since $p_1 = p_2$)}
+\end{align*}
+
+\section{Final Answer to Part (b)}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=orange!75!black,title=Answer: Expenditure Function (Piecewise)]
+\begin{equation}
+e(p_1, p_2, u^*) = \begin{cases}
+p_1 u^* & \text{if } p_1 < p_2 \\
+p_2 u^* & \text{if } p_1 > p_2 \\
+p_1 u^* = p_2 u^* & \text{if } p_1 = p_2
+\end{cases}
+\end{equation}
+\end{tcolorbox}
+
+\subsection{Even Simpler Form}
+
+You can write this more compactly as:
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=orange!75!black,title=Answer: Expenditure Function (Compact)]
+\begin{equation}
+e(p_1, p_2, u^*) = \min\{p_1, p_2\} \cdot u^*
+\end{equation}
+\end{tcolorbox}
+
+\textbf{Translation:} Minimum cost = (whichever price is lower) $\times$ (target utility)
+
+Both forms are correct! The compact form is cleaner.
+
+\section{Verify with Our Examples}
+
+Let's check that our formula works:
+
+\subsection{Example 1 Check}
+
+Coffee \$3, tea \$5, $u^* = 10$
+
+Using formula: $e(3, 5, 10) = \min\{3, 5\} \times 10 = 3 \times 10 = 30$ \checkmark
+
+\subsection{Example 2 Check}
+
+Coffee \$5, tea \$2, $u^* = 10$
+
+Using formula: $e(5, 2, 10) = \min\{5, 2\} \times 10 = 2 \times 10 = 20$ \checkmark
+
+\subsection{Example 3 Check}
+
+Coffee \$3, tea \$5, $u^* = 25$
+
+Using formula: $e(3, 5, 25) = \min\{3, 5\} \times 25 = 3 \times 25 = 75$ \checkmark
+
+Perfect! Our formula works.
+
+\section{Why Does This Make Sense?}
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black,title=Intuition]
+\textbf{Question:} What's the cheapest way to get $u^*$ units of utility?
+
+\textbf{Answer:} With perfect substitutes, buy only the cheaper good.
+
+\textbf{Cost:} (cheaper price) $\times$ (how many units you need) = (cheaper price) $\times$ $u^*$
+\end{tcolorbox}
+
+This is exactly what $e(p_1, p_2, u^*) = \min\{p_1, p_2\} \cdot u^*$ says!
+
+\section{Step-by-Step Process for Part (b)}
+
+\begin{enumerate}
+\item Look at your answer from part (a) - what bundle do you buy in each case?
+\item For each case, calculate total cost: $p_1 x_1 + p_2 x_2$
+\item Simplify the expressions
+\item Write as piecewise function OR use $\min\{p_1, p_2\}$ notation
+\item Done!
+\end{enumerate}
+
+\section{Common Mistakes to Avoid}
+
+\begin{itemize}
+\item \textbf{Don't} forget to multiply by $u^*$ - the cost depends on how much utility you want!
+\item \textbf{Don't} average the prices - you buy only the cheaper good, not a mix
+\item \textbf{Don't} use $m$ (income) - expenditure function uses $u^*$ (target utility), not budget
+\end{itemize}
+
+\section{Summary}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=TL;DR]
+\textbf{Part (a):} Find what to buy $\rightarrow$ $(u^*, 0)$ if good 1 cheaper, $(0, u^*)$ if good 2 cheaper
+
+\textbf{Part (b):} Calculate the cost $\rightarrow$ $e(p_1, p_2, u^*) = \min\{p_1, p_2\} \cdot u^*$
+
+\textbf{Intuition:} Buy the cheaper good, so cost = (cheaper price) $\times$ (target utility)
+\end{tcolorbox}
+
+\end{document}

@@ -1,0 +1,211 @@
+\documentclass[12pt]{article}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage{makecell}
+
+\title{\LARGE Q3(b)(ii): Corner Solution Explained\\When RHS $<$ LHS at $x = 100$}
+\author{ECO 310}
+\date{}
+
+\setlength{\parskip}{0.5em}
+
+\begin{document}
+
+\maketitle
+
+\section*{The Setup}
+
+You have $\$100$ to invest between two assets:
+\begin{itemize}
+    \item Asset 1: invest $x$ dollars
+    \item Asset 2: invest $(100-x)$ dollars
+\end{itemize}
+
+Three states of the world:
+\begin{itemize}
+    \item State A: probability $1/3$, returns $(r_1^A, r_2^A)$
+    \item State B: probability $1/3$, returns $(r^B, r^B)$ (both assets same)
+    \item State C: probability $1/3$, returns $(r_1^C, r_2^C)$
+\end{itemize}
+
+Expected utility:
+$$EU(x) = \frac{1}{3}u(w_0 + r_1^A x + r_2^A(100-x)) + \frac{1}{3}u(w_0 + 100r^B) + \frac{1}{3}u(w_0 + r_1^C x + r_2^C(100-x))$$
+
+\section*{First-Order Condition}
+
+Taking the derivative with respect to $x$:
+
+$$EU'(x) = \frac{1}{3}(r_1^A - r_2^A)u'(w^A) + \frac{1}{3}(r_1^C - r_2^C)u'(w^C)$$
+
+where:
+\begin{itemize}
+    \item $w^A = w_0 + r_1^A x + r_2^A(100-x)$ (wealth in state A)
+    \item $w^C = w_0 + r_1^C x + r_2^C(100-x)$ (wealth in state C)
+\end{itemize}
+
+Simplifying:
+$$EU'(x) = \frac{1}{3}\left[(r_1^A - r_2^A)u'(w^A) + (r_1^C - r_2^C)u'(w^C)\right]$$
+
+Multiply by 3 and rearrange:
+$$EU'(x) = (r_1^A - r_2^A)u'(w^A) - (r_2^C - r_1^C)u'(w^C)$$
+
+\newpage
+
+\section*{Interior Optimum: Equality Holds}
+
+At an \textbf{interior solution} where $0 < x^* < 100$, we set $EU'(x^*) = 0$:
+
+$$(r_1^A - r_2^A)u'(w^A) = (r_2^C - r_1^C)u'(w^C)$$
+
+Rearranging:
+$$\frac{u'(w^C)}{u'(w^A)} = \frac{r_1^A - r_2^A}{r_2^C - r_1^C} \qquad \text{(*)}$$
+
+\begin{center}
+\colorbox{green!20}{
+\begin{minipage}{0.9\textwidth}
+\textbf{At an interior optimum: LHS = RHS}
+
+This balances the marginal benefit of investing in asset 1 vs asset 2.
+\end{minipage}
+}
+\end{center}
+
+\section*{Corner Solution: Inequality Holds}
+
+But what if equation (*) \textbf{cannot be satisfied} for any $x \in [0, 100]$?
+
+\subsection*{Case 1: RHS $<$ LHS even at $x = 100$}
+
+\begin{center}
+\colorbox{red!20}{\Large
+$\displaystyle\frac{r_1^A - r_2^A}{r_2^C - r_1^C} < \frac{u'(w^C)}{u'(w^A)} \quad \text{even when } x = 100$
+}
+\end{center}
+
+\textbf{What does this mean?}
+
+This inequality tells us that even at $x = 100$:
+$$EU'(x) = (r_1^A - r_2^A)u'(w^A) - (r_2^C - r_1^C)u'(w^C) > 0$$
+
+\textbf{Even at $x = 100$, the derivative is positive!}
+
+\newpage
+
+\section*{What Should the Decision-Maker Do?}
+
+\begin{center}
+\colorbox{blue!20}{
+\begin{minipage}{0.9\textwidth}
+\textbf{If $EU'(x) > 0$ even at $x = 100$:}
+
+The decision-maker wants to \textbf{increase} $x$ even more.
+
+\textbf{Optimal solution: $x^* = 100$}
+
+Invest \textbf{everything} (\$100) in asset 1, invest \textbf{nothing} in asset 2.
+\end{minipage}
+}
+\end{center}
+
+\subsection*{Why?}
+
+\textbf{Interpretation of $EU'(x) > 0$:}
+
+The derivative tells us: ``If I increase $x$ by one dollar, my expected utility goes \textbf{up}.''
+
+So:
+\begin{itemize}
+    \item Increasing $x$ (more in asset 1) $\Rightarrow$ EU increases $\Rightarrow$ good
+    \item Decreasing $x$ (more in asset 2) $\Rightarrow$ EU decreases $\Rightarrow$ bad
+\end{itemize}
+
+Since $EU'(x) > 0$ \textbf{even at $x = 100$}, you want to keep going: maximize $x$.
+
+The maximum possible value is $x = 100$.
+
+\section*{Visual Explanation}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+% Axes
+\draw[->] (0,0) -- (6,0) node[right] {$x$ (dollars in asset 1)};
+\draw[->] (0,0) -- (0,4) node[above] {$EU(x)$};
+
+% EU curve (increasing)
+\draw[very thick, blue, domain=0:5.5] plot (\x, {1 + 0.4*\x});
+
+% Mark x = 0
+\node[below] at (0, 0) {$0$};
+\filldraw[black] (0, 1) circle (2pt);
+
+% Mark x = 100
+\node[below] at (5, 0) {$100$};
+\filldraw[red] (5, 3) circle (2pt) node[above right] {$x^* = 100$ (optimal)};
+
+% Derivative arrows
+\draw[->, thick, red] (1.5, 1.6) -- (2.5, 1.6) node[midway, above] {$EU'(x) > 0$};
+\draw[->, thick, red] (3, 2.2) -- (4, 2.2) node[midway, above] {$EU'(x) > 0$};
+
+% Label
+\node[blue, right] at (5.5, 3.2) {$EU(x)$ is increasing};
+
+\end{tikzpicture}
+\end{center}
+
+\textbf{Since $EU(x)$ is always increasing in $x$, the maximum is at the rightmost point: $x^* = 100$.}
+
+\newpage
+
+\section*{Summary of Cases}
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Condition} & \textbf{FOC} & \textbf{Optimal $x^*$} \\
+\hline
+\makecell[l]{Equation (*) satisfied \\ for some $x \in (0, 100)$} & $EU'(x^*) = 0$ & \makecell[l]{Interior solution \\ $0 < x^* < 100$} \\
+\hline
+\makecell[l]{RHS $<$ LHS \\ even at $x = 100$} & $EU'(x) > 0$ for all $x$ & \makecell[l]{Corner solution \\ $x^* = 100$} \\
+\hline
+\makecell[l]{RHS $>$ LHS \\ even at $x = 0$} & $EU'(x) < 0$ for all $x$ & \makecell[l]{Corner solution \\ $x^* = 0$} \\
+\hline
+\end{tabular}
+\end{center}
+
+\section*{Economic Intuition}
+
+\textbf{Why would RHS $<$ LHS at $x = 100$?}
+
+This happens when \textbf{asset 1 is so much better than asset 2} that even when you've invested everything in asset 1 ($x = 100$), the marginal benefit of investing even more in asset 1 is still positive.
+
+In other words:
+\begin{itemize}
+    \item Asset 1 has better returns or better risk characteristics
+    \item The decision-maker would prefer to invest \textit{more than} \$100 in asset 1 if they could
+    \item But they only have \$100 total, so the best they can do is $x = 100$ (all in asset 1)
+\end{itemize}
+
+\section*{Key Takeaways}
+
+\begin{enumerate}[leftmargin=2cm, itemsep=1em]
+    \item \textbf{Interior solution:} FOC gives equality, $EU'(x^*) = 0$
+
+    \item \textbf{Corner solution:} FOC cannot be satisfied in $(0, 100)$, check boundaries
+
+    \item \textbf{If RHS $<$ LHS at $x = 100$:} Then $EU'(x) > 0$ everywhere, so $x^* = 100$
+
+    \item \textbf{If RHS $>$ LHS at $x = 0$:} Then $EU'(x) < 0$ everywhere, so $x^* = 0$
+
+    \item \textbf{The derivative tells you which direction to go:}
+    \begin{itemize}
+        \item $EU'(x) > 0$ $\Rightarrow$ increase $x$ (want more of asset 1)
+        \item $EU'(x) < 0$ $\Rightarrow$ decrease $x$ (want more of asset 2)
+        \item $EU'(x) = 0$ $\Rightarrow$ you're at the optimum
+    \end{itemize}
+\end{enumerate}
+
+\end{document}

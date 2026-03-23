@@ -1,0 +1,493 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+% Colors
+\definecolor{creation}{RGB}{34, 85, 136}
+\definecolor{concept}{RGB}{140, 60, 60}
+\definecolor{practice}{RGB}{50, 110, 50}
+
+% Box environments
+\newtcolorbox{creationbox}[1][]{
+  colback=creation!5, colframe=creation!80, fonttitle=\bfseries,
+  title={#1}, arc=2mm
+}
+
+\newtcolorbox{conceptbox}[1][]{
+  colback=concept!5, colframe=concept!70, fonttitle=\bfseries,
+  title={#1}, arc=2mm
+}
+
+\newtcolorbox{practicebox}[1][]{
+  colback=practice!5, colframe=practice!70, fonttitle=\bfseries,
+  title={#1}, arc=2mm
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{ORF309/MAT380}
+\lhead{Bernoulli Processes: A Creation Story}
+\cfoot{\thepage}
+
+\titleformat{\section}{\Large\bfseries\color{creation}}{}{0em}{}
+\titleformat{\subsection}{\large\bfseries\color{concept}}{}{0em}{}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries\color{creation} In the Beginning, There Was Randomness}\\[6pt]
+{\large A Creation Story for Bernoulli Processes II \& III}\\[4pt]
+{\normalsize ORF309/MAT380 --- Lectures 08 \& 09 Study Guide}
+\end{center}
+
+\vspace{0.5cm}
+
+\begin{creationbox}[The Premise]
+In Genesis, creation follows a pattern: \textbf{Days 1--3} form empty domains (light/dark, sky/sea, land/vegetation), and \textbf{Days 4--6} fill those domains with agents (luminaries, birds/fish, animals/humans). Day 7 is rest---completion.
+
+We use this structure to build up the probability concepts from Lectures 08--09. Each ``day'' introduces a foundational idea, and later days fill those foundations with power and meaning.
+\end{creationbox}
+
+\vspace{0.5cm}
+
+%==============================================================================
+\section{Day 1 --- Light from Darkness: The Bernoulli Trial}
+%==============================================================================
+
+\begin{creationbox}[Symbolic Parallel]
+Day 1 separates light from darkness---the most basic binary distinction. A Bernoulli trial is the same act: every experiment has exactly two outcomes, success or failure, separated cleanly.
+\end{creationbox}
+
+\textbf{Recall.} A Bernoulli random variable $X_i$ takes values in $\{0, 1\}$:
+\[
+P(X_i = 1) = p, \qquad P(X_i = 0) = q = 1-p
+\]
+
+A \textbf{Bernoulli Process} sums $n$ independent trials:
+\[
+S_n = X_1 + X_2 + \cdots + X_n \sim \text{Binom}(n, p)
+\]
+\[
+P(S_n = k) = \binom{n}{k} p^k q^{n-k}
+\]
+
+\begin{conceptbox}[Key Intuition]
+$S_n$ counts \emph{how many} successes occurred in $n$ trials. It answers a ``how many?'' question. But it says nothing about \emph{when} those successes arrived. That's what comes next.
+\end{conceptbox}
+
+%==============================================================================
+\section{Day 2 --- The Firmament: Arrival Times ($T_k$)}
+%==============================================================================
+
+\begin{creationbox}[Symbolic Parallel]
+Day 2 creates structure---the firmament that separates waters above from waters below. Here we create the structural framework for \emph{when} events happen: arrival times. Like the firmament, this is architecture before content.
+\end{creationbox}
+
+\begin{definition}[Time of the $k$-th Success]
+$T_k$ = the trial number on which the $k$-th success occurs.
+\end{definition}
+
+\textbf{Example timeline:}
+\begin{center}
+\begin{tabular}{ccccccccccc}
+f & f & \textbf{s} & f & f & f & f & \textbf{s} & \textbf{s} & f & \textbf{s} \\
+1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11
+\end{tabular}
+\end{center}
+Here $T_1 = 3$, $T_2 = 8$, $T_3 = 9$, $T_4 = 11$.
+
+\subsection{Deriving $P(T_k = n)$}
+
+The event $\{T_k = n\}$ means: exactly $k-1$ successes in the first $n-1$ trials, \emph{and} a success on trial $n$. These are independent, so:
+
+\[
+\boxed{P(T_k = n) = \underbrace{P(S_{n-1} = k-1)}_{\text{$k-1$ successes in $n-1$ trials}} \cdot \underbrace{P(X_n = 1)}_{\text{success on trial } n} = \binom{n-1}{k-1} p^k \, q^{n-k}}
+\]
+
+for $n \geq k$.
+
+\begin{definition}[Negative Binomial Distribution]
+A DRV $Z$ with $P(Z = n) = \binom{n-1}{k-1} p^k q^{n-k}$ for $n = k, k+1, k+2, \ldots$ is said to have the \textbf{Negative Binomial distribution}. Notation: $Z \sim \text{NegBinom}(k, p)$.
+\end{definition}
+
+%==============================================================================
+\section{Day 3 --- Vegetation and Self-Reproduction: The Geometric Distribution}
+%==============================================================================
+
+\begin{creationbox}[Symbolic Parallel]
+Day 3 creates life that reproduces itself---vegetation ``bearing seed according to its kind.'' The Geometric distribution is the most elemental self-reproducing unit of the Bernoulli process: the time to the \emph{first} success. Every subsequent inter-arrival time is a fresh copy of this same distribution. Like a seed, once you have the Geometric, the entire process regenerates from it.
+\end{creationbox}
+
+\begin{definition}[Geometric Distribution]
+The special case $k = 1$ of the Negative Binomial. If $T_1$ = time until the first success:
+\[
+\boxed{P(T_1 = n) = p \, q^{n-1}, \qquad n = 1, 2, 3, \ldots}
+\]
+Notation: $T_1 \sim \text{Geom}(p)$.
+\end{definition}
+
+\subsection{Expectation of $T_1$}
+
+\[
+E[T_1] = \sum_{k=1}^{\infty} k \cdot p q^{k-1} = p \sum_{k=1}^{\infty} k \, q^{k-1} = p \cdot \frac{d}{dq}\left(\sum_{k=1}^{\infty} q^k\right) = p \cdot \frac{d}{dq}\left(\frac{1}{1-q}\right) = p \cdot \frac{1}{(1-q)^2} = \frac{1}{p}
+\]
+
+\begin{conceptbox}[Key Result]
+\[
+\boxed{E[T_1] = \frac{1}{p}}
+\]
+If $p = 0.01$, expect to wait 100 trials for your first success. The rarer the event, the longer the wait.
+\end{conceptbox}
+
+\subsection{Can You Fail Forever?}
+
+If $p > 0$:
+\[
+P(T_1 = \infty) = P(X_1 = 0, X_2 = 0, X_3 = 0, \ldots) = q \cdot q \cdot q \cdots = q^\infty = 0
+\]
+
+Therefore $P(T_1 < \infty) = 1$. \textbf{If there is any chance of success, you will eventually succeed.}
+
+\begin{conceptbox}[Murphy's Law (Probabilistic Version)]
+Flip the framing: if $p$ is the probability of \emph{failure}, then $P(\text{failure eventually happens}) = 1$. Whatever can go wrong, will go wrong.
+
+\textbf{Bonus:} This proves the geometric series without calculus:
+\[
+\sum_{k=1}^{\infty} p q^{k-1} = 1 \implies \sum_{k=0}^{\infty} q^k = \frac{1}{1-q}
+\]
+\end{conceptbox}
+
+%==============================================================================
+\section{Day 4 --- Luminaries Governing Time: Inter-Arrival Times}
+%==============================================================================
+
+\begin{creationbox}[Symbolic Parallel]
+Day 4 places sun, moon, and stars to \emph{govern} the light/dark cycle of Day 1---giving time its rulers and rhythm. Here we discover that the gaps between successes are governed by the same Geometric distribution. The ``clock resets'' after each success, giving the process its temporal rhythm.
+\end{creationbox}
+
+\subsection{The Inter-Arrival Structure}
+
+Define the gaps between consecutive successes:
+\[
+T_1, \quad T_2 - T_1, \quad T_3 - T_2, \quad \ldots
+\]
+
+\textbf{Each gap is independently $\text{Geom}(p)$.} The process has no memory---after each success, it's as if you're starting fresh.
+
+\textbf{Joint probability example:}
+\begin{align*}
+&P(T_1 = 3,\; T_2 - T_1 = 5,\; T_3 - T_2 = 1) \\
+&= P(\text{ffs, ffffs, s}) = (q^2 p)(q^4 p)(p) \\
+&= P(T_1 = 3) \cdot P(T_1 = 5) \cdot P(T_1 = 1)
+\end{align*}
+
+The joint distribution \emph{factors} into a product of Geometric distributions.
+
+\subsection{Telescopic Sum and $E[T_k]$}
+
+Since $T_k = T_1 + (T_2 - T_1) + (T_3 - T_2) + \cdots + (T_k - T_{k-1})$, and each term is independently $\text{Geom}(p)$:
+
+\[
+\boxed{E[T_k] = k \cdot E[T_1] = \frac{k}{p}}
+\]
+
+\begin{conceptbox}[Key Result]
+The expected time to the $k$-th success is $k/p$. To get 5 successes when $p = 0.1$, expect to wait $5/0.1 = 50$ trials on average.
+\end{conceptbox}
+
+\subsection{Can You Succeed Infinitely Often?}
+
+If $p > 0$:
+\[
+P(\text{success occurs infinitely often}) = P(T_1 < \infty) \cdot P(T_2 - T_1 < \infty) \cdot P(T_3 - T_2 < \infty) \cdots = 1
+\]
+
+\textbf{Strong Murphy's Law:} If something can happen, it will happen infinitely many times.
+
+%==============================================================================
+\section{Day 5 --- Teeming Life: The Superexperiment}
+%==============================================================================
+
+\begin{creationbox}[Symbolic Parallel]
+Day 5 fills the empty sky and seas with teeming life---birds and fish, multiplying abundantly. The Superexperiment does the same: we repeat the original experiment not once or twice, but \emph{many} times, filling the sample space with data. The question shifts from individual trials to the behavior of crowds.
+\end{creationbox}
+
+\subsection{Setup}
+
+Take an original experiment with event $A$ where $P(A) = p$. Repeat it $n$ times independently. Define:
+\[
+S_n = \sum_{k=1}^{n} \mathbf{1}_{A_k} \sim \text{Binom}(n, p)
+\]
+
+The fraction of times $A$ occurred:
+\[
+\frac{S_n}{n} = \frac{1}{n} \sum_{k=1}^{n} \mathbf{1}_{A_k}
+\]
+
+This is a \textbf{random variable} taking values in $[0, 1]$.
+
+\begin{conceptbox}[Key Property]
+The expectation of $S_n/n$ is constant for all $n$:
+\[
+E\!\left[\frac{S_n}{n}\right] = \frac{1}{n} \sum_{k=1}^{n} P(A_k) = \frac{1}{n} \cdot np = p
+\]
+The average fraction always equals $p$, regardless of how many trials you run.
+\end{conceptbox}
+
+As $n$ grows, the histogram of $S_n/n$ concentrates tighter and tighter around $p$. The randomness \emph{shrinks}.
+
+%==============================================================================
+\section{Day 6 --- Humanity and Dominion: The Law of Large Numbers}
+%==============================================================================
+
+\begin{creationbox}[Symbolic Parallel]
+Day 6 creates humanity in the image of God and gives them dominion---the power to name, order, and steward creation. The Law of Large Numbers is the ``dominion'' theorem of probability: it tells us that \emph{in the limit}, randomness submits to order. The random fraction $S_n/n$ converges to the deterministic value $p$. Chaos becomes knowable.
+\end{creationbox}
+
+\begin{theorem}[Law of Large Numbers]
+With probability 1:
+\[
+\boxed{\lim_{n \to \infty} \frac{S_n}{n} = \lim_{n \to \infty} \frac{1}{n} \sum_{k=1}^{n} \mathbf{1}_{A_k} = P(A) = p}
+\]
+\end{theorem}
+
+\textbf{What this means:}
+\begin{itemize}[nosep]
+  \item For any finite $n$: $S_n/n$ is \textbf{random}.
+  \item In the limit $n \to \infty$: $\lim S_n/n$ is \textbf{not random}---it equals exactly $p$.
+  \item Probabilities \emph{are} long-run frequencies, but \textbf{only} at infinity.
+\end{itemize}
+
+\subsection{Proof via Variance}
+
+To prove LLN, we need to show the randomness of $S_n/n$ vanishes. This requires \textbf{variance}.
+
+\begin{definition}[Variance]
+For a random variable $X$:
+\[
+\text{Var}(X) = E\!\left[(X - E[X])^2\right]
+\]
+Variance measures how far $X$ deviates from its expectation. If $\text{Var}(X) = 0$, then $X$ is not random.
+\end{definition}
+
+\textbf{Properties of Variance:}
+\begin{enumerate}[nosep]
+  \item $\text{Var}(X) \geq 0$
+  \item $\text{Var}(X) = 0 \iff X$ is deterministic (not random)
+  \item $\text{Var}(X) = E[X^2] - (E[X])^2$ \hfill (computational formula)
+  \item If $X \perp Y$: $\text{Var}(X + Y) = \text{Var}(X) + \text{Var}(Y)$ \hfill (additivity for independent RVs)
+  \item $\text{Var}(\alpha X) = \alpha^2 \, \text{Var}(X)$ \hfill (scaling)
+\end{enumerate}
+
+\subsection{Variance of an Indicator}
+
+\[
+\text{Var}(\mathbf{1}_{A_i}) = E[\mathbf{1}_{A_i}^2] - (E[\mathbf{1}_{A_i}])^2 = p - p^2 = p(1-p)
+\]
+
+\subsection{The Proof}
+
+\begin{align*}
+\text{Var}\!\left(\frac{S_n}{n}\right)
+&= \text{Var}\!\left(\frac{1}{n}\sum_{k=1}^{n} \mathbf{1}_{A_k}\right)
+= \frac{1}{n^2} \sum_{k=1}^{n} \text{Var}(\mathbf{1}_{A_k})  \tag{Properties 5 \& 4}\\
+&= \frac{1}{n^2} \cdot n \cdot p(1-p) = \frac{p(1-p)}{n}
+\end{align*}
+
+Taking the limit:
+\[
+\lim_{n \to \infty} \text{Var}\!\left(\frac{S_n}{n}\right) = \lim_{n \to \infty} \frac{p(1-p)}{n} = 0
+\]
+
+Since the variance goes to zero, the randomness vanishes, and $S_n/n \to p$. $\qed$
+
+\subsection{LLN for General Random Variables}
+
+\begin{theorem}
+For i.i.d.\ random variables $X_1, X_2, \ldots$ with common distribution $X$:
+\[
+\boxed{\lim_{n \to \infty} \frac{1}{n} \sum_{k=1}^{n} X_k = E[X] \quad \text{with probability 1}}
+\]
+\end{theorem}
+
+Expectations are averages---but \textbf{only} when $n \to \infty$.
+
+\subsection{LLN for Conditional Probability}
+
+\[
+\lim_{n \to \infty} \frac{\sum_{k=1}^{n} \mathbf{1}_{A_k \cap B_k}}{\sum_{k=1}^{n} \mathbf{1}_{B_k}} = \frac{P(A \cap B)}{P(B)} = P(A \mid B)
+\]
+
+%==============================================================================
+\section{Day 7 --- Rest: The Completed Framework}
+%==============================================================================
+
+\begin{creationbox}[Symbolic Parallel]
+Day 7 is rest---not inactivity, but the recognition that the structure is complete. Here we step back and see the whole architecture. Everything connects.
+\end{creationbox}
+
+\renewcommand{\arraystretch}{1.4}
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Concept} & \textbf{Distribution} & \textbf{Key Formula} \\
+\midrule
+\# successes in $n$ trials & $\text{Binom}(n,p)$ & $P(S_n = k) = \binom{n}{k}p^k q^{n-k}$ \\[3pt]
+Trial of $k$-th success & $\text{NegBinom}(k,p)$ & $P(T_k = n) = \binom{n-1}{k-1}p^k q^{n-k}$ \\[3pt]
+Trial of 1st success & $\text{Geom}(p)$ & $P(T_1 = n) = pq^{n-1}$ \\[3pt]
+Expected 1st success & --- & $E[T_1] = 1/p$ \\[3pt]
+Expected $k$-th success & --- & $E[T_k] = k/p$ \\[3pt]
+Variance of indicator & --- & $\text{Var}(\mathbf{1}_A) = p(1-p)$ \\[3pt]
+LLN & --- & $\lim S_n/n = p$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Sampling Methods Reference}
+
+\renewcommand{\arraystretch}{1.3}
+\begin{center}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+& \textbf{Ordered} & \textbf{Unordered} \\
+\midrule
+\textbf{Without replacement} & $\dfrac{n!}{(n-r)!}$ & $\dbinom{n}{r}$ \\[12pt]
+\textbf{With replacement} & $n^r$ & $\dbinom{n+r-1}{r}$ \\[8pt]
+\bottomrule
+\end{tabular}
+\end{center}
+
+%==============================================================================
+\section{Pset Preparation: Practice Problems}
+%==============================================================================
+
+\begin{practicebox}[Problem 1: Geometric Distribution]
+You apply to jobs, and each application independently has a 5\% chance of resulting in an offer.
+\begin{enumerate}[label=(\alph*), nosep]
+  \item What is the probability your first offer comes on exactly the 10th application?
+  \item What is the expected number of applications until your first offer?
+  \item What is the probability you get \emph{no} offers in your first 20 applications?
+\end{enumerate}
+\end{practicebox}
+
+\textbf{Approach:}
+\begin{itemize}[nosep]
+  \item Let $T_1$ = application number of first offer. $T_1 \sim \text{Geom}(0.05)$.
+  \item (a): $P(T_1 = 10) = (0.05)(0.95)^{9}$
+  \item (b): $E[T_1] = 1/0.05 = 20$
+  \item (c): $P(T_1 > 20) = P(\text{20 failures}) = (0.95)^{20}$
+\end{itemize}
+
+\vspace{0.4cm}
+
+\begin{practicebox}[Problem 2: Negative Binomial]
+A basketball player makes free throws with probability $p = 0.7$.
+\begin{enumerate}[label=(\alph*), nosep]
+  \item What is the probability that her 3rd made free throw occurs on her 5th attempt?
+  \item What is the expected number of attempts to make 3 free throws?
+\end{enumerate}
+\end{practicebox}
+
+\textbf{Approach:}
+\begin{itemize}[nosep]
+  \item $T_3 \sim \text{NegBinom}(3, 0.7)$.
+  \item (a): $P(T_3 = 5) = \binom{4}{2}(0.7)^3(0.3)^2$
+  \item (b): $E[T_3] = 3/0.7 \approx 4.29$
+\end{itemize}
+
+\vspace{0.4cm}
+
+\begin{practicebox}[Problem 3: Binomial and Complement Events]
+A factory produces items with a 2\% defect rate, independently. In a batch of 100 items:
+\begin{enumerate}[label=(\alph*), nosep]
+  \item What is the probability of \emph{zero} defects?
+  \item What is the probability of \emph{at least one} defect?
+  \item What is the probability of \emph{at most 3} defects?
+\end{enumerate}
+\end{practicebox}
+
+\textbf{Approach:}
+\begin{itemize}[nosep]
+  \item $S_{100} \sim \text{Binom}(100, 0.02)$.
+  \item (a): $P(S_{100} = 0) = (0.98)^{100}$
+  \item (b): $P(S_{100} \geq 1) = 1 - (0.98)^{100}$ \quad (complement!)
+  \item (c): $P(S_{100} \leq 3) = \sum_{k=0}^{3} \binom{100}{k}(0.02)^k(0.98)^{100-k}$
+\end{itemize}
+
+\vspace{0.4cm}
+
+\begin{practicebox}[Problem 4: LLN and Variance]
+Let $X_1, X_2, \ldots$ be i.i.d.\ Bernoulli$(p)$ with $p = 0.3$.
+\begin{enumerate}[label=(\alph*), nosep]
+  \item Compute $\text{Var}(S_n/n)$ as a function of $n$.
+  \item For what value of $n$ is $\text{Var}(S_n/n) < 0.001$?
+  \item Explain in words what happens to $S_n/n$ as $n \to \infty$.
+\end{enumerate}
+\end{practicebox}
+
+\textbf{Approach:}
+\begin{itemize}[nosep]
+  \item (a): $\text{Var}(S_n/n) = p(1-p)/n = 0.21/n$
+  \item (b): Solve $0.21/n < 0.001 \implies n > 210$
+  \item (c): By LLN, $S_n/n \to 0.3$ with probability 1. The sample average converges to the true probability.
+\end{itemize}
+
+\vspace{0.4cm}
+
+\begin{practicebox}[Problem 5: VC-Style Problem (Comprehensive)]
+A venture fund invests in startups sequentially. Each startup independently becomes a ``hit'' with probability $p = 0.08$.
+\begin{enumerate}[label=(\alph*), nosep]
+  \item What is the expected number of investments until the fund's first hit?
+  \item The fund needs 4 hits to break even. What is the expected number of investments?
+  \item What is the probability the fund gets its 4th hit on exactly the 50th investment?
+  \item What is the probability the fund has at least 4 hits in its first 50 investments?
+\end{enumerate}
+\end{practicebox}
+
+\textbf{Approach:}
+\begin{itemize}[nosep]
+  \item (a): $E[T_1] = 1/0.08 = 12.5$
+  \item (b): $E[T_4] = 4/0.08 = 50$
+  \item (c): $T_4 \sim \text{NegBinom}(4, 0.08)$. \; $P(T_4 = 50) = \binom{49}{3}(0.08)^4(0.92)^{46}$
+  \item (d): Let $S_{50} \sim \text{Binom}(50, 0.08)$. \; $P(S_{50} \geq 4) = 1 - \sum_{k=0}^{3}\binom{50}{k}(0.08)^k(0.92)^{50-k}$
+\end{itemize}
+
+\vspace{0.4cm}
+
+\begin{practicebox}[Problem 6: Murphy's Law and Infinite Successes]
+Prove that if $p > 0$, success occurs infinitely often with probability 1.
+
+\emph{Hint:} Write the event ``success occurs infinitely often'' in terms of $T_1, T_2 - T_1, T_3 - T_2, \ldots$ and use independence.
+\end{practicebox}
+
+\textbf{Approach:}
+\begin{align*}
+P(\text{success } \infty \text{ often}) &= P(T_1 < \infty, \; T_2 - T_1 < \infty, \; T_3 - T_2 < \infty, \ldots) \\
+&= P(T_1 < \infty) \cdot P(T_1 < \infty) \cdot P(T_1 < \infty) \cdots \tag{independence, same distribution} \\
+&= 1 \cdot 1 \cdot 1 \cdots = 1
+\end{align*}
+
+\vspace{0.4cm}
+
+\begin{conceptbox}[Pset Strategy Checklist]
+\begin{enumerate}[nosep]
+  \item \textbf{Identify the random variable.} Is it counting successes ($S_n$, Binomial) or waiting for a success ($T_k$, Negative Binomial/Geometric)?
+  \item \textbf{``At least one''} $\implies$ use the complement: $P(X \geq 1) = 1 - P(X = 0)$.
+  \item \textbf{``At most $k$''} $\implies$ sum from 0 to $k$: $P(X \leq k) = \sum_{i=0}^{k} P(X = i)$.
+  \item \textbf{Expected wait times} use telescopic sums: $E[T_k] = k/p$.
+  \item \textbf{Variance questions} often use $\text{Var}(S_n/n) = p(1-p)/n$.
+  \item \textbf{Independence} lets you multiply probabilities and add variances.
+\end{enumerate}
+\end{conceptbox}
+
+\end{document}

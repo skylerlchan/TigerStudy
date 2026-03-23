@@ -1,0 +1,345 @@
+\documentclass[10pt,landscape]{article}
+\usepackage[landscape,margin=0.3in]{geometry}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[compact]{titlesec}
+
+% Reduce spacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt}
+\setlength{\columnsep}{10pt}
+
+% Section formatting
+\titleformat{\section}{\normalsize\bfseries\color{blue!70!black}}{\thesection}{0.5em}{}
+\titlespacing*{\section}{0pt}{3pt}{1pt}
+\titleformat{\subsection}{\small\bfseries\color{blue!50!black}}{\thesubsection}{0.5em}{}
+\titlespacing*{\subsection}{0pt}{2pt}{1pt}
+
+\begin{document}
+\begin{multicols}{3}
+\small
+
+\begin{center}
+\textbf{\large ECO310 Midterm Cheat Sheet - Clear Version}
+\end{center}
+
+\section{Core Utility Functions (Know These Cold!)}
+
+\subsection{Cobb-Douglas: $u = x_1^a x_2^b$}
+\textbf{Why it matters:} Appears on EVERY exam
+
+\textbf{The "Magic Rule":} Spend a fraction of your income on each good based on the exponent ratios.
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item Fraction spent on good 1: $\frac{a}{a+b}$
+\item Fraction spent on good 2: $\frac{b}{a+b}$
+\end{itemize}
+
+\textbf{Demand functions:}
+$$x_1^* = \frac{a}{a+b} \cdot \frac{m}{p_1}, \quad x_2^* = \frac{b}{a+b} \cdot \frac{m}{p_2}$$
+
+\textbf{Example:} $u = x_1^{0.2} x_2^{0.4}$, $m=15$, $p_1=1$, $p_2=2$: Normalize $0.2/0.6 = 1/3$. Spend $\$5$ on good 1 (5 units), $\$10$ on good 2 (5 units).
+
+\textbf{MRS:} $MRS = -\frac{a}{b} \cdot \frac{x_2}{x_1}$ (slopes of indifference curves)
+
+\textbf{At optimum:} $MRS = -\frac{p_1}{p_2}$ (slope of budget line)
+
+\subsection{Perfect Complements: $u = \min\{ax_1, bx_2\}$}
+\textbf{Why it matters:} Appears on EVERY exam
+
+\textbf{Key insight:} You always consume at the "kink" where $ax_1 = bx_2$ (no point wasting money on extra of one good when you need them together).
+
+\textbf{Demand functions:} Set $ax_1 = bx_2$ and use budget $p_1x_1 + p_2x_2 = m$:
+$$x_1^* = \frac{m}{ap_2 + bp_1}, \quad x_2^* = \frac{am}{ap_2 + bp_1}$$
+
+\textbf{Example:} $u = \min\{4x_1, x_2\}$, $m=20$, $p_1=p_2=1$: Set $4x_1 = x_2$, budget gives $x_1 + 4x_1 = 20 \Rightarrow x_1 = 4$, $x_2 = 16$.
+
+\textbf{Critical fact for exams:} Perfect complements have \textbf{ZERO substitution effect} (entire price change is income effect, because you can't substitute between the goods).
+
+\subsection{Perfect Substitutes: $u = ax_1 + bx_2$}
+\textbf{Why it matters:} Tested in 3 out of 4 exams
+
+\textbf{Key insight:} MRS is constant $= -a/b$. You only buy the good with better "bang-per-buck".
+
+\textbf{Decision rule:} Compare $\frac{a}{p_1}$ (utility per dollar of good 1) vs $\frac{b}{p_2}$ (utility per dollar of good 2):
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item If $\frac{a}{p_1} > \frac{b}{p_2}$: Buy only good 1, $x_1^* = m/p_1$, $x_2^* = 0$
+\item If $\frac{a}{p_1} < \frac{b}{p_2}$: Buy only good 2, $x_1^* = 0$, $x_2^* = m/p_2$
+\item If equal: Any combination on budget line works
+\end{itemize}
+
+\textbf{Corner solutions:} This ALWAYS gives corner solutions unless bang-per-buck is exactly equal.
+
+\subsection{CES Utility: $u = (x_1^r + x_2^r)^{1/r}$}
+\textbf{Why it matters:} Tested in 2025 (and nests all three above!)
+
+\textbf{Key insight:} As parameter changes, CES becomes:
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $r \to -\infty$: Perfect complements
+\item $r \to 0$: Cobb-Douglas
+\item $r = 1$: Perfect substitutes
+\end{itemize}
+
+\textbf{MRS:} $MRS = -\left(\frac{x_2}{x_1}\right)^{1-r}$
+
+\section{Finding Optimal Bundles (The Process)}
+
+\subsection{Step 1: Set Up the Problem}
+\textbf{Budget constraint:} $p_1 x_1 + p_2 x_2 = m$
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item Slope: $-p_1/p_2$
+\item Intercepts: $(m/p_1, 0)$ and $(0, m/p_2)$
+\end{itemize}
+
+\subsection{Step 2: Find MRS}
+\textbf{MRS (Marginal Rate of Substitution):} The rate at which you're willing to trade good 2 for good 1 while staying on the same indifference curve.
+
+$$MRS = -\frac{dx_2}{dx_1}\Big|_{\text{same utility}} = -\frac{MU_1}{MU_2} = -\frac{\partial u/\partial x_1}{\partial u/\partial x_2}$$
+
+\textbf{Interpretation:} MRS tells you your "personal price ratio" (how you value the goods). At optimum, this must equal the market price ratio.
+
+\subsection{Step 3: Optimize (Interior Solution)}
+\textbf{Tangency condition:} $MRS = -\frac{p_1}{p_2}$
+
+Or equivalently: $\frac{MU_1}{MU_2} = \frac{p_1}{p_2}$ or $\frac{MU_1}{p_1} = \frac{MU_2}{p_2}$
+
+\textbf{What this means:} "Bang-per-buck" must be equal across all goods. If good 1 gave you more utility per dollar, you'd buy more of it.
+
+\textbf{Budget binds:} $p_1 x_1 + p_2 x_2 = m$ (spend all your money)
+
+\textbf{Solve these two equations together} to get $x_1^*$ and $x_2^*$.
+
+\subsection{Step 4: Check for Corner Solutions}
+\textbf{When do corners happen?}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item Perfect substitutes (always a corner unless bang-per-buck exactly equal)
+\item When your FOC (tangency condition) gives you a negative quantity
+\item When goods aren't worth the price (MRS never equals price ratio)
+\end{itemize}
+
+\textbf{How to check:} If tangency gives $x_i < 0$, set $x_i = 0$ and spend all $m$ on the other good.
+
+\section{Marshallian vs Hicksian Demand}
+
+\subsection{Marshallian Demand: $x_i(p, m)$}
+\textbf{What is it:} The regular demand function. What you buy given prices and income.
+
+\textbf{Problem it solves:} Maximize utility $u(x_1, x_2)$ subject to budget $p_1x_1 + p_2x_2 = m$
+
+\textbf{Result:} Gives you the best bundle you can afford.
+
+\subsection{Hicksian (Compensated) Demand: $h_i(p, \bar{u})$}
+\textbf{What is it:} The demand that achieves a target utility level at minimum cost.
+
+\textbf{Problem it solves:} Minimize expenditure $p_1x_1 + p_2x_2$ subject to utility constraint $u(x_1, x_2) = \bar{u}$
+
+\textbf{Result:} Gives you the cheapest bundle that achieves utility $\bar{u}$.
+
+\textbf{When you use it:} For substitution effects (holding utility constant while prices change).
+
+\subsection{Example: Finding Hicksian Demand}
+$u = x_1 x_2$, target $\bar{u} = 64$, $p_1 = p_2 = 4$:
+
+MRS = price ratio: $x_2/x_1 = 1 \Rightarrow x_1 = x_2$
+
+Use $u = 64$: $x_1^2 = 64 \Rightarrow x_1 = x_2 = 8$
+
+\section{Substitution \& Income Effects}
+
+\subsection{The Big Picture}
+When price of good 1 rises, two things happen:
+\begin{enumerate}[leftmargin=*,noitemsep,topsep=0pt]
+\item \textbf{Substitution effect:} Good 1 is now relatively more expensive, so you substitute away from it (even keeping utility constant)
+\item \textbf{Income effect:} Your purchasing power decreased, so you adjust consumption based on whether good 1 is normal or inferior
+\end{enumerate}
+
+\textbf{Total effect = Substitution effect + Income effect}
+
+\subsection{The Recipe (Always Follow These Steps!)}
+Suppose $p_1$ increases from $p_1^{\text{old}}$ to $p_1^{\text{new}}$:
+
+\textbf{Step 1:} Find \textbf{original bundle} $(x_1^O, x_2^O)$ at old prices
+
+\textbf{Step 2:} Find \textbf{new bundle} $(x_1^N, x_2^N)$ at new prices
+
+\textbf{Step 3:} Find \textbf{compensated bundle} $(x_1^C, x_2^C)$:
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item Use new prices $p_1^{\text{new}}$, $p_2$
+\item Keep utility at original level: $u(x_1^C, x_2^C) = u(x_1^O, x_2^O)$
+\item This is the Hicksian demand at new prices!
+\end{itemize}
+
+\textbf{Step 4:} Calculate effects:
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item Substitution effect: $\Delta x_1^{\text{sub}} = x_1^C - x_1^O$
+\item Income effect: $\Delta x_1^{\text{inc}} = x_1^N - x_1^C$
+\item Total effect: $\Delta x_1^{\text{total}} = x_1^N - x_1^O$
+\end{itemize}
+
+\subsection{Sign Rules}
+\textbf{Substitution effect:} ALWAYS negative (or zero) when price rises
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item If $p_1$ rises, $x_1^C < x_1^O$ (you buy less to substitute away)
+\item Exception: Perfect complements have zero substitution effect
+\end{itemize}
+
+\textbf{Income effect:} Depends on type of good
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item Normal good: Negative (buy less when poorer)
+\item Inferior good: Positive (buy more when poorer)
+\end{itemize}
+
+\subsection{Example with Cobb-Douglas}
+$u = BT$, $m=64$, $p_B$ rises from $\$1$ to $\$4$, $p_T = \$4$
+
+\textbf{Original:} $B^O = 32$, $T^O = 8$, $u = 256$
+
+\textbf{New:} $B^N = 8$, $T^N = 8$
+
+\textbf{Compensated:} $B = T$ and $BT = 256 \Rightarrow B^C = 16$, $T^C = 16$
+
+\textbf{Effects:} Sub: $-16$, Income: $-8$, Total: $-24$
+
+\section{Expected Utility (Key for Every Exam!)}
+
+\subsection{Setup}
+\textbf{Lottery:} Get outcome $c_i$ with probability $p_i$
+
+\textbf{Expected utility:}
+$$EU(L) = \sum_{i} p_i \cdot u(c_i) = p_1 u(c_1) + p_2 u(c_2) + \ldots$$
+
+\textbf{Critical:} Use final wealth in each state, not the change!
+
+\subsection{Example: Setting Up EU}
+Have $\$100$, invest $\$x$ in risky asset (+100\% or -50\%, each prob 1/2):
+
+Good: $W = 100 + x$, Bad: $W = 100 - 0.5x$
+
+$EU = \frac{1}{2}u(100+x) + \frac{1}{2}u(100-0.5x)$
+
+\subsection{Optimizing EU}
+\textbf{To find optimal $x$:}
+\begin{enumerate}[leftmargin=*,noitemsep,topsep=0pt]
+\item Take derivative: $\frac{d(EU)}{dx}$
+\item Set equal to zero: $\frac{d(EU)}{dx} = 0$
+\item Solve for $x^*$
+\item Check corners: $x = 0$ or $x = $ max possible
+\end{enumerate}
+
+\subsection{Risk Aversion}
+\textbf{Definition:} You prefer certainty to a gamble with the same expected value.
+
+\textbf{Math version:} $u(E[W]) > EU$ (utility of expected wealth $>$ expected utility)
+
+This happens when $u$ is \textbf{concave} ($u'' < 0$)
+
+\textbf{Risk neutral:} $u$ is linear, $u(E[W]) = EU$
+
+\textbf{Risk loving:} $u$ is convex ($u'' > 0$), $u(E[W]) < EU$
+
+\subsection{Certainty Equivalent (CE)}
+\textbf{Definition:} The guaranteed amount that gives the same utility as the lottery.
+
+$$u(CE) = EU$$
+
+\textbf{Risk premium:} $RP = E[W] - CE$
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item Risk averse: $RP > 0$ (would pay to avoid risk)
+\item Risk neutral: $RP = 0$
+\end{itemize}
+
+\textbf{Example:} 50-50 of $\$0$ or $\$200$, $u(w) = \sqrt{w}$: $EU = \frac{1}{2}\sqrt{200}$, so $CE = 50$. $E[W] = 100$, thus $RP = 50$.
+
+\subsection{Common Utility Functions}
+\textbf{Log utility:} $u(w) = \ln(w)$
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item Risk averse (concave)
+\item Used frequently on exams
+\end{itemize}
+
+\textbf{CRRA:} $u(w) = \frac{w^{1-\rho}}{1-\rho}$ (or $\ln w$ if $\rho=1$)
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $\rho > 0$: Risk averse
+\item Higher $\rho$: More risk averse
+\end{itemize}
+
+\section{WARP (Revealed Preference)}
+
+\subsection{What is WARP?}
+\textbf{Weak Axiom of Revealed Preference:} If you choose bundle $x$ when bundle $y$ is affordable, then whenever you choose $y$, bundle $x$ must NOT be affordable (or must cost more).
+
+\textbf{Interpretation:} Your choices should be consistent. If you "revealed" you prefer $x$ to $y$ by choosing it when both were available, you shouldn't later choose $y$ when $x$ is also available.
+
+\subsection{How to Check WARP (Two Periods)}
+Given: Period A bundle $(x_1^A, x_2^A)$, prices $(p_1^A, p_2^A)$, spent $m^A$
+
+Period B bundle $(x_1^B, x_2^B)$, prices $(p_1^B, p_2^B)$, spent $m^B$
+
+\textbf{Step 1:} Check if A's bundle was revealed preferred to B's bundle:
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item Cost of B's bundle at A's prices: $p_1^A x_1^B + p_2^A x_2^B$
+\item If this $\leq m^A$, then A's choice revealed preference for A's bundle
+\end{itemize}
+
+\textbf{Step 2:} Check if B's bundle was revealed preferred to A's bundle:
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item Cost of A's bundle at B's prices: $p_1^B x_1^A + p_2^B x_2^A$
+\item If this $\leq m^B$, then B's choice revealed preference for B's bundle
+\end{itemize}
+
+\textbf{WARP violated if:} Both bundles are revealed preferred (at least one strictly)
+
+\subsection{Example}
+Mon: Spent $\$90$, Tue bundle cost $\$80$ at Mon prices $\Rightarrow$ Mon strictly revealed preferred
+
+Tue: Spent $\$100$, Mon bundle cost $\$100$ at Tue prices $\Rightarrow$ Tue weakly revealed preferred
+
+\textbf{Result:} WARP violated (both revealed preferred)
+
+\section{Corner Solutions \& Non-Negativity}
+
+\subsection{When Do Corners Happen?}
+\textbf{Situation 1:} Perfect substitutes (almost always a corner)
+
+\textbf{Situation 2:} When FOC gives negative quantity
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item You set MRS = price ratio, solve, get $x_i < 0$
+\item This means at any positive quantity, the good isn't worth buying
+\item Solution: Set $x_i = 0$, spend all income on other good
+\end{itemize}
+
+\textbf{Situation 3:} MRS never equals price ratio
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item If $|MRS| > p_1/p_2$ everywhere: consume only good 1
+\item If $|MRS| < p_1/p_2$ everywhere: consume only good 2
+\end{itemize}
+
+\subsection{How to Check in Your Answer}
+\textbf{ALWAYS verify:} $x_1 \geq 0$ and $x_2 \geq 0$
+
+If either is negative, you made an error or you're at a corner.
+
+\section{Quick Tips for Common Exam Traps}
+
+\begin{enumerate}[leftmargin=*,noitemsep,topsep=0pt]
+\item \textbf{Cobb-Douglas:} "Spend 3x as much" $\neq$ "Buy 3x as much" (unless prices are equal)
+
+\item \textbf{Perfect complements:} Substitution effect is ALWAYS zero (entire change is income effect)
+
+\item \textbf{Portfolio problems:} Variance $\sigma^2 \neq$ Standard deviation $\sigma$
+
+\item \textbf{EU setup:} Use FINAL wealth in each state, not the change
+
+\item \textbf{Marshallian vs Hicksian:} Marshallian maximizes utility given income; Hicksian minimizes cost given utility
+
+\item \textbf{Risk aversion:} Check if $u(E[W]) > EU$, not just if $u$ is concave
+
+\item \textbf{WARP:} "Revealed preferred" = chosen when other was affordable (cost $\leq$ budget)
+
+\item \textbf{Substitution effect:} ALWAYS use compensated bundle (same utility, new prices)
+\end{enumerate}
+
+\end{multicols}
+\end{document}

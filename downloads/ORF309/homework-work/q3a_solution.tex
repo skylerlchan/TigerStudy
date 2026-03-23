@@ -1,0 +1,93 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{parskip}
+
+\title{ORF 309 -- Homework 4, Question 3 Solution}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\vspace{-2em}
+
+\section*{Problem Statement}
+
+Every day, you eat one box of CrunchYum\texttrademark{} breakfast cereal. The manufacturer puts little action figures in the boxes that you like to collect. There are 4 distinct types of action figures. Each box contains an action figure with probability $\tfrac{1}{2}$; among those boxes that contain an action figure, each type is equally likely. The content of every cereal box is independent.
+
+Suppose you have already collected $k$ distinct types of action figures ($0 \le k < 4$). What is the expected number of boxes you need to eat until you get an action figure of a type that you do not have yet?
+
+\textbf{(b)} From the time that you first started eating CrunchYum\texttrademark{}, what is the expected number of boxes you need to eat until you have collected at least one action figure of every type?
+
+\section*{Solution to Part (a)}
+
+Let $A$ = the number of boxes needed to get an action figure of a type that you do not have yet, given that you have already collected $k$ distinct types.
+
+\subsection*{Step 1: Compute $P(A = \text{success} \mid k)$}
+
+A single box gives you a new type if two things happen:
+\begin{enumerate}
+    \item The box contains an action figure (probability $\tfrac{1}{2}$), \textbf{and}
+    \item That figure is one of the $(4 - k)$ types you are missing (probability $\tfrac{4-k}{4}$, since each type is equally likely).
+\end{enumerate}
+
+By independence of these two events:
+\[
+    P(A \mid k) \;=\; \frac{1}{2} \cdot \frac{4-k}{4} \;=\; \frac{4-k}{8}.
+\]
+
+\subsection*{Step 2: Recognize the geometric distribution}
+
+Each box is an independent Bernoulli trial with success probability $P(A \mid k)$. Therefore:
+\[
+    A \;\sim\; \text{Geom}\!\left(\frac{4-k}{8}\right).
+\]
+The expectation of a $\text{Geom}(p)$ random variable (number of trials until the first success) is $1/p$.
+
+\subsection*{Step 3: Result}
+
+\[
+    \boxed{\; E[A] \;=\; \frac{1}{P(A \mid k)} \;=\; \frac{8}{4-k} \;}
+\]
+
+\subsection*{Sanity Checks}
+
+\begin{center}
+\begin{tabular}{@{}ccc@{}}
+\toprule
+$k$ (types collected) & Success prob.\ $p$ & Expected boxes $1/p$ \\
+\midrule
+0 & $4/8 = 1/2$ & $\mathbf{2}$ \\
+1 & $3/8$ & $\mathbf{8/3 \approx 2.67}$ \\
+2 & $2/8 = 1/4$ & $\mathbf{4}$ \\
+3 & $1/8$ & $\mathbf{8}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+This makes intuitive sense: the more types you have already collected, the harder it is to find a missing one. When $k = 0$, every action figure is new, so you just need to wait for any figure to appear (expected 2 boxes, since each box has a $\tfrac{1}{2}$ chance of containing one).
+
+\section*{Solution to Part (b)}
+
+Let $A_k$ denote the number of boxes needed to go from $k$ collected types to $k+1$ collected types. From part (a), $A_k \sim \text{Geom}\!\left(\tfrac{4-k}{8}\right)$ with $E[A_k] = \tfrac{8}{4-k}$.
+
+The total number of boxes to collect all 4 types is:
+\[
+    T \;=\; A_0 + A_1 + A_2 + A_3.
+\]
+
+By \textbf{linearity of expectation}, for any random variables $X_1, \ldots, X_n$ (independent or not):
+\[
+    E[X_1 + X_2 + \cdots + X_n] \;=\; E[X_1] + E[X_2] + \cdots + E[X_n].
+\]
+Applying this to $T$:
+\[
+    E[T] \;=\; \sum_{k=0}^{3} E[A_k] \;=\; \sum_{k=0}^{3} \frac{8}{4-k} \;=\; \frac{8}{4} + \frac{8}{3} + \frac{8}{2} + \frac{8}{1} \;=\; 2 + \frac{8}{3} + 4 + 8.
+\]
+
+\[
+    \boxed{\; E[T] \;=\; \frac{6 + 8 + 12 + 24}{3} \;=\; \frac{50}{3} \;\approx\; 16.67 \text{ boxes} \;}
+\]
+
+\end{document}

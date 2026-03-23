@@ -1,0 +1,451 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{bm}
+\usepackage{mathtools}
+
+\geometry{margin=1in}
+
+\title{\textbf{ORF 309 --- Slides Relevant to Homework 3, Question 4}\\
+\large Compiled from Slides 05, 06, 07}
+\author{}
+\date{}
+
+\newtheoremstyle{definition_style}{6pt}{6pt}{}{}{\bfseries}{.}{.5em}{}
+\theoremstyle{definition_style}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{thm}[defn]{Theorem}
+\newtheorem{claim}[defn]{Claim}
+\newtheorem{example}[defn]{Example}
+\newtheorem{remark}[defn]{Remark}
+\newtheorem{exercise}[defn]{Exercise}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+%=============================================================
+\section{Homework 3, Question 4 --- The Problem}
+%=============================================================
+
+\textbf{Q.4 (Love triangles).} A dating website works as follows. There are $n$ people signed up.
+For every pair of people, the website independently flips a coin that comes up heads with probability $p$.
+If the coin comes up heads, the website creates a match between this pair of people.
+(Being a scam, the site does not actually use any specific information about the people in deciding who to hook up.)
+
+In this setting, it is perfectly possible that the website randomly creates a \emph{love triangle}: three people who are all mutually hooked up.
+
+\begin{enumerate}[label=\textbf{\alph*)}]
+    \item What is the expected number of hookups a given individual has at once?
+    \item What is the probability that a given individual has more than one hookup?
+    \item What is the expected number of love triangles on the entire site?
+\end{enumerate}
+
+\medskip
+\noindent\textbf{Key ideas needed to solve each part:}
+\begin{itemize}
+    \item \textbf{Part (a):} Indicator random variables + linearity of expectation. Each potential partner gives an independent Bernoulli trial; sum the indicators.
+    \item \textbf{Part (b):} The number of hookups for a given person follows $\mathrm{Binom}(n-1, p)$; use the Binomial PMF to compute $P\{\text{more than 1 hookup}\} = 1 - P\{0\} - P\{1\}$.
+    \item \textbf{Part (c):} Use indicator random variables over all $\binom{n}{3}$ triples; apply linearity of expectation and independence of edges.
+\end{itemize}
+
+\newpage
+%=============================================================
+\section{Discrete Random Variables and Expectations (Slides 05)}
+%=============================================================
+
+\subsection{Types of Random Variables}
+
+\begin{defn}[Discrete Random Variable]
+A random variable $X: \Omega \to D$ is called \textbf{discrete} if the value set $D$ is a finite or countable set.
+\end{defn}
+
+\begin{defn}[Continuous Random Variable]
+A random variable $X: \Omega \to D$ is called \textbf{continuous} if the value set $D$ is NOT countable.
+\end{defn}
+
+\subsection{Expectation}
+
+\begin{defn}[Expectation of a Discrete Random Variable]
+If $X: \Omega \to D$ is a discrete r.v.\ (DRV) and $f: D \to \mathbb{R}$ is a value function, then the \textbf{expectation} of $f(X)$ is defined as
+\[
+    E[f(X)] = \sum_{i \in D} f(i) \, P\{X = i\}.
+\]
+If $D \subset \mathbb{R}$, we can choose $f(i) = i$ and the expectation of $X$ becomes:
+\[
+    E[X] = \sum_{i \in D} i \, P\{X = i\}.
+\]
+\end{defn}
+
+\begin{remark}
+This definition makes sense only for DRVs, because for a continuous r.v.\ (CRV) we have $P\{X = x\} = 0$ for all $x \in D$.
+\end{remark}
+
+\subsection{The Indicator Function (Very Important!)}
+
+\begin{defn}[Indicator Random Variable]
+Assume $A$ is an event. Then we can define the DRV $\mathbf{1}_A$ with values:
+\[
+    \mathbf{1}_A(\omega) = \begin{cases} 1, & \text{if } \omega \in A \\ 0, & \text{if } \omega \notin A \end{cases}
+\]
+The DRV $\mathbf{1}_A$ is called the \textbf{indicator random variable} for event $A$.
+\end{defn}
+
+\begin{thm}[Expectation of the Indicator]
+\[
+    E[\mathbf{1}_A] = 1 \cdot P\{\mathbf{1}_A = 1\} + 0 \cdot P\{\mathbf{1}_A = 0\} = P\{A\}.
+\]
+That is, \textbf{the expectation of $\mathbf{1}_A$ equals the probability of event $A$}.
+\end{thm}
+
+\subsection{Usefulness of the Indicator Function}
+
+The indicator function allows us to represent the number of successes in a series of trials as a simple sum.
+
+\begin{example}[Coin Flips]
+Consider the DRV $X$ representing the number of heads in $n$ coin flips.
+\begin{itemize}
+    \item Define the events: $A_i = \{\text{the } i\text{-th flip is heads}\}$ for $i = 1, 2, \ldots, n$.
+    \item For each event $A_i$, define the indicator function $\mathbf{1}_{A_i}$.
+    \item Then we can express $X$ as the sum of indicators:
+    \[
+        X = \mathbf{1}_{A_1} + \mathbf{1}_{A_2} + \cdots + \mathbf{1}_{A_n}.
+    \]
+\end{itemize}
+This representation is the key trick for computing expectations of counts.
+\end{example}
+
+\subsection{Distributions of DRVs}
+
+\begin{defn}[Distribution]
+If $X: \Omega \to D$ is a DRV, then its \textbf{distribution} is given by specifying the probabilities of all its outcomes $\{P\{X = i\}\}_{i \in D}$.
+\end{defn}
+
+\begin{defn}[Uniform Distribution]
+Let $D$ be a finite set. The DRV $X: \Omega \to D$ for which
+\[
+    P\{X = i\} = \frac{1}{|D|}, \quad \forall i \in D
+\]
+is said to have the \textbf{Uniform Distribution} on $D$. Notation: $X \sim \mathrm{Unif}(D)$.
+\end{defn}
+
+\subsection{Joint and Marginal Distributions}
+
+\begin{defn}[Joint Distribution]
+The \textbf{joint distribution} of two DRVs $X: \Omega \to D_X$ and $Y: \Omega \to D_Y$ is specified by the probabilities
+\[
+    \{P\{X = i, Y = j\}\}_{i \in D_X,\, j \in D_Y}.
+\]
+\end{defn}
+
+\begin{defn}[Marginal Distribution]
+The distribution of DRV $X$ only is called the \textbf{marginal distribution} of $X$.
+\end{defn}
+
+\begin{claim}[Recovering Marginals from Joint]
+\[
+    P\{X = i\} = \sum_{j \in D_Y} P\{X = i, Y = j\}.
+\]
+\textit{Proof sketch:} Write $\Omega = \bigcup_{j \in D_Y}\{Y = j\}$ (mutually exclusive partition), so $\{X=i\} = \bigcup_{j \in D_Y}\{X=i, Y=j\}$, and take probabilities.
+\end{claim}
+
+\subsection{Linearity of Expectation}
+
+\begin{thm}[Linearity of Expectation]
+For any two DRVs $X$ and $Y$ (no independence required):
+\[
+    E[X + Y] = E[X] + E[Y].
+\]
+\end{thm}
+
+\begin{proof}
+\begin{align*}
+E[X + Y] &= \sum_{x \in D_X} \sum_{y \in D_Y} (x + y) \, P\{X = x, Y = y\} \\
+          &= \sum_{x \in D_X} \sum_{y \in D_Y} x \, P\{X=x, Y=y\} + \sum_{x \in D_X} \sum_{y \in D_Y} y \, P\{X=x, Y=y\} \\
+          &= \sum_{x \in D_X} x \underbrace{\sum_{y \in D_Y} P\{X=x, Y=y\}}_{= P\{X=x\}} + \sum_{y \in D_Y} y \underbrace{\sum_{x \in D_X} P\{X=x, Y=y\}}_{= P\{Y=y\}} \\
+          &= E[X] + E[Y].
+\end{align*}
+\end{proof}
+
+\begin{remark}
+By induction, linearity extends to any finite number of random variables:
+\[
+    E[X_1 + X_2 + \cdots + X_n] = E[X_1] + E[X_2] + \cdots + E[X_n].
+\]
+\textbf{This holds regardless of whether the $X_i$ are independent.}
+\end{remark}
+
+\subsection{Indicator Function Properties (Useful Identities)}
+
+\begin{exercise}
+Prove the following properties of indicator functions:
+\begin{align}
+    \mathbf{1}_{A \cap B} &= \mathbf{1}_A \cdot \mathbf{1}_B \\
+    \mathbf{1}_{A \cup B} &= \mathbf{1}_A + \mathbf{1}_B - \mathbf{1}_{A \cap B} \\
+    \mathbf{1}_{A^c}      &= 1 - \mathbf{1}_A
+\end{align}
+\end{exercise}
+
+\newpage
+%=============================================================
+\section{Independence, Indicator Functions, and Conditional Expectation (Slides 06)}
+%=============================================================
+
+\subsection{Indicator Function and Expectation: The Key Example}
+
+\begin{example}[{$n$ Coin Flips --- Proof that $E[X] = np$}]
+\textbf{Setup:} Flip $n$ identical coins. Let $X = $ total number of heads.
+\begin{itemize}
+    \item Define events $A_i = \{\text{the } i\text{-th coin shows H}\}$, with $P\{A_i\} = p$ and $P\{A_i^c\} = 1-p$.
+    \item Define indicator $\mathbf{1}_{A_i}$ for each $A_i$.
+    \item Then $X = \mathbf{1}_{A_1} + \mathbf{1}_{A_2} + \cdots + \mathbf{1}_{A_n}$.
+\end{itemize}
+By linearity of expectation and $E[\mathbf{1}_{A_i}] = P\{A_i\} = p$:
+\[
+    E[X] = E[\mathbf{1}_{A_1}] + E[\mathbf{1}_{A_2}] + \cdots + E[\mathbf{1}_{A_n}] = p + p + \cdots + p = np.
+\]
+
+\textbf{Key remark:} We did \emph{not} need to assume $A_i$ and $A_j$ are independent for any $i \ne j$. Even if the coins were correlated (e.g., through collusion), the expected total heads is still $np$. Independence is not required for linearity of expectation.
+\end{example}
+
+\subsection{Independence of DRVs}
+
+\begin{defn}[Independence of Two DRVs]
+Two DRVs $X: \Omega \to D_X$ and $Y: \Omega \to D_Y$ are called \textbf{independent} ($X \perp Y$) if for every $x \in D_X$ and $y \in D_Y$:
+\[
+    P\{X = x \mid Y = y\} = P\{X = x\} \quad \Longleftrightarrow \quad P\{X = x, Y = y\} = P\{X = x\} \cdot P\{Y = y\}.
+\]
+\end{defn}
+
+\begin{remark}
+If $X \perp Y$, then their marginal distributions \emph{determine} their joint distribution.
+\end{remark}
+
+\begin{thm}[Key Rules]
+For any DRVs $X$ and $Y$:
+\begin{itemize}
+    \item $E[X + Y] = E[X] + E[Y]$ \quad (\textbf{always}, no independence required).
+    \item $E[\varphi_1(X) \cdot \varphi_2(Y)] = E[\varphi_1(X)] \cdot E[\varphi_2(Y)]$ \quad (\textbf{only if} $X \perp Y$).
+\end{itemize}
+\end{thm}
+
+\begin{defn}[Independence of $n$ DRVs]
+The $n$ DRVs $X_1, X_2, \ldots, X_n$ are called \textbf{independent} iff for all subsets $\{j_1, j_2, \ldots, j_k\} \subseteq \{1,\ldots,n\}$ and all values:
+\[
+    P\{X_{j_1} = x_{j_1}, X_{j_2} = x_{j_2}, \ldots, X_{j_k} = x_{j_k}\} = P\{X_{j_1} = x_{j_1}\} \cdot P\{X_{j_2} = x_{j_2}\} \cdots P\{X_{j_k} = x_{j_k}\}.
+\]
+\end{defn}
+
+\subsection{Conditional Expectation}
+
+\begin{defn}[Conditional Expectation]
+If $X: \Omega \to D_X$ and $Y: \Omega \to D_Y$ are DRVs and $\varphi: D_X \to \mathbb{R}$, then the \textbf{conditional expectation} of $\varphi(X)$ given $Y = y$ is
+\[
+    E[\varphi(X) \mid Y = y] = \sum_{x \in D_X} \varphi(x) \, P\{X = x \mid Y = y\}.
+\]
+\end{defn}
+
+\begin{example}[Die Rolling Until a 6]
+\textbf{Setup:}
+\begin{itemize}
+    \item Roll a fair die repeatedly; stop when we see a 6.
+    \item $T = $ the trial number when the first 6 appears.
+    \item $X = $ the number of 1s seen before the game ends.
+    \item Find: $E[X \mid T = k]$.
+\end{itemize}
+Define $Z_i = $ outcome of the $i$-th trial, with indicator $\mathbf{1}_{\{Z_i = 1\}}$.
+
+If the game ends at trial $k$, then $X = \sum_{i=1}^{k-1} \mathbf{1}_{\{Z_i = 1\}}$, so:
+\[
+    E[X \mid T = k] = \sum_{i=1}^{k-1} P\{Z_i = 1 \mid T = k\}.
+\]
+Using independence of trials and $\{T = k\} = \{Z_1 \ne 6, \ldots, Z_{k-1} \ne 6, Z_k = 6\}$:
+\[
+    P\{Z_i = 1 \mid T = k\} = \frac{P\{Z_i = 1, Z_i \ne 6\}}{P\{Z_i \ne 6\}} = \frac{1/6}{5/6} = \frac{1}{5}, \quad \text{for all } i = 1, \ldots, k-1.
+\]
+Therefore:
+\[
+    E[X \mid T = k] = \sum_{i=1}^{k-1} \frac{1}{5} = \frac{k-1}{5}.
+\]
+\end{example}
+
+\newpage
+%=============================================================
+\section{Bernoulli Processes and the Binomial Distribution (Slides 07)}
+%=============================================================
+
+\subsection{Bernoulli Random Variables and Processes}
+
+\begin{defn}[Bernoulli Random Variable]
+Any random variable $X: \Omega \to \{0, 1\}$ is called a \textbf{Bernoulli RV}.
+\begin{itemize}
+    \item $X = 1$ is a ``success''; $X = 0$ is a ``failure''.
+    \item The indicator function $\mathbf{1}_A$ is a Bernoulli RV for every event $A$.
+\end{itemize}
+\end{defn}
+
+\begin{defn}[Bernoulli Process]
+A \textbf{Bernoulli Process} is an infinite sequence $X_1, X_2, X_3, \ldots$ of i.i.d.\ Bernoulli RVs with
+\[
+    P\{X_i = 1\} = p \quad \text{and} \quad P\{X_i = 0\} = 1 - p =: q.
+\]
+\end{defn}
+
+\subsection{Counting Successes}
+
+\begin{defn}[Counting RV $S_n$]
+Define
+\[
+    S_n = X_1 + X_2 + \cdots + X_n,
+\]
+the \textbf{number of successes} in $n$ trials. Each $X_i \in \{0,1\}$ with $P\{X_i = 1\} = p$, $P\{X_i = 0\} = q$, and $p + q = 1$.
+\end{defn}
+
+\subsection{Deriving the Binomial Distribution}
+
+\begin{example}[Exactly 2 Successes in 8 Trials]
+We want $P\{S_8 = 2\}$.
+\begin{itemize}
+    \item Each specific sequence of 2 successes and 6 failures (e.g., $ssfffffff$) has probability $p^2 q^6$ by independence.
+    \item The number of such sequences is $\binom{8}{2} = 28$ (choose which 2 of the 8 slots are successes).
+    \item Therefore: $P\{S_8 = 2\} = \binom{8}{2} p^2 q^6$.
+\end{itemize}
+\end{example}
+
+\textbf{Generalization:} For exactly $k$ successes in $n$ trials:
+\[
+    P\{S_n = k\} = \binom{n}{k} p^k q^{n-k}, \quad k = 0, 1, \ldots, n.
+\]
+where the binomial coefficient is
+\[
+    \binom{n}{k} = \frac{n!}{k!\,(n-k)!} = \frac{n(n-1)\cdots(n-k+1)}{k!}.
+\]
+
+\subsection{Binomial Distribution}
+
+\begin{defn}[Binomial Distribution]
+A random variable $Z$ with values $\{0, 1, 2, \ldots, n\}$ has the \textbf{Binomial Distribution} if
+\[
+    P\{Z = k\} = \binom{n}{k} p^k q^{n-k}, \quad k = 0, 1, \ldots, n,
+\]
+where $p \in (0,1)$ and $q = 1-p$. We write $Z \sim \mathrm{Binom}(n, p)$.
+
+In particular, $S_n \sim \mathrm{Binom}(n, p)$.
+\end{defn}
+
+\begin{thm}[Sanity Check: Probabilities Sum to 1]
+\[
+    \sum_{k=0}^{n} P\{Z = k\} = \sum_{k=0}^{n} \binom{n}{k} p^k q^{n-k} = (p + q)^n = 1^n = 1. \quad \checkmark
+\]
+(Binomial theorem: $(p+q)^n = \sum_{k=0}^n \binom{n}{k} p^k q^{n-k}$.)
+\end{thm}
+
+\subsection{Expected Number of Successes}
+
+\begin{thm}[{$E[S_n] = np$}]
+If $S_n \sim \mathrm{Binom}(n, p)$, then $E[S_n] = np$.
+\end{thm}
+
+\begin{proof}[Proof via Indicator Functions (simpler)]
+Write $S_n = X_1 + X_2 + \cdots + X_n$ where each $X_i$ is a Bernoulli$(p)$ r.v. By linearity of expectation:
+\[
+    E[S_n] = E[X_1] + E[X_2] + \cdots + E[X_n] = p + p + \cdots + p = np.
+\]
+\end{proof}
+
+\begin{proof}[Proof via Algebra (alternative)]
+\begin{align*}
+    E[S_n] &= \sum_{k=1}^{n} k \binom{n}{k} p^k q^{n-k} \quad \text{(term $k=0$ vanishes)} \\
+           &= \sum_{k=1}^{n} n \binom{n-1}{k-1} p^k q^{n-k} \quad \text{(since } k\binom{n}{k} = n\binom{n-1}{k-1}\text{)} \\
+           &= np \sum_{\ell=0}^{n-1} \binom{n-1}{\ell} p^{\ell} q^{n-1-\ell} \quad \text{(substituting } \ell = k-1\text{)} \\
+           &= np \cdot (p+q)^{n-1} = np.
+\end{align*}
+\end{proof}
+
+\subsection{Successes Between Trials}
+
+\begin{example}[Successes between trials 10 and 21]
+Let $Z = S_{21} - S_9 = \sum_{k=10}^{21} X_k$. Since $X_{10}, X_{11}, \ldots, X_{21}$ are i.i.d.\ Bernoulli$(p)$ RVs, they have the same distribution as $X_1, \ldots, X_{12}$. Therefore:
+\[
+    S_{21} - S_9 \sim \mathrm{Binom}(12, p).
+\]
+\end{example}
+
+\subsection{Incremental Successes (Independence of Non-Overlapping Intervals)}
+
+\begin{example}[$P\{S_3 = 2, S_7 = 3\}$]
+\begin{itemize}
+    \item $S_3$ and $S_7$ are \textbf{not} independent (since $S_7$ depends on trials 1--3 which determine $S_3$).
+    \item Rewrite: $\{S_3 = 2, S_7 = 3\} = \{S_3 = 2, S_7 - S_3 = 1\}$.
+    \item $S_3 \sim \mathrm{Binom}(3, p)$ and $S_7 - S_3 \sim \mathrm{Binom}(4, p)$, and they \textbf{are} independent (non-overlapping intervals).
+    \item Therefore:
+    \[
+        P\{S_3 = 2, S_7 = 3\} = P\{S_3 = 2\} \cdot P\{S_7 - S_3 = 1\} = \binom{3}{2} p^2 q \cdot \binom{4}{1} p q^3.
+    \]
+\end{itemize}
+\end{example}
+
+\newpage
+%=============================================================
+\section{Applying the Slides to HW3 Q4}
+%=============================================================
+
+This section shows how the tools above solve each part of Q4.
+
+\subsection{Part (a): Expected Number of Hookups for a Given Person}
+
+Fix a person $i$. There are $n-1$ other people; for each person $j \ne i$, independently the website flips a coin with $P\{\text{heads}\} = p$.
+
+Define the indicator for person $i$ being matched with person $j$:
+\[
+    \mathbf{1}_{ij} = \begin{cases} 1, & \text{if persons } i \text{ and } j \text{ are matched} \\ 0, & \text{otherwise} \end{cases}
+\]
+with $E[\mathbf{1}_{ij}] = P\{\text{match}\} = p$.
+
+The total hookups for person $i$ is:
+\[
+    H_i = \sum_{j \ne i} \mathbf{1}_{ij}.
+\]
+By linearity of expectation:
+\[
+    \boxed{E[H_i] = \sum_{j \ne i} E[\mathbf{1}_{ij}] = (n-1) \cdot p.}
+\]
+
+\subsection{Part (b): Probability of More than One Hookup}
+
+The hookups for person $i$ are $H_i = \sum_{j \ne i} \mathbf{1}_{ij}$, where the $\mathbf{1}_{ij}$ are independent Bernoulli$(p)$ RVs (independent by assumption). Therefore:
+\[
+    H_i \sim \mathrm{Binom}(n-1, p).
+\]
+\begin{align*}
+    P\{H_i > 1\} &= 1 - P\{H_i = 0\} - P\{H_i = 1\} \\
+                 &= 1 - \binom{n-1}{0} p^0 q^{n-1} - \binom{n-1}{1} p^1 q^{n-2} \\
+                 &= \boxed{1 - q^{n-1} - (n-1)p\,q^{n-2},}
+\end{align*}
+where $q = 1 - p$.
+
+\subsection{Part (c): Expected Number of Love Triangles}
+
+A love triangle is a set $\{i, j, k\}$ of three people who are all mutually matched.
+
+\textbf{Step 1: Define an indicator for each triple.} For every unordered triple $\{i,j,k\}$, define:
+\[
+    \mathbf{1}_{ijk} = \begin{cases} 1, & \text{if all three pairs } (i,j),\, (j,k),\, (i,k) \text{ are matched} \\ 0, & \text{otherwise} \end{cases}
+\]
+
+\textbf{Step 2: Compute $E[\mathbf{1}_{ijk}]$.} The three matches are independent (separate coin flips), so:
+\[
+    E[\mathbf{1}_{ijk}] = P\{\text{all three pairs matched}\} = p \cdot p \cdot p = p^3.
+\]
+
+\textbf{Step 3: Count all possible triples.} The number of ways to choose 3 people from $n$ is $\binom{n}{3} = \frac{n(n-1)(n-2)}{6}$.
+
+\textbf{Step 4: Apply linearity of expectation.}
+\[
+    E[\text{total love triangles}] = \sum_{\{i,j,k\}} E[\mathbf{1}_{ijk}] = \binom{n}{3} \cdot p^3 = \boxed{\frac{n(n-1)(n-2)}{6} \cdot p^3.}
+\]
+
+\end{document}

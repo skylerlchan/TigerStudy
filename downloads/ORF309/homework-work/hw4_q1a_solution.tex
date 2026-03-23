@@ -1,0 +1,106 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{parskip}
+
+\title{ORF 309 -- Homework 4, Q1}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Q1(a): Compute $P\{X + Y = k\}$}
+
+\textbf{Setup.} Let $X \sim \text{Binom}(n, p)$ and $Y \sim \text{Binom}(m, p)$ be independent random variables.
+
+\textbf{Probabilistic argument.} $X$ counts the number of successes in $n$ independent trials, each with success probability $p$. Similarly, $Y$ counts successes in $m$ independent trials with the same probability $p$. Since $X$ and $Y$ are independent, $X + Y$ counts the total number of successes across all $n + m$ independent trials. Therefore:
+\[
+    X + Y \sim \text{Binom}(n + m,\, p)
+\]
+
+\textbf{Result.}
+\[
+    \boxed{P\{X + Y = k\} = \binom{n+m}{k}\, p^k\, (1-p)^{n+m-k}, \quad k = 0, 1, \ldots, n+m}
+\]
+
+\textbf{Verification via convolution.} One can also verify this mechanically using the law of total probability. Since $X$ and $Y$ are independent:
+\begin{align*}
+    P\{X + Y = k\} &= \sum_{j=0}^{k} P\{X = j\}\, P\{Y = k - j\} \\[6pt]
+    &= \sum_{j=0}^{k} \binom{n}{j} p^j (1-p)^{n-j} \cdot \binom{m}{k-j} p^{k-j} (1-p)^{m-(k-j)} \\[6pt]
+    &= p^k (1-p)^{n+m-k} \sum_{j=0}^{k} \binom{n}{j}\binom{m}{k-j}
+\end{align*}
+
+By the Vandermonde identity, $\displaystyle\sum_{j=0}^{k} \binom{n}{j}\binom{m}{k-j} = \binom{n+m}{k}$, which recovers the same answer.
+
+\section*{Q1(b): Compute $P\{X = Z - 1\}$}
+
+\textbf{Setup.} Let $X \sim \text{Binom}(n, p)$ and $Z \sim \text{Geom}(p)$ be independent. Recall that $Z$ is the number of trials until the first success, so $Z - 1$ is the number of failures before the first success:
+\[
+    P\{Z - 1 = k\} = (1-p)^k \cdot p, \quad k = 0, 1, 2, \ldots
+\]
+
+\textbf{Calculation.} By independence, we sum over all values $k$ that $X$ and $Z-1$ can share (i.e., $k = 0, 1, \ldots, n$):
+\begin{align*}
+    P\{X = Z - 1\} &= \sum_{k=0}^{n} P\{X = k\} \cdot P\{Z - 1 = k\} \\[6pt]
+    &= \sum_{k=0}^{n} \binom{n}{k} p^k (1-p)^{n-k} \cdot (1-p)^k \cdot p \\[6pt]
+    &= p\,(1-p)^n \sum_{k=0}^{n} \binom{n}{k} p^k
+\end{align*}
+
+By the binomial theorem, $\displaystyle\sum_{k=0}^{n} \binom{n}{k} p^k \cdot 1^{n-k} = (1 + p)^n$. Therefore:
+\begin{align*}
+    P\{X = Z - 1\} &= p\,(1-p)^n\,(1+p)^n \\[6pt]
+    &= p\,\bigl[(1-p)(1+p)\bigr]^n
+\end{align*}
+
+\textbf{Result.}
+\[
+    \boxed{P\{X = Z - 1\} = p\,(1 - p^2)^n}
+\]
+
+\section*{Appendix: The Binomial Theorem}
+
+\textbf{Statement.} For any $a$, $b$, and positive integer $n$:
+\[
+    (a + b)^n = \sum_{k=0}^{n} \binom{n}{k} a^k \, b^{n-k}
+\]
+
+\subsection*{Proof (combinatorial)}
+
+$(a+b)^n$ means multiplying $n$ copies of $(a+b)$ together:
+\[
+    \underbrace{(a+b)(a+b)(a+b)\cdots(a+b)}_{n \text{ factors}}
+\]
+When you expand this product, each term comes from choosing either $a$ or $b$ from each of the $n$ factors. A term with $a^k b^{n-k}$ arises when you pick $a$ from exactly $k$ factors and $b$ from the remaining $n-k$ factors.
+
+How many ways can you pick $a$ from exactly $k$ out of $n$ factors? That is $\binom{n}{k}$ (``$n$ choose $k$'').
+
+So the coefficient of $a^k b^{n-k}$ is $\binom{n}{k}$, and summing over all possible values of $k$ gives:
+\[
+    (a+b)^n = \binom{n}{0}a^0 b^n + \binom{n}{1}a^1 b^{n-1} + \cdots + \binom{n}{n}a^n b^0 = \sum_{k=0}^{n}\binom{n}{k}a^k b^{n-k} \qquad \square
+\]
+
+\subsection*{Concrete numerical example}
+
+Let's verify with $a = 1$, $b = 2$, $n = 3$. We know $(1+2)^3 = 3^3 = 27$.
+
+Now expand using the theorem:
+\begin{align*}
+    (1+2)^3 &= \binom{3}{0}1^0 \cdot 2^3 + \binom{3}{1}1^1 \cdot 2^2 + \binom{3}{2}1^2 \cdot 2^1 + \binom{3}{3}1^3 \cdot 2^0 \\[6pt]
+    &= 1 \cdot 8 \;+\; 3 \cdot 4 \;+\; 3 \cdot 2 \;+\; 1 \cdot 1 \\[6pt]
+    &= 8 + 12 + 6 + 1 = 27 \quad \checkmark
+\end{align*}
+
+\subsection*{How it was used in Q1(b)}
+
+We had the sum:
+\[
+    \sum_{k=0}^{n} \binom{n}{k} p^k
+\]
+This matches the binomial theorem with $a = p$ and $b = 1$:
+\[
+    \sum_{k=0}^{n} \binom{n}{k} p^k \cdot 1^{n-k} = (p + 1)^n = (1+p)^n
+\]
+This is the step that collapsed the sum into the closed-form expression.
+
+\end{document}

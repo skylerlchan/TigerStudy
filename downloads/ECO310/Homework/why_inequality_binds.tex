@@ -1,0 +1,239 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tcolorbox}
+
+\title{Why Does the Inequality Bind? \\ (Understanding $\lambda_1 = p_1 - p_2$)}
+\author{ECO 310 - The Deeper Question}
+\date{February 23, 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{The Question}
+
+We have: $-p_1 + \lambda_1 + \lambda_3 \leq 0$
+
+After substituting $\lambda_3 = p_2$, this becomes: $\lambda_1 \leq p_1 - p_2$
+
+Why do we assume this holds with \textbf{equality}: $\lambda_1 = p_1 - p_2$?
+
+\section{Short Answer}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=orange!75!black,title=Quick Answer]
+Actually, we don't always assume it binds!
+
+The condition $\lambda_1 \leq p_1 - p_2$ tells us the \textbf{maximum possible value} of $\lambda_1$.
+
+For perfect substitutes specifically, it turns out that $\lambda_1$ takes its maximum value at the optimum. But this is a result we derive, not something we assume.
+\end{tcolorbox}
+
+\section{The Full Story}
+
+\subsection{What KKT Conditions Tell Us}
+
+The Karush-Kuhn-Tucker (KKT) optimality conditions for our problem include:
+
+\begin{align}
+\frac{\partial \mathcal{L}}{\partial x_1} &\leq 0, \quad x_1 \geq 0, \quad x_1 \cdot \frac{\partial \mathcal{L}}{\partial x_1} = 0 \\
+\frac{\partial \mathcal{L}}{\partial x_2} &\leq 0, \quad x_2 \geq 0, \quad x_2 \cdot \frac{\partial \mathcal{L}}{\partial x_2} = 0
+\end{align}
+
+These conditions are \textbf{necessary} for optimality (must be true at any optimal solution).
+
+\subsection{What We Actually Know}
+
+From the guess that $x_1 = 0$ and $x_2 > 0$:
+
+\textbf{We know for certain:}
+\begin{itemize}
+\item $\lambda_2 = 0$ (from complementary slackness with $x_2 > 0$)
+\item $\lambda_3 = p_2$ (from the $x_2$ FOC being exactly zero)
+\item $x_2 = u^*$ (from utility constraint with $x_1 = 0$)
+\end{itemize}
+
+\textbf{We know only a constraint on $\lambda_1$:}
+\begin{itemize}
+\item $\lambda_1 \leq p_1 - p_2$ (from the $x_1$ FOC inequality)
+\item $\lambda_1 \geq 0$ (all Lagrange multipliers must be non-negative)
+\end{itemize}
+
+So $\lambda_1 \in [0, p_1 - p_2]$ is feasible.
+
+\section{Why We Set $\lambda_1 = p_1 - p_2$}
+
+There are a few ways to think about this:
+
+\subsection{Approach 1: It's the Unique Value That Works}
+
+For perfect substitutes, there's a unique optimal solution. If the optimal $\lambda_1$ were strictly less than $p_1 - p_2$, this would suggest the solution is not fully determined by the first-order conditions alone, which contradicts the uniqueness of the corner solution.
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Intuition]
+Think of it this way: the system of optimality conditions should uniquely determine all the variables.
+
+If $\lambda_1$ could be anywhere in $[0, p_1 - p_2]$, we'd have infinitely many "solutions," which doesn't make sense for a unique optimization problem.
+
+The fact that we're at a corner solution (buying only one good) suggests the constraints are "tight" - there's no wiggle room.
+\end{tcolorbox}
+
+\subsection{Approach 2: Economic Interpretation}
+
+Remember what $\lambda_1$ means: the shadow price of the constraint $x_1 \geq 0$.
+
+\textbf{Question:} How much would your cost decrease if you could buy $x_1 = -\epsilon$ (slightly negative)?
+
+\textbf{Answer:}
+\begin{itemize}
+\item You'd "sell" $\epsilon$ units of good 1 and get $p_1 \epsilon$ dollars back
+\item You'd need to buy $\epsilon$ more of good 2 to maintain utility, costing $p_2 \epsilon$
+\item Net savings: $(p_1 - p_2) \epsilon$ per unit
+\end{itemize}
+
+So the shadow price should be exactly $p_1 - p_2$, not something smaller!
+
+\subsection{Approach 3: The Math is Actually More Subtle}
+
+Here's the truth: we don't \textit{assume} it binds. Instead:
+
+\begin{enumerate}
+\item We \textbf{guess} that $x_1 = 0$, $x_2 = u^*$ is optimal
+\item We derive that IF this is optimal, THEN $\lambda_1 = p_1 - p_2$
+\item We check that this solution satisfies ALL the KKT conditions
+\item If it does, we've found an optimal solution
+\end{enumerate}
+
+\section{The Detailed Argument}
+
+Let me show you why $\lambda_1 = p_1 - p_2$ is the "right" value.
+
+\subsection{Setting Up the Problem}
+
+We want to minimize $-\mathcal{L} = p_1 x_1 + p_2 x_2$ (the actual cost) subject to all constraints.
+
+The Lagrangian with Convention 2 is:
+$$\mathcal{L} = -p_1 x_1 - p_2 x_2 + \lambda_1 x_1 + \lambda_2 x_2 + \lambda_3(x_1 + x_2 - u^*)$$
+
+At a maximum of $\mathcal{L}$ (which corresponds to minimum cost):
+\begin{itemize}
+\item We can't increase $\mathcal{L}$ by changing $x_2$ (since $x_2 > 0$, the derivative must be exactly 0)
+\item We can't increase $\mathcal{L}$ by increasing $x_1$ from 0 (derivative must be $\leq 0$)
+\item We can't increase $\mathcal{L}$ by changing $\lambda_3$ (derivative must be 0)
+\end{itemize}
+
+\subsection{Why the Inequality is Actually Tight}
+
+Consider what happens if $\lambda_1 < p_1 - p_2$ (strict inequality).
+
+Then: $-p_1 + \lambda_1 + \lambda_3 < 0$
+
+This means $\frac{\partial \mathcal{L}}{\partial x_1} < 0$ (strictly negative).
+
+\textbf{Interpretation:} Increasing $x_1$ would \textit{decrease} the Lagrangian.
+
+But wait - we're at $x_1 = 0$. We can't decrease $x_1$ further (nonnegativity constraint).
+
+However, the strict inequality $\frac{\partial \mathcal{L}}{\partial x_1} < 0$ means:
+\begin{quote}
+"If we could buy less than zero of good 1, the Lagrangian would increase (equivalently, cost would decrease)."
+\end{quote}
+
+The shadow price $\lambda_1$ measures exactly how much the Lagrangian would increase per unit if we could violate $x_1 \geq 0$.
+
+From our economic argument: violating $x_1 \geq 0$ by one unit (setting $x_1 = -1$) and adjusting $x_2$ to maintain utility would decrease cost by exactly $p_1 - p_2$.
+
+Therefore: $\lambda_1 = p_1 - p_2$ (the full amount, not something smaller).
+
+\section{What Happens in Other Problems?}
+
+In some optimization problems, you \textit{can} have slack in the inequality (i.e., $\lambda_1 < p_1 - p_2$).
+
+\textbf{Example where it doesn't bind:}
+
+Suppose we had a different utility function (not perfect substitutes), and at the optimum:
+\begin{itemize}
+\item $x_1 = 0$ (still at the boundary)
+\item But switching to $x_1 = -\epsilon$ wouldn't actually help much (maybe the utility loss is too high)
+\end{itemize}
+
+In that case, $\lambda_1$ could be less than $p_1 - p_2$.
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black,title=The Key Difference]
+For \textbf{perfect substitutes}: goods are exactly equivalent for utility, so switching between them is purely about prices. This makes the shadow price exactly equal to the price difference.
+
+For \textbf{other utility functions}: goods are not perfect substitutes, so the shadow price depends on marginal utilities, not just prices.
+\end{tcolorbox}
+
+\section{Practical Advice for Problem 2b}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=orange!75!black,title=What to Write on Your Homework]
+
+\textbf{Approach 1 (Simpler):} Just set $\lambda_1 = p_1 - p_2$ and verify it satisfies all conditions.
+
+\textbf{Approach 2 (More rigorous):}
+\begin{enumerate}
+\item Derive that $\lambda_1 \leq p_1 - p_2$
+\item Use economic reasoning: the shadow price of $x_1 \geq 0$ equals the price difference
+\item Conclude $\lambda_1 = p_1 - p_2$
+\item Verify $\lambda_1 \geq 0$ requires $p_1 \geq p_2$
+\end{enumerate}
+
+Either approach is fine for this problem!
+\end{tcolorbox}
+
+\section{Summary}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=The Bottom Line]
+
+\textbf{Why does $\lambda_1 = p_1 - p_2$ instead of $\lambda_1 < p_1 - p_2$?}
+
+\begin{enumerate}
+\item For perfect substitutes, the corner solution is unique and fully determined
+\item The shadow price $\lambda_1$ measures the cost savings from relaxing $x_1 \geq 0$
+\item This cost savings is exactly $p_1 - p_2$ (the price difference)
+\item Therefore $\lambda_1$ takes its maximum feasible value
+
+\item Mathematically: the inequality allows $\lambda_1 \in [0, p_1 - p_2]$, but the economics pins down $\lambda_1 = p_1 - p_2$
+\end{enumerate}
+
+\textbf{In general:} Not all inequalities in KKT conditions bind. But for this specific problem with perfect substitutes, it does.
+\end{tcolorbox}
+
+\section{Alternative Perspective: Solving Directly}
+
+Actually, there's another way to see this that avoids the question entirely.
+
+We have 5 unknowns: $x_1, x_2, \lambda_1, \lambda_2, \lambda_3$
+
+From our guess and complementary slackness:
+\begin{align}
+x_1 &= 0 \quad \text{(given)} \\
+x_2 &= u^* \quad \text{(from utility constraint)} \\
+\lambda_2 &= 0 \quad \text{(from complementary slackness)} \\
+\lambda_3 &= p_2 \quad \text{(from FOC for $x_2$)}
+\end{align}
+
+That's 4 equations. We have one more FOC inequality:
+$$-p_1 + \lambda_1 + \lambda_3 \leq 0$$
+
+Substituting $\lambda_3 = p_2$:
+$$\lambda_1 \leq p_1 - p_2$$
+
+Now, we want to find THE optimal solution. Since the problem has a unique minimum (perfect substitutes have unique corner solutions), all the variables should be uniquely determined.
+
+The only way $\lambda_1$ is uniquely determined is if the inequality binds: $\lambda_1 = p_1 - p_2$.
+
+If $\lambda_1$ could be anything in $[0, p_1 - p_2]$, we wouldn't have a unique solution to the KKT system, which contradicts the fact that our original optimization problem has a unique solution.
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black,title=Uniqueness Argument]
+\textbf{The original problem} (minimize cost subject to constraints) has a unique solution because perfect substitutes always lead to corner solutions.
+
+\textbf{Therefore}, the KKT system must also have a unique solution.
+
+\textbf{Therefore}, all variables (including $\lambda_1$) must be uniquely determined.
+
+\textbf{Therefore}, the inequality must bind: $\lambda_1 = p_1 - p_2$.
+\end{tcolorbox}
+
+\end{document}

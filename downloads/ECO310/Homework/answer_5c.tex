@@ -1,0 +1,98 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+
+\section*{ECO 310 - Problem Set 2}
+\subsection*{Question 5(c) - Full Solution}
+
+\textbf{Problem:} Assume that $u(w) = 1 - e^{-\alpha w}$, where $\alpha > 0$ (CARA utility function). Solve explicitly for the optimal insurance level $q^*$, and show that it does not depend on wealth $w_0$.
+
+\vspace{0.5cm}
+
+\textbf{Solution:}
+
+\textbf{Step 1: Find the marginal utility}
+
+Given $u(w) = 1 - e^{-\alpha w}$, we have:
+\begin{equation}
+u'(w) = \alpha e^{-\alpha w}
+\end{equation}
+
+\vspace{0.3cm}
+
+\textbf{Step 2: Apply the first-order condition from part (b)}
+
+From part (b), the optimal insurance level satisfies:
+\begin{equation}
+\frac{u'(w_0 - L + (1-p)q)}{u'(w_0 - pq)} = \frac{p(1-\pi)}{\pi(1-p)}
+\end{equation}
+
+\vspace{0.3cm}
+
+\textbf{Step 3: Substitute the CARA marginal utility}
+
+Substituting $u'(w) = \alpha e^{-\alpha w}$ into both numerator and denominator:
+\begin{equation}
+\frac{\alpha e^{-\alpha(w_0 - L + (1-p)q)}}{\alpha e^{-\alpha(w_0 - pq)}} = \frac{p(1-\pi)}{\pi(1-p)}
+\end{equation}
+
+The $\alpha$ terms cancel:
+\begin{equation}
+\frac{e^{-\alpha(w_0 - L + (1-p)q)}}{e^{-\alpha(w_0 - pq)}} = \frac{p(1-\pi)}{\pi(1-p)}
+\end{equation}
+
+\vspace{0.3cm}
+
+\textbf{Step 4: Simplify using properties of exponents}
+
+Using the rule $\frac{e^a}{e^b} = e^{a-b}$:
+\begin{equation}
+e^{-\alpha(w_0 - L + (1-p)q) - (-\alpha(w_0 - pq))} = \frac{p(1-\pi)}{\pi(1-p)}
+\end{equation}
+
+Expand the exponent:
+\begin{align}
+&-\alpha(w_0 - L + (1-p)q) + \alpha(w_0 - pq) \\
+&= -\alpha w_0 + \alpha L - \alpha(1-p)q + \alpha w_0 - \alpha pq \\
+&= \alpha L - \alpha(1-p)q - \alpha pq \\
+&= \alpha L - \alpha q[(1-p) + p] \\
+&= \alpha L - \alpha q
+\end{align}
+
+Notice that \textbf{$w_0$ cancels out completely!}
+
+Therefore:
+\begin{equation}
+e^{\alpha L - \alpha q} = \frac{p(1-\pi)}{\pi(1-p)}
+\end{equation}
+
+\vspace{0.3cm}
+
+\textbf{Step 5: Solve for $q^*$}
+
+Taking the natural logarithm of both sides:
+\begin{equation}
+\alpha L - \alpha q = \ln\left(\frac{p(1-\pi)}{\pi(1-p)}\right)
+\end{equation}
+
+Solving for $q$:
+\begin{equation}
+\alpha q = \alpha L - \ln\left(\frac{p(1-\pi)}{\pi(1-p)}\right)
+\end{equation}
+
+\begin{equation}
+\boxed{q^* = L - \frac{1}{\alpha}\ln\left(\frac{p(1-\pi)}{\pi(1-p)}\right)}
+\end{equation}
+
+\vspace{0.5cm}
+
+\textbf{Conclusion:}
+
+The optimal insurance level $q^*$ depends only on the loss amount $L$, the risk aversion parameter $\alpha$, the probability of an accident $\pi$, and the insurance price $p$.
+
+Crucially, \textbf{$q^*$ does not depend on initial wealth $w_0$}, which is the defining property of CARA (Constant Absolute Risk Aversion) preferences. The demand for insurance is independent of wealth level.
+
+\end{document}

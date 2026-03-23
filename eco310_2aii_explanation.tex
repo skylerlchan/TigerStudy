@@ -1,0 +1,184 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+
+\title{ECO 310: Problem 2a(ii) Detailed Explanation\\Risk Aversion and Certainty Equivalents}
+\author{Explanation Notes}
+\date{February 28, 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem Statement}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Problem 2a(ii)]
+If Mavi is more risk-averse than Melsi, then from Lecture 10, her risk premium is higher for every gamble. \textbf{Prove that this implies that for a particular gamble, Melsi's certainty equivalent is higher than Mavi's.}
+\end{tcolorbox}
+
+\section{Key Definitions}
+
+Before proving the result, let's establish the fundamental concepts:
+
+\begin{definition}[Certainty Equivalent (CE)]
+The certainty equivalent of a gamble is the guaranteed amount of wealth that provides the same utility as the expected utility of the gamble:
+\[
+\text{EU}(gamble) = u(\text{CE})
+\]
+\end{definition}
+
+\begin{definition}[Risk Premium ($\pi$)]
+The risk premium is the maximum amount a decision-maker would pay to avoid the risk and receive the expected value with certainty:
+\[
+\text{EU}(gamble) = u(E[W] - \pi)
+\]
+where $E[W]$ is the expected wealth from the gamble.
+\end{definition}
+
+\begin{definition}[Risk Aversion]
+A person is risk-averse if they prefer a certain outcome to a gamble with the same expected value. More risk-averse individuals have higher risk premiums for any given gamble.
+\end{definition}
+
+\section{The Fundamental Relationship}
+
+\subsection{Step 1: Connecting CE and $\pi$}
+
+We have two equations that both equal EU(gamble):
+\begin{align}
+\text{EU}(gamble) &= u(\text{CE}) \label{eq:ce}\\
+\text{EU}(gamble) &= u(E[W] - \pi) \label{eq:rp}
+\end{align}
+
+Since both expressions equal EU(gamble), we can equate them:
+\[
+u(\text{CE}) = u(E[W] - \pi)
+\]
+
+\subsection{Step 2: Using Monotonicity of Utility}
+
+Since utility functions are strictly increasing in wealth (more money is always better), the function $u(\cdot)$ is one-to-one. This means:
+\[
+u(\text{CE}) = u(E[W] - \pi) \implies \text{CE} = E[W] - \pi
+\]
+
+\subsection{Step 3: Rearranging to Isolate CE}
+
+From the equation $\text{CE} = E[W] - \pi$, we can rearrange:
+\begin{equation}
+\boxed{\text{CE} = E[W] - \pi} \label{eq:key}
+\end{equation}
+
+This is our \textbf{key relationship}: the certainty equivalent equals the expected value minus the risk premium.
+
+\section{The Proof}
+
+Now we can prove the main result.
+
+\subsection{Setup}
+
+Consider a particular gamble with expected wealth $E[W]$.
+
+Let:
+\begin{itemize}
+\item $\text{CE}_{\text{Melsi}}$ = Melsi's certainty equivalent for this gamble
+\item $\text{CE}_{\text{Mavi}}$ = Mavi's certainty equivalent for this gamble
+\item $\pi_{\text{Melsi}}$ = Melsi's risk premium for this gamble
+\item $\pi_{\text{Mavi}}$ = Mavi's risk premium for this gamble
+\end{itemize}
+
+\subsection{Given Information}
+
+We are told that Mavi is more risk-averse than Melsi, which means:
+\begin{equation}
+\pi_{\text{Mavi}} > \pi_{\text{Melsi}} \label{eq:given}
+\end{equation}
+
+\subsection{What We Need to Prove}
+
+We want to show:
+\[
+\text{CE}_{\text{Melsi}} > \text{CE}_{\text{Mavi}}
+\]
+
+\subsection{Step-by-Step Proof}
+
+\begin{proof}
+
+\textbf{Step 1:} Apply equation \eqref{eq:key} to Melsi:
+\[
+\text{CE}_{\text{Melsi}} = E[W] - \pi_{\text{Melsi}}
+\]
+
+\textbf{Step 2:} Apply equation \eqref{eq:key} to Mavi:
+\[
+\text{CE}_{\text{Mavi}} = E[W] - \pi_{\text{Mavi}}
+\]
+
+\textbf{Step 3:} Note that both dogs face the same gamble, so the expected wealth $E[W]$ is identical for both.
+
+\textbf{Step 4:} Take the difference between Melsi's and Mavi's certainty equivalents:
+\begin{align*}
+\text{CE}_{\text{Melsi}} - \text{CE}_{\text{Mavi}} &= (E[W] - \pi_{\text{Melsi}}) - (E[W] - \pi_{\text{Mavi}})\\
+&= E[W] - \pi_{\text{Melsi}} - E[W] + \pi_{\text{Mavi}}\\
+&= \pi_{\text{Mavi}} - \pi_{\text{Melsi}}
+\end{align*}
+
+\textbf{Step 5:} From our given information \eqref{eq:given}, we know $\pi_{\text{Mavi}} > \pi_{\text{Melsi}}$, which means:
+\[
+\pi_{\text{Mavi}} - \pi_{\text{Melsi}} > 0
+\]
+
+\textbf{Step 6:} Therefore:
+\[
+\text{CE}_{\text{Melsi}} - \text{CE}_{\text{Mavi}} > 0
+\]
+
+\textbf{Conclusion:}
+\[
+\boxed{\text{CE}_{\text{Melsi}} > \text{CE}_{\text{Mavi}}}
+\]
+
+\end{proof}
+
+\section{Intuition}
+
+Why does this make sense?
+
+\begin{itemize}[leftmargin=*]
+\item The \textbf{certainty equivalent} is the guaranteed amount you'd accept instead of taking the gamble.
+
+\item The \textbf{risk premium} is how much you'd pay (or how much you're discounting the expected value) to avoid the risk.
+
+\item A more risk-averse person (Mavi) demands a bigger discount for bearing risk, so her risk premium $\pi$ is higher.
+
+\item Since $\text{CE} = E[W] - \pi$, a higher risk premium means a lower certainty equivalent.
+
+\item In other words: \textbf{Mavi needs more compensation to accept the same level of risk}, so the guaranteed amount that would make her indifferent is lower.
+
+\item Conversely, Melsi (less risk-averse) is more willing to accept risk, so she'd be satisfied with a higher certain payment.
+\end{itemize}
+
+\section{Connection to Part (i)}
+
+This result connects to part (i) of the problem, which showed that someone accepts a bet if and only if $\text{CE} > w_0$ (initial wealth).
+
+Since:
+\begin{itemize}
+\item Both dogs are equally wealthy (same $w_0$)
+\item Whenever Mavi accepts a bet, her $\text{CE}_{\text{Mavi}} > w_0$
+\item Melsi's CE is even higher: $\text{CE}_{\text{Melsi}} > \text{CE}_{\text{Mavi}} > w_0$
+\item Therefore Melsi also accepts the bet
+\end{itemize}
+
+\textbf{Conclusion:} Any bet that Mavi (more risk-averse) is willing to accept, Melsi (less risk-averse) will also accept.
+
+\end{document}

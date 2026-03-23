@@ -1,0 +1,317 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+
+\title{Problem 2b: What Are Optimality Conditions? \\ (Complete Beginner's Guide)}
+\author{ECO 310 - For People Who Skipped Lecture}
+\date{February 23, 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{What Even Are "Optimality Conditions"?}
+
+\subsection{The Basic Idea}
+
+Remember from calculus: to find the maximum or minimum of a function, you take the derivative and set it equal to zero.
+
+\textbf{Example from calculus:}
+\begin{itemize}
+\item Function: $f(x) = x^2 - 4x + 3$
+\item To find minimum: take derivative $f'(x) = 2x - 4$
+\item Set equal to zero: $2x - 4 = 0$
+\item Solve: $x = 2$
+\end{itemize}
+
+\textbf{Optimality conditions are just this, but for the Lagrangian!}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Optimality Conditions Definition]
+\textbf{Optimality conditions} = The equations you get by taking derivatives of the Lagrangian and setting them equal to zero.
+
+Also called: \textbf{First-Order Conditions (FOCs)} or \textbf{Kuhn-Tucker Conditions}
+\end{tcolorbox}
+
+\subsection{Why Do We Do This?}
+
+At the optimal solution (the minimum cost bundle), the Lagrangian can't be improved by changing any variable slightly. Mathematically, this means all the derivatives must be zero.
+
+\textbf{Intuition:} If a derivative is positive, you could decrease the Lagrangian by reducing that variable. If it's negative, you could decrease it by increasing that variable. Only when it's zero are you at the optimum.
+
+\section{The Lagrangian (Review)}
+
+From Problem 2a, the Lagrangian is:
+
+\textbf{Convention 2 (negative objective):}
+$$\mathcal{L} = -p_1 x_1 - p_2 x_2 + \lambda_1 x_1 + \lambda_2 x_2 + \lambda_3(x_1 + x_2 - u^*)$$
+
+We have 5 variables: $x_1, x_2, \lambda_1, \lambda_2, \lambda_3$
+
+So we need to take 5 derivatives!
+
+\section{Taking the Derivatives (Step-by-Step)}
+
+\subsection{Derivative with Respect to $x_1$}
+
+Take the derivative of $\mathcal{L}$ with respect to $x_1$, treating everything else as constant:
+
+\begin{align*}
+\frac{\partial \mathcal{L}}{\partial x_1} &= \frac{\partial}{\partial x_1}\left[-p_1 x_1 - p_2 x_2 + \lambda_1 x_1 + \lambda_2 x_2 + \lambda_3(x_1 + x_2 - u^*)\right] \\
+&= -p_1 + \lambda_1 + \lambda_3
+\end{align*}
+
+\textbf{Breaking it down:}
+\begin{itemize}
+\item $\frac{\partial}{\partial x_1}(-p_1 x_1) = -p_1$ (derivative of $x_1$ is 1)
+\item $\frac{\partial}{\partial x_1}(-p_2 x_2) = 0$ (no $x_1$ here)
+\item $\frac{\partial}{\partial x_1}(\lambda_1 x_1) = \lambda_1$
+\item $\frac{\partial}{\partial x_1}(\lambda_2 x_2) = 0$ (no $x_1$ here)
+\item $\frac{\partial}{\partial x_1}[\lambda_3(x_1 + x_2 - u^*)] = \lambda_3$ (derivative of $x_1$ is 1)
+\end{itemize}
+
+\subsection{Derivative with Respect to $x_2$}
+
+\begin{align*}
+\frac{\partial \mathcal{L}}{\partial x_2} &= \frac{\partial}{\partial x_2}\left[-p_1 x_1 - p_2 x_2 + \lambda_1 x_1 + \lambda_2 x_2 + \lambda_3(x_1 + x_2 - u^*)\right] \\
+&= -p_2 + \lambda_2 + \lambda_3
+\end{align*}
+
+\subsection{Derivative with Respect to $\lambda_1$}
+
+\begin{align*}
+\frac{\partial \mathcal{L}}{\partial \lambda_1} &= \frac{\partial}{\partial \lambda_1}\left[-p_1 x_1 - p_2 x_2 + \lambda_1 x_1 + \lambda_2 x_2 + \lambda_3(x_1 + x_2 - u^*)\right] \\
+&= x_1
+\end{align*}
+
+\textbf{Why?} Only $\lambda_1 x_1$ contains $\lambda_1$, and the derivative of $\lambda_1 x_1$ with respect to $\lambda_1$ is just $x_1$.
+
+\subsection{Derivative with Respect to $\lambda_2$}
+
+\begin{align*}
+\frac{\partial \mathcal{L}}{\partial \lambda_2} &= x_2
+\end{align*}
+
+\subsection{Derivative with Respect to $\lambda_3$}
+
+\begin{align*}
+\frac{\partial \mathcal{L}}{\partial \lambda_3} &= x_1 + x_2 - u^*
+\end{align*}
+
+\section{The Optimality Conditions}
+
+Now set each derivative equal to zero (or $\leq 0$ for certain conditions):
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=orange!75!black,title=Optimality Conditions for Problem 2]
+
+\textbf{With respect to $x_1$:}
+\begin{equation}
+\frac{\partial \mathcal{L}}{\partial x_1} = -p_1 + \lambda_1 + \lambda_3 \leq 0, \quad x_1 \geq 0, \quad x_1 \cdot \frac{\partial \mathcal{L}}{\partial x_1} = 0
+\end{equation}
+
+\textbf{With respect to $x_2$:}
+\begin{equation}
+\frac{\partial \mathcal{L}}{\partial x_2} = -p_2 + \lambda_2 + \lambda_3 \leq 0, \quad x_2 \geq 0, \quad x_2 \cdot \frac{\partial \mathcal{L}}{\partial x_2} = 0
+\end{equation}
+
+\textbf{With respect to $\lambda_1$:}
+\begin{equation}
+\frac{\partial \mathcal{L}}{\partial \lambda_1} = x_1 \geq 0, \quad \lambda_1 \geq 0, \quad \lambda_1 \cdot x_1 = 0
+\end{equation}
+
+\textbf{With respect to $\lambda_2$:}
+\begin{equation}
+\frac{\partial \mathcal{L}}{\partial \lambda_2} = x_2 \geq 0, \quad \lambda_2 \geq 0, \quad \lambda_2 \cdot x_2 = 0
+\end{equation}
+
+\textbf{With respect to $\lambda_3$:}
+\begin{equation}
+\frac{\partial \mathcal{L}}{\partial \lambda_3} = x_1 + x_2 - u^* \geq 0, \quad \lambda_3 \geq 0, \quad \lambda_3(x_1 + x_2 - u^*) = 0
+\end{equation}
+\end{tcolorbox}
+
+\section{Wait, What Do These Symbols Mean?}
+
+\subsection{The $\leq 0$ Conditions}
+
+For the derivatives with respect to $x_1$ and $x_2$:
+
+\textbf{Condition:} $\frac{\partial \mathcal{L}}{\partial x_1} \leq 0$
+
+\textbf{With complementary slackness:} $x_1 \cdot \frac{\partial \mathcal{L}}{\partial x_1} = 0$
+
+\textbf{What this means:}
+\begin{itemize}
+\item Either $x_1 = 0$ (we don't buy good 1)
+\item Or $\frac{\partial \mathcal{L}}{\partial x_1} = 0$ (derivative is exactly zero)
+\item But not both positive at the same time!
+\end{itemize}
+
+\subsection{The $\geq 0$ Conditions}
+
+For the derivatives with respect to $\lambda$ variables:
+
+\textbf{Condition:} $\frac{\partial \mathcal{L}}{\partial \lambda_1} = x_1 \geq 0$
+
+\textbf{This just says:} $x_1 \geq 0$ (nonnegativity constraint)
+
+\subsection{Complementary Slackness}
+
+The condition $\lambda_1 \cdot x_1 = 0$ is called \textbf{complementary slackness}.
+
+\textbf{It means:}
+\begin{itemize}
+\item Either $\lambda_1 = 0$ (constraint not binding)
+\item Or $x_1 = 0$ (constraint is binding)
+\item They can't both be positive!
+\end{itemize}
+
+\section{Simplified Version (For Perfect Substitutes)}
+
+For perfect substitutes, we can make educated guesses about which constraints bind.
+
+\subsection{Guess 1: Good 1 is Cheaper ($p_1 < p_2$)}
+
+\textbf{Our guess:}
+\begin{itemize}
+\item $x_1 > 0$ (buy some good 1) → so $\lambda_1 = 0$
+\item $x_2 = 0$ (don't buy good 2) → so $\lambda_2 > 0$ or $= 0$
+\item $x_1 + x_2 = u^*$ (utility constraint binds) → so $\lambda_3 > 0$
+\end{itemize}
+
+\textbf{Optimality conditions become:}
+
+\textbf{From $x_1$ condition (since $x_1 > 0$):}
+$$-p_1 + \lambda_1 + \lambda_3 = 0$$
+Since $\lambda_1 = 0$:
+$$-p_1 + \lambda_3 = 0 \Rightarrow \lambda_3 = p_1$$
+
+\textbf{From $x_2$ condition (since $x_2 = 0$):}
+$$-p_2 + \lambda_2 + \lambda_3 \leq 0$$
+Substitute $\lambda_3 = p_1$:
+$$-p_2 + \lambda_2 + p_1 \leq 0 \Rightarrow \lambda_2 \leq p_2 - p_1$$
+
+Since $p_1 < p_2$, we have $p_2 - p_1 > 0$, so we can have $\lambda_2 \geq 0$. Set $\lambda_2 = p_2 - p_1 > 0$.
+
+\textbf{From utility constraint:}
+$$x_1 + x_2 = u^*$$
+Since $x_2 = 0$:
+$$x_1 = u^*$$
+
+\textbf{Solution:} $(x_1, x_2) = (u^*, 0)$ with $\lambda_1 = 0$, $\lambda_2 = p_2 - p_1$, $\lambda_3 = p_1$ ✓
+
+This is valid because all conditions are satisfied!
+
+\section{What Does Part 2b Ask?}
+
+Part 2b typically asks you to:
+
+\begin{enumerate}
+\item \textbf{Write out the optimality conditions}
+\begin{itemize}
+\item List all the first-order conditions (derivatives = 0)
+\item Include complementary slackness conditions
+\item Include nonnegativity constraints
+\end{itemize}
+
+\item \textbf{Make a guess about which constraints bind}
+\begin{itemize}
+\item "Suppose nonnegativity on good 1 is binding" means $x_1 = 0$
+\item "Suppose nonnegativity on good 2 is non-binding" means $x_2 > 0$, so $\lambda_2 = 0$
+\item "Suppose utility constraint is binding" means $x_1 + x_2 = u^*$
+\end{itemize}
+
+\item \textbf{Solve the system of equations}
+\begin{itemize}
+\item Use your guess to simplify the conditions
+\item Solve for $x_1, x_2, \lambda_1, \lambda_2, \lambda_3$
+\end{itemize}
+\end{enumerate}
+
+\section{Concrete Example}
+
+\subsection{Problem Setup}
+
+\begin{itemize}
+\item Utility: $u(x_1, x_2) = x_1 + x_2$
+\item Prices: $p_1 = 3$, $p_2 = 5$
+\item Target utility: $u^* = 10$
+\item Lagrangian: $\mathcal{L} = -3x_1 - 5x_2 + \lambda_1 x_1 + \lambda_2 x_2 + \lambda_3(x_1 + x_2 - 10)$
+\end{itemize}
+
+\subsection{Guess: Buy Only Good 1 (Since $p_1 < p_2$)}
+
+\begin{itemize}
+\item $x_1 > 0$ (nonnegativity on good 1 is non-binding) → $\lambda_1 = 0$
+\item $x_2 = 0$ (nonnegativity on good 2 is binding) → $\lambda_2 \geq 0$
+\item $x_1 + x_2 = u^*$ (utility constraint is binding)
+\end{itemize}
+
+\subsection{Optimality Conditions}
+
+\textbf{FOC with respect to $x_1$ (since $x_1 > 0$):}
+$$-3 + \lambda_1 + \lambda_3 = 0$$
+Since $\lambda_1 = 0$:
+$$\lambda_3 = 3$$
+
+\textbf{FOC with respect to $x_2$ (since $x_2 = 0$):}
+$$-5 + \lambda_2 + \lambda_3 \leq 0$$
+Substitute $\lambda_3 = 3$:
+$$-5 + \lambda_2 + 3 \leq 0 \Rightarrow \lambda_2 \leq 2$$
+
+Choose $\lambda_2 = 2$ (the maximum value that satisfies the condition).
+
+\textbf{Utility constraint:}
+$$x_1 + 0 = 10 \Rightarrow x_1 = 10$$
+
+\subsection{Solution}
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black,title=Solution]
+\begin{itemize}
+\item $x_1^* = 10$ (buy 10 units of good 1)
+\item $x_2^* = 0$ (buy 0 units of good 2)
+\item $\lambda_1 = 0$ (nonnegativity on good 1 not binding)
+\item $\lambda_2 = 2$ (nonnegativity on good 2 is binding)
+\item $\lambda_3 = 3$ (marginal cost of utility)
+\end{itemize}
+
+\textbf{Expenditure:} $3(10) + 5(0) = \$30$
+\end{tcolorbox}
+
+\section{Economic Interpretation}
+
+\subsection{What Do the $\lambda$ Values Mean?}
+
+\textbf{$\lambda_3 = 3$:} The marginal cost of utility is \$3. If you needed one more unit of utility, it would cost \$3 more (the price of good 1, the cheaper good).
+
+\textbf{$\lambda_2 = 2$:} The "shadow price" of the constraint $x_2 \geq 0$. This measures how much the objective would improve if you could buy negative amounts of good 2 (i.e., get a refund). Since $\lambda_2 = 2 > 0$, the constraint is binding and you'd prefer $x_2 < 0$ if possible.
+
+\textbf{$\lambda_1 = 0$:} The constraint $x_1 \geq 0$ is not binding. You're happily buying good 1, so relaxing this constraint doesn't help.
+
+\section{Summary}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Understanding Part 2b]
+\textbf{Optimality conditions are:}
+\begin{itemize}
+\item The derivatives of the Lagrangian set equal to zero (or $\leq 0$)
+\item Along with complementary slackness conditions
+\item These are the mathematical conditions that must hold at the optimal solution
+\end{itemize}
+
+\textbf{To solve Part 2b:}
+\begin{enumerate}
+\item Take derivatives of the Lagrangian with respect to all variables
+\item Write out all the conditions (including inequalities and complementary slackness)
+\item Make an educated guess about which constraints bind
+\item Use your guess to simplify and solve the system
+\item Check that your solution satisfies all conditions
+\end{enumerate}
+
+\textbf{For perfect substitutes:} You'll buy only the cheaper good, so one nonnegativity constraint binds and the other doesn't.
+\end{tcolorbox}
+
+\end{document}

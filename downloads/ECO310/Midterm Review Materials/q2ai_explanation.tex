@@ -1,0 +1,190 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+
+\title{Question 2ai: Step-by-Step Explanation}
+\author{ECO 310 Midterm Review}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{The Question}
+
+\textbf{Show that someone prefers accepting (rather than rejecting) a risky bet if and only if their certainty equivalent for the gamble exceeds their initial wealth.}
+
+\section*{Key Definitions}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Important Terms]
+\begin{itemize}[leftmargin=*]
+    \item \textbf{$w_0$}: Initial wealth (what you have now before deciding on the bet)
+    \item \textbf{$u(w_0)$}: Utility from keeping your initial wealth (rejecting the bet)
+    \item \textbf{EU}: Expected utility from taking the risky bet
+    \item \textbf{CE}: Certainty equivalent -- the guaranteed amount that makes you indifferent to the gamble
+    \item \textbf{Key relationship}: $u(CE) = EU$ (by definition of CE)
+\end{itemize}
+\end{tcolorbox}
+
+\section*{What We Need to Prove}
+
+We need to prove a \textbf{bi-directional} relationship (if and only if):
+
+\begin{center}
+\fbox{Person prefers accepting the bet $\Leftrightarrow$ $CE > w_0$}
+\end{center}
+
+This requires proving \textbf{two directions}:
+\begin{enumerate}
+    \item \textbf{Forward direction ($\Rightarrow$)}: If they prefer accepting the bet, then $CE > w_0$
+    \item \textbf{Backward direction ($\Leftarrow$)}: If $CE > w_0$, then they prefer accepting the bet
+\end{enumerate}
+
+\newpage
+
+\section*{Step-by-Step Proof}
+
+\subsection*{Direction 1: If prefer accepting bet $\Rightarrow$ $CE > w_0$}
+
+\begin{enumerate}[leftmargin=*, label=\textbf{Step \arabic*:}]
+    \item \textbf{Start with the assumption}
+
+    Assume the person prefers accepting the bet over rejecting it.
+
+    \vspace{0.3cm}
+
+    \item \textbf{What does this mean in terms of utility?}
+
+    Preferring the bet means:
+    \begin{equation}
+    EU > u(w_0)
+    \end{equation}
+
+    The expected utility from the risky bet exceeds the utility from keeping initial wealth.
+
+    \vspace{0.3cm}
+
+    \item \textbf{Use the definition of certainty equivalent}
+
+    By definition, the certainty equivalent satisfies:
+    \begin{equation}
+    u(CE) = EU
+    \end{equation}
+
+    \vspace{0.3cm}
+
+    \item \textbf{Substitute}
+
+    From Steps 2 and 3:
+    \begin{align}
+    EU &> u(w_0) \\
+    u(CE) &> u(w_0) \quad \text{(since } u(CE) = EU\text{)}
+    \end{align}
+
+    \vspace{0.3cm}
+
+    \item \textbf{Apply monotonicity of utility}
+
+    Since utility is increasing in wealth (more money = higher utility), we know:
+    \begin{equation}
+    u(CE) > u(w_0) \implies CE > w_0
+    \end{equation}
+
+    \vspace{0.3cm}
+
+    \item \textbf{Conclusion}
+
+    Therefore, if someone prefers accepting the bet, then $CE > w_0$. \qed
+\end{enumerate}
+
+\newpage
+
+\subsection*{Direction 2: If $CE > w_0$ $\Rightarrow$ prefer accepting bet}
+
+\begin{enumerate}[leftmargin=*, label=\textbf{Step \arabic*:}]
+    \item \textbf{Start with the assumption}
+
+    Assume $CE > w_0$.
+
+    \vspace{0.3cm}
+
+    \item \textbf{Apply monotonicity of utility}
+
+    Since utility is increasing in wealth:
+    \begin{equation}
+    CE > w_0 \implies u(CE) > u(w_0)
+    \end{equation}
+
+    More wealth gives higher utility.
+
+    \vspace{0.3cm}
+
+    \item \textbf{Use the definition of certainty equivalent}
+
+    By definition:
+    \begin{equation}
+    u(CE) = EU
+    \end{equation}
+
+    \vspace{0.3cm}
+
+    \item \textbf{Substitute}
+
+    From Steps 2 and 3:
+    \begin{align}
+    u(CE) &> u(w_0) \\
+    EU &> u(w_0) \quad \text{(since } EU = u(CE)\text{)}
+    \end{align}
+
+    \vspace{0.3cm}
+
+    \item \textbf{Interpret the inequality}
+
+    $EU > u(w_0)$ means the expected utility from the risky bet exceeds the utility from keeping initial wealth.
+
+    \vspace{0.3cm}
+
+    \item \textbf{Conclusion}
+
+    Therefore, the person prefers accepting the bet over rejecting it. \qed
+\end{enumerate}
+
+\newpage
+
+\section*{Summary}
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black,title=The Complete Proof]
+We've proven both directions:
+
+\begin{enumerate}
+    \item \textbf{Forward}: Prefer bet $\Rightarrow$ $EU > u(w_0) \Rightarrow u(CE) > u(w_0) \Rightarrow CE > w_0$
+
+    \item \textbf{Backward}: $CE > w_0 \Rightarrow u(CE) > u(w_0) \Rightarrow EU > u(w_0) \Rightarrow$ Prefer bet
+\end{enumerate}
+
+\vspace{0.3cm}
+
+\textbf{Key insight}: The certainty equivalent acts as a threshold. If the ``sure thing'' value (CE) that makes you indifferent to the gamble exceeds what you currently have ($w_0$), then the gamble must be attractive enough to accept.
+\end{tcolorbox}
+
+\section*{Intuition}
+
+Think of it this way:
+
+\begin{itemize}[leftmargin=*]
+    \item The CE is the guaranteed amount that makes you say ``I'm indifferent between having this for sure vs. taking the gamble.''
+
+    \item If $CE > w_0$, it means you'd need to be given \textit{more} than your current wealth to be indifferent to the gamble.
+
+    \item But if you don't take the bet, you only get $w_0$ (your current wealth).
+
+    \item Since the bet is ``worth'' CE to you (in terms of guaranteed value), and $CE > w_0$, the bet is better than keeping $w_0$.
+
+    \item Therefore: $CE > w_0$ means the bet is attractive!
+\end{itemize}
+
+\end{document}

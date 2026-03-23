@@ -1,0 +1,281 @@
+\documentclass[12pt]{article}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+
+\definecolor{highlight}{RGB}{255,230,153}
+
+\title{\textbf{Slutsky Decomposition: The Simple Version}}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Forget the Jargon. Here's What's Actually Happening:}
+
+You buy coffee and donuts every week. Suddenly, coffee gets more expensive.
+
+Obviously, you're going to buy less coffee. But \textbf{WHY} are you buying less? There are actually \textbf{TWO separate reasons}:
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
+\textbf{Reason 1: "Coffee is now expensive compared to donuts"}
+
+You think: "Wow, coffee costs way more than donuts now. I should buy more donuts and less coffee because I get more bang for my buck with donuts."
+
+\vspace{0.2cm}
+$\rightarrow$ This is the \textbf{SUBSTITUTION EFFECT}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+\textbf{Reason 2: "I'm poorer now"}
+
+You think: "Damn, my paycheck is the same but everything feels more expensive. I need to cut back on everything."
+
+\vspace{0.2cm}
+$\rightarrow$ This is the \textbf{INCOME EFFECT}
+\end{tcolorbox}
+
+That's it. That's the whole thing.
+
+\section*{Concrete Example: You and Your Coffee}
+
+\subsection*{Initial Situation}
+
+\begin{itemize}[leftmargin=*]
+\item You have \$20/week to spend
+\item Coffee costs \$2 per cup
+\item Donuts cost \$2 each
+\item You buy: \textbf{5 coffees + 5 donuts} (spending all \$20)
+\item Your happiness level: Let's call it \textbf{100 happy points}
+\end{itemize}
+
+\subsection*{What Happens: Coffee Price Doubles to \$4}
+
+You end up buying: \textbf{2 coffees + 6 donuts}
+
+So you went from 5 coffees down to 2 coffees. That's a change of \textbf{-3 coffees}.
+
+But let's break down WHY you cut back by 3 coffees...
+
+\newpage
+
+\subsection*{Breaking It Down}
+
+\textbf{STEP 1: The Substitution Effect}
+
+Imagine I said: "Hey, I know coffee just got expensive. Let me give you extra money so you can still afford to be exactly as happy as before (100 happy points)."
+
+With this extra compensation, you'd have enough money to stay at 100 happy points. But even with this extra cash, coffee is still \textit{relatively expensive} compared to donuts now.
+
+So you'd think: "Coffee is twice as expensive as donuts now (\$4 vs \$2). Even though I can afford to be just as happy, I should substitute toward donuts and away from coffee."
+
+You'd buy: \textbf{4 coffees + 7 donuts} (with the extra money I gave you)
+
+\vspace{0.3cm}
+
+\colorbox{highlight}{\textbf{Substitution Effect = 4 - 5 = -1 coffee}}
+
+\vspace{0.3cm}
+
+You cut back by 1 coffee just because of the \textit{relative price change}, even though you had enough money to stay equally happy.
+
+\vspace{0.5cm}
+
+\textbf{STEP 2: The Income Effect}
+
+Now I take away the extra money I gave you. You're back to your real \$20/week budget.
+
+But remember, coffee is now \$4 instead of \$2. Your \$20 doesn't go as far anymore. You're effectively \textbf{poorer}.
+
+Being poorer means you need to cut back on \textit{everything} (both coffee and donuts).
+
+You go from: \textbf{4 coffees} (with compensation) down to \textbf{2 coffees} (without compensation)
+
+\vspace{0.3cm}
+
+\colorbox{highlight}{\textbf{Income Effect = 2 - 4 = -2 coffees}}
+
+\vspace{0.3cm}
+
+You cut back by another 2 coffees just because you're effectively poorer now.
+
+\vspace{0.5cm}
+
+\textbf{STEP 3: Add Them Up}
+
+\begin{tcolorbox}[colback=green!10!white,colframe=green!75!black,title=The Slutsky Decomposition]
+\textbf{Total change in coffee} = -3 coffees
+
+\vspace{0.2cm}
+
+This breaks down as:
+
+\textbf{Substitution Effect:} -1 coffee (coffee is expensive relative to donuts)
+
+\textbf{Income Effect:} -2 coffees (you're poorer overall)
+
+\vspace{0.2cm}
+
+Check: $-1 + (-2) = -3$ \checkmark
+\end{tcolorbox}
+
+\newpage
+
+\section*{The Visual Version}
+
+Think of it like this:
+
+\vspace{0.3cm}
+
+\begin{center}
+\fbox{\begin{minipage}{0.9\textwidth}
+\textbf{Original:} 5 coffees, 5 donuts, 100 happy points
+
+\vspace{0.3cm}
+
+$\downarrow$ \textit{Coffee price doubles, but I give you extra money to stay at 100 happy points}
+
+\vspace{0.3cm}
+
+\textbf{Compensated:} 4 coffees, 7 donuts, 100 happy points
+
+\colorbox{yellow}{This move is the SUBSTITUTION EFFECT: -1 coffee}
+
+\vspace{0.3cm}
+
+$\downarrow$ \textit{I take away the extra money, back to real \$20 budget}
+
+\vspace{0.3cm}
+
+\textbf{Final:} 2 coffees, 6 donuts, maybe 60 happy points
+
+\colorbox{yellow}{This move is the INCOME EFFECT: -2 coffees}
+\end{minipage}}
+\end{center}
+
+\section*{Key Insights}
+
+\begin{enumerate}[leftmargin=*]
+\item \textbf{Substitution effect is ALWAYS negative} (or zero)
+\begin{itemize}
+\item When price goes up, you always substitute away from that good
+\item It's about \textit{relative prices}
+\item "Coffee vs donuts: which gives more happiness per dollar?"
+\end{itemize}
+
+\item \textbf{Income effect depends on the type of good}
+\begin{itemize}
+\item \textbf{Normal good} (like coffee): When you're poorer, you buy less
+\begin{itemize}
+\item Income effect is negative
+\item Both effects work together → demand definitely falls
+\end{itemize}
+\item \textbf{Inferior good} (like instant ramen): When you're poorer, you buy MORE
+\begin{itemize}
+\item Income effect is positive
+\item The two effects fight each other
+\end{itemize}
+\end{itemize}
+
+\item \textbf{Special cases} (you'll see these on the exam):
+\begin{itemize}
+\item \textbf{Perfect complements} (like left shoes and right shoes): Substitution effect = 0
+\begin{itemize}
+\item You can't substitute! You always need them in fixed proportions
+\item Entire change is income effect
+\end{itemize}
+\item \textbf{Quasilinear utility}: Income effect = 0 for the "special" good
+\begin{itemize}
+\item Entire change is substitution effect
+\end{itemize}
+\end{itemize}
+\end{enumerate}
+
+\newpage
+
+\section*{How to Solve These Problems on the Exam}
+
+\subsection*{The Recipe (Simple Version)}
+
+\textbf{Given:} Price of good 1 rises from $p_1$ to $p_1'$
+
+\begin{enumerate}[leftmargin=*]
+\item \textbf{Find the original bundle}
+\begin{itemize}
+\item Use the standard optimal choice formulas
+\item For Cobb-Douglas $u = x_1^a x_2^b$: spend $\frac{a}{a+b}$ of income on good 1
+\item Calculate the utility level at this bundle
+\end{itemize}
+
+\item \textbf{Find the compensated bundle}
+\begin{itemize}
+\item Stay at the same utility level
+\item But use the NEW price ratio
+\item Mathematically: solve $MRS = \frac{p_1'}{p_2}$ while keeping $u = \bar{u}$
+\end{itemize}
+
+\item \textbf{Find the new bundle}
+\begin{itemize}
+\item Use the NEW prices
+\item Use the ORIGINAL income
+\item Just solve the regular problem again
+\end{itemize}
+
+\item \textbf{Calculate the effects}
+\begin{itemize}
+\item Sub effect = compensated - original
+\item Income effect = new - compensated
+\item Total = new - original (should equal sub + income)
+\end{itemize}
+\end{enumerate}
+
+\subsection*{Cobb-Douglas Shortcut}
+
+For $u = x_1 x_2$ with equal exponents:
+
+\begin{itemize}[leftmargin=*]
+\item \textbf{Original:} Always spend half your income on each good
+\begin{itemize}
+\item $x_1^* = \frac{m}{2p_1}$, $x_2^* = \frac{m}{2p_2}$
+\end{itemize}
+
+\item \textbf{Compensated:} The $MRS = p_1'/p_2$ gives you $\frac{x_2}{x_1} = \frac{p_1'}{p_2}$
+\begin{itemize}
+\item Combine this with $x_1 x_2 = \bar{u}$ (the original utility)
+\item Solve for $x_1$ and $x_2$
+\end{itemize}
+
+\item \textbf{New:} Spend half your income on each good again
+\begin{itemize}
+\item $x_1^{new} = \frac{m}{2p_1'}$, $x_2^{new} = \frac{m}{2p_2}$
+\end{itemize}
+\end{itemize}
+
+\section*{Bottom Line}
+
+When a price changes, your consumption changes for two reasons:
+
+\begin{enumerate}
+\item You substitute toward the relatively cheaper good (substitution effect)
+\item You're effectively richer or poorer, so you adjust everything (income effect)
+\end{enumerate}
+
+The Slutsky decomposition just separates these two effects so you can see how much of the change came from each reason.
+
+\vspace{0.5cm}
+
+\begin{tcolorbox}[colback=yellow!20!white,colframe=orange!75!black]
+\textbf{Remember:}
+\begin{itemize}[leftmargin=*]
+\item Three bundles: Original, Compensated, New
+\item Compensated = "What if I kept you equally happy at new prices?"
+\item Sub effect = Always opposes price change
+\item Income effect = Depends on normal vs inferior
+\item Total = Sub + Income (always!)
+\end{itemize}
+\end{tcolorbox}
+
+\end{document}

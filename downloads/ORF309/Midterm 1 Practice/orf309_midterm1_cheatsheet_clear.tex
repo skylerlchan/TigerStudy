@@ -1,0 +1,353 @@
+\documentclass[10pt,landscape]{article}
+\usepackage[landscape,margin=0.3in]{geometry}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[compact]{titlesec}
+
+% Reduce spacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt}
+\setlength{\columnsep}{10pt}
+
+% Section formatting
+\titleformat{\section}{\normalsize\bfseries\color{blue!70!black}}{\thesection}{0.5em}{}
+\titlespacing*{\section}{0pt}{3pt}{1pt}
+\titleformat{\subsection}{\small\bfseries\color{blue!50!black}}{\thesubsection}{0.5em}{}
+\titlespacing*{\subsection}{0pt}{2pt}{1pt}
+
+\begin{document}
+\begin{multicols}{3}
+\small
+
+\begin{center}
+\textbf{\large ORF309 Midterm 1 - Clear Cheat Sheet}
+\end{center}
+
+\section{Conditional Probability (Key for Every Exam!)}
+
+\subsection{The Basic Formula}
+\textbf{Definition:} Probability of $A$ happening, given we know $B$ happened:
+$$P(A|B) = \frac{P(A \cap B)}{P(B)}$$
+
+\textbf{What this means:} We "zoom in" to the world where $B$ happened, then ask what fraction of that world contains $A$.
+
+\textbf{Rearranged (multiplication rule):}
+$$P(A \cap B) = P(A|B) \cdot P(B)$$
+
+\subsection{Chain Rule (Multiple Events)}
+For several events happening together:
+$$P(A_1 \cap A_2 \cap A_3) = P(A_1) \cdot P(A_2|A_1) \cdot P(A_3|A_1 \cap A_2)$$
+
+\textbf{Process:} Start with first event, then condition each next event on all previous ones.
+
+\section{Law of Total Probability (LOTP)}
+
+\subsection{When to Use It}
+Use LOTP when you want to find $P(A)$ but the path to $A$ goes through different "cases" or "stages".
+
+\subsection{The Formula}
+If $B_1, B_2, \ldots, B_n$ partition the sample space (disjoint and cover everything):
+$$P(A) = P(A|B_1)P(B_1) + P(A|B_2)P(B_2) + \cdots + P(A|B_n)P(B_n)$$
+
+\textbf{Two-case version (most common):}
+$$P(A) = P(A|B)P(B) + P(A|B^c)P(B^c)$$
+
+\subsection{Example: Defective Widgets}
+Factory has Line A (produces 60\% of widgets, 2\% defective) and Line B (produces 40\%, 5\% defective). What's probability a random widget is defective?
+
+\textbf{Solution:} Let $D$ = defective, $A$ = from Line A, $B$ = from Line B
+
+$$P(D) = P(D|A)P(A) + P(D|B)P(B)$$
+$$= 0.02 \times 0.6 + 0.05 \times 0.4 = 0.012 + 0.020 = 0.032$$
+
+\section{Bayes' Theorem (Updating Beliefs)}
+
+\subsection{The Formula}
+$$P(B_j|A) = \frac{P(A|B_j)P(B_j)}{P(A)} = \frac{P(A|B_j)P(B_j)}{\sum_i P(A|B_i)P(B_i)}$$
+
+\textbf{In words:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $P(B_j)$ = prior (what we thought before seeing data $A$)
+\item $P(A|B_j)$ = likelihood (how likely is data $A$ if $B_j$ is true)
+\item $P(B_j|A)$ = posterior (updated belief after seeing data $A$)
+\end{itemize}
+
+\subsection{Example: Defective Widget Origin}
+Same factory. Given a widget is defective, what's probability it came from Line A?
+
+$$P(A|D) = \frac{P(D|A)P(A)}{P(D)} = \frac{0.02 \times 0.6}{0.032} = \frac{0.012}{0.032} = 0.375$$
+
+\textbf{Interpretation:} Even though Line A produces 60\% of widgets, only 37.5\% of defective widgets come from it (because Line B has higher defect rate).
+
+\section{Independence}
+
+\subsection{What Independence Means}
+$A$ and $B$ are independent if knowing one tells you nothing about the other:
+$$P(A \cap B) = P(A) \cdot P(B)$$
+
+\textbf{Equivalently:} $P(A|B) = P(A)$ (when $P(B) > 0$)
+
+\subsection{Critical Warning!}
+\textbf{Mutually Exclusive $\neq$ Independent!}
+
+If $A \cap B = \emptyset$ (disjoint) and $P(A), P(B) > 0$:
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item Then $A$ and $B$ are \textbf{DEPENDENT}
+\item Why? If $A$ happens, you know for sure $B$ didn't happen
+\end{itemize}
+
+\textbf{Example:} Rolling a die. Let $A$ = "roll 1 or 2", $B$ = "roll 3 or 4". These are disjoint but dependent (knowing one happened tells you the other didn't).
+
+\subsection{Properties of Independence}
+If $A \perp B$ (independent), then also:
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $A \perp B^c$ (independent of complement)
+\item $A^c \perp B$
+\item $A^c \perp B^c$
+\end{itemize}
+
+\section{Discrete Distributions (Know These Cold!)}
+
+\subsection{Geometric Distribution: Geom(p)}
+\textbf{Models:} Number of trials until first success (when each trial succeeds with probability $p$)
+
+\textbf{PMF:} $P(X = k) = (1-p)^{k-1} \cdot p$ for $k = 1, 2, 3, \ldots$
+
+\textbf{Key formulas:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $E[X] = \frac{1}{p}$ (average trials until success)
+\item $P(X > k) = (1-p)^k$ (haven't succeeded yet after $k$ tries)
+\item $\text{Var}(X) = \frac{1-p}{p^2}$
+\end{itemize}
+
+\textbf{MEMORYLESS PROPERTY} (unique to Geometric!):
+$$P(X > m + n | X > m) = P(X > n)$$
+
+\textbf{What this means:} If you've already waited $m$ trials without success, the probability of waiting at least $n$ more is the same as if you were starting fresh.
+
+\textbf{Example:} Bus comes with probability 0.1 each minute. You've waited 10 minutes. What's probability you wait at least 20 more?
+
+$$P(X > 30 | X > 10) = P(X > 20) = (0.9)^{20}$$
+
+\subsection{Binomial Distribution: Bin(n, p)}
+\textbf{Models:} Number of successes in $n$ independent trials (each succeeds with probability $p$)
+
+\textbf{PMF:} $P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}$ for $k = 0, 1, \ldots, n$
+
+\textbf{Key formulas:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $E[X] = np$
+\item $\text{Var}(X) = np(1-p)$
+\end{itemize}
+
+\textbf{Example:} Flip fair coin 10 times. Number of heads is Bin(10, 0.5):
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $E[\text{heads}] = 10 \times 0.5 = 5$
+\item $P(\text{exactly 7 heads}) = \binom{10}{7}(0.5)^7(0.5)^3 = \binom{10}{7}(0.5)^{10}$
+\end{itemize}
+
+\subsection{Poisson Distribution: Pois($\lambda$)}
+\textbf{Models:} Number of events in fixed time/space when events happen at rate $\lambda$
+
+\textbf{PMF:} $P(N = k) = e^{-\lambda} \frac{\lambda^k}{k!}$ for $k = 0, 1, 2, \ldots$
+
+\textbf{Key formulas:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $E[N] = \lambda$
+\item $\text{Var}(N) = \lambda$
+\end{itemize}
+
+\textbf{When to use:} "Rare events" - when $n$ is large, $p$ is small, and $np = \lambda$ is moderate:
+$$\text{Bin}(n, p) \approx \text{Pois}(np)$$
+
+\section{Expectation (The Average)}
+
+\subsection{Basic Definition}
+For discrete random variable $X$:
+$$E[X] = \sum_{\text{all } x} x \cdot P(X = x)$$
+
+\textbf{What this means:} Weighted average of all possible values, weighted by their probabilities.
+
+\subsection{Linearity of Expectation (THE MOST USEFUL PROPERTY!)}
+\textbf{For any random variables $X$ and $Y$ (even dependent!):}
+$$E[aX + bY + c] = aE[X] + bE[Y] + c$$
+
+\textbf{Why this is amazing:} No independence needed! Works always!
+
+\textbf{Example:} Roll two dice. Expected sum?
+
+Let $X_1$ = first die, $X_2$ = second die. Even though they're not independent of their sum, we can use linearity:
+$$E[X_1 + X_2] = E[X_1] + E[X_2] = 3.5 + 3.5 = 7$$
+
+\subsection{Indicator Trick (Simplify Everything!)}
+\textbf{Key idea:} Define indicator random variables for events:
+$$1_A = \begin{cases} 1 & \text{if event } A \text{ happens} \\ 0 & \text{otherwise} \end{cases}$$
+
+\textbf{Magic property:} $E[1_A] = P(A)$
+
+\textbf{How to use it:}
+\begin{enumerate}[leftmargin=*,noitemsep,topsep=0pt]
+\item Write $X$ as sum of indicators: $X = \sum_i 1_{A_i}$
+\item Use linearity: $E[X] = \sum_i E[1_{A_i}] = \sum_i P(A_i)$
+\end{enumerate}
+
+\textbf{Example:} Bob's exam has 2 questions. He gets question 1 right with prob 0.7, question 2 right with prob 0.6. Each worth 10 points. Expected score?
+
+Let $X$ = score = $10 \cdot 1_{Q1} + 10 \cdot 1_{Q2}$
+
+$$E[X] = 10 \cdot P(Q1) + 10 \cdot P(Q2) = 10(0.7) + 10(0.6) = 13$$
+
+\textbf{Note:} Works even if questions aren't independent!
+
+\subsection{Conditional Expectation}
+\textbf{Definition:} Expected value of $X$ given event $B$ happened:
+$$E[X | B] = \sum_{\text{all } x} x \cdot P(X = x | B)$$
+
+\textbf{Law of Total Expectation (Tower Property):}
+$$E[X] = \sum_i E[X | B_i] P(B_i)$$
+
+where $B_1, \ldots, B_n$ partition the sample space.
+
+\textbf{When to use:} When computing $E[X]$ directly is hard, but $E[X | \text{something}]$ is easier.
+
+\textbf{Example:} Expected widget defects. If from Line A: $E[\text{defects}|A] = 0.02$, if from Line B: $E[\text{defects}|B] = 0.05$. Line A makes 60\% of widgets.
+
+$$E[\text{defects}] = E[\text{defects}|A] \cdot P(A) + E[\text{defects}|B] \cdot P(B)$$
+$$= 0.02 \times 0.6 + 0.05 \times 0.4 = 0.032$$
+
+\section{Variance (Measuring Spread)}
+
+\subsection{Definition \& Key Formula}
+$$\text{Var}(X) = E[(X - \mu)^2] = E[X^2] - (E[X])^2$$
+
+\textbf{Second formula is usually easier!} Calculate $E[X^2]$ and $E[X]$, then:
+$$\text{Var}(X) = E[X^2] - (E[X])^2$$
+
+\subsection{Properties}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $\text{Var}(aX + b) = a^2 \text{Var}(X)$ (adding constant doesn't change spread)
+\item $\text{Var}(X) \geq 0$ always
+\item $\text{Var}(X) = 0$ only if $X$ is constant
+\end{itemize}
+
+\subsection{Variance of Sum (NEEDS Independence!)}
+\textbf{If $X$ and $Y$ are independent:}
+$$\text{Var}(X + Y) = \text{Var}(X) + \text{Var}(Y)$$
+
+\textbf{Critical:} Unlike expectation, this \textbf{requires independence}!
+
+\textbf{Example:} Bob's exam (continued). Variance of score?
+
+Assuming questions independent:
+$$\text{Var}(X) = \text{Var}(10 \cdot 1_{Q1}) + \text{Var}(10 \cdot 1_{Q2})$$
+$$= 100 \cdot \text{Var}(1_{Q1}) + 100 \cdot \text{Var}(1_{Q2})$$
+
+For Bernoulli with $p$: $\text{Var} = p(1-p)$
+
+$$= 100[0.7(0.3)] + 100[0.6(0.4)] = 21 + 24 = 45$$
+
+\section{Problem-Solving Strategies}
+
+\subsection{When to Use Each Technique}
+
+\textbf{Use LOTP when:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item Problem has multiple stages or cases
+\item You know conditional probabilities but not direct probability
+\item Keywords: "first..., then...", "depending on..."
+\end{itemize}
+
+\textbf{Use Bayes when:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item You want to "reverse" a conditional probability
+\item You know $P(\text{effect}|\text{cause})$ but want $P(\text{cause}|\text{effect})$
+\item Keywords: "given that..., what caused it?"
+\end{itemize}
+
+\textbf{Use indicator trick when:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item Computing $E[X]$ where $X$ counts something
+\item Can break $X$ into sum of events
+\item Especially good when events might be dependent
+\end{itemize}
+
+\textbf{Use geometric distribution when:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item "Waiting time" until first success
+\item Repeated independent trials
+\item Keywords: "how many tries until...", "first time..."
+\end{itemize}
+
+\subsection{Step-by-Step for Exam Problems}
+
+\textbf{For probability problems:}
+\begin{enumerate}[leftmargin=*,noitemsep,topsep=0pt]
+\item Define events clearly (write out what $A$, $B$, etc. mean)
+\item Identify if events are independent (check if one affects the other)
+\item Look for partitions (use LOTP)
+\item Check if you need to reverse conditional (use Bayes)
+\end{enumerate}
+
+\textbf{For expectation problems:}
+\begin{enumerate}[leftmargin=*,noitemsep,topsep=0pt]
+\item Can you write $X$ as sum of indicators? (Do it!)
+\item Is this a named distribution? (Use formula)
+\item Can you condition on something simpler? (Use tower property)
+\item Use linearity freely (no independence needed)
+\end{enumerate}
+
+\textbf{For variance problems:}
+\begin{enumerate}[leftmargin=*,noitemsep,topsep=0pt]
+\item First find $E[X]$
+\item Then find $E[X^2]$ (often via sum of indicators squared)
+\item Use $\text{Var}(X) = E[X^2] - (E[X])^2$
+\item Check if variables are independent before adding variances!
+\end{enumerate}
+
+\section{Common Exam Mistakes to Avoid}
+
+\begin{enumerate}[leftmargin=*,noitemsep,topsep=0pt]
+\item \textbf{Thinking disjoint = independent.} NO! Disjoint events are dependent (if one happens, other can't).
+
+\item \textbf{Forgetting linearity always works for E[·].} You can split expectations even when variables are dependent!
+
+\item \textbf{Adding variances without independence.} $\text{Var}(X+Y) = \text{Var}(X) + \text{Var}(Y)$ ONLY when independent.
+
+\item \textbf{Not recognizing geometric distribution.} Keywords: "first success", "how many tries", "until..." $\Rightarrow$ probably Geometric.
+
+\item \textbf{Forgetting memoryless property.} If problem says "already waited $m$ trials" and asks about more waiting $\Rightarrow$ use memoryless: $P(X > m+n | X > m) = P(X > n) = (1-p)^n$.
+
+\item \textbf{Confusing $P(A|B)$ with $P(B|A)$.} These are different! To reverse, use Bayes.
+
+\item \textbf{Not using indicator trick.} If you're counting events, write as sum of indicators: $X = \sum 1_{A_i}$, then $E[X] = \sum P(A_i)$.
+
+\item \textbf{Forgetting $E[X^2] \neq (E[X])^2$.} These are only equal when $\text{Var}(X) = 0$.
+
+\item \textbf{Computing expectations "the hard way".} Before computing $\sum x \cdot P(X=x)$, ask: Is this a named distribution? Can I use indicators? Can I condition on something?
+\end{enumerate}
+
+\section{Quick Reference Formulas}
+
+\subsection{Must-Know Distributions}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item Geom$(p)$: $E = 1/p$, $P(X>k) = (1-p)^k$, memoryless
+\item Bin$(n,p)$: $E = np$, Var $= np(1-p)$
+\item Pois$(\lambda)$: $E = \lambda$, Var $= \lambda$
+\item Bernoulli$(p)$: $E = p$, Var $= p(1-p)$
+\end{itemize}
+
+\subsection{Key Identities}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $P(A \cup B) = P(A) + P(B) - P(A \cap B)$
+\item $P(A^c) = 1 - P(A)$
+\item $P(A \cap B) = P(A|B)P(B)$
+\item $E[1_A] = P(A)$ (indicator trick)
+\item $\text{Var}(X) = E[X^2] - (E[X])^2$
+\item Independence: $X \perp Y \Rightarrow E[XY] = E[X]E[Y]$
+\end{itemize}
+
+\end{multicols}
+\end{document}

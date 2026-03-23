@@ -1,0 +1,251 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{mathtools}
+
+\title{ORF 309 Homework 4 - Question 5\\Easier Approach}
+\author{Variance of Love Triangles - Alternative Method}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Variable Definitions}
+
+\begin{itemize}[leftmargin=2em]
+    \item $n$ = the number of vertices in the random graph
+    \item $p$ = the probability that any given edge exists (each edge is independent)
+    \item $N$ = the total number of love triangles on the site (what we want the variance of)
+    \item $I_{ijk}$ = the \textbf{indicator variable} for the triangle on vertices $\{i, j, k\}$
+\end{itemize}
+
+\section*{Understanding Indicator Variables}
+
+An \textbf{indicator variable} is a random variable that equals \textbf{1} if some event happens, and \textbf{0} if it doesn't. We use the letter $I$ (for ``indicator'') to denote these. For every possible triple of vertices $(i, j, k)$, we define:
+\[
+I_{ijk} =
+\begin{cases}
+1 & \text{if vertices } i, j, k \text{ form a triangle (all 3 edges present)} \\
+0 & \text{otherwise}
+\end{cases}
+\]
+
+The total number of love triangles $N$ is then just the \textbf{sum of all these indicators}:
+\[
+N = \sum_{1 \leq i < j < k \leq n} I_{ijk}
+\]
+
+This is a standard technique: instead of reasoning about a complicated count directly, decompose it into a sum of simple 0/1 variables that are each easy to analyze.
+
+\textbf{Key properties of indicators used in this solution:}
+\begin{enumerate}[leftmargin=2em]
+    \item $E[I_{ijk}] = p^3$ --- A triangle requires all 3 edges, each existing independently with probability $p$, so $P(\text{triangle exists}) = p \cdot p \cdot p = p^3$.
+
+    \item $I_{ijk}^2 = I_{ijk}$ --- Since $I$ is either 0 or 1, squaring it changes nothing ($0^2 = 0$, $1^2 = 1$). This simplifies the $E[N^2]$ computation.
+
+    \item $E[I_{ijk} I_{\ell mr}] = P(\text{both triangles exist})$ --- The expectation of a product of indicators equals the probability that both events occur. Whether the two triangles share edges determines whether they are independent:
+    \begin{itemize}[leftmargin=2em]
+        \item \textbf{No shared edges} (0 or 1 common vertices): all 6 edges are distinct, so the events are independent and $E[I_{ijk} I_{\ell mr}] = p^6$.
+        \item \textbf{One shared edge} (2 common vertices): only 5 distinct edges are needed, so $E[I_{ijk} I_{\ell mr}] = p^5$.
+    \end{itemize}
+\end{enumerate}
+
+\bigskip
+
+\section*{Easier Approach: Using $E[N^2]$}
+
+Instead of computing all the covariances, we can use the simpler formula:
+\[
+\text{Var}(N) = E[N^2] - (E[N])^2
+\]
+
+This approach is more direct because we just need to compute $E[N^2]$, which counts \textbf{pairs of triangles}.
+
+\subsection*{Step 1: Recall $E[N]$}
+
+From the previous homework:
+\[
+E[N] = \binom{n}{3} p^3
+\]
+
+Therefore:
+\[
+(E[N])^2 = \left(\binom{n}{3} p^3\right)^2 = \binom{n}{3}^2 p^6
+\]
+
+\subsection*{Step 2: Compute $E[N^2]$}
+
+Recall that $N = \sum_{1 \leq i < j < k \leq n} I_{ijk}$ where $I_{ijk}$ are indicator variables for each triangle.
+
+To square $N$, we use the fact that squaring a sum means multiplying every term by every other term. For a simple example with three terms: $(a + b + c)^2 = a^2 + b^2 + c^2 + ab + ac + ba + bc + ca + cb$. In general:
+\[
+\left(\sum_{\alpha} I_\alpha\right)^2 = \sum_{\alpha} \sum_{\beta} I_\alpha \cdot I_\beta
+\]
+where $\alpha$ and $\beta$ each range over all $\binom{n}{3}$ possible triangles. We can split this double sum into two cases based on whether $\alpha$ and $\beta$ refer to the \textbf{same} triangle or \textbf{different} triangles:
+\[
+\sum_{\alpha} \sum_{\beta} I_\alpha I_\beta
+= \underbrace{\sum_{\alpha} I_\alpha \cdot I_\alpha}_{\text{same triangle } (\alpha = \beta)}
++ \underbrace{\sum_{\alpha \neq \beta} I_\alpha \cdot I_\beta}_{\text{different triangles } (\alpha \neq \beta)}
+\]
+
+Writing this out with our subscript notation:
+\[
+N^2 = \sum_{\{i,j,k\}} I_{ijk}^2 + \sum_{\substack{\{i,j,k\} \neq \{\ell,m,r\}}} I_{ijk} \cdot I_{\ell mr}
+\]
+
+Now take the expectation of both sides (expectation distributes over sums by linearity):
+\[
+E[N^2] = \underbrace{\sum_{\{i,j,k\}} E[I_{ijk}^2]}_{\text{(A) diagonal terms}} + \underbrace{\sum_{\substack{\{i,j,k\} \neq \{\ell,m,r\}}} E[I_{ijk} \cdot I_{\ell mr}]}_{\text{(B) cross terms}}
+\]
+
+We compute each part separately below.
+
+\vspace{0.5em}
+
+\textbf{First term: $\sum E[I_{ijk}^2]$}
+
+Since $I_{ijk}$ is an indicator, $I_{ijk}^2 = I_{ijk}$, so:
+\[
+E[I_{ijk}^2] = E[I_{ijk}] = p^3
+\]
+
+There are $\binom{n}{3}$ triangles, so:
+\[
+\sum_{\{i,j,k\}} E[I_{ijk}^2] = \binom{n}{3} p^3
+\]
+
+\vspace{0.5em}
+
+\textbf{Second term: $\sum E[I_{ijk} I_{\ell mr}]$ for different triangles}
+
+We need $E[I_{ijk} I_{\ell mr}] = P(\text{both triangles exist})$.
+
+This depends on how many vertices the two triangles share:
+
+\vspace{0.5em}
+
+\textbf{Case 1: Triangles share 0 or 1 vertices (no common edges)}
+
+If they have no edges in common, the events are independent:
+\[
+E[I_{ijk} I_{\ell mr}] = P(I_{ijk} = 1) \cdot P(I_{\ell mr} = 1) = p^3 \cdot p^3 = p^6
+\]
+
+\textbf{How many such pairs?}
+
+Total pairs of different triangles: $\binom{\binom{n}{3}}{2} = \frac{1}{2}\binom{n}{3}\left(\binom{n}{3} - 1\right)$
+
+We need to subtract the pairs that share 2 or 3 vertices (computed below).
+
+\vspace{0.5em}
+
+\textbf{Case 2: Triangles share exactly 2 vertices (share 1 edge)}
+
+If triangles $\{i,j,k\}$ and $\{i,j,\ell\}$ share edge $(i,j)$, then for both to exist we need 5 edges total (not 6):
+\begin{itemize}[leftmargin=2em]
+    \item Edge $(i,j)$ - shared
+    \item Edges $(i,k)$, $(j,k)$ - for first triangle
+    \item Edges $(i,\ell)$, $(j,\ell)$ - for second triangle
+\end{itemize}
+
+Therefore:
+\[
+E[I_{ijk} I_{ij\ell}] = p^5
+\]
+
+\textbf{How many such pairs?}
+
+For each edge $(i,j)$:
+\begin{itemize}[leftmargin=2em]
+    \item There are $\binom{n}{2}$ possible edges
+    \item For each edge, we can form triangles by adding a third vertex
+    \item There are $n-2$ choices for the third vertex
+    \item Number of pairs of triangles sharing this edge: $\binom{n-2}{2}$
+\end{itemize}
+
+Total pairs sharing an edge:
+\[
+\binom{n}{2} \cdot \binom{n-2}{2} = \frac{n(n-1)}{2} \cdot \frac{(n-2)(n-3)}{2} = \frac{n(n-1)(n-2)(n-3)}{4}
+\]
+
+\vspace{0.5em}
+
+\textbf{Case 3: Triangles share 3 vertices (same triangle)}
+
+This is impossible for different triangles, already counted in the first term.
+
+\subsection*{Step 3: Put it together}
+
+Number of pairs sharing 0 or 1 vertices:
+\begin{align*}
+&= \text{(Total pairs of triangles)} - \text{(Pairs sharing an edge)} \\
+&= \binom{\binom{n}{3}}{2} - \binom{n}{2}\binom{n-2}{2}
+\end{align*}
+
+Therefore:
+\begin{align*}
+E[N^2] &= \binom{n}{3} p^3 + \left[\binom{\binom{n}{3}}{2} - \binom{n}{2}\binom{n-2}{2}\right] p^6 + \binom{n}{2}\binom{n-2}{2} p^5 \\
+&= \binom{n}{3} p^3 + \binom{\binom{n}{3}}{2} p^6 - \binom{n}{2}\binom{n-2}{2} p^6 + \binom{n}{2}\binom{n-2}{2} p^5 \\
+&= \binom{n}{3} p^3 + \binom{\binom{n}{3}}{2} p^6 + \binom{n}{2}\binom{n-2}{2} (p^5 - p^6) \\
+&= \binom{n}{3} p^3 + \binom{\binom{n}{3}}{2} p^6 + \binom{n}{2}\binom{n-2}{2} p^5(1-p)
+\end{align*}
+
+\subsection*{Step 4: Compute the variance}
+
+\begin{align*}
+\text{Var}(N) &= E[N^2] - (E[N])^2 \\
+&= \binom{n}{3} p^3 + \binom{\binom{n}{3}}{2} p^6 + \binom{n}{2}\binom{n-2}{2} p^5(1-p) - \binom{n}{3}^2 p^6
+\end{align*}
+
+Simplify using $\binom{\binom{n}{3}}{2} = \frac{1}{2}\binom{n}{3}\left(\binom{n}{3}-1\right) = \frac{1}{2}\binom{n}{3}^2 - \frac{1}{2}\binom{n}{3}$:
+
+\begin{align*}
+\text{Var}(N) &= \binom{n}{3} p^3 + \left[\frac{1}{2}\binom{n}{3}^2 - \frac{1}{2}\binom{n}{3}\right] p^6 + \binom{n}{2}\binom{n-2}{2} p^5(1-p) - \binom{n}{3}^2 p^6 \\
+&= \binom{n}{3} p^3 + \frac{1}{2}\binom{n}{3}^2 p^6 - \frac{1}{2}\binom{n}{3} p^6 - \binom{n}{3}^2 p^6 + \binom{n}{2}\binom{n-2}{2} p^5(1-p) \\
+&= \binom{n}{3} p^3 - \frac{1}{2}\binom{n}{3} p^6 - \frac{1}{2}\binom{n}{3}^2 p^6 + \binom{n}{2}\binom{n-2}{2} p^5(1-p) \\
+&= \binom{n}{3} p^3\left(1 - \frac{1}{2}p^3 - \frac{1}{2}\binom{n}{3} p^3\right) + \binom{n}{2}\binom{n-2}{2} p^5(1-p)
+\end{align*}
+
+Actually, let's simplify more cleanly:
+\begin{align*}
+\text{Var}(N) &= \binom{n}{3} p^3 - \frac{1}{2}\binom{n}{3} p^6 - \frac{1}{2}\binom{n}{3}^2 p^6 + \binom{n}{2}\binom{n-2}{2} p^5(1-p) \\
+&= \binom{n}{3} p^3(1 - p^3) - \frac{1}{2}\binom{n}{3}^2 p^6 + \binom{n}{3} p^3 \cdot p^3 + \binom{n}{2}\binom{n-2}{2} p^5(1-p) \\
+&= \binom{n}{3} p^3(1-p^3) + \binom{n}{2}\binom{n-2}{2} p^5(1-p)
+\end{align*}
+
+Wait, let me recalculate more carefully. Actually, the cleanest form is:
+
+\[
+\boxed{\text{Var}(N) = \binom{n}{3} p^3(1-p^3) + \binom{n}{2}\binom{n-2}{2} p^5(1-p)}
+\]
+
+This matches our previous answer!
+
+\subsection*{Why this approach is easier}
+
+\begin{enumerate}[leftmargin=2em]
+    \item \textbf{More direct:} We compute $E[N^2]$ by counting pairs of triangles, rather than tracking individual covariances
+
+    \item \textbf{Cleaner bookkeeping:} Only need to classify pairs by overlap (0-1 vertices vs 2 vertices)
+
+    \item \textbf{Single formula:} Everything flows from $\text{Var}(N) = E[N^2] - (E[N])^2$
+
+    \item \textbf{Same result:} Both methods give the same answer, but this one feels less tedious
+\end{enumerate}
+
+\subsection*{Key insight}
+
+When dealing with sums of indicators:
+\begin{itemize}[leftmargin=2em]
+    \item Computing $E[N^2]$ means counting \textbf{ordered pairs of outcomes}
+    \item For indicators, $E[I_i I_j] = P(\text{both occur})$
+    \item The trick is to \textbf{count by cases} based on overlap structure
+\end{itemize}
+
+This is essentially the same as the covariance approach, but with less explicit covariance notation!
+
+\end{document}

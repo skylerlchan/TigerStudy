@@ -1,0 +1,222 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tcolorbox}
+
+\title{Problem 2c: Invalid Solution \\ (Why the Wrong Guess Fails)}
+\author{ECO 310 - Learning from Mistakes}
+\date{February 23, 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{What Problem 2c Asks}
+
+\textbf{Question:} Show that you get an invalid solution to (b) if $p_1 < p_2$. And explain why intuitively, the guess was wrong about which nonnegativity constraint binds.
+
+\textbf{Translation:} Use the SAME guess from part (b), but now assume $p_1 < p_2$ (good 1 is cheaper). Show that this leads to a contradiction.
+
+\section{Recall: The Guess from Part 2b}
+
+The guess was:
+\begin{itemize}
+\item Utility constraint is binding: $x_1 + x_2 = u^*$
+\item Nonnegativity on good 1 is binding: $x_1 = 0$
+\item Nonnegativity on good 2 is non-binding: $x_2 > 0$
+\end{itemize}
+
+This means: buy only good 2, so $x_1 = 0$ and $x_2 = u^*$.
+
+\section{Apply the Same Logic with $p_1 < p_2$}
+
+Let's follow the exact same steps as part (b), but now assume $p_1 < p_2$ (good 1 is CHEAPER).
+
+\subsection{Step 1: Use Complementary Slackness}
+
+Since $x_2 > 0$:
+\begin{equation}
+\lambda_2 = 0
+\end{equation}
+
+\subsection{Step 2: Solve for $\lambda_3$}
+
+From the FOC for $x_2$ (which must equal zero since $x_2 > 0$):
+\begin{align}
+-p_2 + \lambda_2 + \lambda_3 &= 0 \\
+-p_2 + 0 + \lambda_3 &= 0 \\
+\lambda_3 &= p_2
+\end{align}
+
+\subsection{Step 3: Solve for $\lambda_1$}
+
+From the FOC for $x_1$:
+\begin{equation}
+-p_1 + \lambda_1 + \lambda_3 \leq 0
+\end{equation}
+
+Substitute $\lambda_3 = p_2$:
+\begin{align}
+-p_1 + \lambda_1 + p_2 &\leq 0 \\
+\lambda_1 &\leq p_1 - p_2
+\end{align}
+
+At the optimum, assume this binds:
+\begin{equation}
+\lambda_1 = p_1 - p_2
+\end{equation}
+
+\subsection{Step 4: Check Validity}
+
+Now here's the problem! We assumed $p_1 < p_2$, so:
+\begin{align}
+\lambda_1 &= p_1 - p_2 \\
+&< 0 \quad \text{(since $p_1 < p_2$)}
+\end{align}
+
+\begin{tcolorbox}[colback=red!10!white,colframe=red!75!black,title=INVALID!]
+\textbf{Problem:} We got $\lambda_1 < 0$, which violates the KKT condition that all Lagrange multipliers must be non-negative!
+
+$$\lambda_1 \geq 0 \text{ is required, but we got } \lambda_1 = p_1 - p_2 < 0$$
+
+This means the guess $x_1 = 0$, $x_2 = u^*$ is NOT optimal when $p_1 < p_2$.
+\end{tcolorbox}
+
+\section{Why Is This Invalid?}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=orange!75!black,title=The Rule]
+\textbf{KKT Condition:} All Lagrange multipliers must satisfy $\lambda_i \geq 0$.
+
+If any $\lambda_i < 0$, the solution is not optimal.
+\end{tcolorbox}
+
+In our case:
+\begin{itemize}
+\item We found $\lambda_1 = p_1 - p_2$
+\item When $p_1 < p_2$, this gives $\lambda_1 < 0$
+\item This violates the non-negativity requirement
+\item Therefore, the guess is invalid
+\end{itemize}
+
+\section{Intuitive Explanation}
+
+\subsection{What Does $\lambda_1 < 0$ Mean?}
+
+Remember: $\lambda_1$ is the shadow price of the constraint $x_1 \geq 0$.
+
+\begin{itemize}
+\item $\lambda_1 > 0$ means: "I'd benefit from relaxing $x_1 \geq 0$ (buying negative $x_1$)"
+\item $\lambda_1 = 0$ means: "The constraint $x_1 \geq 0$ doesn't limit me"
+\item $\lambda_1 < 0$ means: "Relaxing $x_1 \geq 0$ would HURT me" - but this is nonsense!
+\end{itemize}
+
+\textbf{The contradiction:} If $\lambda_1 < 0$, it means you'd be WORSE OFF if you could buy $x_1 < 0$ (negative good 1). But you're already at $x_1 = 0$, so this constraint isn't actually binding you in a meaningful way.
+
+\subsection{The Economic Intuition}
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black,title=Why the Guess Was Wrong]
+\textbf{The guess:} Buy only good 2 ($x_1 = 0$, $x_2 = u^*$)
+
+\textbf{The reality:} When $p_1 < p_2$ (good 1 is CHEAPER), you should buy only good 1, not good 2!
+
+\textbf{What went wrong:} We guessed that the consumer buys the MORE EXPENSIVE good, which is obviously not optimal for cost minimization.
+\end{tcolorbox}
+
+\subsection{Concrete Example}
+
+Suppose:
+\begin{itemize}
+\item Coffee costs \$2 per cup ($p_1 = 2$)
+\item Tea costs \$5 per cup ($p_2 = 5$)
+\item You need utility 10 ($u^* = 10$)
+\end{itemize}
+
+\textbf{The wrong guess:} Buy 0 coffee, 10 teas
+\begin{itemize}
+\item Cost: $2(0) + 5(10) = \$50$
+\end{itemize}
+
+\textbf{The right choice:} Buy 10 coffees, 0 teas
+\begin{itemize}
+\item Cost: $2(10) + 5(0) = \$20$
+\end{itemize}
+
+Obviously, buying only the MORE EXPENSIVE good (\$50) is worse than buying only the CHEAPER good (\$20)!
+
+When we apply the math:
+\begin{align}
+\lambda_1 &= p_1 - p_2 \\
+&= 2 - 5 \\
+&= -3 < 0 \quad \text{INVALID!}
+\end{align}
+
+\section{What Should the Correct Guess Be?}
+
+When $p_1 < p_2$ (good 1 is cheaper), the correct guess should be:
+\begin{itemize}
+\item $x_1 = u^*$ (buy only good 1)
+\item $x_2 = 0$ (buy no good 2)
+\item Nonnegativity on good 1 is NON-binding ($x_1 > 0$ so $\lambda_1 = 0$)
+\item Nonnegativity on good 2 IS binding ($x_2 = 0$ so $\lambda_2 \geq 0$)
+\end{itemize}
+
+This is the OPPOSITE of what we guessed in part (b)!
+
+\section{Complete Answer to Problem 2c}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Problem 2c Answer]
+
+\textbf{Showing the solution is invalid:}
+
+Using the guess from part (b) with $p_1 < p_2$, we get:
+\begin{align}
+x_1 &= 0 \\
+x_2 &= u^* \\
+\lambda_1 &= p_1 - p_2 < 0 \quad \text{(INVALID - violates $\lambda_1 \geq 0$)} \\
+\lambda_2 &= 0 \\
+\lambda_3 &= p_2
+\end{align}
+
+Since $\lambda_1 < 0$, this violates the KKT conditions. The solution is invalid.
+
+\textbf{Intuitive explanation:}
+
+The guess assumed we buy only good 2 ($x_1 = 0$, $x_2 = u^*$). But when $p_1 < p_2$, good 1 is CHEAPER, so buying only the more expensive good 2 is clearly not cost-minimizing.
+
+The negative $\lambda_1$ tells us mathematically what we know intuitively: we should be buying MORE of good 1 (the cheaper good), not zero.
+
+The correct guess when $p_1 < p_2$ should have nonnegativity on good 2 binding (buy only good 1), not nonnegativity on good 1 binding.
+
+\end{tcolorbox}
+
+\section{General Pattern for Perfect Substitutes}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=orange!75!black,title=The Rule]
+For perfect substitutes:
+\begin{itemize}
+\item If $p_1 < p_2$: Buy only good 1 ($x_1 = u^*$, $x_2 = 0$)
+\item If $p_1 > p_2$: Buy only good 2 ($x_1 = 0$, $x_2 = u^*$)
+\item If $p_1 = p_2$: Any combination with $x_1 + x_2 = u^*$ works
+\end{itemize}
+
+The KKT conditions will only be satisfied (all $\lambda_i \geq 0$) when you guess the RIGHT corner solution.
+\end{tcolorbox}
+
+\section{Summary}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Key Takeaway]
+\textbf{The point of Problem 2c:} Show that the Lagrangian method catches our mistakes!
+
+If you guess the wrong corner solution:
+\begin{enumerate}
+\item The math will produce a negative Lagrange multiplier
+\item This violates the KKT conditions
+\item This tells you your guess was wrong
+\item You need to try a different guess
+\end{enumerate}
+
+This is how you systematically check all possible corner solutions until you find the right one.
+\end{tcolorbox}
+
+\end{document}

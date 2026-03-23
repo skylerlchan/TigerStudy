@@ -1,0 +1,191 @@
+\documentclass[10pt]{article}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{tabularx}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+% Colors
+\definecolor{mustknow}{HTML}{FF4444}
+\definecolor{highpri}{HTML}{FF9900}
+\definecolor{medpri}{HTML}{FFCC00}
+\definecolor{lowpri}{HTML}{88CC88}
+\definecolor{tested}{HTML}{2266CC}
+\definecolor{nottested}{HTML}{DDDDDD}
+\definecolor{sectionbg}{HTML}{F0F4FF}
+
+\titleformat{\section}{\large\bfseries}{}{0pt}{}[\vspace{-4pt}\rule{\textwidth}{0.5pt}]
+\titleformat{\subsection}{\normalsize\bfseries}{}{0pt}{}
+
+\newcommand{\YES}{\cellcolor{tested!20}\textbf{\textcolor{tested}{\checkmark}}}
+\newcommand{\NO}{\cellcolor{nottested}}
+
+\pagestyle{empty}
+
+\begin{document}
+
+{\centering\LARGE\bfseries ECO 310 Midterm 1 --- Preparation Strategy\par}
+\vspace{2pt}
+{\centering March 5, 2026 $\cdot$ In-class $\cdot$ 1 page cheat sheet (front \& back)\par}
+\vspace{8pt}
+
+% ============================================
+\section{Topic Frequency Table (2022--2025 Practice Exams)}
+% ============================================
+
+Each checkmark means the topic appeared as a graded question (MC or short answer) on that exam. Priority is based on frequency across all four exams.
+
+\vspace{4pt}
+
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{4.2cm} c c c c >{\centering\arraybackslash}p{1cm} >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Topic / Concept} & \textbf{'22} & \textbf{'23} & \textbf{'24} & \textbf{'25} & \textbf{Freq} & \textbf{Priority} \\
+\midrule
+\rowcolor{mustknow!15}
+Marshallian demand derivation & \YES & \YES & \YES & \YES & 4/4 & \textcolor{mustknow}{\textbf{MUST-KNOW}} \\
+\rowcolor{mustknow!15}
+EU expression setup & \YES & \YES & \YES & \YES & 4/4 & \textcolor{mustknow}{\textbf{MUST-KNOW}} \\
+\rowcolor{mustknow!15}
+EU optimization via FOC & \YES & \YES & \YES & \YES & 4/4 & \textcolor{mustknow}{\textbf{MUST-KNOW}} \\
+\rowcolor{mustknow!15}
+Risk aversion (definition/test) & \YES & \YES & \YES & \YES & 4/4 & \textcolor{mustknow}{\textbf{MUST-KNOW}} \\
+\rowcolor{mustknow!15}
+Cobb-Douglas magic rule & \YES & \YES & \YES & \YES & 4/4 & \textcolor{mustknow}{\textbf{MUST-KNOW}} \\
+\rowcolor{mustknow!15}
+Perfect complements demand & \YES & \YES & \YES & \YES & 4/4 & \textcolor{mustknow}{\textbf{MUST-KNOW}} \\
+\midrule
+\rowcolor{highpri!15}
+WARP / Revealed preference & \YES & \YES & \YES & \YES & 4/4 & \textcolor{highpri}{\textbf{HIGH}} \\
+\rowcolor{highpri!15}
+Sub/Income effect decomposition & \NO & \YES & \YES & \YES & 3/4 & \textcolor{highpri}{\textbf{HIGH}} \\
+\rowcolor{highpri!15}
+Certainty equiv.\ / Risk premium & \NO & \YES & \YES & \YES & 3/4 & \textcolor{highpri}{\textbf{HIGH}} \\
+\rowcolor{highpri!15}
+Corner solutions / non-negativity & \YES & \YES & \YES & \YES & 4/4 & \textcolor{highpri}{\textbf{HIGH}} \\
+\rowcolor{highpri!15}
+Convexity of preferences (MRS) & \YES & \YES & \YES & \NO & 3/4 & \textcolor{highpri}{\textbf{HIGH}} \\
+\rowcolor{highpri!15}
+Expenditure fn / Hicksian demand & \NO & \NO & \YES & \YES & 2/4 & \textcolor{highpri}{\textbf{HIGH}} \\
+\rowcolor{highpri!15}
+Portfolio allocation (risky+safe) & \NO & \NO & \NO & \YES & 1/4 & \textcolor{highpri}{\textbf{HIGH}} \\
+\rowcolor{highpri!15}
+Rationality (complete + transitive) & \YES & \YES & \YES & \NO & 3/4 & \textcolor{highpri}{\textbf{HIGH}} \\
+\midrule
+\rowcolor{medpri!15}
+Perfect substitutes demand & \YES & \YES & \NO & \YES & 3/4 & \textcolor{medpri!80!black}{\textbf{MEDIUM}} \\
+\rowcolor{medpri!15}
+CES utility / limits & \NO & \NO & \NO & \YES & 1/4 & \textcolor{medpri!80!black}{\textbf{MEDIUM}} \\
+\rowcolor{medpri!15}
+Arrow-Pratt measures (ARA/RRA) & \NO & \NO & \NO & \YES & 1/4 & \textcolor{medpri!80!black}{\textbf{MEDIUM}} \\
+\rowcolor{medpri!15}
+Stochastic dominance (FOSD/SOSD) & \NO & \NO & \NO & \NO & 0/4 & \textcolor{medpri!80!black}{\textbf{MEDIUM}} \\
+\rowcolor{medpri!15}
+Edgeworth box / Gen.\ equilibrium & \NO & \NO & \NO & \NO & 0/4 & \textcolor{medpri!80!black}{\textbf{MEDIUM}} \\
+\rowcolor{medpri!15}
+Quasilinear utility & \YES & \NO & \NO & \NO & 1/4 & \textcolor{medpri!80!black}{\textbf{MEDIUM}} \\
+\bottomrule
+\end{tabularx}
+
+\vspace{6pt}
+
+\textbf{Repeated questions across exams:}
+\begin{itemize}[nosep,leftmargin=12pt]
+\item Apple tax + \$5 subsidy (Slutsky compensation) --- appeared in \textbf{both 2023 and 2024}
+\item Framing paradox (consequentialism) --- appeared in \textbf{both 2023 and 2024}
+\item 50-50 \$0/\$200 gamble preference --- appeared in \textbf{both 2023 and 2024}
+\item Perfect complements sub/income effect --- 2023 (sub effect = 0) and 2024 (income effect = $-3$)
+\end{itemize}
+
+% ============================================
+\section{Study Plan: Cheat Sheet + Practice Exams}
+% ============================================
+
+\subsection{Phase 1: Cheat Sheet Familiarity}
+\begin{enumerate}[nosep,leftmargin=16pt]
+\item \textbf{Read through the entire cheat sheet} end to end. For each yellow-highlighted formula, write it from memory on scratch paper, then check.
+\item \textbf{Build a mental map:} Know which section contains which formula. The exam is timed---you cannot afford to search.
+\item \textbf{Drill the recipes:} Section 9 of the cheat sheet has step-by-step recipes for demand derivation and EU problems. Practice following each recipe on a blank page until the steps are automatic.
+\end{enumerate}
+
+\subsection{Phase 2: Practice Exam Drilling}
+\begin{enumerate}[nosep,leftmargin=16pt]
+\item \textbf{Do 2025 exam first} (most recent, likely closest to your exam's style). Time yourself---treat it as real. Use only your cheat sheet.
+\item \textbf{Then do 2024, 2023, 2022} in reverse chronological order.
+\item After each exam, \textbf{grade yourself honestly}. For every mistake, identify:
+  \begin{itemize}[nosep]
+  \item Was it a \textbf{knowledge gap}? (Formula/concept not on cheat sheet or not understood)
+  \item Was it a \textbf{procedure error}? (Forgot to check corners, wrong inequality direction, etc.)
+  \item Was it a \textbf{reading error}? (Misidentified states, confused ``spend'' with ``buy'', etc.)
+  \end{itemize}
+\item \textbf{Update your cheat sheet} if you discover a gap.
+\end{enumerate}
+
+\subsection{Phase 3: Targeted Weakness Drilling}
+\begin{enumerate}[nosep,leftmargin=16pt]
+\item Collect every problem you got wrong or were slow on. Re-do them from scratch.
+\item For each MUST-KNOW topic, you should be able to set up and solve a problem in under 3 minutes for MC, under 10 minutes for short answer.
+\item Practice the EU optimization problems heavily---they appear on every exam and are the most algebra-intensive.
+\end{enumerate}
+
+% ============================================
+\section{Problem Patterns to Drill}
+% ============================================
+
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.5cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{4cm}}
+\toprule
+\textbf{Pattern} & \textbf{What You Must Be Able To Do} & \textbf{Practice Sources} \\
+\midrule
+\textbf{Cobb-Douglas demand} & Apply magic rule instantly. Normalize exponents. State spending shares. & 2023 MC2, 2024 MC3, 2025 MC1 \\
+\textbf{Perfect complements} & Set min args equal. Plug into budget. Know sub effect = 0. & 2023 MC4, 2024 MC5, 2025 MC3 \\
+\textbf{Non-standard utility} demand & Compute MRS from scratch. Set MRS = price ratio + budget. Check corners. & 2022 Q3, 2023 Q3 \\
+\textbf{WARP check} & Write cost comparisons at both price vectors. Determine violation range. & 2024 MC9, 2025 MC2, HW1 Prob 1 \\
+\textbf{EU setup + FOC} & ID states/probs/wealth. Write EU. Differentiate. Solve. Check corners. & 2022 Q4, 2023 Q4, 2024 Q2b, 2025 SA2--SA3 \\
+\textbf{CE / Risk premium} & Compute $EU$, invert $u$ to get CE, then $RP = E[W] - CE$. & 2024 Q2a, 2025 SA2a \\
+\textbf{Sub/Income decomp} & Find original, compensated, and new bundles. Sub = comp $-$ orig. Inc = new $-$ comp. & 2023 MC4, 2024 MC5, 2025 MC6 \\
+\textbf{Hicksian demand / EMP} & Minimize expenditure s.t.\ utility $\geq \bar{u}$. Not the same as Marshallian. & 2024 Q3d, 2025 MC3 \\
+\textbf{Proof-style questions} & Risk aversion comparisons, DARA implications, EU inequality proofs. & 2023 Q2a, 2025 SA2a-ii, SA2b \\
+\bottomrule
+\end{tabularx}
+
+% ============================================
+\section{Common Exam Traps and Mistakes to Avoid}
+% ============================================
+
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}p{0.4cm} >{\raggedright\arraybackslash}p{4cm} >{\raggedright\arraybackslash}X}
+\toprule
+& \textbf{Trap} & \textbf{How to Avoid It} \\
+\midrule
+1 & \textbf{Marshallian $\neq$ Hicksian} & Read the question. ``Cheapest bundle to reach utility $\bar{u}$'' = EMP/Hicksian. ``Best bundle given income $m$'' = UMP/Marshallian. The 2024 solutions note this cost many students half credit. \\
+2 & \textbf{Perfect comp: sub effect = 0} & With $\min\{\}$, the compensated bundle equals the original bundle. The entire price-change effect is income effect. Do not compute a ``substitution effect.'' \\
+3 & \textbf{WARP inequality directions} & ``$A$ revealed preferred to $B$'' means $A$ was chosen \emph{and} $B$ was affordable (cost of $B \leq$ cost of $A$ at those prices). Draw a table of costs. \\
+4 & \textbf{EU: wrong wealth per state} & Use a probability tree. Final wealth = initial wealth $\pm$ all gains/losses in that state. Write it out explicitly before computing EU. \\
+5 & \textbf{Forgetting non-negativity} & After solving the FOC, always check $x_i \geq 0$. If negative, set that good to 0 and re-solve. Especially common with quasilinear and perfect substitutes. \\
+6 & \textbf{``Spend $k\times$'' $\neq$ ``Buy $k\times$''} & Cobb-Douglas magic rule gives \emph{spending} shares. ``Spends 3 times as much on good 2'' $\neq$ ``buys 3 times as many units'' unless prices are equal. Tested explicitly in 2024 MC3. \\
+7 & \textbf{CD exponents not normalized} & $u = x^a y^b$: spending share on $x$ is $\frac{a}{a+b}$, NOT just $a$. Always divide by sum of exponents. \\
+8 & \textbf{vNM: only affine transforms} & Expected utility rankings are preserved only by $\tilde{u} = a + bu$ ($b > 0$). General monotone transforms change EU rankings. Ordinal utility allows any monotone transform; cardinal (vNM) does not. \\
+9 & \textbf{Variance $\neq$ Std deviation} & Portfolio std dev $= \alpha \cdot \sigma_{\text{risky}}$. If problem gives variance, take the square root first. Tested in 2025 MC4. \\
+10 & \textbf{Quasilinear: income effect for $x_1$} & At interior, demand for $x_1$ is independent of $m$. But if $m$ is too low, you hit a corner at $x_2 = 0$, and then $x_1 = m/p_1$ \emph{does} depend on income. \\
+11 & \textbf{Risk aversion $\neq$ always choose certain} & A risk-averse person prefers \$100 certain over 50-50 \$0/\$200 (same EV). But \$90 certain vs.\ 50-50 \$0/\$200 is \textbf{ambiguous}---lower EV but no risk. Cannot determine without knowing the utility function. \\
+12 & \textbf{CES limit behavior} & As $r \to 0$: Cobb-Douglas. As $r \to -\infty$: perfect complements. As $r = 1$: perfect substitutes. Know which limit is which. \\
+\bottomrule
+\end{tabularx}
+
+\vspace{8pt}
+
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{\centering\textbf{Bottom line:} Every exam has (1) a Cobb-Douglas/complements demand MC, (2) a WARP question, (3) a non-standard demand derivation, and (4) an EU optimization problem. Master these four patterns and you cover $>$80\% of the exam.}}
+\end{center}
+
+\end{document}

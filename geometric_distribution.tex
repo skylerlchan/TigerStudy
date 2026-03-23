@@ -1,0 +1,62 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{parskip}
+
+\title{The Geometric Distribution}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{What is the Geometric Distribution?}
+
+The \textbf{geometric distribution} models the number of independent trials needed to achieve the first success in a sequence of Bernoulli trials (trials with only two outcomes: success with probability $p$ or failure with probability $1-p$).
+
+\subsection*{Examples:}
+\begin{itemize}
+    \item Flipping a coin until you get heads
+    \item Rolling a die until you get a 6
+    \item Taking free throws until you make one
+\end{itemize}
+
+The probability mass function is:
+\[
+P(X = n) = (1-p)^{n-1} \cdot p
+\]
+
+where $n$ is the trial number of the first success.
+
+\section*{Explaining the Last Step}
+
+The simplification uses the \textbf{infinite geometric series formula}:
+
+Starting with:
+\[
+\sum_{n=1}^{\infty} \binom{n-1}{0} 0.99^{n-1} \cdot 0.05 \cdot 0.95^{n-1}
+\]
+
+\textbf{Step 1:} Note that $\binom{n-1}{0} = 1$, so:
+\[
+= 0.05 \sum_{n=1}^{\infty} (0.99)^{n-1} \cdot (0.95)^{n-1}
+\]
+
+\textbf{Step 2:} Combine the terms:
+\[
+= 0.05 \sum_{n=1}^{\infty} (0.99 \cdot 0.95)^{n-1}
+\]
+
+\textbf{Step 3:} This is a geometric series $\sum_{k=0}^{\infty} r^k = \frac{1}{1-r}$ where $r = 0.99 \cdot 0.95$:
+\[
+= 0.05 \cdot \frac{1}{1 - 0.95 \cdot 0.99}
+\]
+\[
+= \frac{0.05}{1 - 0.95 \cdot 0.99}
+\]
+
+The key insight is recognizing that when you have a sum of the form $\sum ar^n$, you can use the geometric series formula to get a closed-form expression.
+
+\end{document}

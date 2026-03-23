@@ -1,0 +1,182 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{mathtools}
+
+\newtheorem{theorem}{Theorem}
+
+\title{ORF 309 Homework 4 - Problem 4 Solutions}
+\author{Detailed Solutions}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem 4: Monte Carlo Methods}
+
+\subsection*{Notation Note}
+The symbol ``$:=$'' means \textbf{``is defined as''} or \textbf{``is defined to be.''}
+
+It is used to introduce a new variable or notation, distinguishing a definition from a regular equality. When you see $A := B$, it means ``we are defining $A$ to be equal to $B$.'' This is different from $A = B$, which states that two quantities are equal (but doesn't indicate that one is being newly defined).
+
+\subsection*{Setup}
+Consider a random variable $Z$ with unknown (or difficult to compute) expectation $E(Z)$. The Monte Carlo method approximates this expectation by simulating $N$ independent random samples $Z_1, Z_2, \ldots, Z_N$ with the same distribution as $Z$, and computing the sample average:
+\[
+\hat{Z}_N := \frac{1}{N} \sum_{k=1}^{N} Z_k
+\]
+Here, the symbol ``$:=$'' indicates that we are \emph{defining} $\hat{Z}_N$ to be this particular sample average.
+
+\subsection*{Part (a): Why is the Monte Carlo approximation good for large $N$?}
+
+\textbf{Answer:} The Monte Carlo approximation is justified by the \textbf{Law of Large Numbers (LLN)}, which we studied in Lecture 09 and Section 2.3 of the textbook.
+
+\vspace{0.5em}
+
+\textbf{Explanation:}
+
+Since $Z_1, Z_2, \ldots, Z_N$ are independent and identically distributed (i.i.d.) random variables with the same distribution as $Z$, we can apply the Law of Large Numbers.
+
+\begin{theorem}[Law of Large Numbers (Textbook Theorem 2.3.2, Example 2.3.4)]
+Let $Z_1, Z_2, \ldots, Z_N$ be i.i.d. random variables with expected value $E(Z)$. Then with probability 1, as $N \to \infty$:
+\[
+\lim_{N \to \infty} \frac{1}{N} \sum_{k=1}^{N} Z_k = E(Z)
+\]
+In other words, the sample average converges to the expected value.
+\end{theorem}
+
+\noindent
+Applying this to our Monte Carlo setting:
+\[
+\hat{Z}_N = \frac{1}{N} \sum_{k=1}^{N} Z_k \to E(Z) \quad \text{as } N \to \infty \text{ (with probability 1)}
+\]
+
+\vspace{0.5em}
+
+\textbf{What this means:}
+
+As we learned in Lecture 09, ``as we increase $N$, the randomness of the sample average $\hat{Z}_N$ gets closer and closer to the expected value $E(Z)$.''
+
+More precisely:
+\begin{itemize}[leftmargin=2em]
+    \item When $N$ is small, $\hat{Z}_N$ is random and can vary significantly from $E(Z)$.
+    \item As $N$ increases, $\hat{Z}_N$ becomes \textbf{less and less random} and more concentrated around $E(Z)$.
+    \item When $N \to \infty$, the sample average $\hat{Z}_N$ converges to $E(Z)$ and ``is NOT random any more'' (in the limit).
+\end{itemize}
+
+\vspace{0.5em}
+
+\textbf{Why the randomness decreases:}
+
+From the textbook (Section 2.3), we can quantify this using variance:
+\[
+\text{Var}(\hat{Z}_N) = \text{Var}\left(\frac{1}{N} \sum_{k=1}^{N} Z_k\right) = \frac{1}{N^2} \sum_{k=1}^{N} \text{Var}(Z_k) = \frac{\text{Var}(Z)}{N} \to 0 \text{ as } N \to \infty
+\]
+
+The variance measures ``how random'' $\hat{Z}_N$ is. As $N$ increases, the variance goes to zero, meaning $\hat{Z}_N$ becomes less and less random and converges to the deterministic value $E(Z)$.
+
+\vspace{0.5em}
+
+\textbf{Why this justifies Monte Carlo:}
+
+The Law of Large Numbers proves that \textbf{expectations are indeed averages} (when $N$ is large). Therefore, even if we cannot compute $E(Z)$ analytically, we can approximate it arbitrarily well by:
+\begin{enumerate}[leftmargin=2em]
+    \item Simulating many independent samples $Z_1, \ldots, Z_N$
+    \item Computing their average $\hat{Z}_N$
+    \item Using $\hat{Z}_N \approx E(Z)$ as our approximation
+\end{enumerate}
+
+The larger $N$ is, the better this approximation becomes, which is why Monte Carlo methods work well for large $N$.
+
+\vspace{1em}
+
+\subsection*{Part (b): Mean Square Error Analysis}
+
+\textbf{Given:}
+\begin{itemize}[leftmargin=2em]
+    \item Mean square error: $\text{MSE}(N) := E\left[\left(E(Z) - \hat{Z}_N\right)^2\right]$
+    \item Variance of $Z$: $\text{Var}(Z) = 1$
+    \item Target: Find smallest $N$ such that $\text{MSE}(N) < 0.01$
+\end{itemize}
+
+\textbf{Solution:}
+
+First, we compute $\text{MSE}(N)$ in terms of the variance of $Z$.
+
+\vspace{0.5em}
+
+\textbf{Step 1: Express MSE in terms of variance}
+
+First, we need to show that $\hat{Z}_N$ is an \textbf{unbiased estimator} of $E(Z)$. By linearity of expectation:
+\begin{align*}
+E(\hat{Z}_N) &= E\left(\frac{1}{N} \sum_{k=1}^{N} Z_k\right) \\
+&= \frac{1}{N} \sum_{k=1}^{N} E(Z_k) \\
+&= \frac{1}{N} \cdot N \cdot E(Z) \tag{each $Z_k$ has same distribution as $Z$} \\
+&= E(Z)
+\end{align*}
+
+Since $\hat{Z}_N$ is unbiased, we can connect MSE to variance:
+\begin{align*}
+\text{MSE}(N) &= E\left[\left(E(Z) - \hat{Z}_N\right)^2\right] \\
+&= E\left[\left(\hat{Z}_N - E(Z)\right)^2\right] \tag{by symmetry} \\
+&= E\left[\left(\hat{Z}_N - E(\hat{Z}_N)\right)^2\right] \tag{since $E(\hat{Z}_N) = E(Z)$} \\
+&= \text{Var}(\hat{Z}_N) \tag{by definition of variance}
+\end{align*}
+
+Recall that for any random variable $Y$, the variance is defined as:
+\[
+\text{Var}(Y) = E[(Y - E(Y))^2]
+\]
+
+Therefore, when an estimator is unbiased, its MSE equals its variance.
+
+\vspace{0.5em}
+
+\textbf{Step 2: Compute $\text{Var}(\hat{Z}_N)$}
+
+Since $Z_1, Z_2, \ldots, Z_N$ are independent with $\text{Var}(Z_k) = \text{Var}(Z) = 1$:
+\begin{align*}
+\text{Var}(\hat{Z}_N) &= \text{Var}\left(\frac{1}{N} \sum_{k=1}^{N} Z_k\right) \\
+&= \frac{1}{N^2} \sum_{k=1}^{N} \text{Var}(Z_k) \tag{by independence} \\
+&= \frac{1}{N^2} \sum_{k=1}^{N} 1 \\
+&= \frac{1}{N^2} \cdot N \\
+&= \frac{1}{N}
+\end{align*}
+
+Therefore:
+\[
+\boxed{\text{MSE}(N) = \frac{1}{N}}
+\]
+
+\vspace{0.5em}
+
+\textbf{Step 3: Find smallest $N$ such that $\text{MSE}(N) < 0.01$}
+
+We need:
+\begin{align*}
+\frac{1}{N} &< 0.01 \\
+\frac{1}{N} &< \frac{1}{100} \\
+N &> 100
+\end{align*}
+
+Since $N$ must be a positive integer, the smallest value is:
+\[
+\boxed{N = 101}
+\]
+
+\vspace{1em}
+
+\textbf{Verification:}
+\begin{itemize}[leftmargin=2em]
+    \item For $N = 101$: $\text{MSE}(101) = \frac{1}{101} \approx 0.0099 < 0.01$ \checkmark
+    \item For $N = 100$: $\text{MSE}(100) = \frac{1}{100} = 0.01$ (not strictly less than 0.01)
+\end{itemize}
+
+\vspace{1em}
+
+\textbf{Remark:} This result shows that the MSE decreases at rate $O(1/N)$. To reduce the error by a factor of 10, we need 10 times as many samples. This $1/\sqrt{N}$ rate of convergence (in terms of standard deviation) is characteristic of Monte Carlo methods and is independent of the dimension of the problem, which is one reason why Monte Carlo is particularly useful for high-dimensional problems.
+
+\end{document}

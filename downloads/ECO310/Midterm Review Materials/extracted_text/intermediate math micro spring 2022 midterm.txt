@@ -1,0 +1,60 @@
+=== PAGE 1 ===
+Princeton University
+Mathematical Intermediate Microeconomics (ECO 310)
+Midterm Spring 2022 Solutions
+Instructions: You have 80 minutes to complete this exam, plus 10 minutes to upload your
+answers. Each part of each question (Q1, Q2, and Q3) is worth 10, for a total of 100. Show your
+work and explain your answers for full credit!
+• The exam is open-book, and calculators are permitted. However, please work alone.
+• If you are unsure whether you’re interpreting a question correctly, state your
+interpretation and proceed (or email me if you prefer).
+The honor code applies, as usual.
+1
+
+
+=== PAGE 2 ===
+Q1: Proofs and General Concepts
+a. Sally has preferences over X = R2 represented by u(x1, x2) = max{x1, x2}. Are her prefer-
+ences (i) rational? (ii) convex?
+b. Now Sally tells you that she has a utility function u : X →R, and, from any menu A ⊆X,
+chooses the option in A with the lowest utility (C(A) = arg minx∈A u(x)). Do her choices
+satisfy IIA? (proof or counterexample)
+c. Using only the assumption that utility of expected wealth beats expected utility, prove that
+a gamble with 50-50 odds of winning or losing $100 is preferred to a gamble with 50-50 odds
+of winning or losing $200.
+2
+
+
+=== PAGE 3 ===
+Q2: Demand
+Homer Simpson’s preferences over beer (B) and leisure (L) are given by
+u(B, L) = min{B, L}
+He spends 8h per day passed out, but can work as many of the remaining 16 hours as he wishes,
+at a ﬂat wage w/hour. Marge also gives him an allowance of N per day. He buys cheap beer, with
+price pB = 1.
+a. Find his optimal labor supply, ℓ(w). (i.e., how many hours will he optimally work at wage
+w?)
+b. Calculate his compensating variation if the price of beer doubles.
+c. How much allowance (N) does Homer need at beer price pB and wage rate w to get utility
+u∗? (Assume u∗≤16)
+Q3: Expected Utility
+Sam has 60 minutes to complete his midterm, which has both an easy question and a hard question.
+For parts (a)-(c), assume that he can choose how to split his time between the two questions.
+Every minute spent on the easy question earns a guaranteed point. Points on the hard question
+are uncertain, as Sam is not sure whether he’ll ﬁgure it out: he expects that if he spends x minutes
+on it, he’ll get 2x points with probability p, and zero points otherwise.
+a. Write out Sam’s expected utility if he spends x minutes on the hard question and the remain-
+ing 60 −x minutes on the easy question, assuming utility
+√
+T from point total T.
+b. Suppose (for this part only) that p < 1
+2. Show that in expectation, each minute spent on the
+hard question earns less than a point, and explain why this implies that Sam should devote
+the entire 60 minutes to the easy question.
+c. Assuming now that p > 1
+2, ﬁnd the optimal # minutes x that Sam should spend on the hard
+question. (Partial minutes are allowed).
+d. Now modify the question slightly. Suppose Sam has to choose at the outset to do the hard
+question OR the easy question, he cannot attempt both. For what values of p will he choose
+the hard question?
+3

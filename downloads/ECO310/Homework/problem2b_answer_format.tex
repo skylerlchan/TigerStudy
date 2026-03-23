@@ -1,0 +1,205 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tcolorbox}
+
+\title{Problem 2b: Answer Format \\ (Exactly What to Write)}
+\author{ECO 310 - The Format You Need}
+\date{February 23, 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{What Problem 2b Asks}
+
+\textbf{Question:} Write out the optimality conditions, \textit{if you guess that the utility constraint is binding, nonnegativity on good 1 is binding, and nonnegativity on good 2 is non-binding.}
+
+\textbf{Translation:} Given this specific guess, what do the equations look like?
+
+\section{The Guess in Math Terms}
+
+The guess tells you:
+\begin{itemize}
+\item \textbf{Utility constraint is binding:} $x_1 + x_2 = u^*$ (exactly, not $>$)
+\item \textbf{Nonnegativity on good 1 is binding:} $x_1 = 0$ (exactly)
+\item \textbf{Nonnegativity on good 2 is non-binding:} $x_2 > 0$ (strictly positive)
+\end{itemize}
+
+\textbf{What this means for the $\lambda$ values:}
+\begin{itemize}
+\item Since $x_1 = 0$ (constraint binds), $\lambda_1 \geq 0$ (can be positive)
+\item Since $x_2 > 0$ (constraint doesn't bind), $\lambda_2 = 0$ (complementary slackness!)
+\item Since utility constraint binds, $\lambda_3 \geq 0$ (can be positive)
+\end{itemize}
+
+\section{Format of Your Answer}
+
+Here's EXACTLY what you should write for Problem 2b:
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=orange!75!black,title=Problem 2b Answer]
+
+\textbf{Given the guess:}
+\begin{itemize}
+\item Utility constraint is binding: $x_1 + x_2 = u^*$
+\item Nonnegativity on good 1 is binding: $x_1 = 0$
+\item Nonnegativity on good 2 is non-binding: $x_2 > 0$
+\end{itemize}
+
+\textbf{The optimality conditions simplify to:}
+
+\textbf{1. From $\frac{\partial \mathcal{L}}{\partial x_1}$ (since $x_1 = 0$):}
+\begin{equation}
+-p_1 + \lambda_1 + \lambda_3 \leq 0
+\end{equation}
+
+\textbf{2. From $\frac{\partial \mathcal{L}}{\partial x_2}$ (since $x_2 > 0$):}
+\begin{equation}
+-p_2 + \lambda_2 + \lambda_3 = 0
+\end{equation}
+
+Since $\lambda_2 = 0$ (complementary slackness with $x_2 > 0$):
+\begin{equation}
+-p_2 + \lambda_3 = 0 \quad \Rightarrow \quad \lambda_3 = p_2
+\end{equation}
+
+\textbf{3. From $\frac{\partial \mathcal{L}}{\partial \lambda_3}$ (utility constraint):}
+\begin{equation}
+x_1 + x_2 = u^*
+\end{equation}
+
+Since $x_1 = 0$:
+\begin{equation}
+x_2 = u^*
+\end{equation}
+
+\textbf{4. Solution from these conditions:}
+\begin{align}
+x_1 &= 0 \\
+x_2 &= u^* \\
+\lambda_1 &= p_1 - p_2 \quad \text{(from equation 1, substituting $\lambda_3 = p_2$)} \\
+\lambda_2 &= 0 \\
+\lambda_3 &= p_2
+\end{align}
+
+\textbf{5. For this to be valid, we need $\lambda_1 \geq 0$:}
+\begin{equation}
+\lambda_1 = p_1 - p_2 \geq 0 \quad \Rightarrow \quad p_1 \geq p_2
+\end{equation}
+
+This solution is valid when good 1 is at least as expensive as good 2.
+
+\end{tcolorbox}
+
+\section{Step-by-Step Logic}
+
+Here's how you get to that answer:
+
+\subsection{Step 1: Identify What You Know}
+
+From the guess:
+\begin{itemize}
+\item $x_1 = 0$ (given)
+\item $x_2 > 0$ (given)
+\item $x_1 + x_2 = u^*$ (given)
+\end{itemize}
+
+From complementary slackness:
+\begin{itemize}
+\item Since $x_2 > 0$, we must have $\lambda_2 = 0$
+\item Since $x_1 = 0$, we can have $\lambda_1 > 0$
+\end{itemize}
+
+\subsection{Step 2: Write the General Optimality Conditions}
+
+From your Lagrangian $\mathcal{L} = -p_1 x_1 - p_2 x_2 + \lambda_1 x_1 + \lambda_2 x_2 + \lambda_3(x_1 + x_2 - u^*)$
+
+General conditions are:
+\begin{align}
+\frac{\partial \mathcal{L}}{\partial x_1} &= -p_1 + \lambda_1 + \lambda_3 \leq 0, \quad x_1 \geq 0, \quad x_1(-p_1 + \lambda_1 + \lambda_3) = 0 \\
+\frac{\partial \mathcal{L}}{\partial x_2} &= -p_2 + \lambda_2 + \lambda_3 \leq 0, \quad x_2 \geq 0, \quad x_2(-p_2 + \lambda_2 + \lambda_3) = 0 \\
+\frac{\partial \mathcal{L}}{\partial \lambda_3} &= x_1 + x_2 - u^* \geq 0, \quad \lambda_3 \geq 0, \quad \lambda_3(x_1 + x_2 - u^*) = 0
+\end{align}
+
+\subsection{Step 3: Apply Your Guess to Simplify}
+
+\textbf{For $x_1$ condition:}
+\begin{itemize}
+\item Since $x_1 = 0$, the complementary slackness $x_1(-p_1 + \lambda_1 + \lambda_3) = 0$ is satisfied automatically
+\item We just need: $-p_1 + \lambda_1 + \lambda_3 \leq 0$
+\end{itemize}
+
+\textbf{For $x_2$ condition:}
+\begin{itemize}
+\item Since $x_2 > 0$, complementary slackness requires: $-p_2 + \lambda_2 + \lambda_3 = 0$ (exactly zero!)
+\item Since we know $\lambda_2 = 0$: $-p_2 + \lambda_3 = 0$, so $\lambda_3 = p_2$
+\end{itemize}
+
+\textbf{For utility constraint:}
+\begin{itemize}
+\item Since constraint binds: $x_1 + x_2 = u^*$
+\item Since $x_1 = 0$: $x_2 = u^*$
+\end{itemize}
+
+\subsection{Step 4: Solve for Everything}
+
+Now substitute $\lambda_3 = p_2$ into the $x_1$ condition:
+\begin{equation}
+-p_1 + \lambda_1 + p_2 \leq 0 \quad \Rightarrow \quad \lambda_1 \leq p_1 - p_2
+\end{equation}
+
+For $\lambda_1 \geq 0$ (required), we need $p_1 - p_2 \geq 0$, or $p_1 \geq p_2$.
+
+Actually, at the optimal solution, we typically have the inequality binding, so:
+\begin{equation}
+\lambda_1 = p_1 - p_2
+\end{equation}
+
+Wait, that gives $\lambda_1 \geq 0$ when $p_1 \geq p_2$. But this guess assumes we buy only good 2 ($x_1 = 0$, $x_2 = u^*$), which happens when good 2 is cheaper or equal price!
+
+Let me recalculate...
+
+If $\lambda_3 = p_2$ and $-p_1 + \lambda_1 + \lambda_3 \leq 0$:
+\begin{equation}
+\lambda_1 \leq p_1 - p_2
+\end{equation}
+
+Setting to equality (binding): $\lambda_1 = p_1 - p_2$
+
+For this to be valid ($\lambda_1 \geq 0$): $p_1 \geq p_2$
+
+Hmm, but intuitively if $x_1 = 0$ and $x_2 = u^*$, we're buying only good 2, which should happen when good 2 is cheaper ($p_2 < p_1$).
+
+Actually, checking the inequality: $\lambda_1 = p_1 - p_2$. If $p_1 > p_2$, then $\lambda_1 > 0$, which is allowed.
+
+\textbf{Conclusion:} The guess $x_1 = 0$, $x_2 = u^*$ is valid when $p_1 \geq p_2$ (good 1 is at least as expensive).
+
+\section{What to Actually Write on Your Homework}
+
+Just write what's in the yellow box above! That's the format your professor expects.
+
+The key parts are:
+\begin{enumerate}
+\item State the guess clearly
+\item Write simplified optimality conditions given that guess
+\item Solve the system of equations
+\item State the final solution: values of $x_1, x_2, \lambda_1, \lambda_2, \lambda_3$
+\item Check validity (when does $\lambda_1 \geq 0$?)
+\end{enumerate}
+
+\section{Common Confusion}
+
+\textbf{Q: Why does $x_2 > 0$ mean $\lambda_2 = 0$?}
+
+\textbf{A:} Complementary slackness! The condition is $\lambda_2 \cdot x_2 = 0$. If $x_2 > 0$, then we must have $\lambda_2 = 0$ for the product to equal zero.
+
+\textbf{Q: Why does $x_1 = 0$ mean $\lambda_1$ can be positive?}
+
+\textbf{A:} Complementary slackness again: $\lambda_1 \cdot x_1 = 0$. If $x_1 = 0$, then $\lambda_1$ can be anything (including positive) and the product is still zero.
+
+\textbf{Q: Where does $\lambda_3 = p_2$ come from?}
+
+\textbf{A:} From the FOC for $x_2$: $-p_2 + \lambda_2 + \lambda_3 = 0$. Since $\lambda_2 = 0$, we get $\lambda_3 = p_2$.
+
+\end{document}

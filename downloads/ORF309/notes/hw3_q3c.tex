@@ -1,0 +1,141 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{parskip}
+
+\geometry{margin=1in}
+
+\title{HW3 --- Question 3c\\{\large ORF 309}}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+%---------------------------------------------------------------
+\section*{Problem Statement}
+
+A bag contains coins: $\frac{2}{3}$ are fair (P(H) = 0.5) and $\frac{1}{3}$ are Canadian
+(P(H) = 0.65). One coin is drawn uniformly at random and flipped twice independently.
+Given that exactly 1 tail was observed, what is the probability the coin is Canadian?
+
+%---------------------------------------------------------------
+\section*{Setup and Notation}
+
+Define the following events:
+\begin{align*}
+F &= \{\text{coin drawn is fair}\}, \quad &&P(F) = \tfrac{2}{3} \\
+C &= \{\text{coin drawn is Canadian}\}, \quad &&P(C) = \tfrac{1}{3} \\
+E &= \{\text{exactly 1 tail in 2 flips}\}
+\end{align*}
+
+We want to compute $P(C \mid E)$.
+
+%---------------------------------------------------------------
+\section*{Step 1: Compute $P(E \mid F)$ and $P(E \mid C)$}
+
+Given the coin type, the two flips are independent and identically distributed.
+So the number of tails $T \mid \text{coin type} \sim \mathrm{Binomial}(2,\, p_T)$,
+where $p_T$ is the probability of tails on a single flip.
+
+\subsection*{Fair coin: $p_T = 0.5$}
+
+The two sequences giving exactly 1 tail are HT and TH:
+
+\begin{align*}
+P(E \mid F)
+&= P(\text{HT} \mid F) + P(\text{TH} \mid F) \\
+&= (0.5)(0.5) + (0.5)(0.5) \\
+&= 0.25 + 0.25 \\
+&= \boxed{0.5}
+\end{align*}
+
+Equivalently, using the Binomial formula with $n=2$, $k=1$, $p_T = 0.5$:
+\[
+P(E \mid F) = \binom{2}{1}(0.5)^1(0.5)^1 = 2 \cdot 0.25 = 0.5
+\]
+
+\subsection*{Canadian coin: $p_T = 0.35$}
+
+\begin{align*}
+P(E \mid C)
+&= P(\text{HT} \mid C) + P(\text{TH} \mid C) \\
+&= (0.65)(0.35) + (0.35)(0.65) \\
+&= 0.2275 + 0.2275 \\
+&= \boxed{0.455}
+\end{align*}
+
+Equivalently, using the Binomial formula with $n=2$, $k=1$, $p_T = 0.35$:
+\[
+P(E \mid C) = \binom{2}{1}(0.35)^1(0.65)^1 = 2 \cdot (0.35)(0.65) = 2 \cdot 0.2275 = 0.455
+\]
+
+%---------------------------------------------------------------
+\section*{Step 2: Compute $P(E)$ via the Law of Total Probability}
+
+Since $F$ and $C$ are mutually exclusive and exhaustive (every coin is either fair
+or Canadian):
+\[
+P(E) = P(E \mid F)\,P(F) + P(E \mid C)\,P(C)
+\]
+
+Substituting:
+\begin{align*}
+P(E) &= (0.5)\!\left(\frac{2}{3}\right) + (0.455)\!\left(\frac{1}{3}\right) \\[6pt]
+     &= \frac{1}{3} + \frac{0.455}{3} \\[6pt]
+     &= \frac{1 + 0.455}{3} \\[6pt]
+     &= \frac{1.455}{3} \\[6pt]
+     &\approx 0.485
+\end{align*}
+
+%---------------------------------------------------------------
+\section*{Step 3: Apply Bayes' Formula}
+
+\[
+P(C \mid E) = \frac{P(E \mid C)\,P(C)}{P(E)}
+\]
+
+Substituting:
+\begin{align*}
+P(C \mid E)
+&= \frac{(0.455)\!\left(\dfrac{1}{3}\right)}{\dfrac{1.455}{3}} \\[10pt]
+&= \frac{\dfrac{0.455}{3}}{\dfrac{1.455}{3}} \\[10pt]
+&= \frac{0.455}{1.455} \\[6pt]
+&= \frac{91}{291} \\[6pt]
+&\approx \boxed{0.313}
+\end{align*}
+
+\textit{Exact fraction derivation:}
+\[
+0.455 = \frac{91}{200}, \qquad 1.455 = \frac{291}{200}
+\qquad \Longrightarrow \qquad
+\frac{0.455}{1.455} = \frac{91/200}{291/200} = \frac{91}{291}
+\]
+
+%---------------------------------------------------------------
+\section*{Summary}
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+ & Fair ($F$) & Canadian ($C$) \\
+\midrule
+Prior $P(\cdot)$ & $2/3 \approx 0.667$ & $1/3 \approx 0.333$ \\
+$P(E \mid \cdot)$ & $0.5$ & $0.455$ \\
+$P(E \mid \cdot)\cdot P(\cdot)$ & $0.333$ & $0.152$ \\
+\midrule
+Posterior $P(\cdot \mid E)$ & $0.687$ & $\mathbf{0.313}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\medskip
+\textbf{Interpretation.} The prior probability of a Canadian coin was $33.3\%$.
+After observing exactly 1 tail, the posterior drops slightly to $31.3\%$.
+This makes sense: exactly 1 tail in 2 flips is slightly \emph{more} consistent
+with a fair coin ($P(E \mid F) = 0.5$) than with a Canadian coin
+($P(E \mid C) = 0.455$), so the evidence nudges us weakly toward fair --- but
+not by much, since the likelihoods are close.
+
+\end{document}

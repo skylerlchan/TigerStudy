@@ -1,0 +1,246 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tcolorbox}
+
+\title{Shadow Prices Explained \\ (What Are Lambda Values?)}
+\author{ECO 310 - Intuitive Explanation}
+\date{February 23, 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{What Is a Shadow Price?}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Simple Definition]
+A \textbf{shadow price} is how much your objective function would improve if you could relax a constraint by a tiny bit.
+
+In this problem: \textbf{Shadow price = How much would your cost decrease if you could slightly relax a constraint?}
+\end{tcolorbox}
+
+The $\lambda$ values in your Lagrangian ARE the shadow prices!
+
+\begin{itemize}
+\item $\lambda_1$ = shadow price of constraint $x_1 \geq 0$
+\item $\lambda_2$ = shadow price of constraint $x_2 \geq 0$
+\item $\lambda_3$ = shadow price of constraint $x_1 + x_2 \geq u^*$
+\end{itemize}
+
+\section{Concrete Example: Coffee and Tea}
+
+Let's use actual numbers to understand shadow prices.
+
+\textbf{Setup:}
+\begin{itemize}
+\item Coffee costs \$3 per cup ($p_1 = 3$)
+\item Tea costs \$5 per cup ($p_2 = 5$)
+\item You need utility 10 ($u^* = 10$)
+\end{itemize}
+
+\textbf{Optimal solution:} Buy 10 coffees, 0 teas (cost = \$30)
+
+So: $x_1 = 10$, $x_2 = 0$
+
+\subsection{Shadow Price of $\lambda_1$ (Coffee Nonnegativity)}
+
+\textbf{Constraint:} $x_1 \geq 0$ (can't buy negative coffee)
+
+\textbf{Question:} How much would your cost decrease if you could buy $x_1 = -0.01$ (slightly negative)?
+
+\textbf{Answer:} Your cost wouldn't decrease at all! You're already buying 10 coffees, so being allowed to buy negative amounts doesn't help you.
+
+\textbf{Therefore:} $\lambda_1 = 0$ (this constraint is not binding, relaxing it doesn't help)
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black,title=Interpretation]
+$\lambda_1 = 0$ means: The constraint $x_1 \geq 0$ is NOT binding. You're not "stuck" at $x_1 = 0$, so relaxing this constraint has zero value to you.
+\end{tcolorbox}
+
+\subsection{Shadow Price of $\lambda_2$ (Tea Nonnegativity)}
+
+\textbf{Constraint:} $x_2 \geq 0$ (can't buy negative tea)
+
+\textbf{Question:} How much would your cost decrease if you could buy $x_2 = -0.01$ (slightly negative)?
+
+\textbf{Answer:} This would help! If you could "buy negative tea" (i.e., sell tea you don't have and get money back), you'd want to do it.
+
+Let's calculate:
+\begin{itemize}
+\item If you could set $x_2 = -1$ (sell 1 unit of tea): you'd get +\$5
+\item But you'd need to replace that utility: buy 1 more coffee for \$3
+\item Net savings: \$5 - \$3 = \$2
+\end{itemize}
+
+\textbf{Therefore:} $\lambda_2 = 2$ (relaxing this constraint by 1 unit would save you \$2)
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black,title=Interpretation]
+$\lambda_2 = 2$ means: The constraint $x_2 \geq 0$ IS binding. You're stuck at $x_2 = 0$, and if you could relax this constraint (buy negative tea), each unit would save you \$2.
+
+Why \$2? Because tea costs \$5 but coffee (the alternative) costs \$3, so the price difference is \$2.
+\end{tcolorbox}
+
+\subsection{Shadow Price of $\lambda_3$ (Utility Constraint)}
+
+\textbf{Constraint:} $x_1 + x_2 \geq u^* = 10$ (must reach utility 10)
+
+\textbf{Question:} How much would your cost decrease if you only needed utility 9.99 instead of 10?
+
+\textbf{Answer:} You'd need 0.01 fewer coffees, saving $0.01 \times \$3 = \$0.03$
+
+Per unit of utility: Cost would decrease by \$3
+
+\textbf{Therefore:} $\lambda_3 = 3$ (marginal cost of utility is \$3)
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black,title=Interpretation]
+$\lambda_3 = 3$ means: Each additional unit of utility costs you \$3 more.
+
+Why \$3? Because you're buying the cheaper good (coffee at \$3), so increasing utility by 1 unit means buying 1 more coffee for \$3.
+
+\textbf{This is also called the marginal cost of utility.}
+\end{tcolorbox}
+
+\section{General Pattern for Shadow Prices}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=orange!75!black,title=How Shadow Prices Work]
+
+\textbf{If constraint is NOT binding ($\lambda = 0$):}
+\begin{itemize}
+\item You're not stuck at the constraint boundary
+\item Relaxing the constraint doesn't help you
+\item Example: $x_1 = 10 > 0$, so $\lambda_1 = 0$
+\end{itemize}
+
+\textbf{If constraint IS binding ($\lambda > 0$):}
+\begin{itemize}
+\item You're stuck at the constraint boundary
+\item Relaxing the constraint would help you
+\item The $\lambda$ value tells you exactly how much it would help
+\item Example: $x_2 = 0$, so $\lambda_2 > 0$
+\end{itemize}
+
+\end{tcolorbox}
+
+\section{Complementary Slackness}
+
+Shadow prices are connected to complementary slackness:
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Complementary Slackness Rules]
+
+For each constraint and its shadow price $\lambda$:
+
+\textbf{Either:}
+\begin{enumerate}
+\item The constraint is binding (exactly satisfied) and $\lambda \geq 0$
+\item OR the constraint is NOT binding (slack) and $\lambda = 0$
+\end{enumerate}
+
+\textbf{They can't both be positive at the same time!}
+
+Mathematically: (constraint slack) $\times$ (shadow price) = 0
+
+\end{tcolorbox}
+
+\subsection{Examples}
+
+\textbf{Constraint $x_1 \geq 0$:}
+\begin{itemize}
+\item If $x_1 = 0$ (binding): $\lambda_1$ can be $> 0$
+\item If $x_1 > 0$ (not binding): $\lambda_1 = 0$
+\item Complementary slackness: $x_1 \cdot \lambda_1 = 0$
+\end{itemize}
+
+\textbf{Constraint $x_2 \geq 0$:}
+\begin{itemize}
+\item If $x_2 = 0$ (binding): $\lambda_2$ can be $> 0$
+\item If $x_2 > 0$ (not binding): $\lambda_2 = 0$
+\item Complementary slackness: $x_2 \cdot \lambda_2 = 0$
+\end{itemize}
+
+\textbf{Constraint $x_1 + x_2 \geq u^*$:}
+\begin{itemize}
+\item If $x_1 + x_2 = u^*$ (binding): $\lambda_3$ can be $> 0$
+\item If $x_1 + x_2 > u^*$ (not binding): $\lambda_3 = 0$
+\item Complementary slackness: $(x_1 + x_2 - u^*) \cdot \lambda_3 = 0$
+\end{itemize}
+
+\section{How Shadow Prices Are Used in Problem 2b}
+
+In Problem 2b, you're given a guess:
+\begin{itemize}
+\item $x_1 = 0$ (binding) $\Rightarrow$ $\lambda_1$ can be positive
+\item $x_2 > 0$ (not binding) $\Rightarrow$ $\lambda_2 = 0$
+\item $x_1 + x_2 = u^*$ (binding) $\Rightarrow$ $\lambda_3$ can be positive
+\end{itemize}
+
+\subsection{Using Complementary Slackness to Simplify}
+
+\textbf{Step 1:} Since $x_2 > 0$, we know $\lambda_2 = 0$
+
+\textbf{Step 2:} The FOC for $x_2$ is:
+\begin{equation}
+-p_2 + \lambda_2 + \lambda_3 = 0
+\end{equation}
+
+Substitute $\lambda_2 = 0$:
+\begin{equation}
+-p_2 + \lambda_3 = 0 \quad \Rightarrow \quad \lambda_3 = p_2
+\end{equation}
+
+\textbf{Step 3:} The FOC for $x_1$ is:
+\begin{equation}
+-p_1 + \lambda_1 + \lambda_3 \leq 0
+\end{equation}
+
+Substitute $\lambda_3 = p_2$:
+\begin{equation}
+-p_1 + \lambda_1 + p_2 \leq 0 \quad \Rightarrow \quad \lambda_1 \leq p_1 - p_2
+\end{equation}
+
+At optimum, this typically binds:
+\begin{equation}
+\lambda_1 = p_1 - p_2
+\end{equation}
+
+\textbf{Step 4:} Check validity. For $\lambda_1 \geq 0$:
+\begin{equation}
+p_1 - p_2 \geq 0 \quad \Rightarrow \quad p_1 \geq p_2
+\end{equation}
+
+So this guess is valid when good 1 is at least as expensive as good 2.
+
+\section{Economic Interpretation of the Solution}
+
+From our example where $p_1 = 3$, $p_2 = 5$:
+
+\begin{itemize}
+\item $\lambda_1 = 0$: Nonnegativity on coffee is not constraining. You're happy buying coffee.
+
+\item $\lambda_2 = p_2 - p_1 = 5 - 3 = 2$: Nonnegativity on tea IS constraining. If you could "buy negative tea" (sell tea back), each unit would save you \$2 (the price difference).
+
+\item $\lambda_3 = p_1 = 3$ (or $p_2$ depending on which good you buy): The marginal cost of utility. Increasing $u^*$ by 1 unit costs \$3 more (the price of the cheaper good).
+\end{itemize}
+
+\section{Summary}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Shadow Prices in Plain English]
+
+\textbf{What they are:} The $\lambda$ values measure "how much would I save if I could relax this constraint?"
+
+\textbf{How to use them:}
+\begin{enumerate}
+\item If you're told a constraint is binding, the shadow price can be positive
+\item If you're told a constraint is NOT binding, the shadow price must be zero
+\item Use complementary slackness to set certain $\lambda$ values to zero
+\item This simplifies the optimality conditions into solvable equations
+\end{enumerate}
+
+\textbf{Economic meaning:}
+\begin{itemize}
+\item $\lambda_i = 0$: Constraint $i$ is not limiting you
+\item $\lambda_i > 0$: Constraint $i$ is limiting you, and $\lambda_i$ tells you the value of relaxing it
+\end{itemize}
+
+\end{tcolorbox}
+
+\end{document}

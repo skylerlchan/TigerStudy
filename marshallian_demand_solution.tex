@@ -1,0 +1,185 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+
+\geometry{margin=1in}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Marshallian Demand Function}
+\lhead{ECO310 Solution Explanation}
+\rfoot{\thepage}
+
+\title{Understanding Harry's Marshallian Demand Function}
+\author{Solution Explanation}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem Overview}
+
+Harry allocates his income $m$ between two goods: Cable (C) and Netflix (N), with prices $p_C$ and $p_N$ respectively. The utility function has parameter $\beta = 2$. We need to find Harry's Marshallian (ordinary) demand functions for both goods.
+
+\subsection{What is Marshallian Demand?}
+
+\textbf{Marshallian demand functions} answer the question: \textit{``How much of each good should I buy to maximize my utility?''}
+
+Given:
+\begin{itemize}
+    \item Your income: $m$
+    \item The prices: $p_C$ and $p_N$
+    \item Your preferences (utility function)
+\end{itemize}
+
+The Marshallian demand functions tell you:
+\begin{itemize}
+    \item $C^*(m, p_C, p_N)$ = the optimal quantity of Cable to buy
+    \item $N^*(m, p_C, p_N)$ = the optimal quantity of Netflix to buy
+\end{itemize}
+
+These are the quantities that give you the \textbf{maximum possible utility} while staying within your budget. This is the solution to the consumer's utility maximization problem.
+
+\section{Step-by-Step Solution}
+
+\subsection{Step 1: Optimal Allocation Condition}
+
+The consumer maximizes utility when the marginal utility per dollar spent is equal across both goods (the ``bang-per-buck'' condition):
+
+\[
+\frac{MU_C}{p_C} = \frac{MU_N}{p_N}
+\]
+
+From the utility function (with $\beta = 2$), the marginal utilities give us:
+
+\[
+\frac{1 + N}{C} = \frac{p_C}{p_N}
+\]
+
+\subsection{Step 2: Solve for N in Terms of C}
+
+Rearranging the optimal allocation condition:
+
+\begin{align*}
+(1 + N) \cdot C &= \frac{p_C}{p_N} \cdot C \\
+N \cdot C &= \frac{p_C}{p_N} \cdot C - C \\
+N \cdot C &= \left(\frac{p_C - p_N}{p_N}\right) \cdot C
+\end{align*}
+
+Therefore:
+\[
+N = \frac{p_C - p_N}{p_N} \cdot C
+\]
+
+\textbf{Note:} This expression is only non-negative when $p_C \geq p_N$. We'll assume this condition holds for now.
+
+\subsection{Step 3: Substitute into Budget Constraint}
+
+The budget constraint states that Harry spends all his income:
+\[
+p_C \cdot C + p_N \cdot N = m
+\]
+
+Substituting our expression for $N$:
+\begin{align*}
+p_C \cdot C + p_N \cdot \left(\frac{p_C - p_N}{p_N}\right) \cdot C &= m \\
+p_C \cdot C + (p_C - p_N) \cdot C &= m \\
+2p_C \cdot C - p_N \cdot C &= m \\
+C \cdot (2p_C - p_N) &= m
+\end{align*}
+
+Therefore, the demand function for Cable is:
+\[
+\boxed{C^* = \frac{m}{2p_C - p_N}}
+\]
+
+\subsection{Step 4: Find the Demand for Netflix}
+
+Substitute $C^*$ back into our expression for $N$:
+
+\begin{align*}
+N^* &= \frac{p_C - p_N}{p_N} \cdot C^* \\
+&= \frac{p_C - p_N}{p_N} \cdot \frac{m}{2p_C - p_N}
+\end{align*}
+
+Therefore, the demand function for Netflix is:
+\[
+\boxed{N^* = \frac{1}{p_N} \cdot \frac{(p_C - p_N) \cdot m}{2p_C - p_N}}
+\]
+
+\subsection{Step 5: Corner Solution Check}
+
+The above solution assumes $p_C \geq p_N$ (Cable is at least as expensive as Netflix).
+
+\textbf{What if $p_C < p_N$?}
+
+If Cable is cheaper than Netflix, our formula for $N$ would give a negative quantity, which is not feasible. In this case, we have a \textbf{corner solution}.
+
+\subsubsection{Deriving the Corner Solution}
+
+When $p_C < p_N$, the optimal allocation condition would suggest buying negative Netflix (impossible). Instead, Harry sets $N = 0$ and spends all income on Cable.
+
+Starting with the budget constraint:
+\[
+p_C \cdot C + p_N \cdot N = m
+\]
+
+Setting $N = 0$:
+\begin{align*}
+p_C \cdot C + p_N \cdot 0 &= m \\
+p_C \cdot C &= m
+\end{align*}
+
+Solving for $C$:
+\[
+\boxed{C = \frac{m}{p_C}}
+\]
+
+\textbf{Interpretation:} When Cable is cheaper than Netflix, Harry spends his entire budget on Cable. The quantity demanded is simply total income divided by the price of Cable. This is the standard budget constraint solution when only one good is purchased.
+
+\section{Complete Demand Functions}
+
+\subsection{Cable Demand}
+\[
+C^*(m, p_C, p_N) = \begin{cases}
+\dfrac{m}{2p_C - p_N} & \text{if } p_C \geq p_N \\[10pt]
+\dfrac{m}{p_C} & \text{if } p_C < p_N
+\end{cases}
+\]
+
+\subsection{Netflix Demand}
+\[
+N^*(m, p_C, p_N) = \begin{cases}
+\dfrac{1}{p_N} \cdot \dfrac{(p_C - p_N) \cdot m}{2p_C - p_N} & \text{if } p_C \geq p_N \\[10pt]
+0 & \text{if } p_C < p_N
+\end{cases}
+\]
+
+\subsection{What Do These Functions Tell Us?}
+
+$N^*$ and $C^*$ are the \textbf{optimal quantities} that maximize Harry's utility:
+
+\begin{itemize}
+    \item \textbf{$N^*$} = How many hours of Netflix Harry should subscribe to for maximum happiness (given his income and the prices)
+
+    \item \textbf{$C^*$} = How many hours of Cable Harry should subscribe to for maximum happiness
+
+    \item These quantities depend on three things: his income ($m$), the price of Cable ($p_C$), and the price of Netflix ($p_N$)
+
+    \item If any of these change (prices go up, income changes), the optimal quantities change too
+\end{itemize}
+
+\section{Economic Intuition}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{When Cable is relatively expensive} ($p_C \geq p_N$): Harry purchases both goods in an interior solution, balancing marginal utilities per dollar across both.
+
+    \item \textbf{When Cable is relatively cheap} ($p_C < p_N$): Harry only buys Cable (corner solution). The utility function structure makes Cable so valuable relative to its price that he specializes completely in Cable consumption.
+
+    \item The parameter $\beta = 2$ affects the marginal utilities and determines how quickly Harry's preference shifts between the two goods as relative prices change.
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,208 @@
+\documentclass[11pt, letterpaper]{article}
+
+\usepackage[margin=1in, headheight=22pt, headsep=12pt]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{microtype}
+\usepackage{parskip}
+\usepackage{booktabs}
+\usepackage{sectsty}
+
+% --- Color Definitions ---
+\definecolor{accent}{HTML}{2C3E6B}
+\definecolor{subaccent}{HTML}{5B7BA5}
+\definecolor{rulecolor}{HTML}{CCCCCC}
+\definecolor{darktext}{HTML}{1A1A1A}
+
+% --- Hyperlink Setup ---
+\hypersetup{
+    colorlinks=true,
+    linkcolor=accent,
+    urlcolor=subaccent,
+    pdftitle={Early Blues and New Orleans Jazz},
+    pdfauthor={Lecture Notes},
+}
+
+% --- Section Formatting ---
+\titleformat{\section}
+    {\Large\bfseries\color{accent}}
+    {\thesection}{1em}{}
+    [\vspace{-0.5em}\textcolor{rulecolor}{\rule{\textwidth}{0.4pt}}]
+
+\titleformat{\subsection}
+    {\large\bfseries\color{subaccent}}
+    {\thesubsection}{1em}{}
+
+\titlespacing*{\section}{0pt}{1.5em}{0.75em}
+\titlespacing*{\subsection}{0pt}{1em}{0.5em}
+
+% --- Header/Footer ---
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{rulecolor}\leaders\hrule height \headrulewidth\hfill}}
+\fancyhead[L]{\small\color{gray}Early Blues \& New Orleans Jazz}
+\fancyhead[R]{\small\color{gray}Lecture Notes}
+\fancyfoot[C]{\small\color{gray}\thepage}
+
+% --- List Formatting ---
+\setlist[itemize]{leftmargin=1.5em, itemsep=3pt, parsep=0pt, topsep=4pt}
+\setlist[itemize,2]{leftmargin=1.5em, itemsep=2pt}
+
+% --- Body Text ---
+\color{darktext}
+
+\begin{document}
+
+% --- Title Block ---
+\thispagestyle{empty}
+\begin{center}
+    \vspace*{1cm}
+    {\Huge\bfseries\color{accent} Early Blues \&\\[0.3em] New Orleans Jazz}\\[1.5em]
+    \textcolor{rulecolor}{\rule{0.6\textwidth}{0.8pt}}\\[1em]
+    {\large Lecture Notes}\\[0.5em]
+    {\color{gray}\small Evolution of Early Jazz from Blues Vocal Traditions\\through New Orleans Jazz and the Rise of the Soloist}
+    \vspace{1.5cm}
+\end{center}
+
+% --- Table of Contents ---
+\tableofcontents
+\newpage
+
+% ============================================================
+\section{Blues Foundations}
+% ============================================================
+
+\begin{itemize}
+    \item Blues derives from three main chords (I, IV, V) with additional chords often superimposed for harmonic richness
+    \item The \textbf{blues scale} is a six-note pentatonic scale plus the flat 5 (tritone), showing connection to West African music
+    \item The tritone was historically called the ``Devil's Interval'' due to its dissonant sound; it is central to Western music's tension-release structure
+    \item \textbf{Blue notes}: flat 3, flat 5, flat 7 --- the characteristic intervals of the blues
+    \item Standard format is \textbf{12-bar blues}, though earlier forms included 8-bar and 16-bar variations
+    \item Recording technology limited early recordings to approximately three minutes per disc side
+\end{itemize}
+
+% ============================================================
+\section{Key Technical Concepts}
+% ============================================================
+
+\subsection{Timbre}
+The quality of sound that distinguishes different musicians and instruments. In jazz, having a unique, identifiable sound is a hallmark of greatness.
+
+\subsection{Vibrato}
+Oscillation or shakiness in sound; a vocal technique that heavily influenced instrumental jazz playing.
+
+\subsection{Call and Response}
+A fundamental structural pattern in blues and jazz. Early jazz features bends, moans, and blue notes in vocal delivery.
+
+% ============================================================
+\section{Bessie Smith --- ``Empress of the Blues''}
+% ============================================================
+
+\begin{itemize}
+    \item Born 1894 in Tennessee; prominent figure in the early vocal blues tradition
+    \item \textbf{``Backwater Blues''} (1927) is an iconic early jazz recording featuring James P. Johnson on piano
+    \item Known for a darker timbre and extensive use of vibrato
+    \item Her vocal techniques became models for instrumental jazz playing
+\end{itemize}
+
+% ============================================================
+\section{Jelly Roll Morton}
+% ============================================================
+
+\begin{itemize}
+    \item Born Ferdinand Morton in 1890 in New Orleans; died 1941. Creole composer and pianist
+    \item Nickname ``Jelly Roll'' came from playing piano at houses of prostitution
+    \item \textbf{``Dead Man Blues''} (1926), recorded with his \textit{Red Hot Peppers}, depicts a New Orleans funeral march
+    \item Music was later criticized for sounding dated, stuck in a 1920s style
+    \item Features clarinet and trumpet solos --- clarinet was prominent before the saxophone dominated in the 1930s--40s
+    \item Recording has ragtime influence with stiff rhythm characteristic of early jazz
+\end{itemize}
+
+% ============================================================
+\section{W.C. Handy --- ``Father of the Blues''}
+% ============================================================
+
+\begin{itemize}
+    \item Pianist and trumpet player; important early composer
+    \item \textbf{``St. Louis Blues''} (1922) was one of the first commercial jazz successes
+    \item Featured a ``Spanish tinge'' (tango rhythm) in the composition
+    \item Recording shows clear switches between swung and straight feel, minor and major tonalities
+    \item Very little improvisation --- highly composed
+    \item Notable use of muted trumpet changing the timbre
+\end{itemize}
+
+% ============================================================
+\section{New Orleans Jazz Tradition}
+% ============================================================
+
+\begin{itemize}
+    \item New Orleans is the birthplace of jazz, with instrumentation derived from marching bands
+    \item \textbf{Typical ensemble}: trumpet/cornet, clarinet, trombone, banjo/guitar, drums, and tuba (before the upright bass became prominent)
+    \item Features \textbf{collective improvisation} --- simultaneous melodic lines rather than solo-focused performance
+    \item The \textbf{``second line'' rhythm} comes from the New Orleans funeral tradition: a somber procession followed by a celebration of life
+    \item The traditional New Orleans jazz sound has been preserved to the present day
+\end{itemize}
+
+\subsection{Modern Example: Branford Marsalis}
+\begin{itemize}
+    \item \textbf{``Sidney in the House''} (1992) demonstrates a contemporary New Orleans jazz sound
+    \item Features Branford Marsalis on soprano saxophone (paying homage to Sidney Bechet) and Wynton Marsalis on trumpet
+    \item \textbf{Sidney Bechet} was important for making the soprano saxophone prominent in jazz before John Coltrane revived it in the 1960s
+    \item Recording features second line rhythm transitioning to a contemporary swing feel
+    \item \textbf{Preservation Hall} in New Orleans still performs in the traditional style
+\end{itemize}
+
+% ============================================================
+\section{Louis Armstrong --- The First Great Soloist}
+% ============================================================
+
+\begin{itemize}
+    \item Born 1901 in New Orleans; died 1971. Brought improvisation to the forefront as a soloist art form
+    \item Self-taught orphan who aspired to a great sound from his first time playing trumpet
+    \item Started with Joe ``King'' Oliver's Creole Jazz Band in 1923; emerged as a soloist with Fletcher Henderson's band, 1924--1925
+    \item \textbf{Invented scat singing in 1926} with ``Heebie Jeebies''
+    \item Trumpet playing featured a strident, bright sound with straight tone and vibrato at the end of notes --- a highly influential technique
+    \item \textbf{``West End Blues''} (1928), from the Hot Five/Hot Seven recordings, is considered the first great improvised jazz solo
+    \item The iconic opening cadenza is one of the most memorable in jazz history
+    \item Nicknames: ``Satchmo'' and ``Pops''
+\end{itemize}
+
+\subsection{Armstrong's Complex Legacy}
+\begin{itemize}
+    \item Was as much entertainer as musician, drawing from the older tradition of minstrelsy
+    \item Minstrel shows were among the most popular entertainment in 1910s--20s America
+    \item Received criticism for a subservient persona, blackface performances, and stage antics
+    \item Counter-argument: opened doors for Black artists as the first prominent crossover figure
+    \item Harlem Renaissance figures called him the ``old Negro'' vs.\ Duke Ellington as the ``new Negro'' --- entertainment-focused vs.\ dignified
+    \item Wynton Marsalis considers Armstrong his hero; Ken Burns's \textit{Jazz} documentary (2000) featured Armstrong prominently
+    \item The documentary was controversial for emphasizing early jazz over modern developments (6--7 episodes on 1900--1950; final episode covering 1965--2000)
+    \item Popular for singing (``What a Wonderful World,'' ``Hello, Dolly!'') but treasured in jazz for virtuoso trumpet playing
+\end{itemize}
+
+\subsection{Armstrong \& Fitzgerald Recording}
+\begin{itemize}
+    \item \textbf{``They Can't Take That Away from Me''} (1955) with Ella Fitzgerald demonstrates high-quality later work
+    \item Shows Armstrong's trumpet playing and singing voice with better recording fidelity
+    \item Features call and response between vocals and trumpet
+    \item Armstrong's trumpet playing mirrors his vocal phrasing
+    \item Longer structure than earlier recordings, based on popular song form
+    \item More modern rhythm section with double bass and drums
+\end{itemize}
+
+% ============================================================
+\section{Looking Ahead}
+% ============================================================
+
+Next lecture topics: \textbf{Ella Fitzgerald}, \textbf{Duke Ellington}, \textbf{Count Basie}, and the \textbf{Swing Era} of the 1930s.
+
+\vfill
+\begin{center}
+    \textcolor{rulecolor}{\rule{0.4\textwidth}{0.4pt}}\\[0.5em]
+    {\small\color{gray} Source: \href{https://www.notion.so/Early-Blues-and-New-Orleans-Jazz-Lecture-2f8ed208c188804fa22fdf626b96b492?pvs=189\#2f8ed208c18880a09061fb4270e21f96}{Notion --- Early Blues and New Orleans Jazz Lecture}}
+\end{center}
+
+\end{document}

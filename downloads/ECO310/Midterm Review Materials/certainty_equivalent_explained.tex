@@ -1,0 +1,327 @@
+\documentclass[12pt]{article}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+
+\title{\textbf{Certainty Equivalent: Simple Explanation}}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{What is a Certainty Equivalent?}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
+\textbf{Simple Definition:}
+
+The certainty equivalent (CE) is the \textbf{guaranteed amount of money} that makes you exactly as happy as taking a risky gamble.
+
+\vspace{0.3cm}
+
+In other words: "How much would I need for certain to make me indifferent to this lottery?"
+\end{tcolorbox}
+
+\subsection*{The Formula}
+
+The CE is defined by:
+\[
+u(CE) = EU
+\]
+
+where:
+\begin{itemize}
+\item $u$ = your utility function
+\item $CE$ = certainty equivalent (what we're solving for)
+\item $EU$ = expected utility of the gamble
+\end{itemize}
+
+\textbf{In words:} The utility of getting CE for certain equals the expected utility of the gamble.
+
+\section*{Simple Example}
+
+You're offered a coin flip:
+\begin{itemize}
+\item Heads: win \$100
+\item Tails: win \$0
+\end{itemize}
+
+If you're risk-neutral, your CE = \$50 (the expected value).
+
+But if you're risk-averse, you'd say: "I'd be just as happy with \$40 guaranteed as I would be with this 50-50 gamble for \$100." Then your CE = \$40.
+
+\vspace{0.3cm}
+
+\textbf{Key insight:} The more risk-averse you are, the LOWER your certainty equivalent!
+
+\newpage
+
+\section*{CRRA Utility Example}
+
+\subsection*{The Setup}
+
+Let's say you use CRRA utility:
+\[
+u(x) = \frac{x^{1-\sigma}}{1-\sigma}
+\]
+
+where $\sigma$ is your risk aversion parameter (higher $\sigma$ = more risk averse).
+
+\subsection*{The Gamble}
+
+50-50 chance between:
+\begin{itemize}
+\item \$0 with probability $\frac{1}{2}$
+\item \$200 with probability $\frac{1}{2}$
+\end{itemize}
+
+\subsection*{Finding the Certainty Equivalent}
+
+\textbf{Step 1: Calculate Expected Utility}
+
+\[
+EU = \frac{1}{2} \cdot u(0) + \frac{1}{2} \cdot u(200)
+\]
+
+With CRRA utility:
+\[
+EU = \frac{1}{2} \cdot \frac{0^{1-\sigma}}{1-\sigma} + \frac{1}{2} \cdot \frac{200^{1-\sigma}}{1-\sigma}
+\]
+
+Since $0^{1-\sigma} = 0$:
+\[
+EU = \frac{1}{2} \cdot \frac{200^{1-\sigma}}{1-\sigma}
+\]
+
+\textbf{Step 2: Set $u(CE) = EU$}
+
+\[
+\frac{CE^{1-\sigma}}{1-\sigma} = \frac{1}{2} \cdot \frac{200^{1-\sigma}}{1-\sigma}
+\]
+
+\textbf{Step 3: Cancel out the $(1-\sigma)$ terms}
+
+\[
+CE^{1-\sigma} = \frac{1}{2} \cdot 200^{1-\sigma}
+\]
+
+\textbf{Step 4: Solve for CE}
+
+Take both sides to the power of $\frac{1}{1-\sigma}$:
+\[
+CE = \left(\frac{1}{2}\right)^{\frac{1}{1-\sigma}} \cdot 200
+\]
+
+\begin{tcolorbox}[colback=yellow!20!white,colframe=orange!75!black]
+\textbf{The Answer:}
+\[
+\boxed{CE = \left(\frac{1}{2}\right)^{\frac{1}{1-\sigma}} \cdot 200}
+\]
+\end{tcolorbox}
+
+\newpage
+
+\section*{What Does This Mean?}
+
+Let's plug in different values of $\sigma$ (risk aversion):
+
+\subsection*{Case 1: Risk Neutral ($\sigma = 0$)}
+
+\[
+CE = \left(\frac{1}{2}\right)^{\frac{1}{1-0}} \cdot 200 = \left(\frac{1}{2}\right)^1 \cdot 200 = \frac{1}{2} \cdot 200 = 100
+\]
+
+Makes sense! If you're risk-neutral, you only care about expected value:
+\[
+EV = \frac{1}{2}(0) + \frac{1}{2}(200) = 100
+\]
+
+\subsection*{Case 2: Slightly Risk Averse ($\sigma = 0.5$)}
+
+\[
+CE = \left(\frac{1}{2}\right)^{\frac{1}{1-0.5}} \cdot 200 = \left(\frac{1}{2}\right)^2 \cdot 200 = \frac{1}{4} \cdot 200 = 50
+\]
+
+You'd need \$50 guaranteed to be as happy as the gamble.
+
+\subsection*{Case 3: More Risk Averse ($\sigma = 2$)}
+
+\[
+CE = \left(\frac{1}{2}\right)^{\frac{1}{1-2}} \cdot 200 = \left(\frac{1}{2}\right)^{-1} \cdot 200 = 2 \cdot 200 = 400
+\]
+
+Wait, that's weird! This says CE = \$400, but the most you can win is \$200!
+
+\textbf{What's happening?} When $\sigma > 1$, the exponent $\frac{1}{1-\sigma}$ becomes negative, which flips the fraction. This is mathematically correct but the interpretation changes.
+
+For $\sigma > 1$ with this particular gamble (one outcome is \$0), the utility function becomes very sensitive to getting zero, and the math doesn't give us the intuitive CE we expect.
+
+\subsection*{Case 4: Log Utility ($\sigma = 1$)}
+
+When $\sigma = 1$, we use $u(x) = \ln(x)$ instead:
+
+\[
+EU = \frac{1}{2} \ln(0) + \frac{1}{2} \ln(200)
+\]
+
+But $\ln(0) = -\infty$, so this gamble has infinite negative utility! You'd reject it at any price.
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+\textbf{Important Note:}
+
+When one outcome is \$0 and you have log utility or high risk aversion, the gamble can have very low (or even infinitely negative) utility because you really, really don't want to end up with \$0.
+
+That's why in practice, these problems usually give you gambles where all outcomes are positive amounts.
+\end{tcolorbox}
+
+\newpage
+
+\section*{The Big Picture}
+
+\subsection*{How Risk Aversion Affects CE}
+
+\begin{center}
+\begin{tabular}{|c|c|l|}
+\hline
+\textbf{Risk Aversion ($\sigma$)} & \textbf{CE} & \textbf{Interpretation} \\
+\hline
+0 (risk-neutral) & \$100 & CE = Expected Value \\
+\hline
+0.5 (slightly risk-averse) & \$50 & Need \$50 for sure \\
+\hline
+Higher $\sigma$ & Lower CE & Need even less for sure \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{0.5cm}
+
+\textbf{The pattern:} As you become MORE risk-averse (higher $\sigma$), your certainty equivalent DECREASES.
+
+\vspace{0.3cm}
+
+\textbf{Intuition:} "I really hate risk, so I'll accept a much smaller guaranteed amount instead of gambling."
+
+\subsection*{Risk Premium}
+
+The \textbf{risk premium} is how much you're willing to give up to avoid risk:
+
+\[
+\text{Risk Premium} = E[x] - CE
+\]
+
+For our example with $\sigma = 0.5$:
+\[
+RP = 100 - 50 = 50
+\]
+
+You'd pay up to \$50 to avoid this risk!
+
+\section*{More Realistic Example}
+
+Let's do one where all outcomes are positive:
+
+\subsection*{Gamble: 50-50 between \$100 and \$200}
+
+Expected value: $E[x] = \frac{1}{2}(100) + \frac{1}{2}(200) = 150$
+
+\subsection*{Finding CE with CRRA utility}
+
+\[
+EU = \frac{1}{2} \cdot \frac{100^{1-\sigma}}{1-\sigma} + \frac{1}{2} \cdot \frac{200^{1-\sigma}}{1-\sigma}
+\]
+
+\[
+\frac{CE^{1-\sigma}}{1-\sigma} = \frac{1}{2} \cdot \frac{100^{1-\sigma}}{1-\sigma} + \frac{1}{2} \cdot \frac{200^{1-\sigma}}{1-\sigma}
+\]
+
+Cancel $(1-\sigma)$:
+\[
+CE^{1-\sigma} = \frac{1}{2} \left(100^{1-\sigma} + 200^{1-\sigma}\right)
+\]
+
+Solve for CE:
+\[
+CE = \left[\frac{1}{2} \left(100^{1-\sigma} + 200^{1-\sigma}\right)\right]^{\frac{1}{1-\sigma}}
+\]
+
+\subsection*{Numerical Examples}
+
+\textbf{Risk-neutral ($\sigma = 0$):}
+\[
+CE = \left[\frac{1}{2}(100 + 200)\right]^1 = \frac{300}{2} = 150
+\]
+CE = Expected Value, as expected!
+
+\textbf{Risk-averse ($\sigma = 0.5$):}
+\[
+CE = \left[\frac{1}{2}(100^{0.5} + 200^{0.5})\right]^{2} = \left[\frac{1}{2}(10 + 14.14)\right]^2 \approx (12.07)^2 \approx 145.7
+\]
+
+So you'd accept \$145.70 guaranteed instead of the 50-50 gamble for \$100 or \$200.
+
+Risk premium: $150 - 145.7 = \$4.30$
+
+\newpage
+
+\section*{Summary}
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black]
+\textbf{Key Takeaways:}
+
+\begin{enumerate}[leftmargin=*]
+\item \textbf{Certainty Equivalent (CE):} The guaranteed amount that makes you as happy as taking the gamble
+\[
+u(CE) = EU
+\]
+
+\item \textbf{Finding CE:}
+\begin{itemize}
+\item Calculate expected utility $EU$
+\item Solve $u(CE) = EU$ for $CE$
+\end{itemize}
+
+\item \textbf{Risk aversion and CE:}
+\begin{itemize}
+\item More risk-averse $\Rightarrow$ Lower CE
+\item Risk-neutral $\Rightarrow$ CE = Expected Value
+\end{itemize}
+
+\item \textbf{Risk Premium:}
+\[
+RP = E[x] - CE
+\]
+How much you'd pay to avoid risk
+
+\item \textbf{CRRA utility:} $u(x) = \frac{x^{1-\sigma}}{1-\sigma}$
+\begin{itemize}
+\item $\sigma$ = risk aversion parameter
+\item Higher $\sigma$ = more risk-averse = lower CE
+\end{itemize}
+
+\item \textbf{Watch out:} When outcomes include \$0 and $\sigma \geq 1$, utility can be $-\infty$ (you really hate getting zero!)
+\end{enumerate}
+\end{tcolorbox}
+
+\section*{Exam Tips}
+
+\begin{itemize}[leftmargin=*]
+\item \textbf{Always start with:} $u(CE) = EU$
+
+\item \textbf{For CRRA:} The $(1-\sigma)$ denominators will cancel when you set $u(CE) = EU$
+
+\item \textbf{Don't forget:} Take the $\frac{1}{1-\sigma}$ power at the end to solve for CE
+
+\item \textbf{Sanity check:}
+\begin{itemize}
+\item CE should be between the minimum and maximum outcomes (usually)
+\item CE $\leq$ Expected Value (if risk-averse)
+\item CE = Expected Value (if risk-neutral)
+\end{itemize}
+
+\item \textbf{Special case:} If $\sigma = 1$, use log utility: $u(x) = \ln(x)$
+\end{itemize}
+
+\end{document}

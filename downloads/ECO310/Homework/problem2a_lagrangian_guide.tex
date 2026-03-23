@@ -1,0 +1,465 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+
+\title{Problem 2a: Understanding the Lagrangian \\ (For People Who Skipped Lecture)}
+\author{ECO 310 - Starting from Scratch}
+\date{February 23, 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{What Even IS a Lagrangian? (The Basics)}
+
+\subsection{The Problem We're Trying to Solve}
+
+Remember from Problem 1, we wanted to find the cheapest way to reach utility $u^*$. That's an \textbf{optimization problem}:
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=The Expenditure Minimization Problem]
+\textbf{Minimize:} $p_1 x_1 + p_2 x_2$ (total cost)
+
+\textbf{Subject to:}
+\begin{itemize}
+\item $x_1 + x_2 \geq u^*$ (must reach utility $u^*$)
+\item $x_1 \geq 0$ (can't buy negative amounts)
+\item $x_2 \geq 0$ (can't buy negative amounts)
+\end{itemize}
+\end{tcolorbox}
+
+\textbf{The challenge:} You can't just minimize $p_1 x_1 + p_2 x_2$ by setting everything to zero, because you have \textbf{constraints}! You need $x_1 + x_2 \geq u^*$.
+
+\subsection{What's a Lagrangian?}
+
+A \textbf{Lagrangian} is a mathematical tool that combines your objective (what you're minimizing/maximizing) with your constraints into ONE big equation.
+
+\begin{center}
+\textit{It's like a "master equation" that keeps track of everything at once.}
+\end{center}
+
+\textbf{Why do we need it?} Because solving constrained optimization problems directly is hard. The Lagrangian method gives us a systematic way to find the answer.
+
+\subsection{The Magic of Lambda ($\lambda$)}
+
+The Lagrangian uses mysterious Greek letters called \textbf{Lagrange multipliers} (written as $\lambda_1, \lambda_2, \lambda_3$, etc.).
+
+\textbf{What are they?}
+\begin{itemize}
+\item They're variables (like $x$ and $y$) that we'll solve for
+\item Each $\lambda$ is attached to one constraint
+\item They measure "how much does the objective change if we relax this constraint slightly?"
+\end{itemize}
+
+\textbf{Intuition:} Think of each $\lambda$ as a "price" or "penalty" for violating a constraint.
+
+\section{Breaking Down THIS Specific Lagrangian}
+
+The problem gives you this Lagrangian:
+
+\begin{equation}
+\mathcal{L} = p_1 x_1 + p_2 x_2 + \lambda_1(-x_1) + \lambda_2(-x_2) + \lambda_3(x_1 + x_2 - u^*)
+\end{equation}
+
+Let's break it down piece by piece.
+
+\subsection{Part 1: The Objective Function}
+
+\begin{equation}
+\boxed{p_1 x_1 + p_2 x_2}
+\end{equation}
+
+\textbf{What it is:} This is what we're trying to \textbf{minimize} - the total cost.
+
+\textbf{Why it's here:} The Lagrangian always starts with the objective function (the thing you're optimizing).
+
+\textbf{Example:}
+\begin{itemize}
+\item If coffee costs \$3 and tea costs \$5
+\item And you buy 10 coffees and 0 teas
+\item Cost = $3(10) + 5(0) = \$30$
+\end{itemize}
+
+\subsection{Part 2: Nonnegativity Constraint on Good 1}
+
+\begin{equation}
+\boxed{\lambda_1(-x_1)}
+\end{equation}
+
+\textbf{Original constraint:} $x_1 \geq 0$ (can't buy negative coffee)
+
+\textbf{Why it's written as $-x_1$:}
+\begin{itemize}
+\item We need to rewrite $x_1 \geq 0$ as $-x_1 \leq 0$ (multiply both sides by -1)
+\item Or equivalently: $0 - x_1 \leq 0$
+\item The Lagrangian uses the form: constraint $\leq 0$
+\end{itemize}
+
+\textbf{What $\lambda_1$ means:}
+\begin{itemize}
+\item $\lambda_1$ is the "shadow price" of the nonnegativity constraint on good 1
+\item If $\lambda_1 > 0$: the constraint is \textbf{binding} (you're at $x_1 = 0$)
+\item If $\lambda_1 = 0$: the constraint is \textbf{not binding} (you're buying $x_1 > 0$)
+\end{itemize}
+
+\textbf{Intuition:} If you're forced to buy exactly 0 of good 1 (hitting the constraint), $\lambda_1$ tells you "how much would your cost decrease if you could buy a tiny bit?"
+
+\subsection{Part 3: Nonnegativity Constraint on Good 2}
+
+\begin{equation}
+\boxed{\lambda_2(-x_2)}
+\end{equation}
+
+\textbf{Original constraint:} $x_2 \geq 0$ (can't buy negative tea)
+
+\textbf{Why it's written as $-x_2$:} Same logic as above - rewrite $x_2 \geq 0$ as $-x_2 \leq 0$
+
+\textbf{What $\lambda_2$ means:}
+\begin{itemize}
+\item $\lambda_2$ is the "shadow price" of the nonnegativity constraint on good 2
+\item If $\lambda_2 > 0$: you're at $x_2 = 0$ (constraint is binding)
+\item If $\lambda_2 = 0$: you're buying $x_2 > 0$ (constraint is not binding)
+\end{itemize}
+
+\subsection{Part 4: Utility Constraint}
+
+\begin{equation}
+\boxed{\lambda_3(x_1 + x_2 - u^*)}
+\end{equation}
+
+\textbf{Original constraint:} $x_1 + x_2 \geq u^*$ (must reach utility level $u^*$)
+
+\textbf{Why it's written as $(x_1 + x_2 - u^*)$:}
+\begin{itemize}
+\item Rewrite $x_1 + x_2 \geq u^*$ as $x_1 + x_2 - u^* \geq 0$
+\item For a $\geq$ constraint, we use the form: constraint $\geq 0$
+\end{itemize}
+
+\textbf{What $\lambda_3$ means:}
+\begin{itemize}
+\item $\lambda_3$ is the "shadow price" of utility
+\item It measures: "how much would minimum cost increase if we required one more unit of utility?"
+\item This is actually the \textbf{marginal cost of utility}
+\item For expenditure minimization, $\lambda_3 > 0$ always (we're always hitting the utility constraint)
+\end{itemize}
+
+\textbf{Intuition:} If you need to be happier (higher $u^*$), you need to spend more. $\lambda_3$ tells you exactly how much more per unit of utility.
+
+\section{Why This Form? The General Pattern}
+
+\subsection{General Rules for Building Lagrangians}
+
+For a minimization problem:
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=orange!75!black,title=Lagrangian Recipe]
+\textbf{Start with:} Objective function (what you're minimizing)
+
+\textbf{For each constraint of type $g(x) \leq 0$:}
+\begin{itemize}
+\item Add: $+\lambda_i \cdot g(x)$
+\item Where $\lambda_i \geq 0$
+\end{itemize}
+
+\textbf{For each constraint of type $h(x) \geq 0$:}
+\begin{itemize}
+\item Add: $+\mu_j \cdot h(x)$
+\item Where $\mu_j \geq 0$
+\end{itemize}
+\end{tcolorbox}
+
+\subsection{Applying to Our Problem}
+
+\textbf{Objective:} Minimize $p_1 x_1 + p_2 x_2$
+
+\textbf{Constraints:}
+\begin{enumerate}
+\item $x_1 \geq 0$ → rewrite as $-x_1 \leq 0$ → add $\lambda_1(-x_1)$
+\item $x_2 \geq 0$ → rewrite as $-x_2 \leq 0$ → add $\lambda_2(-x_2)$
+\item $x_1 + x_2 \geq u^*$ → rewrite as $(x_1 + x_2 - u^*) \geq 0$ → add $\lambda_3(x_1 + x_2 - u^*)$
+\end{enumerate}
+
+\textbf{Result:}
+$$\mathcal{L} = p_1 x_1 + p_2 x_2 + \lambda_1(-x_1) + \lambda_2(-x_2) + \lambda_3(x_1 + x_2 - u^*)$$
+
+\section{Complete Explanation (Part 2a Answer)}
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black,title=Answer to Problem 2a]
+This Lagrangian represents the expenditure minimization problem for perfect substitutes.
+
+\textbf{Each part represents:}
+
+\begin{enumerate}
+\item \textbf{$p_1 x_1 + p_2 x_2$:} The objective function - total expenditure we're minimizing
+
+\item \textbf{$\lambda_1(-x_1)$:} Nonnegativity constraint on good 1 ($x_1 \geq 0$).
+\begin{itemize}
+\item $\lambda_1 > 0$ if we buy exactly 0 of good 1 (constraint binds)
+\item $\lambda_1 = 0$ if we buy some good 1 (constraint doesn't bind)
+\end{itemize}
+
+\item \textbf{$\lambda_2(-x_2)$:} Nonnegativity constraint on good 2 ($x_2 \geq 0$).
+\begin{itemize}
+\item $\lambda_2 > 0$ if we buy exactly 0 of good 2 (constraint binds)
+\item $\lambda_2 = 0$ if we buy some good 2 (constraint doesn't bind)
+\end{itemize}
+
+\item \textbf{$\lambda_3(x_1 + x_2 - u^*)$:} Utility constraint ($x_1 + x_2 \geq u^*$).
+\begin{itemize}
+\item Ensures we reach utility level $u^*$
+\item $\lambda_3$ represents the marginal cost of utility (how much extra spending is needed for one more unit of utility)
+\item This constraint always binds (we choose exactly $x_1 + x_2 = u^*$ to minimize cost)
+\end{itemize}
+\end{enumerate}
+
+\textbf{Together:} The Lagrangian combines the objective with all constraints into one equation that can be optimized using calculus (taking derivatives).
+\end{tcolorbox}
+
+\section{Concrete Example: Coffee and Tea}
+
+Let's see this in action with our coffee/tea example.
+
+\textbf{Setup:}
+\begin{itemize}
+\item Coffee (good 1) costs \$3: $p_1 = 3$
+\item Tea (good 2) costs \$5: $p_2 = 5$
+\item Want utility 10: $u^* = 10$
+\end{itemize}
+
+\textbf{The Lagrangian:}
+\begin{align*}
+\mathcal{L} &= 3x_1 + 5x_2 + \lambda_1(-x_1) + \lambda_2(-x_2) + \lambda_3(x_1 + x_2 - 10) \\
+&= 3x_1 + 5x_2 - \lambda_1 x_1 - \lambda_2 x_2 + \lambda_3(x_1 + x_2 - 10)
+\end{align*}
+
+\textbf{What we expect:}
+\begin{itemize}
+\item Coffee is cheaper, so buy only coffee: $x_1 = 10, x_2 = 0$
+\item Since $x_1 = 10 > 0$, the constraint $x_1 \geq 0$ is NOT binding → $\lambda_1 = 0$
+\item Since $x_2 = 0$, the constraint $x_2 \geq 0$ IS binding → $\lambda_2 > 0$
+\item Since we need exactly utility 10, the utility constraint IS binding → $\lambda_3 > 0$
+\end{itemize}
+
+\textbf{Economic interpretation:}
+\begin{itemize}
+\item $\lambda_1 = 0$: We're not constrained by $x_1 \geq 0$ (we happily buy coffee)
+\item $\lambda_2 > 0$: We'd like to buy negative tea if we could (to get a refund!), but we can't, so this constraint bites
+\item $\lambda_3 > 0$: If we needed higher utility, we'd have to spend more - specifically, $\lambda_3 = 3$ (the cost per unit of utility = price of coffee)
+\end{itemize}
+
+\section{Why Do We Need the Lagrangian?}
+
+\textbf{Can't we just solve it directly?} For perfect substitutes, yes! But for more complex utility functions (Cobb-Douglas, CES, etc.), you can't easily solve by inspection.
+
+\textbf{What the Lagrangian gives us:}
+\begin{enumerate}
+\item A systematic method that works for ANY utility function
+\item First-order conditions (derivatives = 0) that we can solve
+\item Information about which constraints are binding (from the $\lambda$ values)
+\item Economic interpretations (shadow prices)
+\end{enumerate}
+
+\section{The Big Picture}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Understanding Lagrangians]
+\textbf{What it is:} A tool for solving constrained optimization problems
+
+\textbf{How it works:}
+\begin{enumerate}
+\item Start with objective function
+\item Add each constraint, multiplied by a $\lambda$ (Lagrange multiplier)
+\item Take derivatives with respect to all variables ($x_1, x_2, \lambda_1, \lambda_2, \lambda_3$)
+\item Set derivatives equal to zero
+\item Solve the system of equations
+\end{enumerate}
+
+\textbf{What you get:}
+\begin{itemize}
+\item The optimal values of $x_1, x_2$ (compensated demand)
+\item The shadow prices $\lambda_i$ (marginal values of relaxing each constraint)
+\item Which constraints are binding (where $\lambda_i > 0$)
+\end{itemize}
+
+\textbf{For Problem 2:} You're using this Lagrangian to derive the same answer you got in Problem 1a, but now using a formal mathematical method rather than intuition.
+\end{tcolorbox}
+
+\section{Connection to Part (b) and (c)}
+
+\textbf{Part 2b:} Will ask you to write the optimality conditions (derivatives of $\mathcal{L}$ set equal to zero) and solve them.
+
+\textbf{Part 2c:} Will show that when you guess wrong about which constraints bind, you get an invalid solution (like negative $\lambda$ values or violated constraints).
+
+\textbf{Key lesson:} For perfect substitutes, exactly one nonnegativity constraint will bind (you buy only one good), and the utility constraint always binds.
+
+\section{IMPORTANT: Two Sign Conventions (Which One Are You Using?)}
+
+There are TWO common ways to write the Lagrangian for minimization problems. They give the same answer but look different!
+
+\subsection{Convention 1: Positive Objective (What I Used Above)}
+
+\begin{equation}
+\mathcal{L} = p_1 x_1 + p_2 x_2 + \lambda_1(-x_1) + \lambda_2(-x_2) + \lambda_3(x_1 + x_2 - u^*)
+\end{equation}
+
+Expanding:
+$$\mathcal{L} = p_1 x_1 + p_2 x_2 - \lambda_1 x_1 - \lambda_2 x_2 + \lambda_3(x_1 + x_2 - u^*)$$
+
+\textbf{This convention:} Keeps the objective positive, adds constraints with their natural signs.
+
+\subsection{Convention 2: NEGATIVE Objective (Probably Your Homework!)}
+
+\begin{equation}
+\mathcal{L} = -p_1 x_1 - p_2 x_2 + \lambda_1 x_1 + \lambda_2 x_2 + \lambda_3(x_1 + x_2 - u^*)
+\end{equation}
+
+Or factored:
+$$\mathcal{L} = -(p_1 x_1 + p_2 x_2) + \lambda_1 x_1 + \lambda_2 x_2 + \lambda_3(x_1 + x_2 - u^*)$$
+
+\textbf{This convention:} Negates the objective function, turning minimization into maximization.
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,title=Why the Negative Sign?]
+\textbf{Mathematical trick:} Minimizing $f(x)$ is the same as maximizing $-f(x)$!
+
+So:
+\begin{itemize}
+\item \textbf{Minimize} cost $(p_1 x_1 + p_2 x_2)$
+\item = \textbf{Maximize} negative cost $-(p_1 x_1 + p_2 x_2)$
+\end{itemize}
+
+Some textbooks prefer this because it makes all optimization problems look like maximization.
+\end{tcolorbox}
+
+\subsection{How to Tell Which Convention Your Problem Uses}
+
+\textbf{Check the Lagrangian given in the problem!}
+
+\textbf{If you see:} $\mathcal{L} = p_1 x_1 + p_2 x_2 + \ldots$ → Convention 1 (positive objective)
+
+\textbf{If you see:} $\mathcal{L} = -p_1 x_1 - p_2 x_2 + \ldots$ → Convention 2 (negative objective)
+
+\subsection{Breaking Down Convention 2 (Negative Objective)}
+
+Let's explain each piece of:
+$$\mathcal{L} = -(p_1 x_1 + p_2 x_2) + \lambda_1 x_1 + \lambda_2 x_2 + \lambda_3(x_1 + x_2 - u^*)$$
+
+\subsubsection{Part 1: $-(p_1 x_1 + p_2 x_2)$}
+
+\textbf{What it is:} Negative of total cost
+
+\textbf{Why negative?} We're converting "minimize cost" into "maximize negative cost"
+
+\textbf{Interpretation:} This is what we're maximizing (which is equivalent to minimizing cost)
+
+\subsubsection{Part 2: $+\lambda_1 x_1$}
+
+\textbf{Original constraint:} $x_1 \geq 0$ (nonnegativity on good 1)
+
+\textbf{Why positive?} With the negative objective convention:
+\begin{itemize}
+\item For $\geq$ constraints, add $+\lambda \cdot (\text{constraint})$
+\item So: $x_1 \geq 0$ becomes $+\lambda_1 x_1$
+\end{itemize}
+
+\textbf{What $\lambda_1$ means:} (Same as before!)
+\begin{itemize}
+\item $\lambda_1 > 0$ if $x_1 = 0$ (constraint binds)
+\item $\lambda_1 = 0$ if $x_1 > 0$ (constraint doesn't bind)
+\end{itemize}
+
+\subsubsection{Part 3: $+\lambda_2 x_2$}
+
+\textbf{Original constraint:} $x_2 \geq 0$ (nonnegativity on good 2)
+
+\textbf{Why positive?} Same logic: $x_2 \geq 0$ becomes $+\lambda_2 x_2$
+
+\textbf{What $\lambda_2$ means:}
+\begin{itemize}
+\item $\lambda_2 > 0$ if $x_2 = 0$ (constraint binds)
+\item $\lambda_2 = 0$ if $x_2 > 0$ (constraint doesn't bind)
+\end{itemize}
+
+\subsubsection{Part 4: $+\lambda_3(x_1 + x_2 - u^*)$}
+
+\textbf{Original constraint:} $x_1 + x_2 \geq u^*$ (utility constraint)
+
+\textbf{Same as Convention 1!} This part doesn't change between conventions.
+
+\textbf{What $\lambda_3$ means:} Marginal cost of utility (always positive, constraint always binds)
+
+\subsection{Side-by-Side Comparison}
+
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Part} & \textbf{Convention 1} & \textbf{Convention 2} \\
+\hline
+Objective & $+p_1 x_1 + p_2 x_2$ & $-p_1 x_1 - p_2 x_2$ \\
+\hline
+$x_1 \geq 0$ & $-\lambda_1 x_1$ & $+\lambda_1 x_1$ \\
+\hline
+$x_2 \geq 0$ & $-\lambda_2 x_2$ & $+\lambda_2 x_2$ \\
+\hline
+$x_1 + x_2 \geq u^*$ & $+\lambda_3(x_1+x_2-u^*)$ & $+\lambda_3(x_1+x_2-u^*)$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Key point:} The signs on the nonnegativity constraints flip, but the utility constraint stays the same!
+
+\subsection{Complete Explanation for Convention 2}
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black,title=Answer to Problem 2a (Convention 2)]
+This Lagrangian represents the expenditure minimization problem written as a maximization problem.
+
+\textbf{Each part represents:}
+
+\begin{enumerate}
+\item \textbf{$-(p_1 x_1 + p_2 x_2)$:} Negative of expenditure - we maximize this (= minimize expenditure)
+
+\item \textbf{$\lambda_1 x_1$:} Nonnegativity constraint on good 1 ($x_1 \geq 0$).
+\begin{itemize}
+\item $\lambda_1 > 0$ if we buy exactly 0 of good 1 (constraint binds)
+\item $\lambda_1 = 0$ if we buy some good 1 (constraint doesn't bind)
+\end{itemize}
+
+\item \textbf{$\lambda_2 x_2$:} Nonnegativity constraint on good 2 ($x_2 \geq 0$).
+\begin{itemize}
+\item $\lambda_2 > 0$ if we buy exactly 0 of good 2 (constraint binds)
+\item $\lambda_2 = 0$ if we buy some good 2 (constraint doesn't bind)
+\end{itemize}
+
+\item \textbf{$\lambda_3(x_1 + x_2 - u^*)$:} Utility constraint ($x_1 + x_2 \geq u^*$).
+\begin{itemize}
+\item Ensures we reach utility level $u^*$
+\item $\lambda_3$ represents the marginal cost of utility
+\item This constraint always binds ($x_1 + x_2 = u^*$)
+\end{itemize}
+\end{enumerate}
+
+\textbf{Economic interpretation is identical to Convention 1!} Only the signs differ.
+\end{tcolorbox}
+
+\subsection{Which Convention Should You Use?}
+
+\textbf{USE THE ONE YOUR HOMEWORK GIVES YOU!}
+
+\begin{itemize}
+\item Look at the Lagrangian written in the problem
+\item Copy the sign convention exactly
+\item The economic interpretation is the same either way
+\item The optimal solution $(x_1^*, x_2^*)$ is the same either way
+\end{itemize}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=orange!75!black,title=Bottom Line]
+\textbf{If your homework shows:}
+$$\mathcal{L} = -p_1 x_1 - p_2 x_2 + \lambda_1 x_1 + \lambda_2 x_2 + \lambda_3(x_1 + x_2 - u^*)$$
+
+Then use Convention 2. Everything I explained still applies - just flip the signs on the objective and nonnegativity constraints!
+
+\textbf{The math works out to the same answer either way.}
+\end{tcolorbox}
+
+\end{document}

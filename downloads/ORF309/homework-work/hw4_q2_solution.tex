@@ -1,0 +1,145 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{parskip}
+
+\title{ORF 309 -- Homework 4, Q2}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Q2(a): Probability exactly half the class has COVID during the first lecture}
+
+\textbf{Setup.} There are $n = 140$ students. Each student independently has COVID on a given day with probability $p = 0.005$, so $q = 1 - p = 0.995$.
+
+Let $X_i$ be the Bernoulli RV for student $i$:
+\[
+    X_i = \begin{cases} 1 & \text{if student } i \text{ has COVID} \\ 0 & \text{otherwise} \end{cases}, \quad P\{X_i = 1\} = p, \quad P\{X_i = 0\} = q
+\]
+
+Let $S_n = X_1 + X_2 + \cdots + X_n$ be the total number of students with COVID. Since the $X_i$ are independent Bernoulli($p$) trials:
+\[
+    S_n \sim \text{Binom}(n, p) = \text{Binom}(140,\, 0.005)
+\]
+
+``Exactly half the class'' means $S_n = 70$. Applying the Binomial PMF:
+\[
+    \boxed{P\{S_n = 70\} = \binom{140}{70} p^{70}\, q^{70} = \binom{140}{70} (0.005)^{70} (0.995)^{70}}
+\]
+
+This is essentially 0. The expected count is $E[S_n] = np = 140 \times 0.005 = 0.7$, so 70 is wildly far from the mean.
+
+\section*{Q2(b): Distribution of first week with COVID during at least one lecture}
+
+\textbf{Step 1: Probability at least one student has COVID on a single lecture day.}
+
+On any lecture day, $S_{140} \sim \text{Binom}(140, 0.005)$. Using the complement:
+\begin{align*}
+    P\{S_{140} \geq 1\} &= 1 - P\{S_{140} = 0\} \\
+    &= 1 - \binom{140}{0} p^0\, q^{140} \\
+    &= 1 - q^{140} = 1 - (0.995)^{140}
+\end{align*}
+
+\textbf{Step 2: Probability at least one lecture in a week has a COVID case.}
+
+There are 3 lectures per week. Define events for each day:
+\begin{align*}
+    D_1 &= \{\text{at least one student has COVID on Monday}\} \\
+    D_2 &= \{\text{at least one student has COVID on Wednesday}\} \\
+    D_3 &= \{\text{at least one student has COVID on Friday}\}
+\end{align*}
+
+Let $A = D_1 \cup D_2 \cup D_3$ = at least one lecture day has a COVID case. It is easier to compute the complement $A^c = D_1^c \cap D_2^c \cap D_3^c$ (all three days are COVID-free). Since the days are independent:
+\begin{align*}
+    P\{A^c\} &= P\{D_1^c\} \cdot P\{D_2^c\} \cdot P\{D_3^c\} = \bigl[q^{140}\bigr]^3 = q^{420} = (0.995)^{420}
+\end{align*}
+\[
+    P\{A\} = 1 - P\{A^c\} = 1 - q^{420} = 1 - (0.995)^{420}
+\]
+
+\textbf{Step 3: Model the first week as $T_1$ in a Bernoulli process.}
+
+Think of each week as a Bernoulli trial with ``success'' probability
+\[
+    \tilde{p} = P\{A\} = 1 - (0.995)^{420}
+\]
+The weeks are independent, so we have a Bernoulli process with parameter $\tilde{p}$. Let $T_1$ = the first week with a COVID case during at least one lecture. By the Geometric distribution (Slides 08):
+\[
+    \boxed{T_1 \sim \text{Geom}\bigl(\tilde{p}\bigr), \quad \tilde{p} = 1 - (0.995)^{420}}
+\]
+with PMF $P\{T_1 = w\} = \tilde{p}\,(1 - \tilde{p})^{w-1}$ for $w = 1, 2, 3, \ldots$
+
+\textbf{Numerically:} $(0.995)^{420} \approx 0.1225$, so $\tilde{p} \approx 0.8775$ and $E[T_1] = 1/\tilde{p} \approx 1.14$.
+
+\newpage
+\section*{Appendix: The Geometric Distribution}
+
+\subsection*{What it models}
+
+The Geometric distribution answers one question: \textbf{how many independent trials until the first success?}
+
+You have a Bernoulli process --- a sequence of independent trials $X_1, X_2, X_3, \ldots$ where each trial succeeds with probability $p$ and fails with probability $q = 1 - p$. Define:
+\[
+    T_1 = \min\{n \geq 1 : X_n = 1\} = \text{trial number of first success}
+\]
+
+\subsection*{Deriving the PMF from scratch}
+
+For $T_1 = w$ (first success on trial $w$), you need a very specific sequence of outcomes:
+\[
+    \underbrace{X_1 = 0, \; X_2 = 0, \; \ldots, \; X_{w-1} = 0}_{w-1 \text{ failures}}, \quad X_w = 1
+\]
+
+Since all trials are independent, ``and'' becomes multiplication:
+\begin{align*}
+    P\{T_1 = w\} &= P\{X_1 = 0\} \cdot P\{X_2 = 0\} \cdots P\{X_{w-1} = 0\} \cdot P\{X_w = 1\} \\
+    &= \underbrace{q \cdot q \cdots q}_{w-1 \text{ times}} \cdot \; p \\[6pt]
+    &= q^{w-1} \, p
+\end{align*}
+
+This is the Geometric PMF: $\boxed{P\{T_1 = w\} = q^{w-1}\, p, \quad w = 1, 2, 3, \ldots}$
+
+\subsection*{Verification: probabilities sum to 1}
+
+\[
+    \sum_{w=1}^{\infty} q^{w-1} p = p \sum_{w=1}^{\infty} q^{w-1} = p \cdot \frac{1}{1-q} = \frac{p}{p} = 1 \quad \checkmark
+\]
+(Used the geometric series $\sum_{k=0}^{\infty} r^k = \frac{1}{1-r}$ for $|r| < 1$.)
+
+\subsection*{Expected value: $E[T_1] = 1/p$}
+
+\textbf{Intuition:} If each trial succeeds with probability $p$, on average you need $1/p$ trials. If $p = 0.5$ (fair coin), you expect 2 flips to get heads. If $p = 0.01$, you expect 100 trials.
+
+\textbf{Derivation:}
+\begin{align*}
+    E[T_1] &= \sum_{w=1}^{\infty} w \cdot q^{w-1} p = p \sum_{w=1}^{\infty} w \, q^{w-1}
+\end{align*}
+Using the identity $\displaystyle\sum_{w=1}^{\infty} w\, r^{w-1} = \frac{1}{(1-r)^2}$ (derivative of geometric series):
+\[
+    E[T_1] = p \cdot \frac{1}{(1-q)^2} = p \cdot \frac{1}{p^2} = \frac{1}{p}
+\]
+
+\subsection*{Concrete example}
+
+Roll a fair die until you get a 6. Each roll has $p = 1/6$, $q = 5/6$.
+\begin{itemize}
+    \item $P\{T_1 = 1\} = \frac{1}{6} \approx 0.167$ (get a 6 on first roll)
+    \item $P\{T_1 = 2\} = \frac{5}{6} \cdot \frac{1}{6} \approx 0.139$ (miss, then 6)
+    \item $P\{T_1 = 3\} = \left(\frac{5}{6}\right)^2 \cdot \frac{1}{6} \approx 0.116$ (miss twice, then 6)
+    \item $E[T_1] = 6$ rolls on average
+\end{itemize}
+
+\subsection*{How it was used in Q2(b)}
+
+In Q2(b), we aren't flipping coins --- we're asking ``does this week have a COVID case during a lecture?'' But the structure is identical:
+\begin{itemize}
+    \item Each week is a ``trial''
+    \item ``Success'' = at least one COVID case during a lecture ($\tilde{p} = 1 - q^{420}$)
+    \item ``Failure'' = no COVID cases all week ($1 - \tilde{p} = q^{420}$)
+    \item Weeks are independent
+\end{itemize}
+So $T_1$ = first week with a COVID case follows $\text{Geom}(\tilde{p})$. The Geometric distribution applies whenever you have independent repeated trials and ask ``when does something first happen?''
+
+\end{document}

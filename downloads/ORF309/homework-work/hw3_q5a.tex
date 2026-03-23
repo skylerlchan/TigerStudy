@@ -1,0 +1,93 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{parskip}
+
+\title{ORF 309 -- Homework 3, Q5a}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Background: Expected Value}
+
+For a discrete random variable $X$, the expected value is a probability-weighted average over all possible values:
+\[
+    E[X] = \sum_x x \cdot P(X = x)
+\]
+For example, for a fair die with outcomes $\{1,2,3,4,5,6\}$ each with probability $\frac{1}{6}$:
+\[
+    E[X] = 1\cdot\tfrac{1}{6} + 2\cdot\tfrac{1}{6} + 3\cdot\tfrac{1}{6} + 4\cdot\tfrac{1}{6} + 5\cdot\tfrac{1}{6} + 6\cdot\tfrac{1}{6} = 3.5
+\]
+For $X \sim \text{Binomial}(n, p)$, there is a closed-form shortcut:
+\[
+    E[X] = np
+\]
+
+\section*{Q5(a): Probability the Plane is Overbooked}
+
+\textbf{Setup.} 202 tickets are sold. Each passenger independently fails to show up with probability 0.02, so each passenger shows up with probability $p = 0.98$. Let
+\[
+    X = \text{number of passengers who show up.}
+\]
+Then $X \sim \text{Binomial}(202,\, 0.98)$.
+
+The plane is overbooked when more than 200 passengers show up, i.e., $X > 200$. Since $X \in \{0, 1, \ldots, 202\}$, this means $X = 201$ or $X = 202$.
+
+\textbf{Calculation.}
+\begin{align*}
+    P(\text{overbooked}) &= P(X = 201) + P(X = 202) \\[6pt]
+    P(X = 201) &= \binom{202}{201}(0.98)^{201}(0.02)^{1} = 202 \cdot (0.98)^{201} \cdot 0.02 \\[6pt]
+    P(X = 202) &= \binom{202}{202}(0.98)^{202}(0.02)^{0} = (0.98)^{202}
+\end{align*}
+
+\textbf{Equivalent formulation.} Letting $Y = 202 - X$ be the number of no-shows, we have $Y \sim \text{Binomial}(202,\, 0.02)$. Overbooking occurs when $Y < 2$:
+\begin{align*}
+    P(\text{overbooked}) &= P(Y = 0) + P(Y = 1) \\
+    &= (0.98)^{202} + 202 \cdot (0.02) \cdot (0.98)^{201}
+\end{align*}
+
+\textbf{Numerical answer.}
+\begin{align*}
+    (0.98)^{201} &\approx 0.017236 \\
+    P(X = 202) &= (0.98)^{202} \approx 0.016891 \\
+    P(X = 201) &= 202 \cdot 0.02 \cdot 0.017236 \approx 0.069634
+\end{align*}
+\[
+    \boxed{P(\text{overbooked}) \approx 0.016891 + 0.069634 \approx 0.0865}
+\]
+
+\section*{Q5(b): Expected Ticket Revenue}
+
+The airline collects \$500 per \textit{seated} passenger, and the plane seats at most 200. So the number of seated passengers is $\min(X, 200)$ and:
+\[
+    E[\text{revenue}] = 500 \cdot E[\min(X, 200)]
+\]
+
+\textbf{Computing $E[\min(X, 200)]$.} Use the identity $\min(X, 200) = X - \max(X - 200,\, 0)$:
+\[
+    E[\min(X, 200)] = E[X] - E[\max(X - 200,\, 0)]
+\]
+
+\textbf{First term:} By the Binomial shortcut,
+\[
+    E[X] = np = 202 \times 0.98 = 197.96
+\]
+
+\textbf{Second term:} $\max(X-200, 0)$ is nonzero only when $X > 200$. Since $X \leq 202$:
+\begin{align*}
+    E[\max(X-200,\, 0)] &= 1 \cdot P(X = 201) + 2 \cdot P(X = 202) \\
+    &\approx 1(0.069634) + 2(0.016891) \\
+    &\approx 0.103416
+\end{align*}
+
+\textbf{Putting it together:}
+\begin{align*}
+    E[\min(X, 200)] &= 197.96 - 0.103416 \approx 197.8566
+\end{align*}
+\[
+    \boxed{E[\text{revenue}] = 500 \times 197.8566 \approx \$98{,}928.29}
+\]
+
+\end{document}

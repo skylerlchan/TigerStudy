@@ -1,0 +1,55 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+
+\section*{ECO 310 - Problem Set 2}
+\subsection*{Question 5(a) - Answer}
+
+\textbf{Problem:} Consider a decision-maker who expects to have a car accident with chance $\pi$; if this occurs, he will incur \$L in damages. He can purchase as much auto insurance, $q$, as he likes, at a price of $p$ per dollar of coverage: this means that if he pays $pq$ upfront (as the insurance premium), he'll receive a payment of $q$ from the insurance company if an accident occurs.
+
+\vspace{0.3cm}
+
+\textbf{Question:} Write out his expected utility from purchasing insurance level $q$, assuming a utility-of-wealth function $u(w)$ and initial wealth $w_0$.
+
+\vspace{0.5cm}
+
+\textbf{Answer:}
+
+There are two possible states of the world:
+
+\begin{enumerate}
+    \item \textbf{No accident} (probability $1-\pi$):
+    \begin{itemize}
+        \item The decision-maker pays the insurance premium $pq$
+        \item Final wealth: $w_0 - pq$
+        \item Utility: $u(w_0 - pq)$
+    \end{itemize}
+
+    \item \textbf{Accident occurs} (probability $\pi$):
+    \begin{itemize}
+        \item The decision-maker pays the insurance premium $pq$
+        \item Incurs damages of $L$
+        \item Receives insurance payout of $q$
+        \item Final wealth: $w_0 - pq - L + q = w_0 - L + q(1-p)$
+        \item Utility: $u(w_0 - L + q(1-p))$
+    \end{itemize}
+\end{enumerate}
+
+\vspace{0.3cm}
+
+Therefore, the expected utility from purchasing insurance level $q$ is:
+
+\begin{equation}
+\boxed{EU(q) = (1-\pi)u(w_0 - pq) + \pi u(w_0 - L + q(1-p))}
+\end{equation}
+
+or equivalently:
+
+\begin{equation}
+\boxed{EU(q) = (1-\pi)u(w_0 - pq) + \pi u(w_0 - L - pq + q)}
+\end{equation}
+
+\end{document}

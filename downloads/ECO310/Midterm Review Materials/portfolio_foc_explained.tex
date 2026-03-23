@@ -1,0 +1,293 @@
+\documentclass[12pt]{article}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+
+\title{\textbf{Portfolio Choice: Understanding the FOC and Corners}}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{The Problem Setup}
+
+You have wealth $w_0$ to invest. You can:
+\begin{itemize}
+\item Invest amount $x$ in a risky asset
+\item Keep the rest $(w_0 - x)$ safe (earning nothing)
+\end{itemize}
+
+The risky asset:
+\begin{itemize}
+\item Pays off with probability $p$ (you get your money back plus a return)
+\item Fails with probability $(1-p)$ (you lose what you invested)
+\end{itemize}
+
+Your utility is CRRA: $u(w) = \frac{w^{1-\sigma}}{1-\sigma}$ where $\sigma$ is your risk aversion.
+
+\textbf{Goal:} Choose $x$ (how much to invest in risky asset) to maximize expected utility.
+
+\section*{What the FOC Tells You}
+
+When you take the first-order condition (derivative = 0) and solve, you get some formula for $x^*$.
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
+\textbf{The Problem:}
+
+The FOC assumes you're at an \textbf{interior solution} where $0 < x < w_0$.
+
+But sometimes the "optimal" $x$ from the FOC is:
+\begin{itemize}
+\item Negative (invest less than zero = borrow to invest)
+\item Bigger than $w_0$ (invest more than you have)
+\end{itemize}
+
+These violate the constraint that $0 \leq x \leq w_0$!
+\end{tcolorbox}
+
+So after finding $x^*$ from the FOC, you need to \textbf{check corners}:
+\begin{enumerate}
+\item Is $x^* \geq 0$? If not, set $x = 0$
+\item Is $x^* \leq w_0$? If not, set $x = w_0$
+\end{enumerate}
+
+\newpage
+
+\section*{Breaking Down the Passage}
+
+\subsection*{Part 1: "FOC is only valid if $\sigma > 0$"}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=orange!75!black]
+\textbf{If $\sigma = 0$ (risk-neutral):}
+
+You only care about expected value, not risk. So your decision is simple:
+
+\begin{itemize}
+\item If the risky asset has positive expected return: invest ALL your wealth ($x = w_0$)
+\item If the risky asset has negative expected return: invest NOTHING ($x = 0$)
+\end{itemize}
+
+There's no interior solution! You go all-in or stay out completely.
+
+The FOC doesn't apply because the optimal choice is always at a corner.
+\end{tcolorbox}
+
+\textbf{Why?} Risk-neutral people don't care about diversification. They just chase the highest expected return.
+
+\subsection*{Part 2: "FOC is valid provided $p \geq \frac{1}{2}$"}
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black]
+\textbf{The FOC gives you a formula for $x^*$. But we need $x^* \geq 0$ for it to make sense.}
+
+When you work out the math (the actual FOC), you find that:
+\[
+x^* \geq 0 \quad \Leftrightarrow \quad p \geq \frac{1}{2}
+\]
+
+In other words:
+\begin{itemize}
+\item If $p \geq \frac{1}{2}$: The FOC gives a valid interior solution with $0 < x^* < w_0$
+\item If $p < \frac{1}{2}$: The FOC would give $x^* < 0$ (negative investment), which is impossible!
+\end{itemize}
+\end{tcolorbox}
+
+\subsection*{Part 3: "If $p > \frac{1}{2}$, invest amount strictly positive and strictly below $w_0$"}
+
+This means:
+\begin{itemize}
+\item The risky asset is "good enough" (succeeds more than half the time)
+\item You should invest some of your wealth: $x^* > 0$
+\item But not all of it: $x^* < w_0$ (because you're risk-averse and want to diversify)
+\end{itemize}
+
+\textbf{Example:} If $p = 0.6$ (60\% chance of success), $\sigma = 2$, $w_0 = 100$:
+
+The FOC might give something like $x^* = 40$. You invest \$40 in the risky asset and keep \$60 safe.
+
+\newpage
+
+\subsection*{Part 4: "If $p < \frac{1}{2}$, best option is to invest zero"}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+\textbf{If the risky asset fails more than half the time:}
+
+The FOC would tell you to invest a negative amount (which means borrow money to short the asset). But you can't do that!
+
+Given the constraint $x \geq 0$, your best option is: \textbf{don't invest at all}.
+
+Set $x = 0$ (corner solution).
+\end{tcolorbox}
+
+\textbf{Intuition:} If $p < 0.5$, the risky asset is a bad bet on average. Since you can't short it, you just avoid it completely.
+
+\subsection*{Part 5: "Optimal investment increases in $p$, decreases in $\sigma$"}
+
+\textbf{Increases in $p$:}
+\begin{itemize}
+\item Higher $p$ = risky asset is more likely to pay off
+\item So you invest more: $x^*$ goes up
+\end{itemize}
+
+\textbf{Example:}
+\begin{itemize}
+\item If $p = 0.6$: maybe you invest \$40
+\item If $p = 0.7$: you invest \$60 (more confident it will pay off)
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Decreases in $\sigma$:}
+\begin{itemize}
+\item Higher $\sigma$ = more risk-averse
+\item So you invest less in the risky asset: $x^*$ goes down
+\end{itemize}
+
+\textbf{Example:}
+\begin{itemize}
+\item If $\sigma = 1$ (moderately risk-averse): invest \$50
+\item If $\sigma = 3$ (very risk-averse): invest \$20 (prefer safety)
+\end{itemize}
+
+\newpage
+
+\section*{The Big Picture: Checking Corners}
+
+Here's the full decision tree:
+
+\begin{center}
+\fbox{\begin{minipage}{0.9\textwidth}
+\textbf{Step 1: Check if risk-averse}
+
+Is $\sigma > 0$?
+
+\vspace{0.2cm}
+
+\textbf{No ($\sigma = 0$):} You're risk-neutral
+\begin{itemize}
+\item Calculate expected return of risky asset
+\item If positive: $x^* = w_0$ (invest everything)
+\item If negative: $x^* = 0$ (invest nothing)
+\end{itemize}
+
+\textbf{Yes ($\sigma > 0$):} Go to Step 2
+
+\vspace{0.5cm}
+
+\textbf{Step 2: Check if risky asset is worth it}
+
+Is $p \geq \frac{1}{2}$?
+
+\vspace{0.2cm}
+
+\textbf{No ($p < \frac{1}{2}$):} Risky asset is a bad bet
+\begin{itemize}
+\item Corner solution: $x^* = 0$ (invest nothing)
+\end{itemize}
+
+\textbf{Yes ($p \geq \frac{1}{2}$):} Go to Step 3
+
+\vspace{0.5cm}
+
+\textbf{Step 3: Use the FOC}
+
+Solve the FOC to get $x^*$
+
+\vspace{0.2cm}
+
+This gives an interior solution: $0 < x^* < w_0$
+
+\vspace{0.2cm}
+
+Check comparative statics:
+\begin{itemize}
+\item Higher $p$ $\Rightarrow$ higher $x^*$ (invest more)
+\item Higher $\sigma$ $\Rightarrow$ lower $x^*$ (invest less)
+\end{itemize}
+
+\end{minipage}}
+\end{center}
+
+\newpage
+
+\section*{Concrete Example}
+
+Let's say the risky asset:
+\begin{itemize}
+\item Returns \$2 for every \$1 invested with probability $p$
+\item Returns \$0 with probability $(1-p)$
+\end{itemize}
+
+You have $w_0 = \$100$ and utility $u(w) = \frac{w^{1-\sigma}}{1-\sigma}$.
+
+\subsection*{Case 1: $p = 0.4$ (risky asset fails 60\% of the time)}
+
+Since $p < 0.5$, the risky asset is a bad bet.
+
+\textbf{Decision:} Don't invest at all. $x^* = 0$.
+
+Keep all \$100 safe.
+
+\subsection*{Case 2: $p = 0.6$, $\sigma = 2$ (60\% success, moderately risk-averse)}
+
+Since $p > 0.5$ and $\sigma > 0$, use the FOC.
+
+The FOC would give some formula like:
+\[
+x^* = f(p, \sigma, w_0)
+\]
+
+Let's say it gives $x^* = \$40$.
+
+\textbf{Decision:} Invest \$40 in risky asset, keep \$60 safe.
+
+\textbf{Expected outcome:}
+\begin{itemize}
+\item 60\% chance: risky asset pays \$80, plus \$60 safe = \$140 total
+\item 40\% chance: risky asset pays \$0, plus \$60 safe = \$60 total
+\end{itemize}
+
+\subsection*{Case 3: Same but $\sigma = 4$ (very risk-averse)}
+
+FOC might now give $x^* = \$20$.
+
+\textbf{Decision:} Invest only \$20 in risky asset (less than before because you're more scared of risk).
+
+\section*{Summary}
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black]
+\textbf{Key Takeaways:}
+
+\begin{enumerate}[leftmargin=*]
+\item \textbf{FOC only works if $\sigma > 0$ (risk-averse)}
+\begin{itemize}
+\item If risk-neutral ($\sigma = 0$): go all-in or stay out
+\end{itemize}
+
+\item \textbf{FOC gives valid $x^*$ only if $p \geq \frac{1}{2}$}
+\begin{itemize}
+\item If $p < \frac{1}{2}$: corner solution, set $x = 0$
+\end{itemize}
+
+\item \textbf{Interior solution when $p > \frac{1}{2}$ and $\sigma > 0$}
+\begin{itemize}
+\item Invest some but not all: $0 < x^* < w_0$
+\end{itemize}
+
+\item \textbf{Comparative statics:}
+\begin{itemize}
+\item $x^*$ increases in $p$ (better odds $\Rightarrow$ invest more)
+\item $x^*$ decreases in $\sigma$ (more risk-averse $\Rightarrow$ invest less)
+\end{itemize}
+
+\item \textbf{Always check corners!}
+\begin{itemize}
+\item Is $x^* \geq 0$? If not, set $x = 0$
+\item Is $x^* \leq w_0$? If not, set $x = w_0$
+\end{itemize}
+\end{enumerate}
+\end{tcolorbox}
+
+\end{document}

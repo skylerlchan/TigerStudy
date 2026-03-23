@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORF 309 Midterm Question Tracker</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-card: #f8f9fa;
+    --bg-header: #1a1a2e;
+    --text: #1a1a1a;
+    --text-muted: #6c757d;
+    --border: #dee2e6;
+    --shadow: rgba(0,0,0,0.08);
+    --green: #28a745;
+    --green-bg: #d4edda;
+    --green-border: #28a745;
+    --yellow: #ffc107;
+    --yellow-bg: #fff3cd;
+    --yellow-border: #ffc107;
+    --red: #dc3545;
+    --red-bg: #f8d7da;
+    --red-border: #dc3545;
+    --gray: #6c757d;
+    --gray-bg: #e9ecef;
+    --gray-border: #6c757d;
+    --hover-lift: translateY(-1px);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0d1117;
+      --bg-card: #161b22;
+      --bg-header: #0d1117;
+      --text: #e6edf3;
+      --text-muted: #8b949e;
+      --border: #30363d;
+      --shadow: rgba(0,0,0,0.3);
+      --green-bg: #0d2818;
+      --yellow-bg: #2d2a0f;
+      --red-bg: #2d0f0f;
+      --gray-bg: #21262d;
+    }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 24px;
+    background: var(--bg-header);
+    border-radius: 12px;
+    color: #fff;
+  }
+
+  header h1 { font-size: 1.8rem; margin-bottom: 8px; }
+  header p { opacity: 0.8; font-size: 0.95rem; }
+
+  .legend {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .legend-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid;
+  }
+
+  .legend-dot.green { background: var(--green); border-color: var(--green); }
+  .legend-dot.yellow { background: var(--yellow); border-color: var(--yellow); }
+  .legend-dot.red { background: var(--red); border-color: var(--red); }
+  .legend-dot.gray { background: var(--gray); border-color: var(--gray); }
+
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+
+  .stat-box {
+    text-align: center;
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .stat-box.green { background: var(--green-bg); border: 2px solid var(--green-border); color: var(--green); }
+  .stat-box.yellow { background: var(--yellow-bg); border: 2px solid var(--yellow-border); color: var(--yellow); }
+  .stat-box.red { background: var(--red-bg); border: 2px solid var(--red-border); color: var(--red); }
+  .stat-box.gray { background: var(--gray-bg); border: 2px solid var(--gray-border); color: var(--gray); }
+
+  .stat-box .stat-num { font-size: 1.8rem; display: block; }
+
+  .exam-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+
+  .exam-header {
+    padding: 16px 20px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-card);
+    transition: background 0.15s;
+  }
+
+  .exam-header:hover { filter: brightness(0.95); }
+
+  .exam-header .arrow {
+    transition: transform 0.2s;
+    font-size: 1.2rem;
+  }
+
+  .exam-header.collapsed .arrow { transform: rotate(-90deg); }
+
+  .exam-header .exam-mini-stats {
+    display: flex;
+    gap: 10px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .exam-mini-stats span {
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+  }
+
+  .exam-mini-stats .ms-green { background: var(--green-bg); color: var(--green); }
+  .exam-mini-stats .ms-yellow { background: var(--yellow-bg); color: var(--yellow); }
+  .exam-mini-stats .ms-red { background: var(--red-bg); color: var(--red); }
+  .exam-mini-stats .ms-gray { background: var(--gray-bg); color: var(--gray); }
+
+  .exam-body { padding: 12px 20px 20px; }
+  .exam-body.hidden { display: none; }
+
+  .section-label {
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    margin: 14px 0 8px;
+  }
+
+  .question-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 4px;
+    border: 2px solid transparent;
+    transition: all 0.15s;
+    cursor: default;
+  }
+
+  .question-row:hover { transform: var(--hover-lift); box-shadow: 0 2px 6px var(--shadow); }
+
+  .question-row.green { background: var(--green-bg); border-color: var(--green-border); }
+  .question-row.yellow { background: var(--yellow-bg); border-color: var(--yellow-border); }
+  .question-row.red { background: var(--red-bg); border-color: var(--red-border); }
+  .question-row.gray { background: var(--gray-bg); border-color: var(--gray-border); }
+
+  .question-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+  }
+
+  .question-label {
+    font-weight: 600;
+    font-size: 0.92rem;
+  }
+
+  .question-topic {
+    font-weight: 400;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-left: 8px;
+  }
+
+  .btn-group {
+    display: flex;
+    gap: 6px;
+  }
+
+  .status-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid;
+    cursor: pointer;
+    transition: all 0.15s;
+    position: relative;
+  }
+
+  .status-btn:hover { transform: scale(1.2); }
+  .status-btn.active { box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px currentColor; }
+
+  .status-btn.btn-green { background: var(--green); border-color: var(--green); color: var(--green); }
+  .status-btn.btn-yellow { background: var(--yellow); border-color: var(--yellow); color: var(--yellow); }
+  .status-btn.btn-red { background: var(--red); border-color: var(--red); color: var(--red); }
+  .status-btn.btn-gray { background: var(--gray); border-color: var(--gray); color: var(--gray); }
+
+  .notes-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    background: var(--bg);
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .notes-btn:hover { transform: scale(1.2); background: var(--bg-card); }
+  .notes-btn.has-notes {
+    background: #17a2b8;
+    color: #fff;
+    border-color: #17a2b8;
+  }
+
+  .notes-section {
+    display: none;
+    margin-top: 8px;
+    padding: 8px;
+    background: var(--bg);
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+
+  .notes-section.visible { display: block; }
+
+  .notes-section textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 8px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    resize: vertical;
+  }
+
+  .notes-section textarea:focus {
+    outline: none;
+    border-color: #17a2b8;
+  }
+
+  .question-container {
+    margin-bottom: 4px;
+  }
+
+  .progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background: var(--gray-bg);
+    border-radius: 4px;
+    margin-top: 8px;
+    overflow: hidden;
+    display: flex;
+  }
+
+  .progress-bar-container .seg-green { background: var(--green); }
+  .progress-bar-container .seg-yellow { background: var(--yellow); }
+  .progress-bar-container .seg-red { background: var(--red); }
+  .progress-bar-container .seg-gray { background: var(--gray); }
+
+  .save-toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--green);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  .save-toast.show { opacity: 1; }
+
+  .toolbar {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+  }
+
+  .toolbar button {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: #fff;
+  }
+
+  .toolbar button:hover { opacity: 0.85; }
+
+  .btn-export { background: #0d6efd; }
+  .btn-import { background: #6f42c1; }
+  .reset-btn { background: var(--red); }
+  .btn-force-save { background: #28a745; font-size: 1rem; padding: 12px 28px; }
+  .btn-copy { background: #17a2b8; }
+  .btn-show-json { background: #6c757d; }
+
+  .warning-banner {
+    background: #fff3cd;
+    border: 2px solid #ffc107;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    color: #856404;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .warning-banner {
+      background: #2d2a0f;
+      color: #ffc107;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>ORF 309 Midterm Question Tracker</h1>
+  <p>Click the colored circles to set your confidence level for each question</p>
+  <div class="progress-bar-container" id="globalProgress" style="height:10px; margin-top:14px;"></div>
+</header>
+
+<div class="warning-banner" id="saveBanner">
+  VSCode mode: Click "Copy JSON" → Open midterm_tracker_progress.json → Paste → Save. OR run "python server.py" for auto-save!
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot green"></div> Understand</div>
+  <div class="legend-item"><div class="legend-dot yellow"></div> Needs Review</div>
+  <div class="legend-item"><div class="legend-dot red"></div> Struggling</div>
+  <div class="legend-item"><div class="legend-dot gray"></div> Not Attempted</div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat-box green"><span class="stat-num" id="totalGreen">0</span>Understand</div>
+  <div class="stat-box yellow"><span class="stat-num" id="totalYellow">0</span>Needs Review</div>
+  <div class="stat-box red"><span class="stat-num" id="totalRed">0</span>Struggling</div>
+  <div class="stat-box gray"><span class="stat-num" id="totalGray">0</span>Not Attempted</div>
+</div>
+
+<div id="examContainer"></div>
+
+<div class="toolbar">
+  <button class="btn-copy" onclick="copyToClipboard()">📋 Copy JSON (Recommended)</button>
+  <button class="btn-import" onclick="document.getElementById('importFile').click()">Import Progress</button>
+  <button class="btn-show-json" onclick="toggleJsonView()">👁️ Show/Hide JSON</button>
+  <button class="reset-btn" onclick="resetAll()">Reset All</button>
+</div>
+<input type="file" id="importFile" accept=".json" style="display:none" onchange="importState(event)">
+<div id="jsonViewer" style="display:none; margin-top: 20px; padding: 20px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;">
+  <h3 style="margin-bottom: 12px; color: var(--text);">Your Progress JSON (Copy this text and save it somewhere safe):</h3>
+  <textarea id="jsonText" readonly style="width: 100%; min-height: 200px; font-family: monospace; font-size: 0.85rem; padding: 12px; background: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 6px;"></textarea>
+</div>
+<div class="save-toast" id="saveToast">Auto-saved</div>
+
+<script>
+const EXAMS = [
+  {
+    id: "sp2025",
+    title: "Spring 2025 Midterm",
+    sections: [
+      {
+        label: "Question 1 - Bob's Exam (30 pts)",
+        questions: [
+          { id: "sp25_q1a", name: "Q1(a)", topic: "Probability second question correct" },
+          { id: "sp25_q1b", name: "Q1(b)", topic: "Conditional probability (Bayes' theorem)" },
+          { id: "sp25_q1c", name: "Q1(c)", topic: "Variance of Bob's grade" }
+        ]
+      },
+      {
+        label: "Question 2 - Train Delays (30 pts)",
+        questions: [
+          { id: "sp25_q2a", name: "Q2(a)", topic: "Memoryless property of geometric distribution" },
+          { id: "sp25_q2b", name: "Q2(b)", topic: "Expected delay (independent trains)" },
+          { id: "sp25_q2c", name: "Q2(c)", topic: "Compare two geometric random variables" }
+        ]
+      },
+      {
+        label: "Question 3 - Stock Price (30 pts)",
+        questions: [
+          { id: "sp25_q3a", name: "Q3(a)", topic: "Binomial probability" },
+          { id: "sp25_q3b", name: "Q3(b)", topic: "Law of large numbers / fraction estimation" },
+          { id: "sp25_q3c", name: "Q3(c)", topic: "Expectation and limit behavior" }
+        ]
+      }
+    ]
+  },
+  {
+    id: "f2025",
+    title: "Fall 2025 Midterm",
+    sections: [
+      {
+        label: "Question 1 - Widget Factory (30 pts)",
+        questions: [
+          { id: "f25_q1a", name: "Q1(a)", topic: "Total probability (defect rate)" },
+          { id: "f25_q1b", name: "Q1(b)", topic: "Bayes' theorem (which line?)" },
+          { id: "f25_q1c", name: "Q1(c)", topic: "Binomial probability (shipment of 10)" }
+        ]
+      },
+      {
+        label: "Question 2 - ChatGPT Responses (30 pts)",
+        questions: [
+          { id: "f25_q2a", name: "Q2(a)", topic: "Expectation of average" },
+          { id: "f25_q2b", name: "Q2(b)", topic: "Variance of average" },
+          { id: "f25_q2c", name: "Q2(c)", topic: "Law of large numbers / limit behavior" }
+        ]
+      },
+      {
+        label: "Question 3 - Claw Machine (30 pts)",
+        questions: [
+          { id: "f25_q3a", name: "Q3(a)", topic: "Conditional geometric probability" },
+          { id: "f25_q3b", name: "Q3(b)", topic: "Conditional expectation" },
+          { id: "f25_q3c", name: "Q3(c)", topic: "Expected maximum of two geometric RVs" }
+        ]
+      }
+    ]
+  },
+  {
+    id: "sp2024",
+    title: "Spring 2024 Midterm",
+    sections: [
+      {
+        label: "Question 1 - Drawing Cards (25 pts)",
+        questions: [
+          { id: "sp24_q1a", name: "Q1(a)", topic: "Expected draws with replacement" },
+          { id: "sp24_q1b", name: "Q1(b)", topic: "Expected draws without replacement" },
+          { id: "sp24_q1c", name: "Q1(c)", topic: "Probability ace before face (both methods)" }
+        ]
+      },
+      {
+        label: "Question 2 - Trick Coins (20 pts)",
+        questions: [
+          { id: "sp24_q2a", name: "Q2(a)", topic: "Conditional probability (painted coin)" },
+          { id: "sp24_q2b", name: "Q2(b)", topic: "Bayesian inference (10 heads)" }
+        ]
+      },
+      {
+        label: "Question 3 - Lottery (5 pts)",
+        questions: [
+          { id: "sp24_q3a", name: "Q3(a)", topic: "Conditional expectation E[X|Y]" }
+        ]
+      },
+      {
+        label: "Question 4 - Poisson Processes (30 pts)",
+        questions: [
+          { id: "sp24_q4a", name: "Q4(a)", topic: "Moments of exponential RV" },
+          { id: "sp24_q4b", name: "Q4(b)", topic: "Poisson at random time" },
+          { id: "sp24_q4c", name: "Q4(c)", topic: "Probability at least one car" }
+        ]
+      },
+      {
+        label: "Question 5 - Rock, Paper, Scissors (20 pts)",
+        questions: [
+          { id: "sp24_q5a", name: "Q5(a)", topic: "Probability of tie" },
+          { id: "sp24_q5b", name: "Q5(b)", topic: "Expected rounds until win" },
+          { id: "sp24_q5c", name: "Q5(c)", topic: "Probability first player wins" },
+          { id: "sp24_q5d", name: "Q5(d)", topic: "Expected times playing rock" }
+        ]
+      }
+    ]
+  },
+  {
+    id: "f2023",
+    title: "Fall 2023 Midterm",
+    sections: [
+      {
+        label: "Question 1 - Morning Beverages (Zzzzzz)",
+        questions: [
+          { id: "f23_q1a", name: "Q1(a)", topic: "Sample space & probability measure" },
+          { id: "f23_q1b", name: "Q1(b)", topic: "Bayes' theorem (orange juice)" }
+        ]
+      },
+      {
+        label: "Question 2 - Chevalier's Game",
+        questions: [
+          { id: "f23_q2a", name: "Q2(a)", topic: "Expected winnings" },
+          { id: "f23_q2b", name: "Q2(b)", topic: "Binomial probability (loses in 3 of 5)" }
+        ]
+      },
+      {
+        label: "Question 3 - Guacamole (Avocados)",
+        questions: [
+          { id: "f23_q3a", name: "Q3(a)", topic: "Expected ripening time" },
+          { id: "f23_q3b", name: "Q3(b)", topic: "Expected ripe avocados" },
+          { id: "f23_q3c", name: "Q3(c)", topic: "Matching avocados & friends" }
+        ]
+      }
+    ]
+  },
+  {
+    id: "f2022",
+    title: "Fall 2022 Midterm",
+    sections: [
+      {
+        label: "Question 1 - Ice Cream",
+        questions: [
+          { id: "f22_q1a", name: "Q1(a)", topic: "Probability all sold out" },
+          { id: "f22_q1b", name: "Q1(b)", topic: "Expected cost (cheapest available)" },
+          { id: "f22_q1c", name: "Q1(c)", topic: "Conditional probability (allergies)" }
+        ]
+      },
+      {
+        label: "Question 2 - Organic Chemistry",
+        questions: [
+          { id: "f22_q2a", name: "Q2(a)", topic: "Binomial probability (exactly 25 sign)" },
+          { id: "f22_q2b", name: "Q2(b)", topic: "Probability professor fired" }
+        ]
+      },
+      {
+        label: "Question 3 - Cupcakes (Sprinkles)",
+        questions: [
+          { id: "f22_q3a", name: "Q3(a)", topic: "Probability same sprinkles" },
+          { id: "f22_q3b", name: "Q3(b)", topic: "Distribution of total sprinkles" }
+        ]
+      }
+    ]
+  },
+  {
+    id: "f2021",
+    title: "Fall 2021 Midterm",
+    sections: [
+      {
+        label: "Question 1 - Yogurt",
+        questions: [
+          { id: "f21_q1a", name: "Q1(a)", topic: "Probability of rash" },
+          { id: "f21_q1b", name: "Q1(b)", topic: "Conditional probability (no rash)" },
+          { id: "f21_q1c", name: "Q1(c)", topic: "Expected banana yogurt without rash" }
+        ]
+      },
+      {
+        label: "Question 2 - Snowfall",
+        questions: [
+          { id: "f21_q2a", name: "Q2(a)", topic: "Marginal probability" },
+          { id: "f21_q2b", name: "Q2(b)", topic: "Independence test" },
+          { id: "f21_q2c", name: "Q2(c)", topic: "Joint probability (both 1-2 feet)" }
+        ]
+      },
+      {
+        label: "Question 3 - COVID Vaccine",
+        questions: [
+          { id: "f21_q3a", name: "Q3(a)", topic: "No vaccine, exposed 3 times" },
+          { id: "f21_q3b", name: "Q3(b)", topic: "Expected day of second dose" },
+          { id: "f21_q3c", name: "Q3(c)", topic: "Exposed before first dose" }
+        ]
+      }
+    ]
+  },
+  {
+    id: "f2019",
+    title: "Fall 2019 Midterm",
+    sections: [
+      {
+        label: "Question 1 - Questions on the Exam",
+        questions: [
+          { id: "f19_q1a", name: "Q1(a)", topic: "Expected correct answers" },
+          { id: "f19_q1b", name: "Q1(b)", topic: "Variance of correct answers" },
+          { id: "f19_q1c", name: "Q1(c)", topic: "Conditional probability (2 of 3 right)" }
+        ]
+      },
+      {
+        label: "Question 2 - Dice",
+        questions: [
+          { id: "f19_q2a", name: "Q2(a)", topic: "No 6 in first k throws" },
+          { id: "f19_q2b", name: "Q2(b)", topic: "Expected throws until 6" },
+          { id: "f19_q2c", name: "Q2(c)", topic: "No 1 or 2 before first 6" }
+        ]
+      },
+      {
+        label: "Question 3 - Ice Cream Craving",
+        questions: [
+          { id: "f19_q3a", name: "Q3(a)", topic: "Probability no craving in first hour" },
+          { id: "f19_q3b", name: "Q3(b)", topic: "Memoryless property (exponential)" },
+          { id: "f19_q3c", name: "Q3(c)", topic: "Craving during happy minutes" }
+        ]
+      }
+    ]
+  },
+  {
+    id: "f2017",
+    title: "Fall 2017 Midterm",
+    sections: [
+      {
+        label: "Question 1 - Successes and Failures",
+        questions: [
+          { id: "f17_q1a", name: "Q1(a)", topic: "P{M > 8} (first failure)" },
+          { id: "f17_q1b", name: "Q1(b)", topic: "P{M < N} (failure before success)" },
+          { id: "f17_q1c", name: "Q1(c)", topic: "Joint probability P{M=i, N=j}" }
+        ]
+      },
+      {
+        label: "Question 2 - Trump's Tweets",
+        questions: [
+          { id: "f17_q2a", name: "Q2(a)", topic: "Tweet before breakfast" },
+          { id: "f17_q2b", name: "Q2(b)", topic: "Conditional (oatmeal given tweet)" }
+        ]
+      },
+      {
+        label: "Question 3 - Exam Score",
+        questions: [
+          { id: "f17_q3a", name: "Q3(a)", topic: "Expected total score" },
+          { id: "f17_q3b", name: "Q3(b)", topic: "Expected wrong answers" },
+          { id: "f17_q3c", name: "Q3(c)", topic: "Most likely wrong question" }
+        ]
+      }
+    ]
+  }
+];
+
+// Load saved state
+const STATE_KEY = "orf309_midterm_tracker";
+let state = JSON.parse(localStorage.getItem(STATE_KEY) || "{}");
+
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById("saveToast");
+  t.textContent = msg || "Auto-saved";
+  t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove("show"), 1200);
+}
+
+async function loadFromServer() {
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    try {
+      const response = await fetch('http://localhost:8002/midterm_tracker_progress.json');
+      if (response.ok) {
+        const serverState = await response.json();
+        state = serverState;
+        return true;
+      }
+    } catch(e) {
+      // Server not available, use localStorage
+    }
+  }
+  return false;
+}
+
+async function saveState() {
+  // Try auto-save to server if running on localhost
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    try {
+      const response = await fetch('http://localhost:8002/save', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({...state, tracker_id: 'ORF309'})
+      });
+      if (response.ok) {
+        // Silent auto-save success
+        return;
+      }
+    } catch(e) {
+      // Server not running, fall through to localStorage
+    }
+  }
+
+  // Fallback to localStorage
+  try {
+    localStorage.setItem(STATE_KEY, JSON.stringify(state));
+    // Silent save - no toast notification
+  } catch(e) {
+    // Silent fail - user will use manual save buttons
+  }
+}
+
+async function exportState() {
+  const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, -5);
+  const jsonStr = JSON.stringify(state, null, 2);
+  const filename = `orf309_tracker_${timestamp}.json`;
+
+  // Try File System Access API first (allows choosing save location)
+  if (window.showSaveFilePicker) {
+    try {
+      const handle = await window.showSaveFilePicker({
+        suggestedName: filename,
+        types: [{
+          description: 'JSON Files',
+          accept: { 'application/json': ['.json'] }
+        }]
+      });
+      const writable = await handle.createWritable();
+      await writable.write(jsonStr);
+      await writable.close();
+      showToast("✅ Saved to file!");
+      return;
+    } catch(e) {
+      if (e.name !== 'AbortError') {
+        console.error('File save error:', e);
+      }
+      // User cancelled or error - fall through to download method
+    }
+  }
+
+  // Fallback to download method
+  const blob = new Blob([jsonStr], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(a.href);
+  showToast("✅ Downloaded to file!");
+}
+
+function copyToClipboard() {
+  const jsonStr = JSON.stringify(state, null, 2);
+  navigator.clipboard.writeText(jsonStr).then(() => {
+    showToast("✅ Copied to clipboard!");
+  }).catch(() => {
+    // Fallback for environments where clipboard API doesn't work
+    const textarea = document.getElementById('jsonText');
+    textarea.value = jsonStr;
+    textarea.select();
+    try {
+      document.execCommand('copy');
+      showToast("✅ Copied to clipboard!");
+    } catch(e) {
+      showToast("⚠️ Copy failed - use Show JSON instead");
+      toggleJsonView(true);
+    }
+  });
+}
+
+function toggleJsonView(forceShow) {
+  const viewer = document.getElementById('jsonViewer');
+  const textarea = document.getElementById('jsonText');
+  if (forceShow || viewer.style.display === 'none') {
+    textarea.value = JSON.stringify(state, null, 2);
+    viewer.style.display = 'block';
+    viewer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  } else {
+    viewer.style.display = 'none';
+  }
+}
+
+function importState(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(ev) {
+    try {
+      const imported = JSON.parse(ev.target.result);
+      state = imported;
+      saveState();
+      renderAll();
+      showToast("Imported!");
+    } catch { alert("Invalid JSON file."); }
+  };
+  reader.readAsText(file);
+  e.target.value = "";
+}
+
+function getStatus(qid) {
+  if (!state[qid]) return "gray";
+  return state[qid].status || state[qid] || "gray";
+}
+
+function setStatus(qid, status) {
+  if (typeof state[qid] === 'string') {
+    state[qid] = { status: state[qid], notes: "" };
+  }
+  if (!state[qid]) {
+    state[qid] = { status: "gray", notes: "" };
+  }
+  state[qid].status = status;
+  saveState();
+  renderAll();
+}
+
+function getNotes(qid) {
+  if (!state[qid]) return "";
+  return state[qid].notes || "";
+}
+
+function setNotes(qid, notes) {
+  if (typeof state[qid] === 'string') {
+    state[qid] = { status: state[qid], notes: "" };
+  }
+  if (!state[qid]) {
+    state[qid] = { status: "gray", notes: "" };
+  }
+  state[qid].notes = notes;
+  saveState();
+}
+
+function toggleNotes(qid) {
+  const noteSection = document.getElementById(`notes-${qid}`);
+  if (noteSection) {
+    noteSection.classList.toggle('visible');
+  }
+}
+
+function resetAll() {
+  if (confirm("Reset all questions to 'Not Attempted'?")) {
+    state = {};
+    saveState();
+    renderAll();
+  }
+}
+
+function countAll() {
+  let counts = { green: 0, yellow: 0, red: 0, gray: 0 };
+  EXAMS.forEach(exam => {
+    exam.sections.forEach(sec => {
+      sec.questions.forEach(q => {
+        const status = getStatus(q.id);
+        counts[status]++;
+      });
+    });
+  });
+  return counts;
+}
+
+function countExam(exam) {
+  let counts = { green: 0, yellow: 0, red: 0, gray: 0 };
+  exam.sections.forEach(sec => {
+    sec.questions.forEach(q => {
+      counts[getStatus(q.id)]++;
+    });
+  });
+  return counts;
+}
+
+function renderAll() {
+  const c = countAll();
+  const total = c.green + c.yellow + c.red + c.gray;
+  document.getElementById("totalGreen").textContent = c.green;
+  document.getElementById("totalYellow").textContent = c.yellow;
+  document.getElementById("totalRed").textContent = c.red;
+  document.getElementById("totalGray").textContent = c.gray;
+
+  // Global progress bar
+  const gp = document.getElementById("globalProgress");
+  gp.innerHTML = `
+    <div class="seg-green" style="width:${(c.green/total)*100}%"></div>
+    <div class="seg-yellow" style="width:${(c.yellow/total)*100}%"></div>
+    <div class="seg-red" style="width:${(c.red/total)*100}%"></div>
+    <div class="seg-gray" style="width:${(c.gray/total)*100}%"></div>
+  `;
+
+  const container = document.getElementById("examContainer");
+  container.innerHTML = "";
+
+  EXAMS.forEach(exam => {
+    const ec = countExam(exam);
+    const etotal = ec.green + ec.yellow + ec.red + ec.gray;
+    const section = document.createElement("div");
+    section.className = "exam-section";
+
+    const headerDiv = document.createElement("div");
+    headerDiv.className = "exam-header";
+    headerDiv.innerHTML = `
+      <span>${exam.title}</span>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <div class="exam-mini-stats">
+          <span class="ms-green">${ec.green}</span>
+          <span class="ms-yellow">${ec.yellow}</span>
+          <span class="ms-red">${ec.red}</span>
+          <span class="ms-gray">${ec.gray}</span>
+        </div>
+        <span class="arrow">&#9660;</span>
+      </div>
+    `;
+
+    const bodyDiv = document.createElement("div");
+    bodyDiv.className = "exam-body";
+
+    // Progress bar for exam
+    const pb = document.createElement("div");
+    pb.className = "progress-bar-container";
+    pb.innerHTML = `
+      <div class="seg-green" style="width:${(ec.green/etotal)*100}%"></div>
+      <div class="seg-yellow" style="width:${(ec.yellow/etotal)*100}%"></div>
+      <div class="seg-red" style="width:${(ec.red/etotal)*100}%"></div>
+      <div class="seg-gray" style="width:${(ec.gray/etotal)*100}%"></div>
+    `;
+    bodyDiv.appendChild(pb);
+
+    exam.sections.forEach(sec => {
+      const lbl = document.createElement("div");
+      lbl.className = "section-label";
+      lbl.textContent = sec.label;
+      bodyDiv.appendChild(lbl);
+
+      sec.questions.forEach(q => {
+        const st = getStatus(q.id);
+        const notes = getNotes(q.id);
+        const hasNotes = notes && notes.trim().length > 0;
+
+        const container = document.createElement("div");
+        container.className = "question-container";
+
+        const row = document.createElement("div");
+        row.className = `question-row ${st}`;
+        row.innerHTML = `
+          <div class="question-left">
+            <button class="notes-btn ${hasNotes?'has-notes':''}" title="${hasNotes?'Has notes':'Add notes'}" onclick="event.stopPropagation();toggleNotes('${q.id}')">📝</button>
+            <span class="question-label">${q.name}<span class="question-topic"> - ${q.topic}</span></span>
+          </div>
+          <div class="btn-group">
+            <button class="status-btn btn-green ${st==='green'?'active':''}" title="Understand" onclick="event.stopPropagation();setStatus('${q.id}','green')"></button>
+            <button class="status-btn btn-yellow ${st==='yellow'?'active':''}" title="Needs Review" onclick="event.stopPropagation();setStatus('${q.id}','yellow')"></button>
+            <button class="status-btn btn-red ${st==='red'?'active':''}" title="Struggling" onclick="event.stopPropagation();setStatus('${q.id}','red')"></button>
+            <button class="status-btn btn-gray ${st==='gray'?'active':''}" title="Not Attempted" onclick="event.stopPropagation();setStatus('${q.id}','gray')"></button>
+          </div>
+        `;
+
+        const notesSection = document.createElement("div");
+        notesSection.id = `notes-${q.id}`;
+        notesSection.className = "notes-section";
+        notesSection.innerHTML = `
+          <textarea placeholder="Add notes about this question..." oninput="setNotes('${q.id}', this.value)">${notes}</textarea>
+        `;
+
+        container.appendChild(row);
+        container.appendChild(notesSection);
+        bodyDiv.appendChild(container);
+      });
+    });
+
+    headerDiv.addEventListener("click", () => {
+      headerDiv.classList.toggle("collapsed");
+      bodyDiv.classList.toggle("hidden");
+    });
+
+    section.appendChild(headerDiv);
+    section.appendChild(bodyDiv);
+    container.appendChild(section);
+  });
+}
+
+// Update banner based on how the page is accessed
+if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+  document.getElementById('saveBanner').innerHTML = '✅ Auto-save enabled! Running on local server - progress automatically saved to midterm_tracker_progress.json';
+  document.getElementById('saveBanner').style.background = 'var(--green-bg)';
+  document.getElementById('saveBanner').style.borderColor = 'var(--green-border)';
+  document.getElementById('saveBanner').style.color = 'var(--green)';
+}
+
+async function init() {
+  await loadFromServer();
+
+  // Check if there's saved progress and show notification
+  const hasSavedData = Object.keys(state).length > 0;
+  if (hasSavedData) {
+    const savedCount = Object.keys(state).length;
+    setTimeout(() => {
+      showToast(`✅ Loaded progress for ${savedCount} question${savedCount !== 1 ? 's' : ''}`);
+    }, 500);
+  }
+
+  renderAll();
+}
+
+init();
+</script>
+</body>
+</html>

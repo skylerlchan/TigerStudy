@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spring 2026 Academic Calendar</title>
+  <style>
+    :root {
+      --asa: #7C3AED;
+      --eco: #2563EB;
+      --mus: #D97706;
+      --orf: #059669;
+      --bg: #F8FAFC;
+      --card: #FFFFFF;
+      --border: #E2E8F0;
+      --text: #1E293B;
+      --muted: #94A3B8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.2rem;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.75rem;
+    }
+
+    /* ── LEGEND ── */
+    .legend {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      padding: 0.9rem 1.25rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      font-size: 0.82rem;
+    }
+
+    .legend-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .legend-divider {
+      width: 1px;
+      height: 20px;
+      background: var(--border);
+    }
+
+    .l-course {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 600;
+    }
+
+    .l-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── MONTH ── */
+    .month-section { margin-bottom: 2.25rem; }
+
+    .month-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      color: var(--text);
+    }
+
+    .calendar {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    .day-headers {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      background: #F1F5F9;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .day-header {
+      padding: 0.45rem 0.5rem;
+      text-align: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--muted);
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+    }
+
+    .day-cell {
+      min-height: 90px;
+      padding: 0.45rem 0.5rem;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    .day-cell:nth-child(7n) { border-right: none; }
+
+    /* last row — remove bottom border */
+    .calendar-grid .day-cell:nth-last-child(-n+7) { border-bottom: none; }
+
+    .day-cell.empty { background: #FAFBFC; }
+
+    .day-cell.past { opacity: 0.45; }
+
+    .day-cell.spring-break {
+      background: #EFF6FF;
+    }
+
+    .day-cell.today {
+      background: #FFFBEB;
+      box-shadow: inset 0 0 0 2px #F59E0B;
+    }
+
+    .day-number {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+
+    .day-cell.today .day-number {
+      color: #B45309;
+    }
+
+    .spring-break-text {
+      font-size: 0.68rem;
+      color: #60A5FA;
+      font-style: italic;
+      margin-top: 0.2rem;
+    }
+
+    /* ── EVENT CHIPS ── */
+    .events { display: flex; flex-direction: column; gap: 0.18rem; }
+
+    .event {
+      display: block;
+      font-size: 0.67rem;
+      font-weight: 600;
+      padding: 0.15rem 0.35rem;
+      border-radius: 4px;
+      line-height: 1.35;
+    }
+
+    /* type colors */
+    .event-exam   { background: #FEE2E2; color: #B91C1C; border-left: 2.5px solid #DC2626; }
+    .event-paper  { background: #FEF3C7; color: #92400E; border-left: 2.5px solid #D97706; }
+    .event-quiz   { background: #FEF9C3; color: #713F12; border-left: 2.5px solid #CA8A04; }
+    .event-hw     { background: #F1F5F9; color: #475569; border-left: 2.5px solid #94A3B8; }
+    .event-pres   { background: #E0F2FE; color: #0C4A6E; border-left: 2.5px solid #0EA5E9; }
+    .event-info   { background: #F0FDF4; color: #166534; border-left: 2.5px solid #22C55E; }
+
+    /* ── DEADLINES TABLE ── */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 2rem 0 0.75rem;
+    }
+
+    .deadlines-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      font-size: 0.84rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    .deadlines-table th {
+      background: #F1F5F9;
+      padding: 0.65rem 1rem;
+      text-align: left;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .deadlines-table td {
+      padding: 0.65rem 1rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+
+    .deadlines-table tr:last-child td { border-bottom: none; }
+    .deadlines-table tbody tr:hover td { background: #F8FAFC; }
+
+    .deadlines-table tr.past-row td {
+      color: var(--muted);
+      text-decoration: line-through;
+    }
+
+    .course-pill {
+      display: inline-block;
+      padding: 0.15rem 0.55rem;
+      border-radius: 9999px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: white;
+      white-space: nowrap;
+    }
+
+    .pill-asa { background: var(--asa); }
+    .pill-eco { background: var(--eco); }
+    .pill-mus { background: var(--mus); }
+    .pill-orf { background: var(--orf); }
+
+    .type-chip {
+      display: inline-block;
+      padding: 0.12rem 0.45rem;
+      border-radius: 4px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .chip-exam  { background: #FEE2E2; color: #B91C1C; }
+    .chip-paper { background: #FEF3C7; color: #92400E; }
+    .chip-quiz  { background: #FEF9C3; color: #713F12; }
+    .chip-hw    { background: #F1F5F9; color: #475569; }
+    .chip-pres  { background: #E0F2FE; color: #0C4A6E; }
+
+    .weight-col { font-weight: 700; color: var(--text); }
+
+    /* ── WARNINGS ── */
+    .warn-box {
+      margin-top: 1.75rem;
+      padding: 1rem 1.5rem;
+      background: #FFF7ED;
+      border: 1px solid #FED7AA;
+      border-radius: 12px;
+    }
+
+    .warn-box h3 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #9A3412;
+      margin-bottom: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .warn-box ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+
+    .warn-box li {
+      font-size: 0.84rem;
+      color: #7C2D12;
+      padding-left: 1.1rem;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .warn-box li::before { content: "→"; position: absolute; left: 0; color: #EA580C; }
+  </style>
+</head>
+<body>
+
+  <h1>Spring 2026 Academic Calendar</h1>
+  <p class="subtitle">Princeton University &nbsp;·&nbsp; ASA 201 &nbsp;·&nbsp; ECO 310 &nbsp;·&nbsp; MUS 262 &nbsp;·&nbsp; ORF 309</p>
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <div class="legend-group">
+      <div class="l-course"><div class="l-dot" style="background:var(--asa)"></div> ASA 201 — Asian American Studies</div>
+      <div class="l-course"><div class="l-dot" style="background:var(--eco)"></div> ECO 310 — Microeconomics</div>
+      <div class="l-course"><div class="l-dot" style="background:var(--mus)"></div> MUS 262 — Jazz History</div>
+      <div class="l-course"><div class="l-dot" style="background:var(--orf)"></div> ORF 309 — Probability & Stochastic Systems</div>
+    </div>
+    <div class="legend-divider"></div>
+    <div class="legend-group">
+      <span class="event event-exam" style="position:static">EXAM / FINAL</span>
+      <span class="event event-paper" style="position:static">PAPER</span>
+      <span class="event event-quiz" style="position:static">QUIZ</span>
+      <span class="event event-pres" style="position:static">PRESENTATION</span>
+      <span class="event event-hw" style="position:static">HW / PS</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════ FEBRUARY ═══════════════ -->
+  <div class="month-section">
+    <div class="month-title">February 2026</div>
+    <div class="calendar">
+      <div class="day-headers">
+        <div class="day-header">Sun</div><div class="day-header">Mon</div><div class="day-header">Tue</div>
+        <div class="day-header">Wed</div><div class="day-header">Thu</div><div class="day-header">Fri</div><div class="day-header">Sat</div>
+      </div>
+      <div class="calendar-grid">
+        <!-- Feb 1–7 (past) -->
+        <div class="day-cell past"><div class="day-number">1</div></div>
+        <div class="day-cell past"><div class="day-number">2</div></div>
+        <div class="day-cell past"><div class="day-number">3</div></div>
+        <div class="day-cell past"><div class="day-number">4</div></div>
+        <div class="day-cell past"><div class="day-number">5</div></div>
+        <div class="day-cell past"><div class="day-number">6</div></div>
+        <div class="day-cell past"><div class="day-number">7</div></div>
+        <!-- Feb 8–14 (past) -->
+        <div class="day-cell past"><div class="day-number">8</div></div>
+        <div class="day-cell past"><div class="day-number">9</div></div>
+        <div class="day-cell past"><div class="day-number">10</div></div>
+        <div class="day-cell past"><div class="day-number">11</div></div>
+        <div class="day-cell past">
+          <div class="day-number">12</div>
+          <div class="events"><div class="event event-hw">ECO — PS1 (done)</div></div>
+        </div>
+        <div class="day-cell past"><div class="day-number">13</div></div>
+        <div class="day-cell past"><div class="day-number">14</div></div>
+        <!-- Feb 15–21 -->
+        <div class="day-cell past"><div class="day-number">15</div></div>
+        <div class="day-cell past"><div class="day-number">16</div></div>
+        <div class="day-cell past"><div class="day-number">17</div></div>
+        <div class="day-cell today">
+          <div class="day-number">18 — Today</div>
+          <div class="events"><div class="event event-hw">ORF — HW3 (done)</div></div>
+        </div>
+        <div class="day-cell"><div class="day-number">19</div></div>
+        <div class="day-cell">
+          <div class="day-number">20</div>
+          <div class="events"><div class="event event-quiz">MUS — QUIZ 1</div></div>
+        </div>
+        <div class="day-cell"><div class="day-number">21</div></div>
+        <!-- Feb 22–28 -->
+        <div class="day-cell"><div class="day-number">22</div></div>
+        <div class="day-cell"><div class="day-number">23</div></div>
+        <div class="day-cell"><div class="day-number">24</div></div>
+        <div class="day-cell">
+          <div class="day-number">25</div>
+          <div class="events"><div class="event event-hw">ORF — HW4 (done)</div></div>
+        </div>
+        <div class="day-cell">
+          <div class="day-number">26</div>
+          <div class="events">
+            <div class="event event-exam">ASA — MIDTERM (in-class)</div>
+            <div class="event event-hw">ECO — PS2 (done)</div>
+          </div>
+        </div>
+        <div class="day-cell"><div class="day-number">27</div></div>
+        <div class="day-cell"><div class="day-number">28</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ MARCH ═══════════════ -->
+  <div class="month-section">
+    <div class="month-title">March 2026</div>
+    <div class="calendar">
+      <div class="day-headers">
+        <div class="day-header">Sun</div><div class="day-header">Mon</div><div class="day-header">Tue</div>
+        <div class="day-header">Wed</div><div class="day-header">Thu</div><div class="day-header">Fri</div><div class="day-header">Sat</div>
+      </div>
+      <div class="calendar-grid">
+        <!-- Mar 1–7 -->
+        <div class="day-cell"><div class="day-number">1</div></div>
+        <div class="day-cell"><div class="day-number">2</div></div>
+        <div class="day-cell">
+          <div class="day-number">3</div>
+          <div class="events"><div class="event event-info">ECO — Review session</div></div>
+        </div>
+        <div class="day-cell">
+          <div class="day-number">4</div>
+          <div class="events"><div class="event event-hw">ORF — HW5 due 11:59pm</div></div>
+        </div>
+        <div class="day-cell">
+          <div class="day-number">5</div>
+          <div class="events"><div class="event event-exam">ECO — MIDTERM 10:40am</div></div>
+        </div>
+        <div class="day-cell">
+          <div class="day-number">6</div>
+          <div class="events">
+            <div class="event event-exam">ORF — MIDTERM 1 (in-person)</div>
+            <div class="event event-paper">MUS — MIDTERM PAPER due (5pp)</div>
+          </div>
+        </div>
+        <div class="day-cell"><div class="day-number">7</div></div>
+        <!-- Mar 8–14 SPRING BREAK -->
+        <div class="day-cell spring-break"><div class="day-number">8</div><div class="spring-break-text">Spring Break</div></div>
+        <div class="day-cell spring-break"><div class="day-number">9</div><div class="spring-break-text">Spring Break</div></div>
+        <div class="day-cell spring-break"><div class="day-number">10</div><div class="spring-break-text">Spring Break</div></div>
+        <div class="day-cell spring-break"><div class="day-number">11</div><div class="spring-break-text">Spring Break</div></div>
+        <div class="day-cell spring-break"><div class="day-number">12</div><div class="spring-break-text">Spring Break</div></div>
+        <div class="day-cell spring-break"><div class="day-number">13</div><div class="spring-break-text">Spring Break</div></div>
+        <div class="day-cell spring-break"><div class="day-number">14</div><div class="spring-break-text">Spring Break</div></div>
+        <!-- Mar 15–21 -->
+        <div class="day-cell"><div class="day-number">15</div></div>
+        <div class="day-cell"><div class="day-number">16</div></div>
+        <div class="day-cell"><div class="day-number">17</div></div>
+        <div class="day-cell">
+          <div class="day-number">18</div>
+          <div class="events">
+            <div class="event event-hw">ORF — HW6 due 11:59pm</div>
+            <div class="event event-info">MUS — Submit pres. topic</div>
+          </div>
+        </div>
+        <div class="day-cell"><div class="day-number">19</div></div>
+        <div class="day-cell"><div class="day-number">20</div></div>
+        <div class="day-cell"><div class="day-number">21</div></div>
+        <!-- Mar 22–28 -->
+        <div class="day-cell"><div class="day-number">22</div></div>
+        <div class="day-cell"><div class="day-number">23</div></div>
+        <div class="day-cell"><div class="day-number">24</div></div>
+        <div class="day-cell">
+          <div class="day-number">25</div>
+          <div class="events">
+            <div class="event event-pres">MUS — PRESENTATIONS begin</div>
+            <div class="event event-hw">ORF — HW7 due 11:59pm</div>
+          </div>
+        </div>
+        <div class="day-cell"><div class="day-number">26</div></div>
+        <div class="day-cell">
+          <div class="day-number">27</div>
+          <div class="events"><div class="event event-quiz">MUS — QUIZ 2</div></div>
+        </div>
+        <div class="day-cell"><div class="day-number">28</div></div>
+        <!-- Mar 29–31 -->
+        <div class="day-cell"><div class="day-number">29</div></div>
+        <div class="day-cell"><div class="day-number">30</div></div>
+        <div class="day-cell"><div class="day-number">31</div></div>
+        <div class="day-cell empty"></div>
+        <div class="day-cell empty"></div>
+        <div class="day-cell empty"></div>
+        <div class="day-cell empty"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ APRIL ═══════════════ -->
+  <div class="month-section">
+    <div class="month-title">April 2026</div>
+    <div class="calendar">
+      <div class="day-headers">
+        <div class="day-header">Sun</div><div class="day-header">Mon</div><div class="day-header">Tue</div>
+        <div class="day-header">Wed</div><div class="day-header">Thu</div><div class="day-header">Fri</div><div class="day-header">Sat</div>
+      </div>
+      <div class="calendar-grid">
+        <!-- Apr 1 = Wed -->
+        <div class="day-cell empty"></div>
+        <div class="day-cell empty"></div>
+        <div class="day-cell empty"></div>
+        <div class="day-cell">
+          <div class="day-number">1</div>
+          <div class="events">
+            <div class="event event-pres">MUS — Presentations</div>
+            <div class="event event-hw">ORF — HW due 11:59pm</div>
+          </div>
+        </div>
+        <div class="day-cell">
+          <div class="day-number">2</div>
+          <div class="events"><div class="event event-hw">ECO — PS3 due</div></div>
+        </div>
+        <div class="day-cell">
+          <div class="day-number">3</div>
+          <div class="events"><div class="event event-pres">MUS — Presentations</div></div>
+        </div>
+        <div class="day-cell"><div class="day-number">4</div></div>
+        <!-- Apr 5–11 -->
+        <div class="day-cell"><div class="day-number">5</div></div>
+        <div class="day-cell"><div class="day-number">6</div></div>
+        <div class="day-cell"><div class="day-number">7</div></div>
+        <div class="day-cell">
+          <div class="day-number">8</div>
+          <div class="events">
+            <div class="event event-hw">ORF — HW8 due 11:59pm</div>
+            <div class="event event-pres">MUS — Presentations</div>
+          </div>
+        </div>
+        <div class="day-cell"><div class="day-number">9</div></div>
+        <div class="day-cell">
+          <div class="day-number">10</div>
+          <div class="events"><div class="event event-exam">ORF — MIDTERM 2 (in-person)</div></div>
+        </div>
+        <div class="day-cell"><div class="day-number">11</div></div>
+        <!-- Apr 12–18 -->
+        <div class="day-cell"><div class="day-number">12</div></div>
+        <div class="day-cell">
+          <div class="day-number">13</div>
+          <div class="events"><div class="event event-hw">ECO — PS4 due</div></div>
+        </div>
+        <div class="day-cell"><div class="day-number">14</div></div>
+        <div class="day-cell">
+          <div class="day-number">15</div>
+          <div class="events"><div class="event event-pres">MUS — Presentations</div></div>
+        </div>
+        <div class="day-cell"><div class="day-number">16</div></div>
+        <div class="day-cell"><div class="day-number">17</div></div>
+        <div class="day-cell"><div class="day-number">18</div></div>
+        <!-- Apr 19–25 -->
+        <div class="day-cell"><div class="day-number">19</div></div>
+        <div class="day-cell"><div class="day-number">20</div></div>
+        <div class="day-cell"><div class="day-number">21</div></div>
+        <div class="day-cell">
+          <div class="day-number">22</div>
+          <div class="events"><div class="event event-pres">MUS — Presentations (last)</div></div>
+        </div>
+        <div class="day-cell">
+          <div class="day-number">23</div>
+          <div class="events"><div class="event event-hw">ECO — PS5 due (final PS)</div></div>
+        </div>
+        <div class="day-cell">
+          <div class="day-number">24</div>
+          <div class="events"><div class="event event-info">MUS — Last class</div></div>
+        </div>
+        <div class="day-cell"><div class="day-number">25</div></div>
+        <!-- Apr 26–30 -->
+        <div class="day-cell"><div class="day-number">26</div></div>
+        <div class="day-cell"><div class="day-number">27</div></div>
+        <div class="day-cell"><div class="day-number">28</div></div>
+        <div class="day-cell">
+          <div class="day-number">29</div>
+          <div class="events"><div class="event event-hw">ORF — HW9 due (last HW)</div></div>
+        </div>
+        <div class="day-cell"><div class="day-number">30</div></div>
+        <div class="day-cell empty"></div>
+        <div class="day-cell empty"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ MAY ═══════════════ -->
+  <div class="month-section">
+    <div class="month-title">May 2026 — Finals</div>
+    <div class="calendar">
+      <div class="day-headers">
+        <div class="day-header">Sun</div><div class="day-header">Mon</div><div class="day-header">Tue</div>
+        <div class="day-header">Wed</div><div class="day-header">Thu</div><div class="day-header">Fri</div><div class="day-header">Sat</div>
+      </div>
+      <div class="calendar-grid">
+        <!-- May 1 = Fri -->
+        <div class="day-cell empty"></div>
+        <div class="day-cell empty"></div>
+        <div class="day-cell empty"></div>
+        <div class="day-cell empty"></div>
+        <div class="day-cell empty"></div>
+        <div class="day-cell"><div class="day-number">1</div></div>
+        <div class="day-cell"><div class="day-number">2</div></div>
+        <!-- May 3–9 -->
+        <div class="day-cell"><div class="day-number">3</div></div>
+        <div class="day-cell"><div class="day-number">4</div></div>
+        <div class="day-cell"><div class="day-number">5</div></div>
+        <div class="day-cell"><div class="day-number">6</div></div>
+        <div class="day-cell"><div class="day-number">7</div></div>
+        <div class="day-cell"><div class="day-number">8</div></div>
+        <div class="day-cell">
+          <div class="day-number">9</div>
+          <div class="events"><div class="event event-exam">ASA — FINAL ESSAY due noon</div></div>
+        </div>
+        <!-- May 10–16 -->
+        <div class="day-cell">
+          <div class="day-number">10</div>
+          <div class="events"><div class="event event-paper">MUS — FINAL PAPER due 7pm (10pp)</div></div>
+        </div>
+        <div class="day-cell"><div class="day-number">11</div></div>
+        <div class="day-cell">
+          <div class="day-number">12</div>
+          <div class="events">
+            <div class="event event-exam">ORF — FINAL 12:30–3:30pm</div>
+            <div class="event event-exam">ECO — FINAL 4:00–7:00pm</div>
+          </div>
+        </div>
+        <div class="day-cell"><div class="day-number">13</div></div>
+        <div class="day-cell"><div class="day-number">14</div></div>
+        <div class="day-cell"><div class="day-number">15</div></div>
+        <div class="day-cell"><div class="day-number">16</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ DEADLINES TABLE ═══════════════ -->
+  <div class="section-title">All Major Deadlines</div>
+  <table class="deadlines-table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Course</th>
+        <th>Deadline</th>
+        <th>Type</th>
+        <th>Grade Weight</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="past-row">
+        <td>Feb 12 (Thu)</td>
+        <td><span class="course-pill pill-eco">ECO 310</span></td>
+        <td>PS1</td>
+        <td><span class="type-chip chip-hw">HW</span></td>
+        <td class="weight-col">up to 5%</td>
+      </tr>
+      <tr>
+        <td><strong>Feb 20 (Fri)</strong></td>
+        <td><span class="course-pill pill-mus">MUS 262</span></td>
+        <td>Quiz 1 — Early Jazz through Bebop + listening analysis</td>
+        <td><span class="type-chip chip-quiz">QUIZ</span></td>
+        <td class="weight-col">7.5%</td>
+      </tr>
+      <tr>
+        <td><strong>Feb 26 (Thu)</strong></td>
+        <td><span class="course-pill pill-asa">ASA 201</span></td>
+        <td>In-Class Midterm Essay</td>
+        <td><span class="type-chip chip-exam">EXAM</span></td>
+        <td class="weight-col">20%</td>
+      </tr>
+      <tr>
+        <td><strong>Feb 26 (Thu)</strong></td>
+        <td><span class="course-pill pill-eco">ECO 310</span></td>
+        <td>Problem Set 2</td>
+        <td><span class="type-chip chip-hw">HW</span></td>
+        <td class="weight-col">up to 5%</td>
+      </tr>
+      <tr>
+        <td><strong>Mar 5 (Thu)</strong></td>
+        <td><span class="course-pill pill-eco">ECO 310</span></td>
+        <td>Midterm Exam — 10:40am in-class</td>
+        <td><span class="type-chip chip-exam">EXAM</span></td>
+        <td class="weight-col">24–30%</td>
+      </tr>
+      <tr>
+        <td><strong>~Mar 6 (Fri)</strong></td>
+        <td><span class="course-pill pill-orf">ORF 309</span></td>
+        <td>Midterm 1 — in-person (Week 6, tentative)</td>
+        <td><span class="type-chip chip-exam">EXAM</span></td>
+        <td class="weight-col">20%</td>
+      </tr>
+      <tr>
+        <td><strong>Mar 6 (Fri)</strong></td>
+        <td><span class="course-pill pill-mus">MUS 262</span></td>
+        <td>Midterm Paper — 5 pages, due 11:59pm</td>
+        <td><span class="type-chip chip-paper">PAPER</span></td>
+        <td class="weight-col">20%</td>
+      </tr>
+      <tr>
+        <td><strong>Mar 25 (Wed)</strong></td>
+        <td><span class="course-pill pill-mus">MUS 262</span></td>
+        <td>Oral Presentations begin (10-min each)</td>
+        <td><span class="type-chip chip-pres">PRES</span></td>
+        <td class="weight-col">15%</td>
+      </tr>
+      <tr>
+        <td><strong>Mar 27 (Fri)</strong></td>
+        <td><span class="course-pill pill-mus">MUS 262</span></td>
+        <td>Quiz 2 — Hard Bop through 1980s + listening analysis</td>
+        <td><span class="type-chip chip-quiz">QUIZ</span></td>
+        <td class="weight-col">7.5%</td>
+      </tr>
+      <tr>
+        <td><strong>Apr 2 (Thu)</strong></td>
+        <td><span class="course-pill pill-eco">ECO 310</span></td>
+        <td>Problem Set 3</td>
+        <td><span class="type-chip chip-hw">HW</span></td>
+        <td class="weight-col">up to 5%</td>
+      </tr>
+      <tr>
+        <td><strong>~Apr 10 (Fri)</strong></td>
+        <td><span class="course-pill pill-orf">ORF 309</span></td>
+        <td>Midterm 2 — in-person (Week 10, tentative)</td>
+        <td><span class="type-chip chip-exam">EXAM</span></td>
+        <td class="weight-col">20%</td>
+      </tr>
+      <tr>
+        <td><strong>Apr 13 (Mon)</strong></td>
+        <td><span class="course-pill pill-eco">ECO 310</span></td>
+        <td>Problem Set 4</td>
+        <td><span class="type-chip chip-hw">HW</span></td>
+        <td class="weight-col">up to 5%</td>
+      </tr>
+      <tr>
+        <td><strong>Apr 23 (Thu)</strong></td>
+        <td><span class="course-pill pill-eco">ECO 310</span></td>
+        <td>Problem Set 5 — final problem set</td>
+        <td><span class="type-chip chip-hw">HW</span></td>
+        <td class="weight-col">up to 5%</td>
+      </tr>
+      <tr>
+        <td><strong>May 9 (Sat) noon</strong></td>
+        <td><span class="course-pill pill-asa">ASA 201</span></td>
+        <td>Final Essay — due on Canvas</td>
+        <td><span class="type-chip chip-exam">FINAL</span></td>
+        <td class="weight-col">25%</td>
+      </tr>
+      <tr>
+        <td><strong>May 10 (Sun) 7pm</strong></td>
+        <td><span class="course-pill pill-mus">MUS 262</span></td>
+        <td>Final Paper — 10 pages, thesis-driven, MLA format</td>
+        <td><span class="type-chip chip-paper">FINAL PAPER</span></td>
+        <td class="weight-col">30%</td>
+      </tr>
+      <tr>
+        <td><strong>May 12 (Tue) 12:30–3:30pm</strong></td>
+        <td><span class="course-pill pill-orf">ORF 309</span></td>
+        <td>Final Exam — in-person</td>
+        <td><span class="type-chip chip-exam">FINAL</span></td>
+        <td class="weight-col">40%</td>
+      </tr>
+      <tr>
+        <td><strong>May 12 (Tue) 4:00–7:00pm</strong></td>
+        <td><span class="course-pill pill-eco">ECO 310</span></td>
+        <td>Final Exam — in-person</td>
+        <td><span class="type-chip chip-exam">FINAL</span></td>
+        <td class="weight-col">50–60%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ═══════════════ WARNINGS ═══════════════ -->
+  <div class="warn-box">
+    <h3>Critical Stretches</h3>
+    <ul>
+      <li><strong>March 5–6:</strong> ECO Midterm (Thu) + ORF Midterm 1 + MUS 5-page paper both on Fri — your hardest 48 hours of the semester. Start studying 2+ weeks in advance.</li>
+      <li><strong>May 12:</strong> ORF Final (12:30pm) immediately followed by ECO Final (4pm) — two quantitative finals back-to-back on the same day.</li>
+      <li><strong>May 9–10:</strong> ASA Final Essay (Sat noon) then MUS 10-page research paper (Sun 7pm) on consecutive days. The MUS paper requires research — don't leave it for the last week.</li>
+      <li><strong>ORF 309 HWs:</strong> Due every Wednesday at 11:59pm — no exceptions without documentation. Build the routine now.</li>
+      <li><strong>ASA 201 Canvas posts:</strong> 23 posts across the semester, every Mon & Wed by 9pm. Skipping even a few will sting your grade (20% of final grade).</li>
+    </ul>
+  </div>
+
+  <script>
+    // Auto-update current day on page load
+    function updateCurrentDay() {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0); // normalize to midnight for comparison
+
+      // Remove old today/past classes
+      document.querySelectorAll('.day-cell').forEach(cell => {
+        cell.classList.remove('today', 'past');
+        const dayNum = cell.querySelector('.day-number');
+        if (dayNum && dayNum.textContent.includes('— Today')) {
+          dayNum.textContent = dayNum.textContent.replace(' — Today', '');
+        }
+      });
+
+      // Get all day cells and update
+      document.querySelectorAll('.day-cell').forEach(cell => {
+        const dayNumEl = cell.querySelector('.day-number');
+        if (!dayNumEl || cell.classList.contains('empty')) return;
+
+        const dayText = dayNumEl.textContent.trim();
+        const dayNumber = parseInt(dayText);
+        if (isNaN(dayNumber)) return;
+
+        // Determine month from the month-section parent
+        const monthSection = cell.closest('.month-section');
+        const monthTitle = monthSection.querySelector('.month-title').textContent;
+
+        let month, year = 2026;
+        if (monthTitle.includes('February')) month = 1; // 0-indexed
+        else if (monthTitle.includes('March')) month = 2;
+        else if (monthTitle.includes('April')) month = 3;
+        else if (monthTitle.includes('May')) month = 4;
+        else return;
+
+        const cellDate = new Date(year, month, dayNumber);
+        cellDate.setHours(0, 0, 0, 0);
+
+        if (cellDate < today) {
+          cell.classList.add('past');
+        } else if (cellDate.getTime() === today.getTime()) {
+          cell.classList.add('today');
+          dayNumEl.textContent = dayNumber + ' — Today';
+        }
+      });
+
+      // Update deadlines table rows
+      document.querySelectorAll('.deadlines-table tbody tr').forEach(row => {
+        if (row.classList.contains('past-row')) return; // skip already marked as past in HTML
+
+        const dateCell = row.querySelector('td:first-child');
+        if (!dateCell) return;
+
+        const dateText = dateCell.textContent.trim();
+        // Parse dates like "Feb 20 (Fri)" or "May 12 (Tue) 12:30–3:30pm"
+        const match = dateText.match(/^([A-Za-z]+)\s+(\d+)/);
+        if (!match) return;
+
+        const monthName = match[1];
+        const day = parseInt(match[2]);
+
+        const monthMap = { 'Feb': 1, 'Mar': 2, 'Apr': 3, 'May': 4 };
+        const month = monthMap[monthName];
+        if (month === undefined) return;
+
+        const deadlineDate = new Date(2026, month, day);
+        deadlineDate.setHours(0, 0, 0, 0);
+
+        if (deadlineDate < today) {
+          row.classList.add('past-row');
+        }
+      });
+    }
+
+    // Run on page load
+    updateCurrentDay();
+  </script>
+</body>
+</html>

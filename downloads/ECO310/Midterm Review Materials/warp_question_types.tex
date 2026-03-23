@@ -1,0 +1,417 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+
+\title{ECO 310: Complete Guide to WARP Questions on Midterms}
+\author{All Question Types and How to Solve Them}
+\date{March 1, 2026}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+\section{Overview}
+
+WARP (Weak Axiom of Revealed Preference) appears on almost every ECO 310 midterm, but in different formats. This guide covers ALL the types you might see.
+
+\subsection{What is WARP?}
+
+\textbf{WARP says:} If you choose bundle A when bundle B was also affordable, you cannot later choose bundle B when bundle A is also affordable.
+
+\textbf{Why?} The first choice revealed you prefer A to B. The second choice reveals you prefer B to A. This is a contradiction!
+
+\subsection{The Two Key Conditions for WARP Violation}
+
+For a new bundle $(x_1, x_2)$ to violate WARP when the original bundle was $(x_1^*, x_2^*)$:
+
+\begin{enumerate}
+\item \textbf{Condition 1 (Past):} The new bundle was affordable at old prices
+\[
+p_1^{old} x_1 + p_2^{old} x_2 \leq m^{old}
+\]
+
+\item \textbf{Condition 2 (Present):} The old bundle is affordable at new prices (proven by new bundle costing enough)
+\[
+p_1^{new} x_1 + p_2^{new} x_2 \geq p_1^{new} x_1^* + p_2^{new} x_2^*
+\]
+\end{enumerate}
+
+\textbf{If BOTH hold $\Rightarrow$ WARP VIOLATION!}
+
+\newpage
+
+\section{Type 1: Given Costs, Determine if WARP is Violated}
+
+\subsection{Format}
+
+You're told:
+\begin{itemize}
+\item What someone bought on Day 1 and how much it cost
+\item What they bought on Day 2 and how much it cost
+\item How much one bundle would have cost at the other day's prices
+\end{itemize}
+
+\textbf{Question:} Does this violate WARP?
+
+\subsection{Example: Spring 2023 Problem 2b}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Problem]
+Previously, he consumed $(4,2)$ when prices were $(1,3)$. Prices are now $(3,5)$. Which bundles $(x_1, x_2)$ would violate WARP if purchased now?
+\end{tcolorbox}
+
+\textbf{Solution Strategy:}
+
+\textbf{Step 1:} Calculate the old budget
+\[
+m^{old} = 1(4) + 3(2) = 10
+\]
+
+\textbf{Step 2:} Calculate what the old bundle costs at new prices
+\[
+\text{Cost}^{new}_{(4,2)} = 3(4) + 5(2) = 22
+\]
+
+\textbf{Step 3:} Write the two inequalities
+\begin{align*}
+\text{Inequality 1:} \quad & x_1 + 3x_2 \leq 10 \quad \text{(was affordable)}\\
+\text{Inequality 2:} \quad & 3x_1 + 5x_2 \geq 22 \quad \text{(costs enough now)}
+\end{align*}
+
+\textbf{Step 4:} Any bundle satisfying BOTH inequalities violates WARP!
+
+\textbf{Examples:}
+\begin{itemize}
+\item $(6, 1)$: Old cost = $9 \leq 10$ $eckmark$, New cost = $23 \geq 22$ $eckmark$ $\Rightarrow$ \textbf{VIOLATION}
+\item $(3, 2)$: Old cost = $9 \leq 10$ $eckmark$, New cost = $19 \not\geq 22$ $	imes$ $\Rightarrow$ \textbf{SAFE}
+\end{itemize}
+
+\newpage
+
+\section{Type 2: Given Cross-Price Information (Multiple Choice)}
+
+\subsection{Format}
+
+You're told:
+\begin{itemize}
+\item What bundle A cost on Monday and what it cost on Tuesday
+\item What bundle B cost on Monday and what it cost on Tuesday
+\item What choice was made each day
+\end{itemize}
+
+\textbf{Question:} Under what condition is WARP violated?
+
+\subsection{Example: Spring 2024 Q9}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Problem]
+On Monday, Homer buys a bundle for \$100. On Tuesday, he buys a different bundle for \$80, which would have cost \$100 on Monday. In which situation does Homer violate WARP?
+
+\textbf{(a)} If Monday bundle would cost more than \$80 at Tuesday prices\\
+\textbf{(b)} If Monday bundle would cost less than \$80 at Tuesday prices\\
+\textbf{(c)} If Monday bundle would cost less than \$100 at Tuesday prices\\
+\textbf{(d)} Homer does not violate WARP\\
+\textbf{(e)} Not enough information
+\end{tcolorbox}
+
+\textbf{Solution Strategy:}
+
+\textbf{Step 1:} Identify what we know
+\begin{itemize}
+\item Monday: Bought bundle M for \$100
+\item Tuesday: Bought bundle T for \$80
+\item Bundle T would have cost \$100 on Monday
+\end{itemize}
+
+\textbf{Step 2:} Check the two conditions
+
+\textbf{Condition 1:} Was bundle T affordable on Monday?
+\begin{itemize}
+\item Bundle T cost \$100 on Monday
+\item Homer spent \$100 on Monday (his budget)
+\item So YES, bundle T was affordable on Monday $eckmark$
+\end{itemize}
+
+\textbf{Condition 2:} Was bundle M affordable on Tuesday?
+\begin{itemize}
+\item Homer bought bundle T for \$80 on Tuesday
+\item This proves his budget was at least \$80
+\item Bundle M is affordable if it costs $\leq \$80$ at Tuesday prices
+\end{itemize}
+
+\textbf{Step 3:} Determine violation condition
+
+For WARP violation, we need BOTH conditions:
+\begin{enumerate}
+\item Bundle T was affordable Monday $eckmark$ (already true)
+\item Bundle M is affordable Tuesday $\Leftrightarrow$ costs $\leq \$80$ at Tuesday prices
+\end{enumerate}
+
+\textbf{Answer: (b)} If Monday bundle would cost less than \$80 at Tuesday prices
+
+\subsection{Why This Works}
+
+\textbf{Monday:} He chose M over T when both cost \$100 (both affordable) $\Rightarrow$ M $\succ$ T
+
+\textbf{Tuesday:} If M costs $< \$80$, then both M and T are affordable (he has $\geq \$80$), but he chose T $\Rightarrow$ T $\succ$ M
+
+\textbf{Contradiction!}
+
+\newpage
+
+\section{Type 3: Spring 2025 Version (Slight Variation)}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Problem]
+On Monday, Homer buys a bundle for \$90. On Tuesday, he buys a different bundle for \$100, that would have cost \$80 at Monday prices. In which situation does he violate WARP?
+
+\textbf{(a)} If Monday bundle would cost \$100 at Tuesday prices\\
+\textbf{(b)} If Monday bundle would cost more than \$100 at Tuesday prices\\
+\textbf{(c)} Homer does not violate WARP
+\end{tcolorbox}
+
+\textbf{Solution:}
+
+\textbf{Given:}
+\begin{itemize}
+\item Monday: Bought bundle M for \$90 (so budget = \$90)
+\item Tuesday: Bought bundle T for \$100 (so budget = \$100)
+\item Bundle T would have cost \$80 on Monday
+\end{itemize}
+
+\textbf{Check Condition 1:} Was T affordable Monday?
+\begin{itemize}
+\item T cost \$80 on Monday
+\item Budget was \$90
+\item \$80 $\leq$ \$90 $eckmark$ YES, T was affordable!
+\end{itemize}
+
+\textbf{Check Condition 2:} Was M affordable Tuesday?
+\begin{itemize}
+\item Homer spent \$100 Tuesday (his budget)
+\item M is affordable if it costs $\leq \$100$ at Tuesday prices
+\end{itemize}
+
+\textbf{For WARP violation:}
+\begin{itemize}
+\item Condition 1: $eckmark$ (T was affordable Monday)
+\item Condition 2: M costs $\leq \$100$ at Tuesday prices
+\end{itemize}
+
+\textbf{Answer: (a)} If Monday bundle would cost \$100 at Tuesday prices (or less!)
+
+Actually both (a) and anything $\leq \$100$ would work, but (b) says "more than \$100" which would NOT violate WARP because then M wouldn't be affordable Tuesday.
+
+\newpage
+
+\section{Step-by-Step Solution Template}
+
+Use this template for ANY WARP problem:
+
+\subsection{Template}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=orange!75!black,title=WARP Solution Template]
+
+\textbf{Given Information:}
+\begin{itemize}
+\item Time 1: Bought bundle $(x_1^*, x_2^*)$ with prices $(p_1^{old}, p_2^{old})$
+\item Budget/Cost at Time 1: $m^{old}$
+\item Time 2: Considering bundle $(x_1, x_2)$ with prices $(p_1^{new}, p_2^{new})$
+\end{itemize}
+
+\textbf{Step 1: Calculate old bundle cost at new prices}
+\[
+C^{new}_{old} = p_1^{new} x_1^* + p_2^{new} x_2^*
+\]
+
+\textbf{Step 2: Write Condition 1 (Was new bundle affordable before?)}
+\[
+p_1^{old} x_1 + p_2^{old} x_2 \leq m^{old}
+\]
+
+\textbf{Step 3: Write Condition 2 (Is old bundle affordable now?)}
+\[
+p_1^{new} x_1 + p_2^{new} x_2 \geq C^{new}_{old}
+\]
+
+\textbf{Step 4: Check both conditions}
+\begin{itemize}
+\item If BOTH true $\Rightarrow$ \textbf{WARP VIOLATION}
+\item If either false $\Rightarrow$ \textbf{NO VIOLATION (safe)}
+\end{itemize}
+
+\end{tcolorbox}
+
+\newpage
+
+\section{Common Tricks and Pitfalls}
+
+\subsection{Trick 1: "Would have cost" statements}
+
+When a problem says "bundle X would have cost \$Y at time 2 prices," this is giving you DIRECT information about the cost. Use it!
+
+\textbf{Example:} "Tuesday bundle would have cost \$100 at Monday prices"
+\[
+\Rightarrow p_1^{Mon} x_1^{Tue} + p_2^{Mon} x_2^{Tue} = 100
+\]
+
+\subsection{Trick 2: Budget vs. Cost}
+
+\begin{itemize}
+\item If someone \textbf{buys} a bundle for \$X, their budget is \textbf{at least} \$X
+\item If we know they spent exactly their whole budget (common assumption), budget = cost
+\end{itemize}
+
+\subsection{Trick 3: Inequality direction}
+
+\textbf{ALWAYS:}
+\begin{itemize}
+\item Past affordability: $\leq$ (bundle was cheap enough)
+\item Present affordability: $\geq$ (bundle costs enough to prove old one affordable)
+\end{itemize}
+
+\textbf{Never flip these!}
+
+\subsection{Trick 4: "Exactly at the boundary"}
+
+If a bundle costs \textbf{exactly} the budget amount (equality), it's still affordable!
+\begin{itemize}
+\item \$100 $\leq$ \$100 $eckmark$ TRUE
+\item This is a boundary case
+\end{itemize}
+
+\newpage
+
+\section{Practice Problems}
+
+\subsection{Problem 1}
+
+Last week: Bought $(3, 5)$ at prices $(2, 4)$\\
+This week: Prices are $(5, 3)$
+
+Which bundles violate WARP if purchased this week?
+\begin{itemize}
+\item (a) $(6, 2)$
+\item (b) $(2, 5)$
+\item (c) $(4, 4)$
+\end{itemize}
+
+\subsection{Problem 2}
+
+Monday: Homer buys bundle M for \$50\\
+Tuesday: Homer buys bundle T for \$60, which would have cost \$40 on Monday
+
+WARP is violated if:
+\begin{itemize}
+\item (a) Bundle M costs less than \$60 at Tuesday prices
+\item (b) Bundle M costs more than \$60 at Tuesday prices
+\item (c) Never violated
+\end{itemize}
+
+\subsection{Problem 3}
+
+Day 1: Prices $(1, 2)$, bought $(10, 5)$\\
+Day 2: Prices $(3, 1)$, bought $(4, 8)$
+
+Does this violate WARP? Show your work.
+
+\newpage
+
+\section{Solutions to Practice Problems}
+
+\subsection{Solution 1}
+
+\textbf{Given:}
+\begin{itemize}
+\item Old: $(3,5)$ at prices $(2, 4)$, cost = $2(3) + 4(5) = 26$
+\item New prices: $(5, 3)$
+\item Old bundle now costs: $5(3) + 3(5) = 30$
+\end{itemize}
+
+\textbf{Conditions:}
+\begin{align*}
+\text{Condition 1:} & \quad 2x_1 + 4x_2 \leq 26\\
+\text{Condition 2:} & \quad 5x_1 + 3x_2 \geq 30
+\end{align*}
+
+\textbf{Check each:}
+
+\textbf{(a) $(6, 2)$:}
+\begin{itemize}
+\item Old cost: $2(6) + 4(2) = 20 \leq 26$ $eckmark$
+\item New cost: $5(6) + 3(2) = 36 \geq 30$ $eckmark$
+\item \textbf{VIOLATES WARP!}
+\end{itemize}
+
+\textbf{(b) $(2, 5)$:}
+\begin{itemize}
+\item Old cost: $2(2) + 4(5) = 24 \leq 26$ $eckmark$
+\item New cost: $5(2) + 3(5) = 25 \not\geq 30$ $	imes$
+\item \textbf{SAFE}
+\end{itemize}
+
+\textbf{(c) $(4, 4)$:}
+\begin{itemize}
+\item Old cost: $2(4) + 4(4) = 24 \leq 26$ $eckmark$
+\item New cost: $5(4) + 3(4) = 32 \geq 30$ $eckmark$
+\item \textbf{VIOLATES WARP!}
+\end{itemize}
+
+\subsection{Solution 2}
+
+\textbf{Given:}
+\begin{itemize}
+\item Monday: M costs \$50 (budget = \$50)
+\item Tuesday: T costs \$60 (budget = \$60)
+\item T would have cost \$40 on Monday
+\end{itemize}
+
+\textbf{Condition 1:} Was T affordable Monday?
+\begin{itemize}
+\item T cost \$40, budget was \$50
+\item \$40 $\leq$ \$50 $eckmark$
+\end{itemize}
+
+\textbf{Condition 2:} Is M affordable Tuesday?
+\begin{itemize}
+\item Budget Tuesday is \$60
+\item M is affordable if it costs $\leq \$60$
+\end{itemize}
+
+\textbf{Answer: (a)} If M costs less than \$60 at Tuesday prices (or equal!)
+
+\subsection{Solution 3}
+
+\textbf{Day 1:}
+\begin{itemize}
+\item Bought: $(10, 5)$
+\item Prices: $(1, 2)$
+\item Cost: $1(10) + 2(5) = 20$
+\end{itemize}
+
+\textbf{Day 2:}
+\begin{itemize}
+\item Bought: $(4, 8)$
+\item Prices: $(3, 1)$
+\item Cost: $3(4) + 1(8) = 20$
+\end{itemize}
+
+\textbf{Check if Day 2 bundle was affordable Day 1:}
+\[
+1(4) + 2(8) = 20 \leq 20 \quad \checkmark
+\]
+
+\textbf{Check if Day 1 bundle is affordable Day 2:}
+\[
+3(10) + 1(5) = 35
+\]
+
+Day 2 budget is \$20 (what they spent). Is \$35 $\leq$ \$20? NO!
+
+\textbf{Conclusion:} \textbf{NO VIOLATION} - Day 1 bundle is NOT affordable on Day 2.
+
+\end{document}

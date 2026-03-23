@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Midterm Study Game Plan — Spring 2026</title>
+  <style>
+    :root {
+      --asa: #7C3AED; --eco: #2563EB; --mus: #D97706; --orf: #059669;
+      --bg: #F8FAFC; --card: #FFFFFF; --border: #E2E8F0;
+      --text: #1E293B; --muted: #94A3B8;
+      --hover-bg: #F1F5F9; --bar-bg: #F1F5F9;
+      --today-card-bg: #FFFBEB; --today-border: #F59E0B; --today-date: #B45309; --today-tag-bg: #FEF3C7; --today-tag-text: #92400E;
+      --exam-border: #DC2626; --exam-date: #991B1B; --exam-tag-bg: #FEE2E2; --exam-tag-text: #B91C1C;
+      --rest-border: #22C55E; --rest-tag-bg: #D1FAE5; --rest-tag-text: #166534;
+      --task-exam-bg: #FEF2F2; --task-practice-bg: #EFF6FF;
+      --task-focus-bg: #FFFBEB;
+      --drag-handle: #CBD5E1;
+      --btn-danger-text: #DC2626; --btn-danger-border: #FECACA; --btn-danger-hover: #FEF2F2;
+      --tag-asa-bg: #EDE9FE; --tag-asa-text: #6D28D9;
+      --tag-eco-bg: #DBEAFE; --tag-eco-text: #1D4ED8;
+      --tag-mus-bg: #FEF3C7; --tag-mus-text: #B45309;
+      --tag-orf-bg: #D1FAE5; --tag-orf-text: #047857;
+      --tag-deadline-bg: #F1F5F9; --tag-deadline-text: #64748B;
+      --tag-exam-bg: #FEE2E2; --tag-exam-text: #B91C1C;
+      --tag-practice-bg: #BFDBFE; --tag-practice-text: #1E40AF;
+      --legend-exam-bg: #FEE2E2; --legend-exam-text: #B91C1C;
+      --legend-practice-bg: #BFDBFE; --legend-practice-text: #1E3A8A;
+      --legend-deadline-bg: #F1F5F9; --legend-deadline-text: #475569;
+      --rules-bg: #EFF6FF; --rules-border: #BFDBFE; --rules-title: #1E40AF; --rules-text: #1E3A8A; --rules-arrow: #3B82F6;
+      --task-btn-del-hover-bg: #FEE2E2; --task-btn-del-hover-text: #DC2626;
+      --week-divider: #CBD5E1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg); color: var(--text);
+      padding: 1.5rem 2rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* ── HEADER ── */
+    .header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1.25rem; }
+    .header-left h1 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; }
+    .header-left .subtitle { color: var(--muted); font-size: 0.82rem; margin-top: 0.15rem; }
+    .header-right { display: flex; gap: 0.5rem; align-items: center; }
+    .btn {
+      padding: 0.4rem 0.8rem; border-radius: 7px; font-size: 0.72rem; font-weight: 700;
+      border: 1px solid var(--border); background: var(--card); color: var(--text);
+      cursor: pointer; transition: all 0.15s;
+    }
+    .btn:hover { background: var(--hover-bg); }
+    .btn-danger { color: var(--btn-danger-text); border-color: var(--btn-danger-border); }
+    .btn-danger:hover { background: var(--btn-danger-hover); }
+
+    /* ── PROGRESS ── */
+    .progress-section {
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.6rem;
+      margin-bottom: 1.25rem;
+    }
+    .progress-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+      padding: 0.6rem 0.8rem;
+    }
+    .pc-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem; }
+    .pc-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+    .pc-count { font-size: 0.78rem; font-weight: 800; }
+    .pc-bar { height: 5px; background: var(--bar-bg); border-radius: 99px; overflow: hidden; }
+    .pc-fill { height: 100%; border-radius: 99px; transition: width 0.3s; }
+
+    /* ── LEGEND ── */
+    .legend {
+      display: flex; align-items: center; flex-wrap: wrap; gap: 0.8rem;
+      padding: 0.55rem 0.9rem; background: var(--card); border: 1px solid var(--border);
+      border-radius: 9px; margin-bottom: 1.5rem; font-size: 0.74rem;
+    }
+    .l-item { display: flex; align-items: center; gap: 0.3rem; font-weight: 600; }
+    .l-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+    .legend-div { width: 1px; height: 16px; background: var(--border); }
+    .l-tag { display: inline-block; padding: 0.08rem 0.35rem; border-radius: 4px; font-size: 0.64rem; font-weight: 700; }
+    .l-exam     { background: var(--legend-exam-bg); color: var(--legend-exam-text); }
+    .l-practice { background: var(--legend-practice-bg); color: var(--legend-practice-text); }
+    .l-deadline { background: var(--legend-deadline-bg); color: var(--legend-deadline-text); }
+    .l-drag { color: var(--muted); font-weight: 400; font-style: italic; }
+
+    /* ── MINI CALENDAR ── */
+    .mini-cal {
+      background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+      padding: 1rem 1.25rem; margin-bottom: 1.5rem;
+    }
+    .mini-cal-title {
+      font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.05em; color: var(--muted); margin-bottom: 0.6rem;
+    }
+    .mini-cal-months {
+      display: flex; gap: 2rem;
+    }
+    .mini-cal-month { flex: 1; }
+    .mini-cal-month-name {
+      font-size: 0.82rem; font-weight: 800; margin-bottom: 0.4rem;
+    }
+    .mini-cal-grid {
+      display: grid; grid-template-columns: repeat(7, 1fr); gap: 0;
+    }
+    .mini-cal-dow {
+      font-size: 0.6rem; font-weight: 700; text-transform: uppercase;
+      color: var(--muted); text-align: center; padding: 0.2rem 0;
+      letter-spacing: 0.04em;
+    }
+    .mini-cal-cell {
+      text-align: center; padding: 0.2rem 0.1rem; min-height: 52px;
+      display: flex; flex-direction: column; align-items: center; gap: 0.1rem;
+      border-top: 1px solid var(--border);
+    }
+    .mini-cal-cell.empty { border-top: none; }
+    .mini-cal-num {
+      font-size: 0.72rem; font-weight: 600; width: 24px; height: 24px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; line-height: 1;
+    }
+    .mini-cal-cell.in-range .mini-cal-num { font-weight: 700; }
+    .mini-cal-cell.out-range .mini-cal-num { color: var(--muted); opacity: 0.4; }
+    .mini-cal-cell.is-today .mini-cal-num {
+      background: var(--today-border); color: #fff; font-weight: 800;
+    }
+    .mini-cal-cell.is-exam .mini-cal-num {
+      background: var(--exam-tag-bg); color: var(--exam-tag-text); font-weight: 800;
+    }
+    .mini-cal-events {
+      display: flex; flex-direction: column; gap: 0.05rem; width: 100%;
+    }
+    .mini-cal-ev {
+      font-size: 0.52rem; font-weight: 700; line-height: 1.2;
+      padding: 0.06rem 0.2rem; border-radius: 2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .mini-cal-ev.ev-exam { background: var(--exam-tag-bg); color: var(--exam-tag-text); }
+    .mini-cal-ev.ev-deadline { background: var(--tag-deadline-bg); color: var(--tag-deadline-text); }
+    .mini-cal-ev.ev-practice { background: var(--tag-practice-bg); color: var(--tag-practice-text); }
+
+    /* ── WEEK DIVIDER ── */
+    .week-divider {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin: 1.5rem 0 0.75rem;
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.06em; color: var(--muted);
+    }
+    .week-divider::after {
+      content: ''; flex: 1; height: 1px; background: var(--week-divider);
+    }
+
+    /* ── DAY ROW (vertical list layout) ── */
+    .day-row {
+      display: flex;
+      gap: 1rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 0.5rem;
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+    .day-row.drag-over { box-shadow: 0 0 0 2px #3B82F6; }
+    .day-row.today { border-left: 4px solid var(--today-border); background: var(--today-card-bg); }
+    .day-row.exam-day { border-left: 4px solid var(--exam-border); }
+    .day-row.rest-day { border-left: 4px solid var(--rest-border); }
+
+    /* Left: date sidebar */
+    .day-sidebar {
+      flex-shrink: 0;
+      width: 100px;
+      padding: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0.3rem;
+      border-right: 1px solid var(--border);
+    }
+    .day-sidebar .day-name {
+      font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.06em; color: var(--muted);
+    }
+    .day-sidebar .day-number {
+      font-size: 1.5rem; font-weight: 800; line-height: 1;
+    }
+    .day-sidebar .day-month {
+      font-size: 0.65rem; font-weight: 600; color: var(--muted);
+    }
+    .day-row.today .day-number { color: var(--today-date); }
+    .day-row.exam-day .day-number { color: var(--exam-date); }
+
+    .day-tag {
+      font-size: 0.58rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+      padding: 0.12rem 0.45rem; border-radius: 4px; margin-top: 0.15rem;
+    }
+    .day-tag-today { background: var(--today-tag-bg); color: var(--today-tag-text); }
+    .day-tag-exam { background: var(--exam-tag-bg); color: var(--exam-tag-text); }
+    .day-tag-rest { background: var(--rest-tag-bg); color: var(--rest-tag-text); }
+
+    .day-count {
+      font-size: 0.62rem; color: var(--muted); font-weight: 600; margin-top: 0.25rem;
+    }
+
+    /* Right: task list */
+    .task-list {
+      flex: 1;
+      padding: 0.5rem 0.6rem;
+      min-height: 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    /* ── TASK ITEMS ── */
+    .task-item {
+      display: flex; align-items: flex-start; gap: 0.4rem;
+      padding: 0.35rem 0.45rem; border-radius: 6px;
+      font-size: 0.8rem; line-height: 1.4; cursor: grab;
+      border-left: 3px solid transparent; transition: opacity 0.2s, background 0.15s;
+    }
+    .task-item:hover { background: var(--hover-bg); }
+    .task-item.dragging { opacity: 0.35; }
+    .task-item.task-checked { opacity: 0.45; }
+    .task-item.task-checked .task-text { text-decoration: line-through; }
+
+    .task-item.c-asa { border-left-color: var(--asa); }
+    .task-item.c-eco { border-left-color: var(--eco); }
+    .task-item.c-mus { border-left-color: var(--mus); }
+    .task-item.c-orf { border-left-color: var(--orf); }
+    .task-item.c-deadline { border-left-color: #94A3B8; }
+    .task-item.c-rest { border-left-color: #22C55E; }
+
+    .task-item.t-exam { background: var(--task-exam-bg); border-left-color: #DC2626; }
+    .task-item.t-practice { background: var(--task-practice-bg); border-left-color: #3B82F6; }
+
+    .drag-handle {
+      color: var(--drag-handle); font-size: 0.75rem; cursor: grab; flex-shrink: 0;
+      line-height: 1.2; user-select: none; margin-top: 0.08rem;
+    }
+    .task-item.t-exam .drag-handle,
+    .task-item.t-rest .drag-handle { visibility: hidden; }
+
+    .task-check { flex-shrink: 0; margin-top: 0.08rem; }
+    .task-check input {
+      width: 15px; height: 15px; cursor: pointer;
+      accent-color: #22C55E;
+    }
+
+    .task-text { flex: 1; cursor: text; }
+    .task-text:focus {
+      outline: none;
+      background: var(--task-focus-bg);
+      border-radius: 3px;
+      padding: 0.05rem 0.15rem;
+      margin: -0.05rem -0.15rem;
+    }
+
+    .task-actions {
+      display: none; flex-shrink: 0; gap: 0.15rem;
+      align-items: center; margin-top: 0.02rem;
+    }
+    .task-item:hover .task-actions { display: flex; }
+
+    .task-btn {
+      border: none; background: none; cursor: pointer;
+      font-size: 0.65rem; padding: 0.1rem 0.2rem; border-radius: 3px;
+      line-height: 1; color: var(--muted); transition: all 0.1s;
+    }
+    .task-btn:hover { background: var(--hover-bg); color: var(--text); }
+    .task-btn-del:hover { background: var(--task-btn-del-hover-bg); color: var(--task-btn-del-hover-text); }
+
+    .task-tag {
+      flex-shrink: 0; font-size: 0.6rem; font-weight: 700; padding: 0.08rem 0.35rem;
+      border-radius: 3px; margin-top: 0.1rem; text-transform: uppercase; white-space: nowrap;
+    }
+    .tag-asa { background: var(--tag-asa-bg); color: var(--tag-asa-text); }
+    .tag-eco { background: var(--tag-eco-bg); color: var(--tag-eco-text); }
+    .tag-mus { background: var(--tag-mus-bg); color: var(--tag-mus-text); }
+    .tag-orf { background: var(--tag-orf-bg); color: var(--tag-orf-text); }
+    .tag-deadline { background: var(--tag-deadline-bg); color: var(--tag-deadline-text); }
+    .tag-exam { background: var(--tag-exam-bg); color: var(--tag-exam-text); }
+    .tag-practice { background: var(--tag-practice-bg); color: var(--tag-practice-text); }
+
+    /* ── RULES ── */
+    .rules-box {
+      margin-top: 1.25rem; padding: 0.85rem 1.1rem;
+      background: var(--rules-bg); border: 1px solid var(--rules-border); border-radius: 10px;
+    }
+    .rules-box h3 {
+      font-size: 0.76rem; font-weight: 700; color: var(--rules-title);
+      margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .rules-box ul { list-style: none; display: flex; flex-direction: column; gap: 0.25rem; }
+    .rules-box li {
+      font-size: 0.74rem; color: var(--rules-text); padding-left: 0.9rem;
+      position: relative; line-height: 1.4;
+    }
+    .rules-box li::before { content: "\2192"; position: absolute; left: 0; color: var(--rules-arrow); }
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<div class="header">
+  <div class="header-left">
+    <h1>Midterm Study Game Plan</h1>
+    <div class="subtitle">Feb 19 &ndash; Mar 7, 2026 &nbsp;&middot;&nbsp; ASA 201 &middot; ECO 310 &middot; MUS 262 &middot; ORF 309</div>
+  </div>
+  <div class="header-right">
+    <button class="btn" onclick="exportState()">Save</button>
+    <button class="btn" onclick="collapseCompleted()">Hide done</button>
+    <button class="btn btn-danger" onclick="resetAll()">Reset</button>
+  </div>
+</div>
+
+<!-- ── PROGRESS ── -->
+<div class="progress-section" id="progress"></div>
+
+<!-- ── LEGEND ── -->
+<div class="legend">
+  <div class="l-item"><div class="l-dot" style="background:var(--asa)"></div>ASA</div>
+  <div class="l-item"><div class="l-dot" style="background:var(--eco)"></div>ECO</div>
+  <div class="l-item"><div class="l-dot" style="background:var(--mus)"></div>MUS</div>
+  <div class="l-item"><div class="l-dot" style="background:var(--orf)"></div>ORF</div>
+  <div class="legend-div"></div>
+  <span class="l-tag l-exam">EXAM</span>
+  <span class="l-tag l-practice">PRACTICE</span>
+  <span class="l-tag l-deadline">DEADLINE</span>
+  <div class="legend-div"></div>
+  <span class="l-drag">Drag tasks between days to reschedule</span>
+</div>
+
+<!-- ── MINI CALENDAR OVERVIEW ── -->
+<div id="mini-cal" class="mini-cal"></div>
+
+<!-- ── DAY-BY-DAY DETAILS ── -->
+<div id="calendar"></div>
+
+<!-- ── RULES ── -->
+<div class="rules-box">
+  <h3>Non-Negotiables</h3>
+  <ul>
+    <li><strong>ECO + ORF prep starts today.</strong> Both get the full 14 days. Content review, then 3 practices each, then revision.</li>
+    <li><strong>Every practice is timed and closed-book.</strong> Set a timer. Simulate exam conditions for real.</li>
+    <li><strong>Review every practice the next day.</strong> Redo every problem you got wrong &mdash; the mistakes are the most valuable part.</li>
+    <li><strong>MUS paper done by Mar 5 night.</strong> If it bleeds into Mar 6 morning it compromises ORF revision.</li>
+    <li><strong>Don't skip the weekly grind:</strong> ORF HW (Wed 11:59pm) and ASA Canvas posts (Mon &amp; Wed 9pm) are free points.</li>
+    <li><strong>Protect sleep Mar 4 and Mar 5.</strong> Two back-to-back exam days on no sleep costs more than extra cramming gains.</li>
+  </ul>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// TASK DATA
+// ═══════════════════════════════════════════════════════
+const TASK_DEFS = {
+  t01: ['mus','study','Review Early Jazz & New Orleans style: Armstrong, King Oliver, Jelly Roll Morton — know the sound and dates'],
+  t02: ['mus','study','Review Swing era: Duke Ellington, Count Basie, Benny Goodman — big band vs. small combo distinctions'],
+  t03: ['mus','study','Review Bebop: Charlie Parker, Dizzy Gillespie, Monk, Bud Powell — what changed from Swing and why'],
+  t04: ['mus','study','Run through 10+ listening IDs: play clips, pause, write down era/artist/style before checking'],
+  t05: ['eco','study','Read through lecture notes weeks 1-2: preferences, indifference curves, budget constraints'],
+  t06: ['mus','exam','MUS QUIZ 1 (7.5%)'],
+  t07: ['eco','study','Read through lecture notes weeks 2-3: utility maximization, Marshallian demand derivation'],
+  t08: ['eco','study','Rework all PS1 problems from scratch — no solutions open, grade yourself after'],
+  t09: ['orf','study','Read through lecture notes week 1: probability axioms, sample spaces, basic counting principles'],
+  t39: ['mus','study','Choose your paper topic — write a 1-sentence thesis statement'],
+  t40: ['mus','study','Find 3-5 scholarly sources (JSTOR, library catalog) — save citations in MLA format'],
+  t10: ['eco','study','Read through lecture notes weeks 3-4: Slutsky equation, income & substitution effects'],
+  t11: ['eco','study','Redo every PS1 problem you got wrong — write out full solutions, then compare to key'],
+  t12: ['orf','study','Read through lecture notes week 2: conditional probability, multiplication rule, total probability'],
+  t13: ['orf','study','Redo HW1 all problems closed-note — grade yourself, star every mistake'],
+  t41: ['mus','study','Write full paper outline: intro with thesis, 3 body paragraph arguments with source support, conclusion'],
+  t14: ['eco','study','ECO weeks 4-5: review uncertainty, expected utility, risk aversion — then work practice problems'],
+  t76: ['asa','study','ASA: re-read weeks 1-4 readings + posts, outline 3 essay themes | MUS: write intro + body 1-2 (~2 pages)'],
+  t18: ['orf','study','Read through lecture notes week 3: Bayes\' theorem, law of total probability, independence'],
+  t19: ['orf','study','Redo HW2 all problems closed-note — grade yourself, star every mistake'],
+  t20: ['asa','study','Re-read assigned readings from weeks 5-7 — add to your highlighted quotes bank'],
+  t21: ['asa','study','Write 2 full essay outlines: thesis + 3 supporting points, each tied to a specific reading/quote'],
+  t22: ['deadline','deadline','ASA Canvas post due 9pm'],
+  t50: ['mus','study','Write body paragraph 3 + conclusion (~1.5 pages) — you should now have a complete 5-page rough draft'],
+  t23: ['eco','study','Read through lecture notes weeks 5-6: producer theory, production functions, cost curves'],
+  t24: ['eco','study','Complete PS2 — finish all problems, double-check answers, submit'],
+  t25: ['orf','study','Read through lecture notes week 4: discrete RVs — PMFs, Binomial, Poisson, Geometric distributions'],
+  t26: ['orf','study','Redo HW3 all problems closed-note — grade yourself, star every mistake'],
+  t54: ['mus','study','Revise full MUS draft — read aloud, tighten arguments, fix transitions between paragraphs, verify all citations'],
+  t27: ['eco','practice','ECO PRACTICE 1: Set a 75-min timer, closed-book, work through a full problem set under exam conditions'],
+  t28: ['eco','study','Score Practice 1 — mark every missed problem, categorize errors (conceptual vs. computational vs. setup)'],
+  t29: ['asa','study','Write a full timed practice essay (50 min): pick one of your outlines, write intro through conclusion'],
+  t30: ['asa','study','Review your practice essay: mark where arguments are weak, evidence is thin, or transitions are abrupt'],
+  t31: ['deadline','deadline','ORF HW4 due 11:59pm'],
+  t32: ['deadline','deadline','ASA Canvas post due 9pm'],
+  t33: ['asa','exam','ASA MIDTERM (20%) — in-class essay'],
+  t34: ['deadline','deadline','ECO PS2 due'],
+  t35: ['orf','practice','ORF PRACTICE 1: Set a 90-min timer, redo all HW1-HW3 problems cold without notes or solutions'],
+  t36: ['orf','study','Score Practice 1 — mark every missed problem, categorize errors by topic (Bayes, counting, conditional, etc.)'],
+  t37: ['eco','study','Redo every ECO Practice 1 problem you missed — full solutions from scratch, then check'],
+  t38: ['eco','study','Write down your 3 weakest ECO topic areas — these become your focus for Practice 2 prep'],
+  t64: ['mus','study','Final MUS paper edit — proofread every sentence, check MLA formatting, verify bibliography, fix typos'],
+  t71: ['mus','study','Final MUS paper read-through — last check, then submit to Canvas'],
+  t42: ['orf','study','Redo every ORF Practice 1 problem you missed — full solutions from scratch, then check'],
+  t43: ['orf','study','Write down your 3 weakest ORF topic areas — these become your focus for Practice 2 prep'],
+  t46: ['eco','practice','ECO PRACTICE 2: Set a 75-min timer, use a past exam or fresh problem set, strict exam conditions'],
+  t47: ['eco','study','Score Practice 2 — compare errors to Practice 1: are you making the same mistakes or new ones?'],
+  t48: ['orf','study','Read through lecture notes week 5: continuous RVs — PDFs, CDFs, Uniform, Exponential, Normal distributions'],
+  t49: ['orf','study','Read through lecture notes week 6: expectation, variance, covariance, joint distributions, independence'],
+  t51: ['orf','practice','ORF PRACTICE 2: Set a 90-min timer, use a past exam or HW4-HW5 problems, strict exam conditions'],
+  t52: ['orf','study','Score Practice 2 — compare errors to Practice 1: are you repeating mistakes or hitting new topics?'],
+  t53: ['eco','study','Redo every ECO Practice 2 problem you missed — focus on conceptual errors, not just arithmetic'],
+  t55: ['deadline','deadline','ASA Canvas post due 9pm'],
+  t56: ['eco','study','Attend ECO review session — write down every topic/problem type the professor emphasizes or repeats'],
+  t57: ['eco','practice','ECO PRACTICE 3: Full mock exam, strict conditions — 75 min, closed-book, no breaks, new problems'],
+  t58: ['eco','study','Score Practice 3 — this is your final diagnostic. List every remaining weak spot.'],
+  t59: ['orf','study','Redo every ORF Practice 2 problem you missed — full solutions, then check against key'],
+  t60: ['orf','practice','ORF PRACTICE 3: Full mock exam, strict conditions — 90 min, closed-book, no breaks, new problems'],
+  t61: ['orf','study','Score Practice 3 — this is your final diagnostic. List every remaining weak spot.'],
+  t62: ['eco','study','Build a 1-page ECO formula/concept cheat sheet from all 3 practices — only include things you forgot'],
+  t63: ['eco','study','Redo your 5 most-missed ECO problem types across all 3 practices — last pass on weak spots'],
+  t65: ['deadline','deadline','ORF HW5 due 11:59pm'],
+  t66: ['deadline','deadline','ASA Canvas post due 9pm'],
+  t67: ['eco','study','30-min ECO morning review only — scan your formula sheet, review your cheat sheet, nothing new'],
+  t68: ['eco','exam','ECO MIDTERM 10:40am (24-30%)'],
+  t69: ['orf','study','Redo every ORF Practice 3 problem you missed — last chance to close gaps'],
+  t70: ['orf','study','Build/finalize a 1-page ORF formula sheet — distributions, key formulas, Bayes setup, common traps'],
+  t72: ['orf','study','30-min ORF morning review only — scan your formula sheet, deep breaths, nothing new'],
+  t73: ['orf','exam','ORF MIDTERM 1 (20%)'],
+  t74: ['mus','exam','MUS MIDTERM PAPER due 11:59pm (20%) — should already be submitted'],
+  t75: ['rest','rest','Done. Rest. Spring break starts tomorrow.'],
+};
+
+const DEFAULT_LAYOUT = {
+  '0219': ['t01','t02','t03','t04','t05'],
+  '0220': ['t06','t07','t08','t09','t39','t40'],
+  '0221': ['t10','t11','t12','t13','t41'],
+  '0222': ['t14','t76'],
+  '0223': ['t18','t19','t20','t21','t22','t50'],
+  '0224': ['t23','t24','t25','t26','t54'],
+  '0225': ['t27','t28','t29','t30','t31','t32'],
+  '0226': ['t33','t34','t35','t36'],
+  '0227': ['t37','t38','t64','t71'],
+  '0228': ['t42','t43'],
+  '0301': ['t46','t47','t48','t49'],
+  '0302': ['t51','t52','t53','t55'],
+  '0303': ['t56','t57','t58','t59'],
+  '0304': ['t60','t61','t62','t63','t65','t66'],
+  '0305': ['t67','t68','t69','t70'],
+  '0306': ['t72','t73','t74'],
+  '0307': ['t75'],
+};
+
+const DAYS = [
+  { id:'0219', label:'19', fullLabel:'Thu Feb 19', dayName:'Thu', month:'Feb', flags:['today'] },
+  { id:'0220', label:'20', fullLabel:'Fri Feb 20', dayName:'Fri', month:'Feb', flags:[] },
+  { id:'0221', label:'21', fullLabel:'Sat Feb 21', dayName:'Sat', month:'Feb', flags:[] },
+  { id:'0222', label:'22', fullLabel:'Sun Feb 22', dayName:'Sun', month:'Feb', flags:[] },
+  { id:'0223', label:'23', fullLabel:'Mon Feb 23', dayName:'Mon', month:'Feb', flags:[] },
+  { id:'0224', label:'24', fullLabel:'Tue Feb 24', dayName:'Tue', month:'Feb', flags:[] },
+  { id:'0225', label:'25', fullLabel:'Wed Feb 25', dayName:'Wed', month:'Feb', flags:[] },
+  { id:'0226', label:'26', fullLabel:'Thu Feb 26', dayName:'Thu', month:'Feb', flags:['exam'] },
+  { id:'0227', label:'27', fullLabel:'Fri Feb 27', dayName:'Fri', month:'Feb', flags:[] },
+  { id:'0228', label:'28', fullLabel:'Sat Feb 28', dayName:'Sat', month:'Feb', flags:[] },
+  { id:'0301', label:'1',  fullLabel:'Sun Mar 1',  dayName:'Sun', month:'Mar', flags:[] },
+  { id:'0302', label:'2',  fullLabel:'Mon Mar 2',  dayName:'Mon', month:'Mar', flags:[] },
+  { id:'0303', label:'3',  fullLabel:'Tue Mar 3',  dayName:'Tue', month:'Mar', flags:[] },
+  { id:'0304', label:'4',  fullLabel:'Wed Mar 4',  dayName:'Wed', month:'Mar', flags:[] },
+  { id:'0305', label:'5',  fullLabel:'Thu Mar 5',  dayName:'Thu', month:'Mar', flags:['exam'] },
+  { id:'0306', label:'6',  fullLabel:'Fri Mar 6',  dayName:'Fri', month:'Mar', flags:['exam'] },
+  { id:'0307', label:'7',  fullLabel:'Sat Mar 7',  dayName:'Sat', month:'Mar', flags:['rest'] },
+];
+
+const ALL_DAY_IDS = DAYS.map(d => d.id);
+
+const COURSE_LABELS = { asa:'ASA', eco:'ECO', mus:'MUS', orf:'ORF', deadline:'DUE', rest:'' };
+
+// Week groupings for dividers
+const WEEKS = [
+  { label: 'Week 1 — Feb 19–22', days: ['0219','0220','0221','0222'] },
+  { label: 'Week 2 — Feb 23–28', days: ['0223','0224','0225','0226','0227','0228'] },
+  { label: 'Final Push — Mar 1–7', days: ['0301','0302','0303','0304','0305','0306','0307'] },
+];
+
+// ═══════════════════════════════
+// STATE
+// ═══════════════════════════════
+let state = { layout: {}, checked: {} };
+const STORAGE_KEY = 'midterm-gameplan-v4';
+let hideDone = false;
+
+function getDefaultState() {
+  const layout = {};
+  for (const [day, ids] of Object.entries(DEFAULT_LAYOUT)) layout[day] = [...ids];
+  return { layout, checked: {}, edits: {}, deleted: {} };
+}
+
+function saveState() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+function loadState() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    if (saved && saved.layout) {
+      state = saved;
+      if (!state.edits) state.edits = {};
+      if (!state.deleted) state.deleted = {};
+      for (const day of Object.keys(DEFAULT_LAYOUT)) {
+        if (!state.layout[day]) state.layout[day] = [];
+      }
+    } else {
+      state = getDefaultState();
+    }
+  } catch {
+    state = getDefaultState();
+  }
+}
+
+function resetAll() {
+  if (!confirm('Reset all progress? This clears every checkbox and moves all tasks back to their original days.')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  state = getDefaultState();
+  render();
+}
+
+// ═══════════════════════════════
+// RENDER
+// ═══════════════════════════════
+function render() {
+  renderMiniCal();
+  renderCalendar();
+  renderProgress();
+}
+
+// ═══════════════════════════════
+// MINI CALENDAR OVERVIEW
+// ═══════════════════════════════
+function renderMiniCal() {
+  const container = document.getElementById('mini-cal');
+
+  // Collect key events per day (exams, deadlines, practices only)
+  const KEY_EVENTS = {};
+  for (const [dayId, taskIds] of Object.entries(state.layout)) {
+    const events = [];
+    for (const tid of taskIds) {
+      if (state.deleted && state.deleted[tid]) continue;
+      const def = TASK_DEFS[tid];
+      if (!def) continue;
+      const [course, type, text] = def;
+      if (type === 'exam') events.push({ cls: 'ev-exam', label: text.split('—')[0].split('(')[0].trim() });
+      else if (type === 'deadline') events.push({ cls: 'ev-deadline', label: text });
+      else if (type === 'practice') events.push({ cls: 'ev-practice', label: text.split(':')[0].trim() });
+    }
+    if (events.length) KEY_EVENTS[dayId] = events;
+  }
+
+  // Determine today
+  const now = new Date();
+  const todayId = String(now.getMonth() + 1).padStart(2, '0') + String(now.getDate()).padStart(2, '0');
+
+  // Set of days in our study range
+  const rangeSet = new Set(ALL_DAY_IDS);
+
+  // Exam days set
+  const examDaySet = new Set(DAYS.filter(d => d.flags.includes('exam')).map(d => d.id));
+
+  // Build months: Feb 2026 and Mar 2026
+  const months = [
+    { name: 'February 2026', year: 2026, month: 1 },  // JS month 1 = Feb
+    { name: 'March 2026', year: 2026, month: 2 },
+  ];
+
+  const dowLabels = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+  let html = '<div class="mini-cal-title">Calendar Overview</div><div class="mini-cal-months">';
+
+  for (const m of months) {
+    const firstDay = new Date(m.year, m.month, 1);
+    const startDow = firstDay.getDay();
+    const daysInMonth = new Date(m.year, m.month + 1, 0).getDate();
+
+    html += `<div class="mini-cal-month"><div class="mini-cal-month-name">${m.name}</div><div class="mini-cal-grid">`;
+
+    // Day-of-week headers
+    for (const d of dowLabels) {
+      html += `<div class="mini-cal-dow">${d}</div>`;
+    }
+
+    // Empty leading cells
+    for (let i = 0; i < startDow; i++) {
+      html += '<div class="mini-cal-cell empty"></div>';
+    }
+
+    // Day cells
+    for (let d = 1; d <= daysInMonth; d++) {
+      const dayId = String(m.month + 1).padStart(2, '0') + String(d).padStart(2, '0');
+      const inRange = rangeSet.has(dayId);
+      const isToday = dayId === todayId;
+      const isExam = examDaySet.has(dayId);
+
+      let cellCls = 'mini-cal-cell';
+      cellCls += inRange ? ' in-range' : ' out-range';
+      if (isToday) cellCls += ' is-today';
+      else if (isExam) cellCls += ' is-exam';
+
+      let eventsHtml = '';
+      if (KEY_EVENTS[dayId]) {
+        eventsHtml = '<div class="mini-cal-events">';
+        // Show max 2 events to keep cells compact
+        const evs = KEY_EVENTS[dayId].slice(0, 2);
+        for (const ev of evs) {
+          eventsHtml += `<div class="mini-cal-ev ${ev.cls}">${ev.label}</div>`;
+        }
+        if (KEY_EVENTS[dayId].length > 2) {
+          eventsHtml += `<div class="mini-cal-ev ev-deadline">+${KEY_EVENTS[dayId].length - 2} more</div>`;
+        }
+        eventsHtml += '</div>';
+      }
+
+      html += `<div class="${cellCls}"><span class="mini-cal-num">${d}</span>${eventsHtml}</div>`;
+    }
+
+    html += '</div></div>';
+  }
+
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+function renderCalendar() {
+  const cal = document.getElementById('calendar');
+  cal.innerHTML = '';
+
+  for (const week of WEEKS) {
+    // Week divider
+    const divider = document.createElement('div');
+    divider.className = 'week-divider';
+    divider.textContent = week.label;
+    cal.appendChild(divider);
+
+    // Day rows
+    for (const dayId of week.days) {
+      const dayInfo = DAYS.find(d => d.id === dayId);
+      if (dayInfo) cal.appendChild(createDayRow(dayInfo));
+    }
+  }
+}
+
+function createDayRow(dayInfo) {
+  const row = document.createElement('div');
+  let cls = 'day-row';
+  if (dayInfo.flags.includes('today')) cls += ' today';
+  if (dayInfo.flags.includes('exam')) cls += ' exam-day';
+  if (dayInfo.flags.includes('rest')) cls += ' rest-day';
+  row.className = cls;
+  row.dataset.day = dayInfo.id;
+
+  // Tag
+  let tagHtml = '';
+  if (dayInfo.flags.includes('today')) tagHtml = '<span class="day-tag day-tag-today">TODAY</span>';
+  else if (dayInfo.flags.includes('exam')) tagHtml = '<span class="day-tag day-tag-exam">EXAM DAY</span>';
+  else if (dayInfo.flags.includes('rest')) tagHtml = '<span class="day-tag day-tag-rest">REST</span>';
+
+  // Count
+  const taskIds = (state.layout[dayInfo.id] || []).filter(id => !(state.deleted && state.deleted[id]));
+  const doneCount = taskIds.filter(id => state.checked[id]).length;
+  const totalCount = taskIds.length;
+
+  // Sidebar
+  const sidebar = document.createElement('div');
+  sidebar.className = 'day-sidebar';
+  sidebar.innerHTML = `
+    <span class="day-name">${dayInfo.dayName}</span>
+    <span class="day-number">${dayInfo.label}</span>
+    <span class="day-month">${dayInfo.month}</span>
+    ${tagHtml}
+    <span class="day-count">${doneCount}/${totalCount}</span>
+  `;
+  row.appendChild(sidebar);
+
+  // Task list
+  const list = document.createElement('div');
+  list.className = 'task-list';
+  list.dataset.day = dayInfo.id;
+
+  for (const taskId of (state.layout[dayInfo.id] || [])) {
+    const el = createTaskEl(taskId);
+    if (el) list.appendChild(el);
+  }
+
+  list.addEventListener('dragover', onDragOver);
+  list.addEventListener('dragleave', onDragLeave);
+  list.addEventListener('drop', onDrop);
+
+  row.appendChild(list);
+  return row;
+}
+
+function createTaskEl(taskId) {
+  if (state.deleted && state.deleted[taskId]) return null;
+  const def = TASK_DEFS[taskId];
+  if (!def) return null;
+  const [course, type, text] = def;
+  const checked = state.checked[taskId] || false;
+
+  const div = document.createElement('div');
+  let cls = `task-item c-${course}`;
+  if (type === 'exam') cls += ' t-exam';
+  if (type === 'practice') cls += ' t-practice';
+  if (type === 'rest') cls += ' t-rest';
+  if (checked) cls += ' task-checked';
+  if (hideDone && checked) div.style.display = 'none';
+  div.className = cls;
+  div.dataset.id = taskId;
+  div.draggable = (type !== 'exam');
+
+  let tagCls = `tag-${course}`;
+  if (type === 'exam') tagCls = 'tag-exam';
+  if (type === 'practice') tagCls = 'tag-practice';
+  if (type === 'deadline') tagCls = 'tag-deadline';
+  const label = type === 'practice' ? 'PRAC' : type === 'exam' ? 'EXAM' : (COURSE_LABELS[course] || '');
+
+  const displayText = (state.edits && state.edits[taskId]) || text;
+
+  div.innerHTML = `
+    <span class="drag-handle">&#x2807;</span>
+    <span class="task-check"><input type="checkbox" ${checked ? 'checked' : ''}></span>
+    <span class="task-text" contenteditable="false">${displayText}</span>
+    <span class="task-actions">
+      <button class="task-btn task-btn-edit" title="Edit">&#9998;</button>
+      <button class="task-btn task-btn-del" title="Delete">&times;</button>
+    </span>
+    ${label ? `<span class="task-tag ${tagCls}">${label}</span>` : ''}
+  `;
+
+  // Checkbox
+  div.querySelector('input').addEventListener('change', (e) => {
+    state.checked[taskId] = e.target.checked;
+    if (e.target.checked) div.classList.add('task-checked');
+    else div.classList.remove('task-checked');
+    if (hideDone && e.target.checked) div.style.display = 'none';
+    saveState();
+    renderProgress();
+    updateDayCount(div.closest('.day-row'));
+  });
+
+  // Edit
+  const textEl = div.querySelector('.task-text');
+  div.querySelector('.task-btn-edit').addEventListener('click', (e) => {
+    e.stopPropagation();
+    textEl.contentEditable = 'true';
+    textEl.focus();
+    const range = document.createRange();
+    range.selectNodeContents(textEl);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+  });
+
+  textEl.addEventListener('blur', () => {
+    textEl.contentEditable = 'false';
+    const newText = textEl.textContent.trim();
+    if (newText && newText !== text) {
+      if (!state.edits) state.edits = {};
+      state.edits[taskId] = newText;
+      saveState();
+    } else if (newText === text && state.edits) {
+      delete state.edits[taskId];
+      saveState();
+    }
+  });
+
+  textEl.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') { e.preventDefault(); textEl.blur(); }
+    if (e.key === 'Escape') { textEl.textContent = displayText; textEl.blur(); }
+  });
+
+  // Delete
+  div.querySelector('.task-btn-del').addEventListener('click', (e) => {
+    e.stopPropagation();
+    const row = div.closest('.day-row');
+    const dayId = row.dataset.day;
+    const ids = state.layout[dayId];
+    const idx = ids.indexOf(taskId);
+    if (idx !== -1) ids.splice(idx, 1);
+    if (!state.deleted) state.deleted = {};
+    state.deleted[taskId] = true;
+    saveState();
+    div.remove();
+    updateDayCount(row);
+    renderProgress();
+  });
+
+  // Drag
+  div.addEventListener('dragstart', onDragStart);
+  div.addEventListener('dragend', onDragEnd);
+
+  return div;
+}
+
+function updateDayCount(row) {
+  if (!row) return;
+  const dayId = row.dataset.day;
+  const taskIds = (state.layout[dayId] || []).filter(id => !(state.deleted && state.deleted[id]));
+  const done = taskIds.filter(id => state.checked[id]).length;
+  const countEl = row.querySelector('.day-count');
+  if (countEl) countEl.textContent = `${done}/${taskIds.length}`;
+}
+
+// ═══════════════════════════════
+// PROGRESS BARS
+// ═══════════════════════════════
+function renderProgress() {
+  const section = document.getElementById('progress');
+  const courses = ['overall','asa','eco','mus','orf'];
+  const colors = { overall:'#3B82F6', asa:'var(--asa)', eco:'var(--eco)', mus:'var(--mus)', orf:'var(--orf)' };
+  const labels = { overall:'Overall', asa:'ASA 201', eco:'ECO 310', mus:'MUS 262', orf:'ORF 309' };
+
+  const allIds = Object.keys(TASK_DEFS).filter(id => !(state.deleted && state.deleted[id]));
+  const counts = {};
+  for (const c of courses) {
+    let ids;
+    if (c === 'overall') ids = allIds.filter(id => TASK_DEFS[id][1] !== 'deadline');
+    else ids = allIds.filter(id => TASK_DEFS[id][0] === c);
+    const done = ids.filter(id => state.checked[id]).length;
+    counts[c] = { done, total: ids.length };
+  }
+
+  section.innerHTML = courses.map(c => {
+    const { done, total } = counts[c];
+    const pct = total ? Math.round((done / total) * 100) : 0;
+    return `
+      <div class="progress-card ${c === 'overall' ? 'overall' : ''}">
+        <div class="pc-top">
+          <span class="pc-label">${labels[c]}</span>
+          <span class="pc-count" style="color:${colors[c]}">${done}/${total}</span>
+        </div>
+        <div class="pc-bar">
+          <div class="pc-fill" style="width:${pct}%; background:${colors[c]}"></div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// ═══════════════════════════════
+// DRAG & DROP
+// ═══════════════════════════════
+let draggedId = null;
+
+function onDragStart(e) {
+  draggedId = this.dataset.id;
+  this.classList.add('dragging');
+  e.dataTransfer.effectAllowed = 'move';
+  e.dataTransfer.setData('text/plain', draggedId);
+}
+
+function onDragEnd(e) {
+  this.classList.remove('dragging');
+  draggedId = null;
+  document.querySelectorAll('.day-row').forEach(c => c.classList.remove('drag-over'));
+}
+
+function onDragOver(e) {
+  e.preventDefault();
+  e.dataTransfer.dropEffect = 'move';
+  const row = this.closest('.day-row');
+  if (row) row.classList.add('drag-over');
+
+  const afterEl = getDragAfterElement(this, e.clientY);
+  const draggingEl = document.querySelector('.task-item.dragging');
+  if (!draggingEl) return;
+  if (afterEl) this.insertBefore(draggingEl, afterEl);
+  else this.appendChild(draggingEl);
+}
+
+function onDragLeave(e) {
+  const row = this.closest('.day-row');
+  if (row && !row.contains(e.relatedTarget)) row.classList.remove('drag-over');
+}
+
+function onDrop(e) {
+  e.preventDefault();
+  const row = this.closest('.day-row');
+  if (row) row.classList.remove('drag-over');
+  if (!draggedId) return;
+
+  const newDay = this.dataset.day;
+
+  for (const [day, ids] of Object.entries(state.layout)) {
+    const idx = ids.indexOf(draggedId);
+    if (idx !== -1) { ids.splice(idx, 1); break; }
+  }
+
+  const newOrder = [...this.querySelectorAll('.task-item')].map(el => el.dataset.id);
+  state.layout[newDay] = newOrder;
+
+  saveState();
+  updateDayCount(row);
+  document.querySelectorAll('.day-row').forEach(c => updateDayCount(c));
+  renderProgress();
+}
+
+function getDragAfterElement(container, y) {
+  const els = [...container.querySelectorAll('.task-item:not(.dragging)')];
+  return els.reduce((closest, child) => {
+    const box = child.getBoundingClientRect();
+    const offset = y - box.top - box.height / 2;
+    if (offset < 0 && offset > closest.offset) return { offset, element: child };
+    return closest;
+  }, { offset: Number.NEGATIVE_INFINITY }).element || null;
+}
+
+// ═══════════════════════════════
+// EXPORT / COLLAPSE / TODAY
+// ═══════════════════════════════
+function exportState() {
+  const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'midterm_gameplan_state.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function collapseCompleted() {
+  hideDone = !hideDone;
+  document.querySelectorAll('.task-item.task-checked').forEach(el => {
+    el.style.display = hideDone ? 'none' : '';
+  });
+  const btn = document.querySelector('.header-right .btn:not(.btn-danger)');
+  if (btn) btn.textContent = hideDone ? 'Show all' : 'Hide done';
+}
+
+function updateToday() {
+  const now = new Date();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+  const todayId = month + day;
+  DAYS.forEach(d => {
+    const idx = d.flags.indexOf('today');
+    if (idx !== -1) d.flags.splice(idx, 1);
+    if (d.id === todayId) d.flags.push('today');
+  });
+}
+
+// ═══════════════════════════════
+// INIT
+// ═══════════════════════════════
+updateToday();
+loadState();
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,407 @@
+\documentclass[10pt,landscape]{article}
+\usepackage[landscape,margin=0.4in]{geometry}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage[compact]{titlesec}
+
+% Reduce spacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2pt}
+\setlength{\columnsep}{15pt}
+
+% Section formatting
+\titleformat{\section}{\large\bfseries\color{blue!70!black}}{\thesection}{0.5em}{}
+\titlespacing*{\section}{0pt}{6pt}{3pt}
+\titleformat{\subsection}{\normalsize\bfseries\color{blue!50!black}}{\thesubsection}{0.5em}{}
+\titlespacing*{\subsection}{0pt}{4pt}{2pt}
+
+% Custom command for formulas with explanations
+\newcommand{\formula}[2]{\textbf{#1:} $#2$}
+\newcommand{\note}[1]{\textcolor{gray}{\small(#1)}}
+
+\begin{document}
+\begin{multicols}{3}
+\small
+
+\section*{ECO310 Midterm 1 - Readable Cheatsheet}
+
+\section{Preferences \& Axioms}
+
+\subsection{Rational Preferences}
+\textbf{Complete:} Can compare any two bundles ($\forall x,y$: $x \succeq y$ or $y \succeq x$)
+
+\textbf{Transitive:} If $x \succeq y$ and $y \succeq z$, then $x \succeq z$
+
+\textbf{Monotonicity:} More is better $\Rightarrow$ strictly prefer more of any good
+
+\textbf{Continuity (LNS):} No sudden jumps. For any $x$ and $\varepsilon > 0$, exists $y$ very close to $x$ where $y \succ x$
+
+\textbf{Convexity:} Mixtures $\geq$ extremes. Upper contour sets are convex.
+\note{Means diminishing MRS}
+
+\subsection{Utility Functions}
+\textbf{Ordinal:} Only ranking matters, not magnitude
+
+\formula{MRS}{-\frac{dx_2}{dx_1}\Big|_{IC} = \frac{MU_1}{MU_2}}
+\note{Slope of IC, bang-per-buck}
+
+At optimum: $MRS = \frac{p_1}{p_2}$
+
+\subsection{Common Utility Forms}
+
+\textbf{Cobb-Douglas:} $u = x_1^a x_2^b$
+\begin{itemize}[leftmargin=*,noitemsep]
+\item $MRS = \frac{a}{b} \cdot \frac{x_2}{x_1}$
+\item Demand: $x_1^* = \frac{a}{a+b} \cdot \frac{m}{p_1}$, $x_2^* = \frac{b}{a+b} \cdot \frac{m}{p_2}$
+\item \textbf{Magic rule:} Spend fraction $\frac{a}{a+b}$ on good 1
+\end{itemize}
+
+\textbf{Perfect Complements:} $u = \min\{ax_1, bx_2\}$
+\begin{itemize}[leftmargin=*,noitemsep]
+\item Always consume at kink: $ax_1 = bx_2$
+\item $MRS = 0$ on horizontal, $-\infty$ on vertical
+\item Demand: $x_1^* = \frac{m}{bp_1 + ap_2}$, $x_2^* = \frac{am}{bp_1 + ap_2}$
+\item \textbf{No substitution effect} (entire change is income effect)
+\end{itemize}
+
+\textbf{Perfect Substitutes:} $u = ax_1 + bx_2$
+\begin{itemize}[leftmargin=*,noitemsep]
+\item $MRS = -a/b$ (constant)
+\item Buy all of cheaper good (per unit of utility)
+\item If $\frac{a}{p_1} > \frac{b}{p_2}$: buy only good 1
+\item If $\frac{a}{p_1} < \frac{b}{p_2}$: buy only good 2
+\end{itemize}
+
+\textbf{Quasilinear:} $u = v(x_1) + x_2$
+\begin{itemize}[leftmargin=*,noitemsep]
+\item $MRS = v'(x_1)$ \note{depends only on $x_1$}
+\item ICs are vertical translates
+\item \textbf{No income effect} for $x_1$ (at interior)
+\end{itemize}
+
+\textbf{CES:} $u = (x_1^r + x_2^r)^{1/r}$
+\begin{itemize}[leftmargin=*,noitemsep]
+\item $MRS = -(x_2/x_1)^{1-r}$
+\item $r \to 0$: Cobb-Douglas
+\item $r \to -\infty$: Perfect complements
+\item $r = 1$: Perfect substitutes
+\end{itemize}
+
+\section{Consumer Choice (UMP)}
+
+\subsection{Budget Constraint}
+$p_1 x_1 + p_2 x_2 \leq m$
+
+\textbf{Slope:} $-p_1/p_2$
+
+\textbf{Intercepts:} $(m/p_1, 0)$ and $(0, m/p_2)$
+
+\subsection{Interior Optimum}
+\textbf{Tangency condition:} $\frac{MU_1}{p_1} = \frac{MU_2}{p_2}$
+
+Equivalently: $MRS = \frac{p_1}{p_2}$
+
+\textbf{Budget binds:} $p_1 x_1 + p_2 x_2 = m$
+
+\subsection{Lagrangian Method}
+$$\mathcal{L} = u(x_1, x_2) + \lambda[m - p_1 x_1 - p_2 x_2]$$
+
+\textbf{FOCs:} $MU_i = \lambda p_i$ for $i = 1, 2$
+
+$\lambda = $ marginal utility of income
+
+\subsection{Corner Solutions}
+If $MRS > p_1/p_2$ everywhere: consume only $x_1$
+
+If $MRS < p_1/p_2$ everywhere: consume only $x_2$
+
+\textbf{Check:} Always verify $x_i \geq 0$!
+
+\subsection{Demand Properties}
+\textbf{Marshallian demand:} $x_i(p, m)$
+\begin{itemize}[leftmargin=*,noitemsep]
+\item Homogeneous degree 0 in $(p, m)$
+\item Decreasing in $p_i$, increasing in $m$ (for normal goods)
+\end{itemize}
+
+\textbf{Indirect utility:} $v(p, m) = u(x^*(p, m))$
+\begin{itemize}[leftmargin=*,noitemsep]
+\item Decreasing in $p_i$, increasing in $m$
+\end{itemize}
+
+\section{Expenditure \& Duality}
+
+\subsection{Hicksian Demand}
+\formula{Hicksian demand}{h_i(p, \bar{u})}
+
+Minimizes expenditure to reach utility $\bar{u}$ at prices $p$
+
+\textbf{Shepard's Lemma:} $h_i = \frac{\partial e}{\partial p_i}$
+
+\subsection{Expenditure Function}
+$$e(p, \bar{u}) = p \cdot h(p, \bar{u})$$
+
+Minimum cost to reach utility $\bar{u}$
+
+\subsection{Duality Relations}
+$$x_i(p, m) = h_i(p, v(p, m))$$
+$$h_i(p, \bar{u}) = x_i(p, e(p, \bar{u}))$$
+
+$$v(p, e(p, \bar{u})) = \bar{u}$$
+$$e(p, v(p, m)) = m$$
+
+\section{Income \& Substitution Effects}
+
+\subsection{Slutsky Decomposition}
+\textbf{Total effect = Substitution effect + Income effect}
+
+When $p_1$ rises:
+
+\textbf{Substitution effect:} Always $\leq 0$ (buy less)
+\begin{itemize}[leftmargin=*,noitemsep]
+\item Move along IC to new price ratio
+\item Compute: compensated bundle − original bundle
+\end{itemize}
+
+\textbf{Income effect:} Depends on normal/inferior
+\begin{itemize}[leftmargin=*,noitemsep]
+\item Normal good: $< 0$ (buy less)
+\item Inferior good: $> 0$ (buy more)
+\item Compute: new bundle − compensated bundle
+\end{itemize}
+
+\textbf{Giffen good:} Income effect dominates $\Rightarrow$ demand increases when price rises
+
+\subsection{Recipe for Calculations}
+\begin{enumerate}[leftmargin=*,noitemsep]
+\item Find \textbf{original bundle} at initial prices
+\item Find \textbf{compensated bundle} (new prices, old utility)
+\item $\text{Sub effect} = \text{comp} - \text{orig}$
+\item $\text{Income effect} = \text{new} - \text{comp}$
+\end{enumerate}
+
+\section{Choice Under Uncertainty}
+
+\subsection{Expected Utility (vNM)}
+$$EU(L) = \sum_{i} p_i u(c_i)$$
+
+\textbf{Axioms:} Completeness, Transitivity, Continuity, Independence
+
+\textbf{vNM utility unique up to positive affine transforms:}
+$$\tilde{u} = a + bu, \quad b > 0$$
+\note{NOT arbitrary monotone transforms!}
+
+\subsection{Risk Attitudes}
+
+\textbf{Risk averse $\Leftrightarrow$ $u$ concave $\Leftrightarrow$ $u'' < 0$}
+\begin{itemize}[leftmargin=*,noitemsep]
+\item Jensen's inequality: $u(E[x]) > E[u(x)]$
+\item Prefer certainty to gambles
+\end{itemize}
+
+\textbf{Risk neutral $\Leftrightarrow$ $u$ linear}
+
+\textbf{Risk loving $\Leftrightarrow$ $u$ convex $\Leftrightarrow$ $u'' > 0$}
+
+\subsection{Risk Premium \& Certainty Equivalent}
+
+\textbf{CE:} Amount for certain worth same as gamble
+$$u(CE) = EU$$
+
+\textbf{Risk Premium:} $RP = E[x] - CE$
+\begin{itemize}[leftmargin=*,noitemsep]
+\item Risk averse: $RP > 0$ (pay to avoid risk)
+\item Risk neutral: $RP = 0$
+\item Approximation: $RP \approx \frac{1}{2} r_A(\bar{x}) \cdot \sigma^2$
+\end{itemize}
+
+\subsection{Arrow-Pratt Measures}
+
+\textbf{Absolute risk aversion:}
+$$r_A(x) = -\frac{u''(x)}{u'(x)}$$
+
+\textbf{Relative risk aversion:}
+$$r_R(x) = x \cdot r_A(x) = -\frac{x u''(x)}{u'(x)}$$
+
+\textbf{Higher $r_A$ $\Rightarrow$ higher risk premium, more risk averse}
+
+\subsection{Common Utility Functions}
+
+\textbf{CRRA:} $u = \frac{x^{1-\rho}}{1-\rho}$ or $u = \ln x$ (if $\rho = 1$)
+\begin{itemize}[leftmargin=*,noitemsep]
+\item $r_A = \rho/x$ (DARA)
+\item $r_R = \rho$ (constant)
+\end{itemize}
+
+\textbf{CARA:} $u = -e^{-\alpha x}$
+\begin{itemize}[leftmargin=*,noitemsep]
+\item $r_A = \alpha$ (constant)
+\item $r_R = \alpha x$ (IRRA)
+\end{itemize}
+
+\textbf{Log:} $u = \ln x$
+\begin{itemize}[leftmargin=*,noitemsep]
+\item $r_A = 1/x$ (DARA)
+\item $r_R = 1$ (constant)
+\end{itemize}
+
+\textbf{DARA:} Decreasing absolute risk aversion $\Rightarrow$ $r_A' < 0$
+\note{more wealth $\Rightarrow$ willing to take larger fixed-\$ gambles}
+
+\subsection{Stochastic Dominance}
+
+\textbf{FOSD:} $F(x) \leq G(x)$ for all $x$
+\begin{itemize}[leftmargin=*,noitemsep]
+\item All $u' > 0$ prefer $F$
+\end{itemize}
+
+\textbf{SOSD:} $\int_{-\infty}^t F(x)dx \leq \int_{-\infty}^t G(x)dx$ for all $t$
+\begin{itemize}[leftmargin=*,noitemsep]
+\item All risk-averse prefer $F$
+\item Same mean: $G$ is mean-preserving spread of $F$
+\end{itemize}
+
+\section{Insurance \& Portfolio}
+
+\subsection{Insurance Problem}
+
+\textbf{Setup:} Wealth $w$, loss $D$ with probability $\pi$
+
+Premium $q$ per dollar, payout $K$
+
+$$EU = (1-\pi)u(w-q) + \pi u(w-q-D+K)$$
+
+\textbf{Fair insurance:} $q = \pi K$
+\begin{itemize}[leftmargin=*,noitemsep]
+\item Risk-averse $\Rightarrow$ full insurance ($K = D$)
+\item Consumption same in both states
+\end{itemize}
+
+\textbf{Unfair insurance:} $q > \pi K$
+\begin{itemize}[leftmargin=*,noitemsep]
+\item Partial insurance ($K < D$)
+\end{itemize}
+
+\textbf{State-contingent view:}
+
+$MRS_{12} = \frac{\pi_1 u'(c_2)}{\pi_2 u'(c_1)}$
+
+On 45° line ($c_1 = c_2$): $MRS = \pi_1/\pi_2$
+
+Fair prices ($q_s = \pi_s$): choose $c_1 = c_2$
+
+\subsection{Portfolio Choice}
+
+Invest $a$ in risky (return $\tilde{r}$), rest at $r_f$
+
+$$\tilde{W} = w(1 + r_f) + a(\tilde{r} - r_f)$$
+
+\textbf{FOC:} $E[u'(\tilde{W})(\tilde{r} - r_f)] = 0$
+
+If $E[\tilde{r}] > r_f$: risk-averse invests $a^* > 0$
+
+\textbf{Portfolio std dev:} $\sigma_P = \alpha \cdot \sigma_{\text{risky}}$
+
+where $\alpha = a/w$ (fraction in risky)
+
+\textbf{Expected return:} $\alpha E[\tilde{r}] + (1-\alpha)r_f$
+
+\section{Markets \& General Equilibrium}
+
+\subsection{Edgeworth Box}
+2 consumers, 2 goods
+
+Dimensions: total endowments $E_x, E_y$
+
+\textbf{Feasible:} $x^1 + x^2 = E_x$, $y^1 + y^2 = E_y$
+
+\subsection{Pareto Efficiency}
+No Pareto improvement exists
+
+\textbf{Interior PE:} $MRS^1 = MRS^2$ at all PE allocations
+
+\subsection{Competitive Equilibrium}
+\textbf{Each consumer:} Maximize utility s.t. budget $p \cdot x = p \cdot e$
+
+\textbf{Markets clear:} $\sum$ demands = $\sum$ endowments
+
+\textbf{Walras' Law:} $p \cdot ED_x + p \cdot ED_y = 0$
+\begin{itemize}[leftmargin=*,noitemsep]
+\item If $n-1$ markets clear, $n$-th clears
+\item Only relative prices matter
+\end{itemize}
+
+\subsection{Welfare Theorems}
+
+\textbf{1st:} CE $\Rightarrow$ Pareto efficient \note{needs LNS}
+
+\textbf{2nd:} Any PE can be CE with transfers \note{needs convexity}
+
+\subsection{Solving for CE}
+\begin{enumerate}[leftmargin=*,noitemsep]
+\item Set $p_2 = 1$ (numeraire)
+\item Solve each consumer's problem: get $x^i(p_1)$
+\item Market clearing: $\sum x_1^i(p_1) = E_x$
+\item Solve for $p_1^*$
+\item Check $x_2^i \geq 0$ for all
+\end{enumerate}
+
+\section{WARP \& Revealed Preference}
+
+\subsection{Weak Axiom (WARP)}
+If $x$ chosen when $y$ affordable, and $y$ chosen in period $B$, then $y$ must NOT be affordable when $x$ was chosen
+
+\textbf{Check:} For two periods $(p^A, m^A)$ and $(p^B, m^B)$:
+\begin{enumerate}[leftmargin=*,noitemsep]
+\item Cost of A at B's prices vs B's cost?
+\item Cost of B at A's prices vs A's cost?
+\item Both strictly cheaper $\Rightarrow$ WARP violation
+\end{enumerate}
+
+\subsection{Sen's Property}
+$\alpha$: No new choices from smaller sets
+
+$\beta$: Choice from subset $\Rightarrow$ choice from whole set
+
+$\alpha + \beta \Leftrightarrow$ Rationalizable $\Leftrightarrow$ WARP
+
+\section{Problem-Solving Tips}
+
+\subsection{General Recipe}
+\begin{enumerate}[leftmargin=*,noitemsep]
+\item \textbf{Identify states} and probabilities
+\item \textbf{Write EU} as $\sum p_s u(w_s)$
+\item \textbf{Take FOC} w.r.t. choice variable
+\item \textbf{Solve} for optimal choice
+\item \textbf{Check corners} ($x = 0$ or $x = w$)
+\end{enumerate}
+
+\subsection{Key Checks}
+\begin{itemize}[leftmargin=*,noitemsep]
+\item Always verify $x_i \geq 0$
+\item Perfect complements: sub effect = 0
+\item CD exponents: normalize $\alpha = a/(a+b)$
+\item vNM utility: only affine transforms
+\item Portfolio: $\sigma^2$ (variance) $\neq$ $\sigma$ (std dev)
+\item Corner: If FOC gives $x < 0$, set $x = 0$
+\item "Spend $\times$" $\neq$ "Buy $\times$" (unless prices equal)
+\item Risk-averse prefers any mean-preserving contraction
+\end{itemize}
+
+\subsection{Common Traps}
+\begin{itemize}[leftmargin=*,noitemsep]
+\item Don't confuse UMP ($x(p,m)$) vs EMP ($h(p,\bar{u})$)
+\item MRS direction: be consistent with sign
+\item Convexity: show $|MRS|$ decreasing along IC
+\item WARP: "revealed preferred" = chosen when other affordable
+\item EU states: follow probability tree to final wealth
+\item Quasilinear interior $x_1$ independent of $m$, but check $x_2 \geq 0$
+\item \$90 certain vs 50-50 \$0/\$200 is ambiguous for risk-averse
+\end{itemize}
+
+\end{multicols}
+\end{document}

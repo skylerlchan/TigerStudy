@@ -1,0 +1,133 @@
+=== PAGE 1 ===
+,Princeton University
+Mathematical Intermediate Microeconomics (ECO 310)
+Midterm Spring 2023
+Instructions: You have 80 minutes to complete this exam, plus 10 minutes to upload your
+answers. There are 6 multiple choice questions and 3 short answer questions. In the Multiple
+Choice section, simply indicate the correct answer. In the Short Answer section, show
+your work and explain your answers for full credit!
+• The exam is open-book, and calculators are permitted. However, please work alone.
+• If you are unsure whether you’re interpreting a question correctly, state your
+interpretation and proceed (or email me if you prefer).
+The honor code applies, as usual.
+1
+
+
+=== PAGE 2 ===
+Q1: Multiple Choice (24 points, 4 each)
+1. Jake tells you that when comparing any two numbers a and b, he prefers a if and only if it’s
+at least as large as b + 1. Jake is:
+(a) Rational
+(b) Irrational because these preferences are incomplete
+(c) Irrational because these preferences are intransitive
+(d) Two of these are correct
+2. A consumer’s preferences over good 1 and good 2 are described by u(x1, x2) = x
+1
+2
+1 x2. If this
+consumer behaves optimally, he will:
+(a) Spend 1
+3 of income on good 2.
+(b) Spend 1
+2 of income on good 2.
+(c) Spend 2
+3 of income on good 2.
+(d) None of these is correct.
+3. A consumer initially buys 5 oranges and 10 apples. Then an apple tax increases the price per
+apple by $0.50, but the consumer is at the same time given a $5 fruit subsidy. Which of the
+following best describes this situation?
+(a) The consumer is most likely better oﬀnow (with the tax and subsidy) than he was
+originally.
+(b) The consumer is most likely worse oﬀnow (with the tax and subsidy) than he was
+originally.
+(c) The consumer is deﬁnitely indiﬀerent between his original and current situations.
+4. A consumer gets utility u(L, R) = min{L, R} from L left shoes and R right shoes. If m = 10,
+pL = 1, and pR increases from 1 to 4, the change in demand for right shoes due to the
+substitution eﬀect is:
+(a) 0
+(b) -1
+(c) −2
+(d) −3
+(e) None of these is correct
+5. At the end of Lecture 10, we saw the following “paradox”: many people prefer saving 200 of
+600 people for sure, to a risky option with a 1
+3 chance of saving all 600 people and a 2
+3 chance
+of saving nobody. But they prefer a risky option with a 1
+3 chance of killing nobody and a 2
+3
+chance of killing everybody, to an option that kills 400 people for sure.
+If people care about the # people alive in the end, then
+(a) This is inconsistent with EU maximization
+2
+
+
+=== PAGE 3 ===
+(b) This violates consequentialism
+(c) This violates independence
+(d) Two of these are true
+(e) All of these are true
+6. Which of the following would a risk-averse consumer deﬁnitely prefer to a 50-50 $0 or $200
+gamble:
+(a) $90 lump-sum
+(b) $110 lump-sum
+(c) A 50-50 $50 or $150 gamble
+(d) Two of a-c are deﬁnitely preferred
+(e) Three of a-c are deﬁnitely preferred
+3
+
+
+=== PAGE 4 ===
+Q2: Proofs and General Concepts (20 Points)
+a. (12) Assume that Melsi and Mavi (my dogs) are equally wealthy. Both are risk-averse, but
+Mavi is more risk-averse.
+Prove through the following steps that any time Mavi prefers
+accepting a risky bet (to rejecting it), so does Melsi:
+i. (6) Show that someone prefers accepting (rather than rejecting) a risky bet if and only
+if their certainty equivalent for the gamble exceeds their initial wealth.
+ii. (6) If Mavi is more risk-averse than Melsi, then from Lecture 10, her risk premium is
+higher for every gamble. Prove that this implies that for a particular gamble, Melsi’s
+certainty equivalent is higher than Mavi’s.
+b. (18) You are working for a law ﬁrm that represents an elderly man who wants to leave his
+fortune to his dog. His evil family plans to have him committed if he is caught violating
+WARP. Previously, he consumed (4, 2) when prices were (1, 3). Prices are now (3, 5). Which
+bundles (x1, x2) would get him committed if he purchased them now? (Just write out the
+inequality(ies) that must hold, no need to simplify).
+4
+
+
+=== PAGE 5 ===
+Q3: Demand (37 Points)
+Harry’s preferences over netﬂix hours (N) and cable hours (C) are represented by
+u(N, C) = Cα + 2CN
+where α > 0 is a parameter.
+a. (8) Show that if α ≤2, then these preferences are convex.
+b. (5) Write the equation for Harry’s indiﬀerence curve through the point (1, 1). (No need to
+simplify).
+c. (12) Find Harry’s (Marshallian) demand function if α = 2, assuming income m and prices pC
+and pN per hour of cable and netﬂix.
+d. (12) Finally, suppose Harry’s limited resource is time rather than money: Netﬂix and cable
+are both oﬀered free of charge in his dorm room, but he has limited time available to watch
+them. (i) What is his budget constraint if he has T hours available? (ii) Again assuming that
+α = 2, how much time T does he need to get utility u∗?
+5
+
+
+=== PAGE 6 ===
+Q4: Expected Utility (31 Points)
+Suppose you are risk-averse, have $100 (no wealth besides this), and are considering investing some
+of your $100 in an asset with 3 possible return rates: r1 = −1 (which happens with probability
+q ≤1
+2), r2 = 1 (which also happens with probability q ≤1
+2), and r3 = 2 (this happens whenever the
+other two possible return rates do not). Your other option is to hide the money in a sock drawer.
+Recall that $x invested at return rate r changes your wealth by $xr.
+a. (12) Write out your expected utility from investing $x of your $100 in this asset, and keeping
+the remaining $100-x in a sock drawer. (Hint: consider drawing a probability tree, with one
+branch for each way the uncertainty can resolve; at the end of each branch ﬁgure out your
+ﬁnal utility if this happens.)
+b. (14) If you can invest any amount x between $0 and $100 (inclusive, decimals allowed),
+i. Explain: at q = 0, you should invest your entire $100 in the asset.
+ii. Find all values of q (if any) for which it is optimal to keep all money in your sock drawer.
+c. (5) If your only options were to invest $20 or $80, how would you ﬁgure out which is better?
+6

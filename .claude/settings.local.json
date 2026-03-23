@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(findstr:*)",
+      "Bash(move:*)",
+      "Bash(move eco310.py downloaders )",
+      "Bash(move mat_201.py downloaders )",
+      "Bash(move psy_254.py downloaders )",
+      "Bash(move SPI_387.py downloaders)"
+    ]
+  }
+}

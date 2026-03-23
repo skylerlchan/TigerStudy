@@ -1,0 +1,501 @@
+\documentclass[11pt, letterpaper]{article}
+
+\usepackage[margin=1in, headheight=22pt, headsep=12pt]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage[expansion=false]{microtype}
+\usepackage{parskip}
+\usepackage{booktabs}
+\usepackage{sectsty}
+\usepackage{amssymb}
+
+% --- Color Definitions ---
+\definecolor{accent}{HTML}{2C3E6B}
+\definecolor{subaccent}{HTML}{5B7BA5}
+\definecolor{rulecolor}{HTML}{CCCCCC}
+\definecolor{darktext}{HTML}{1A1A1A}
+\definecolor{greenzone}{HTML}{2E7D32}
+\definecolor{yellowzone}{HTML}{F9A825}
+\definecolor{redzone}{HTML}{C62828}
+\definecolor{grayzone}{HTML}{616161}
+\definecolor{lightbg}{HTML}{F5F5F5}
+
+% --- Hyperlink Setup ---
+\hypersetup{
+    colorlinks=true,
+    linkcolor=accent,
+    urlcolor=subaccent,
+    pdftitle={Week 3: Bebop - Quiz Study Guide},
+    pdfauthor={MUS 262},
+}
+
+% --- Section Formatting ---
+\titleformat{\section}
+    {\Large\bfseries\color{accent}}
+    {\thesection}{1em}{}
+    [\vspace{-0.5em}\textcolor{rulecolor}{\rule{\textwidth}{0.4pt}}]
+
+\titleformat{\subsection}
+    {\large\bfseries\color{subaccent}}
+    {\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+    {\normalsize\bfseries\color{accent}}
+    {\thesubsubsection}{1em}{}
+
+\titlespacing*{\section}{0pt}{1.5em}{0.75em}
+\titlespacing*{\subsection}{0pt}{1em}{0.5em}
+\titlespacing*{\subsubsection}{0pt}{0.75em}{0.4em}
+
+% --- Header/Footer ---
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{rulecolor}\leaders\hrule height \headrulewidth\hfill}}
+\fancyhead[L]{\small\color{gray}MUS 262 --- Week 3: Bebop}
+\fancyhead[R]{\small\color{gray}Quiz Study Guide}
+\fancyfoot[C]{\small\color{gray}\thepage}
+
+% --- List Formatting ---
+\setlist[itemize]{leftmargin=1.5em, itemsep=3pt, parsep=0pt, topsep=4pt}
+\setlist[itemize,2]{leftmargin=1.5em, itemsep=2pt}
+\setlist[enumerate]{leftmargin=1.5em, itemsep=3pt, parsep=0pt, topsep=4pt}
+
+% --- Custom Commands ---
+\newcommand{\listenbox}[1]{\vspace{0.5em}\noindent\fcolorbox{rulecolor}{lightbg}{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule}{\small\textbf{Listen For:} #1}}\vspace{0.5em}}
+
+% --- Body Text ---
+\color{darktext}
+
+\begin{document}
+
+% --- Title Block ---
+\thispagestyle{empty}
+\begin{center}
+    \vspace*{0.5cm}
+    {\Huge\bfseries\color{accent} Week 3: Bebop}\\[0.5em]
+    {\Large\color{subaccent} Quiz Study Guide}\\[1em]
+    \textcolor{rulecolor}{\rule{0.6\textwidth}{0.8pt}}\\[0.8em]
+    {\color{gray}\small MUS/AAS 262 --- Jazz History: Many Sounds, Many Voices\\[0.3em]
+    The Bebop Revolution (1940--1950)}
+    \vspace{1cm}
+\end{center}
+
+\tableofcontents
+\newpage
+
+% ============================================================
+\section{Knowledge Tracker}
+% ============================================================
+
+\textit{Move items between sections as you study. The goal is to get everything into Green.}
+
+\subsection*{\textcolor{greenzone}{Green --- Know From Memory}}
+\begin{itemize}[label=$\square$]
+    \item Charlie Parker = ``Bird''; heart and soul of bebop; called ``everyone's God'' by Sonny Rollins
+    \item Bebop began at Minton's Playhouse and Clark Monroe's Uptown House in Harlem
+\end{itemize}
+
+\subsection*{\textcolor{yellowzone}{Yellow --- Partial / Need Notes}}
+\begin{itemize}[label=$\square$]
+    \item Recording ban (1942--1944) limited documentation of early bebop development
+    \item ``Playing the changes'' = navigating complicated chord structures; became hallmark of bebop
+    \item Upper extensions of chords = Parker heard how to connect these when jamming; gave him his sound
+    \item Bebop as counterculture: fast-paced, NOT danceable, associated with zoot suits, horn-rimmed glasses, berets, goatees
+\end{itemize}
+
+\subsection*{\textcolor{redzone}{Red --- Didn't Know / Got Wrong}}
+\begin{itemize}[label=$\square$]
+    \item World War II significantly influenced bebop's development (economic hardship + cultural darkness)
+    \item Langston Hughes quote: ``Every time a cop beats a black man with a bat, it makes a Bop sound. Bee, bop, bee, bop.''
+    \item Small band groups (combos) replaced big bands due to economic constraints
+    \item Big band musicians felt their music wasn't being taken seriously; bebop was violent shift to ``mad, furious'' music
+    \item Billy Eckstine's 1944 big band featured Parker, Dizzy, Miles Davis, Art Blakey, Sarah Vaughan
+    \item Parker made playing in all 12 keys standard for jazz artists
+    \item Parker's heroin addiction influenced a generation of musicians; he hated this legacy
+\end{itemize}
+
+\subsection*{\textcolor{grayzone}{Not Yet Tested}}
+\begin{itemize}[label=$\square$]
+    \item Dizzy Gillespie (1917--1993) = public face of bebop; very jovial onstage but serious about music
+    \item Dizzy: bullfrog cheeks when playing trumpet; upturned trumpet horn (accident became signature)
+    \item Dizzy played really high on the trumpet
+    \item Roy Eldridge = bridge between Armstrong and Dizzy; lead trumpeter for Fletcher Henderson
+    \item Roy Eldridge: vibrato and accents make it sound like someone singing; hot trumpet sound like Armstrong
+    \item Charlie Christian (guitarist): died at 25 of tuberculosis in 1942; first to bring electric guitar to jazz
+    \item Charlie Christian: long flowing melodic lines; rhythm reminiscent of beginnings of bebop
+    \item Kenny Clarke = first bebop drummer; drums driving the beat just like the guitar
+    \item Art Tatum: legally blind; incredible technique, played very fast; stride piano technique
+    \item Art Tatum: big influence on Bud Powell (pianist)
+    \item Stride piano = alternating left hand technique
+    \item Jimmy Blanton (bassist): died at 23; huge sound on bass; big figure in Ellington band
+    \item Jimmy Blanton: ``walking'' bass line leading the band
+    \item Lester Young: ``cool sound'' (contrast with Armstrong/Eldridge ``hot sound''); one of Parker's biggest influences
+    \item Oscar Peterson: great pianist featured on 1952 ``Ad Lib Blues'' with Lester Young
+    \item Max Roach: featured bebop drummer, represented evolution of bebop drumming
+    \item Miles Davis played piano on Parker's ``Coco''
+    \item 1988 film ``Bird'' by Clint Eastwood starring Forest Whitaker
+\end{itemize}
+
+\newpage
+
+% ============================================================
+\section{The Era: Bebop (1940--1950)}
+% ============================================================
+
+\subsection{What This Movement Contributes}
+\begin{enumerate}
+    \item \textbf{Small Group Revolution} --- Shift from big bands to small combos (4--6 musicians) due to WWII economics and artistic rebellion
+    \item \textbf{Virtuosic Improvisation} --- Extreme technical demands; fast tempos; complex chord progressions; ``playing the changes''
+    \item \textbf{Art Music, Not Dance Music} --- Bebop was for listening, not dancing; deliberate rejection of entertainment model
+    \item \textbf{Upper Extensions \& Harmonic Complexity} --- Use of 9ths, 11ths, 13ths in improvisation expanded harmonic vocabulary
+    \item \textbf{All 12 Keys Standard} --- Charlie Parker made playing in all keys standard for jazz artists
+    \item \textbf{Counterculture Movement} --- Bebop came with visual style (zoot suits, berets, goatees, horn-rimmed glasses) and cultural attitude
+\end{enumerate}
+
+\subsection{Era Characteristics}
+\begin{itemize}
+    \item \textbf{Historical Context:} World War II backdrop; economic hardship made big bands unsustainable; cultural darkness and anger
+    \item \textbf{Rhythmic Feel:} Very fast tempos; pushing forward on the beat; drummer shifts timekeeping from bass drum to ride cymbal
+    \item \textbf{Ensemble Style:} Small combos (trumpet/sax, piano, bass, drums); horns driving the music
+    \item \textbf{Improvisation:} Extended solos with complex harmonic navigation; thinking over phrases that span whole measures
+    \item \textbf{Melody:} Angular, unpredictable melodies with large intervallic leaps; syncopated, staccato phrasing
+    \item \textbf{Sound:} Clear articulation even at extreme speeds; every note distinguishable
+    \item \textbf{Recording Gap:} 1942--1944 recording ban limited documentation of bebop's earliest development
+\end{itemize}
+
+\subsection{Key Concepts}
+\begin{itemize}
+    \item \textbf{Bebop Origin:} Name comes from scatting sound; also Langston Hughes quote about police violence (``bee-bop, bee-bop'')
+    \item \textbf{Minton's Playhouse \& Clark Monroe's Uptown House:} Harlem clubs where bebop was born; later commercialized on 52nd Street
+    \item \textbf{Playing the Changes:} Navigating complicated chord structures became hallmark of bebop
+    \item \textbf{Upper Extensions:} 9ths, 11ths, 13ths of chords; Parker heard how to connect these when improvising
+    \item \textbf{Stride Piano:} Alternating left hand technique (Art Tatum, precursor to bebop piano)
+    \item \textbf{Walking Bass:} Bass line that moves steadily through chord changes, often in quarter notes
+    \item \textbf{Recording Ban (1942--1944):} Musicians' union strike against record labels limited early bebop documentation
+    \item \textbf{Billy Eckstine's 1944 Band:} Featured Parker, Dizzy, Miles Davis, Art Blakey, Sarah Vaughan --- bebop all-stars
+\end{itemize}
+
+\subsection{Five Precursors Who Pushed Bebop Forward (1940s)}
+\begin{enumerate}
+    \item \textbf{Roy Eldridge} (trumpet): Bridge between Armstrong and Dizzy
+    \item \textbf{Charlie Christian} (guitar): First to bring electric guitar to jazz; long flowing melodic lines
+    \item \textbf{Art Tatum} (piano): Incredible technique, played very fast; stride piano; influenced Bud Powell
+    \item \textbf{Jimmy Blanton} (bass): Huge sound; walking bass lines; featured in Ellington band
+    \item \textbf{Lester Young} (saxophone): Cool sound; major influence on Charlie Parker
+\end{enumerate}
+
+\newpage
+
+% ============================================================
+\section{Artists and Songs --- Syllabus Listening}
+% ============================================================
+
+% --- DIZZY ATMOSPHERE ---
+\subsection{Charlie Parker \& Dizzy Gillespie --- ``Dizzy Atmosphere'' (Live)}
+
+\textbf{Era:} Bebop (1940s)\\
+\textit{from Diz N' Bird at Carnegie Hall}
+
+\subsubsection*{Key Facts}
+\begin{enumerate}
+    \item Live recording showcasing both Parker (alto sax) and Dizzy Gillespie (trumpet)
+    \item Based on ``I Got Rhythm'' chord changes (contrafact)
+    \item Dizzy plays really high on the trumpet
+    \item Crazy technique --- all notes clear and distinguishable even at extreme speed
+    \item Shorter phrases but still playing through them
+    \item Bass rhythm getting faster throughout
+    \item Demonstrates the virtuosity required for bebop performance
+\end{enumerate}
+
+\textbf{Instrumentation:} Alto saxophone (Parker), trumpet (Dizzy), rhythm section (piano, bass, drums)\\
+\textbf{Song Form:} 32-bar AABA (``I Got Rhythm'' chord progression)
+
+\listenbox{Extremely fast tempo, Parker's clear articulation at high speed, Dizzy's high register playing, both horns driving the music, rhythm section pushing tempo forward, shorter phrases with quick runs, every note distinguishable despite speed}
+
+\bigskip
+\textcolor{rulecolor}{\rule{\textwidth}{0.2pt}}
+
+% --- KO KO ---
+\subsection{Charlie Parker --- ``Ko Ko'' (1945)}
+
+\textbf{Era:} Bebop (1945)\\
+\textit{from The Complete Savoy Recordings}
+
+\subsubsection*{Key Facts}
+\begin{enumerate}
+    \item Also based on ``I Got Rhythm'' chord changes (contrafact) but spelled ``Ko Ko''
+    \item Features pre-composed introduction and ending
+    \item Miles Davis played piano on this recording
+    \item Demonstrates Parker's ability to navigate complex chord changes at breakneck speed
+    \item Parker made playing in all 12 keys standard for jazz artists
+    \item Features Max Roach on drums --- representing evolution of bebop drumming
+    \item One of the definitive bebop recordings
+\end{enumerate}
+
+\textbf{Instrumentation:} Alto saxophone (Parker), trumpet, piano (Miles Davis), bass, drums (Max Roach)\\
+\textbf{Song Form:} 32-bar AABA (``I Got Rhythm'' chord progression); pre-composed intro and ending
+
+\listenbox{Pre-composed intro/outro, Parker's virtuosic solo navigating complex changes, Max Roach's bebop drumming (ride cymbal timekeeping), extremely fast tempo, angular melodies, clear articulation at high speed, contrafact structure}
+
+\bigskip
+\textcolor{rulecolor}{\rule{\textwidth}{0.2pt}}
+
+% --- PARKER'S MOOD ---
+\subsection{Charlie Parker --- ``Parker's Mood'' (1948)}
+
+\textbf{Era:} Bebop (1948)\\
+\textit{from The Complete Savoy Recordings}
+
+\subsubsection*{Key Facts}
+\begin{enumerate}
+    \item Considered Parker's greatest blues recording
+    \item Mostly improvised with only one pre-composed part
+    \item Alternate takes show completely different solos --- demonstrates Parker's improvisational genius
+    \item Slower tempo than typical bebop; more blues-based and emotional
+    \item Shows Parker's range beyond fast, technical playing
+    \item Deep feeling and storytelling quality
+\end{enumerate}
+
+\textbf{Instrumentation:} Alto saxophone (Parker), piano, bass, drums\\
+\textbf{Song Form:} 12-bar blues; mostly improvised
+
+\listenbox{Slower tempo (contrast with typical bebop), blues feeling, mostly improvised throughout, emotional depth, Parker's storytelling phrasing, only one pre-composed section, demonstrates range beyond pure technical virtuosity}
+
+\bigskip
+\textcolor{rulecolor}{\rule{\textwidth}{0.2pt}}
+
+% --- TEMPUS FUGUE-IT ---
+\subsection{Bud Powell --- ``Tempus Fugue-it''}
+
+\textbf{Era:} Bebop (late 1940s)\\
+\textit{from Jazz Giant}
+
+\subsubsection*{Key Facts}
+\begin{enumerate}
+    \item Bud Powell = bebop pianist; heavily influenced by Art Tatum
+    \item Title is a play on ``tempus fugit'' (Latin for ``time flies'') and ``fugue'' (musical form)
+    \item Demonstrates bebop piano style: right hand playing horn-like bebop lines, left hand sparse comping
+    \item Piano replaced stride style (heavy left hand) with lighter accompaniment
+    \item Shows how piano adapted to bebop aesthetic --- more linear, less chordal
+\end{enumerate}
+
+\textbf{Instrumentation:} Piano (Bud Powell), bass, drums\\
+\textbf{Song Form:} Bebop composition; likely based on standard chord changes
+
+\listenbox{Right hand playing fast bebop lines like a horn, left hand sparse/rhythmic comping (not stride), incredible technique and speed, clear articulation, departure from stride piano tradition, linear rather than chordal approach}
+
+\newpage
+
+% ============================================================
+\section{Additional Artists Discussed in Class}
+% ============================================================
+
+\textit{Not on the syllabus listening list but discussed in lecture --- may appear on quizzes.}
+
+\bigskip
+
+% --- DIZZY GILLESPIE ---
+\subsection{Dizzy Gillespie (1917--1993)}
+
+\textbf{Full Name:} John Birks Gillespie\\
+\textbf{Born:} 1917, South Carolina; Died 1993 at age 75
+
+\subsubsection*{Key Facts}
+\begin{enumerate}
+    \item Public face of bebop --- very visible personality
+    \item Known for onstage presence: jovial, would smile and tell jokes (hence nickname ``Dizzy'')
+    \item But very serious about his music --- intellectual approach
+    \item Bullfrog cheeks when playing trumpet (famous visual signature)
+    \item Upturned trumpet horn: band mate kicked his trumpet during intermission and broke it, bending it upward; Dizzy could still play it and liked the sound, so asked trumpet maker to create special one
+    \item Played in very high register
+    \item Composed ``Bebop'' (1945) and many other bebop standards
+\end{enumerate}
+
+\textbf{Listen For (in ``Bebop'' 1945):} Pushing forward on the beat, much faster tempo, abrupt staccato notes, horns driving more than drums/bass, thinking over phrases spanning whole measures, Dizzy's high trumpet register
+
+\bigskip
+\textcolor{rulecolor}{\rule{\textwidth}{0.2pt}}
+
+% --- ROY ELDRIDGE ---
+\subsection{Roy Eldridge}
+
+\textbf{Role:} Bridge between Louis Armstrong and Dizzy Gillespie
+
+\subsubsection*{Key Facts}
+\begin{enumerate}
+    \item Moved to New York in 1930
+    \item Lead trumpeter for Fletcher Henderson
+    \item Joined Gene Krupa's band in 1941
+    \item ``Hot trumpet sound'' like Armstrong
+    \item Vibrato and accents make it sound like someone singing
+    \item Great use of dynamics
+    \item Not really playing in bebop language but very high range
+    \item Attacked ballads with more forceful approach than previous generation
+\end{enumerate}
+
+\textbf{Listen For (in ``Rocking Chair'' with Gene Krupa):} Transition into bebop from big band sound, vibrato and accents creating vocal quality, great dynamics, high range, hot trumpet sound, forceful approach to ballad
+
+\bigskip
+\textcolor{rulecolor}{\rule{\textwidth}{0.2pt}}
+
+% --- CHARLIE CHRISTIAN ---
+\subsection{Charlie Christian (guitarist)}
+
+\textbf{Died:} Age 25 of tuberculosis in 1942 (just as bebop was coming into its own)
+
+\subsubsection*{Key Facts}
+\begin{enumerate}
+    \item First person to bring electric guitar to jazz
+    \item Known for long flowing melodic lines and improvisations
+    \item Rhythm reminiscent of the beginnings of bebop
+    \item Played with Kenny Clarke (drummer, considered first bebop drummer)
+    \item Hired by Benny Goodman as part of Goodman's integrated band
+\end{enumerate}
+
+\textbf{Listen For (in ``Swing to Bop'' with Kenny Clarke):} Live recording, drums driving the beat just like guitar, the two feel really in sync and lined up, when one speeds up the other does too, electric guitar tone, flowing melodic lines
+
+\bigskip
+\textcolor{rulecolor}{\rule{\textwidth}{0.2pt}}
+
+% --- ART TATUM ---
+\subsection{Art Tatum (pianist)}
+
+\textbf{Condition:} Legally blind
+
+\subsubsection*{Key Facts}
+\begin{enumerate}
+    \item Incredible technique on piano, played very fast
+    \item Very big influence on Bud Powell (bebop pianist)
+    \item Stride piano technique --- alternating left hand technique
+    \item Pushed tempos significantly
+    \item Syncopation with one hand while other plays strong heavy singular notes at unexpected times
+    \item Really light fast notes on one hand, strong notes on other
+\end{enumerate}
+
+\textbf{Listen For (in ``I Got Rhythm'' live version):} Pushes tempo a lot, syncopation with one hand, really light fast notes contrasted with heavy singular notes, stride piano left hand, incredible speed and technique
+
+\bigskip
+\textcolor{rulecolor}{\rule{\textwidth}{0.2pt}}
+
+% --- JIMMY BLANTON ---
+\subsection{Jimmy Blanton (bassist)}
+
+\textbf{Died:} Age 23\\
+\textbf{Band:} Duke Ellington Orchestra
+
+\subsubsection*{Key Facts}
+\begin{enumerate}
+    \item Big figure in the Ellington band
+    \item Huge sound on the bass --- very resonant
+    \item Band had to make sacrifices (play softer) so he could be heard in beginning and end of pieces
+    \item If you took him away, the music would feel a lot emptier
+    \item Leading band with his ``walking'' bass line
+    \item Important in developing the walking bass style that became standard in bebop
+\end{enumerate}
+
+\textbf{Listen For (in ``Jack the Bear''):} Really resonant bass sound, walking bass line leading the band, band playing softer to feature bass, huge low-end presence
+
+\bigskip
+\textcolor{rulecolor}{\rule{\textwidth}{0.2pt}}
+
+% --- LESTER YOUNG ---
+\subsection{Lester Young (tenor saxophone)}
+
+\textbf{Born:} 1909, Mississippi; Died at 49\\
+\textbf{Band:} Count Basie in Kansas City (1933--1940)\\
+\textbf{Sound:} ``Cool sound'' (contrast with Armstrong/Eldridge ``hot sound'')
+
+\subsubsection*{Key Facts}
+\begin{enumerate}
+    \item One of Charlie Parker's biggest influences
+    \item Cool sound rather than hot sound
+    \item Playing over phrases --- telling a story through phrasing
+    \item Some turns and pitch bends
+    \item Featured on 1952 ``Ad Lib Blues'' with great pianist Oscar Peterson
+\end{enumerate}
+
+\textbf{Listen For (in ``Ad Lib Blues'' 1952):} Cool sound, playing over phrases (not just individual notes), storytelling phrasing, turns and pitch bends, relaxed feel
+
+\newpage
+
+% ============================================================
+\section{Listening Response Template}
+% ============================================================
+
+Name, composer, and year are PROVIDED on the quiz. Focus on what you HEAR. Aim for 5 observations:
+
+\begin{enumerate}
+    \item \textbf{Instrumentation/Ensemble} --- Small combo or big band? Which instruments? Who is soloist? Electric guitar?
+    \item \textbf{Era/Style} --- Bebop, pre-bebop, swing? What clues? (very fast tempo = bebop; contrafact structure = bebop; small combo = bebop; horns driving beat = bebop)
+    \item \textbf{Rhythm/Feel} --- Extremely fast or slower? Pushing forward on beat? Ride cymbal timekeeping? Walking bass?
+    \item \textbf{Melody/Improvisation} --- Angular melodies with large leaps? Clear articulation at speed? Navigating complex changes? Blues-based or chord-based? Pre-composed intro/outro?
+    \item \textbf{Texture/Form/Special} --- Contrafact (new melody on ``I Got Rhythm'')? 12-bar blues? Mostly improvised? Alternate takes completely different? Hot or cool sound? Stride piano or bebop piano?
+    \item \textbf{Emotion/Context} --- Virtuosic display or emotional depth? Art music (not for dancing)? How does it connect to WWII context, counterculture, or rejection of entertainment model?
+\end{enumerate}
+
+\noindent\fcolorbox{rulecolor}{lightbg}{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule}{\small\textbf{Template:} ``This piece features [ensemble type] with [soloist] as the primary voice. The style is [bebop/pre-bebop] based on [tempo, articulation, harmonic complexity]. The form is [form], evidenced by [what you hear]. A notable feature is [detail], which connects to [bebop as art music / WWII context / virtuosic demands / counterculture movement].''}}
+
+% ============================================================
+\section{General Understanding}
+% ============================================================
+
+\subsection{Movement's Place in History}
+\begin{itemize}
+    \item World War II economic hardship made big bands financially unsustainable
+    \item Bebop was artistic rebellion: big band musicians felt their music wasn't taken seriously
+    \item Violent shift to ``mad, furious'' music reflecting cultural darkness
+    \item Langston Hughes: ``Every time a cop beats a black man with a bat, it makes a Bop sound''
+    \item Bebop began in Harlem (Minton's Playhouse, Clark Monroe's Uptown House); later commercialized on 52nd Street
+    \item Recording ban (1942--1944) meant earliest bebop was poorly documented
+    \item Billy Eckstine's 1944 big band was bebop all-star lineup: Parker, Dizzy, Miles, Art Blakey, Sarah Vaughan
+    \item Small combos (4--6 musicians) replaced 15-piece big bands
+\end{itemize}
+
+\subsection{Cultural Context}
+\begin{itemize}
+    \item Bebop as counterculture: associated with zoot suits, horn-rimmed glasses, berets, goatees
+    \item Not danceable --- deliberate rejection of swing era's entertainment/dance function
+    \item Fast-paced, complex, intellectual music for listening, not dancing
+    \item Charlie Parker called ``everyone's God'' by Sonny Rollins
+    \item Parker's heroin addiction tragically influenced a generation; he hated this legacy
+    \item 1988 film ``Bird'' (Clint Eastwood, Forest Whitaker) depicts Parker's life (depressing; only \$2 million box office)
+    \item Bebop nickname origin: scatting sound + Langston Hughes quote about police violence
+\end{itemize}
+
+\subsection{Musical Revolution}
+\begin{itemize}
+    \item Upper extensions of chords (9ths, 11ths, 13ths) expanded harmonic vocabulary
+    \item Parker heard how to connect upper extensions when jamming; gave him his sound
+    \item ``Playing the changes'' --- navigating complex chord progressions became hallmark
+    \item Parker made playing in all 12 keys standard for jazz artists
+    \item Contrafact: new melodies written over ``I Got Rhythm'' and other standard progressions (``Ko Ko,'' ``Dizzy Atmosphere'')
+    \item Drummer shifts timekeeping from bass drum to ride cymbal (lighter, more flowing feel)
+    \item Incredible technical demands: clear articulation even at extreme speeds
+    \item Thinking over phrases that span whole measures, not just note-to-note
+    \item Piano shifts from stride (heavy left hand) to linear right-hand lines with sparse left-hand comping
+\end{itemize}
+
+\subsection{Key Tensions}
+\begin{itemize}
+    \item \textbf{Art vs.\ Entertainment:} Bebop deliberately rejected swing's dance function; was for listening only
+    \item \textbf{Virtuosity vs.\ Accessibility:} Extreme technical demands alienated casual listeners; bebop was exclusive, not inclusive
+    \item \textbf{Hot vs.\ Cool:} Eldridge/Dizzy (hot, Armstrong-influenced) vs.\ Lester Young (cool, melodic) --- both influenced bebop
+    \item \textbf{Economic Reality vs.\ Artistic Vision:} WWII economics forced small groups, but bebop musicians embraced this as artistic statement
+    \item \textbf{Innovation vs.\ Documentation:} Recording ban (1942--1944) meant bebop's birth was poorly documented
+    \item \textbf{Parker's Legacy:} Greatest musical innovator but tragic personal life; heroin addiction influenced generation against his wishes
+\end{itemize}
+
+\subsection{Bebop's Precursors: Five Who Helped Make a Revolution}
+\begin{itemize}
+    \item \textbf{Roy Eldridge (trumpet):} Bridge from Armstrong to Dizzy; hot sound, high range, vocal quality
+    \item \textbf{Charlie Christian (guitar):} First electric guitar in jazz; long flowing melodic lines; bebop rhythm
+    \item \textbf{Art Tatum (piano):} Incredible technique and speed; stride piano; influenced Bud Powell
+    \item \textbf{Jimmy Blanton (bass):} Huge resonant sound; walking bass lines; featured in Ellington band
+    \item \textbf{Lester Young (saxophone):} Cool sound; melodic/horizontal playing; major Parker influence
+\end{itemize}
+
+\end{document}

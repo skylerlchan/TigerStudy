@@ -1,0 +1,166 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+
+\title{Spring 2025 MC Problem 2: WARP Violation}
+\author{ECO 310}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{The Problem}
+
+On Monday, Homer Simpson buys a bundle of food and drink that costs \$90. On Tuesday, he buys a different bundle, for \$100, that would have cost \$80 at the Monday prices. In which of the following situations does he violate WARP:
+
+\begin{enumerate}
+    \item[(a)] If the Monday bundle would cost \$100 at the Tuesday prices.
+    \item[(b)] If the Monday bundle would cost more than \$100 at the Tuesday prices.
+    \item[(c)] Homer does not violate WARP.
+\end{enumerate}
+
+\textbf{Answer: (a)}
+
+\section{Setting Up the Problem}
+
+Let's define our notation clearly:
+\begin{itemize}
+    \item $p^M$ = Monday prices (price vector)
+    \item $p^T$ = Tuesday prices (price vector)
+    \item $x^M$ = Monday bundle (what Homer bought Monday)
+    \item $x^T$ = Tuesday bundle (what Homer bought Tuesday)
+\end{itemize}
+
+\subsection{What We Know}
+
+From the problem statement:
+\begin{align}
+p^M \cdot x^M &= 90 \tag{Monday bundle cost on Monday} \\
+p^M \cdot x^T &= 80 \tag{Tuesday bundle cost at Monday prices} \\
+p^T \cdot x^T &= 100 \tag{Tuesday bundle cost on Tuesday}
+\end{align}
+
+We need to determine what happens when $p^T \cdot x^M$ (Monday bundle cost at Tuesday prices) takes different values.
+
+\section{Understanding WARP}
+
+\textbf{Weak Axiom of Revealed Preference (WARP):} If bundle $x$ is chosen when bundle $y$ is affordable, then whenever $y$ is chosen, $x$ must not be affordable.
+
+More formally: If $x$ is directly revealed preferred to $y$, then $y$ cannot be directly revealed preferred to $x$.
+
+\subsection{Mathematical Statement}
+
+If at prices $p$ and income $m$:
+\[
+p \cdot x \leq m \quad \text{and} \quad p \cdot y \leq m \quad \text{and we choose } x
+\]
+
+Then $x$ is \textbf{revealed preferred} to $y$ (denoted $x \succsim^R y$).
+
+WARP says: If $x \succsim^R y$, then we cannot also have $y \succsim^R x$ (unless $x = y$).
+
+\section{Applying WARP to Homer's Problem}
+
+\subsection{Monday's Revealed Preference}
+
+On Monday, Homer had budget \$90. He:
+\begin{itemize}
+    \item \textbf{Chose} bundle $x^M$ at cost $p^M \cdot x^M = 90$
+    \item \textbf{Could afford} bundle $x^T$ at cost $p^M \cdot x^T = 80 < 90$
+\end{itemize}
+
+Since Homer chose $x^M$ when $x^T$ was strictly cheaper (and thus affordable), this reveals:
+\[
+\boxed{x^M \succ x^T} \quad \text{(Monday bundle is \textbf{strictly} preferred to Tuesday bundle)}
+\]
+
+This is a \textbf{strict} preference because he chose $x^M$ and didn't spend his full budget on $x^T$.
+
+\subsection{Tuesday's Revealed Preference}
+
+On Tuesday, Homer had budget \$100. He:
+\begin{itemize}
+    \item \textbf{Chose} bundle $x^T$ at cost $p^T \cdot x^T = 100$
+    \item Bundle $x^M$ costs $p^T \cdot x^M = ?$
+\end{itemize}
+
+\textbf{Case (a): If $p^T \cdot x^M = 100$}
+
+Homer could afford $x^M$ (costs exactly his budget), but chose $x^T$. This reveals:
+\[
+x^T \succsim x^M \quad \text{(Tuesday bundle is weakly preferred to Monday bundle)}
+\]
+
+\textbf{This is a WARP violation!} We have:
+\begin{itemize}
+    \item Monday revealed: $x^M \succ x^T$ (strict preference for Monday bundle)
+    \item Tuesday revealed: $x^T \succsim x^M$ (weak preference for Tuesday bundle)
+\end{itemize}
+
+These preferences are \textbf{inconsistent}.
+
+\textbf{Case (b): If $p^T \cdot x^M > 100$}
+
+Homer \textbf{cannot afford} $x^M$ on Tuesday. Since $x^M$ is not in his budget set, we cannot infer anything about his preferences from Tuesday's choice. Therefore, \textbf{no WARP violation}.
+
+\section{The WARP Violation Inequality}
+
+Homer violates WARP when \textbf{both} of the following hold:
+
+\begin{align}
+p^M \cdot x^T &< p^M \cdot x^M \tag{Monday reveals $x^M \succ x^T$} \\
+p^T \cdot x^M &\leq p^T \cdot x^T \tag{Tuesday reveals $x^T \succsim x^M$}
+\end{align}
+
+In our specific problem:
+\begin{align}
+80 &< 90 \quad \checkmark \tag{Monday condition satisfied} \\
+p^T \cdot x^M &\leq 100 \tag{Tuesday condition - when does this hold?}
+\end{align}
+
+\textbf{Answer: WARP is violated when $p^T \cdot x^M \leq 100$}
+
+This includes option (a) where $p^T \cdot x^M = 100$, but \textbf{not} option (b) where $p^T \cdot x^M > 100$.
+
+\section{Intuition}
+
+Think of it this way:
+\begin{itemize}
+    \item On Monday, Homer had a choice between the two bundles (both affordable) and picked Monday's bundle. This shows he prefers it.
+
+    \item On Tuesday, if the Monday bundle is still affordable (costs $\leq$ \$100), but Homer chooses the Tuesday bundle instead, he's \textbf{contradicting} his Monday preference.
+
+    \item However, if the Monday bundle becomes too expensive on Tuesday (costs $>$ \$100), then Homer simply can't afford it anymore. Choosing the Tuesday bundle doesn't contradict anything because he had no choice.
+\end{itemize}
+
+\section{General WARP Formula}
+
+For any two observations $(p^1, x^1)$ and $(p^2, x^2)$, WARP is violated if:
+
+\[
+\boxed{
+\begin{cases}
+p^1 \cdot x^2 \leq p^1 \cdot x^1 & \text{(bundle 2 was affordable when we chose bundle 1)} \\
+p^2 \cdot x^1 \leq p^2 \cdot x^2 & \text{(bundle 1 was affordable when we chose bundle 2)} \\
+x^1 \neq x^2 & \text{(the bundles are different)}
+\end{cases}
+}
+\]
+
+with at least one inequality strict.
+
+\section{Summary}
+
+Homer violates WARP in option \textbf{(a)} because:
+\begin{itemize}
+    \item Monday: Chose $x^M$ over affordable $x^T$ $\Rightarrow$ $x^M \succ x^T$
+    \item Tuesday: Chose $x^T$ over affordable $x^M$ $\Rightarrow$ $x^T \succsim x^M$
+    \item These preferences contradict each other
+\end{itemize}
+
+Homer does \textbf{not} violate WARP in option (b) because $x^M$ is not affordable on Tuesday, so no preference reversal is revealed.
+
+\end{document}
