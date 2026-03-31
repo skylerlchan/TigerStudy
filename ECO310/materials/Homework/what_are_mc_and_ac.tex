@@ -1,0 +1,196 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+
+\definecolor{boxblue}{RGB}{230,240,255}
+\definecolor{boxgreen}{RGB}{230,255,240}
+
+\title{\textbf{What are MC and AC?}}
+\author{ECO310: Basic Cost Concepts}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{MC = Marginal Cost}
+\textit{(Lecture 11-12, slide 7)}
+
+\begin{tcolorbox}[colback=boxblue, colframe=blue!50!black, title=Definition:]
+\Large
+\[
+MC(q) = C'(q) = \frac{dC}{dq}
+\]
+
+\normalsize
+\textbf{Marginal Cost} = the derivative of the cost function
+
+= the cost of producing \textbf{one more unit}
+\end{tcolorbox}
+
+\subsection*{What does it mean?}
+
+MC tells you: \textbf{``How much does it cost to make one more unit?''}
+
+\subsection*{Example:}
+
+If $C(q) = 2q^2 + 10$, then:
+\[
+MC(q) = \frac{dC}{dq} = 4q
+\]
+
+\textbf{Interpretation:}
+\begin{itemize}[leftmargin=*]
+    \item When you've made $q=0$ units, making the 1st unit costs $MC(0) = 0$
+    \item When you've made $q=5$ units, making the 6th unit costs $MC(5) = 20$
+    \item When you've made $q=10$ units, making the 11th unit costs $MC(10) = 40$
+\end{itemize}
+
+Notice: It gets more expensive to make each additional unit! This is common in economics.
+
+\newpage
+
+\section{AC = Average Cost}
+\textit{(Lecture 11-12, slide 28)}
+
+\begin{tcolorbox}[colback=boxgreen, colframe=green!50!black, title=Definition:]
+\Large
+\[
+AC(q) = \frac{C(q)}{q}
+\]
+
+\normalsize
+\textbf{Average Cost} = total cost divided by quantity
+
+= the cost \textbf{per unit} when making $q$ units
+\end{tcolorbox}
+
+\subsection*{What does it mean?}
+
+AC tells you: \textbf{``On average, how much does each unit cost to make?''}
+
+\subsection*{Example:}
+
+If $C(q) = 2q^2 + 10$, then:
+\[
+AC(q) = \frac{C(q)}{q} = \frac{2q^2 + 10}{q} = 2q + \frac{10}{q}
+\]
+
+\textbf{Interpretation:}
+\begin{itemize}[leftmargin=*]
+    \item To make 1 unit total: $AC(1) = 2(1) + \frac{10}{1} = 12$ per unit
+    \item To make 5 units total: $AC(5) = 2(5) + \frac{10}{5} = 12$ per unit
+    \item To make 10 units total: $AC(10) = 2(10) + \frac{10}{10} = 21$ per unit
+\end{itemize}
+
+Notice: Average cost changes as you make more units!
+
+\section{The Difference: MC vs. AC}
+
+\begin{center}
+\begin{tabular}{p{7cm}|p{7cm}}
+\hline
+\textbf{Marginal Cost (MC)} & \textbf{Average Cost (AC)} \\
+\hline
+Cost of \textbf{one more} unit & Cost \textbf{per unit} on average \\[0.3cm]
+$MC = \frac{dC}{dq}$ (derivative) & $AC = \frac{C(q)}{q}$ (total/quantity) \\[0.3cm]
+``How much to make the next one?'' & ``How much does each one cost?'' \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection*{Real-world analogy:}
+
+Imagine a bakery making cookies:
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Fixed costs:} \$100 (oven, rent, etc.)
+    \item \textbf{Variable costs:} \$2 per cookie (flour, sugar, etc.)
+\end{itemize}
+
+So $C(q) = 100 + 2q$
+
+\textbf{Marginal Cost:}
+\[
+MC(q) = \frac{dC}{dq} = 2
+\]
+``Each additional cookie costs \$2 to make''
+
+\textbf{Average Cost:}
+\[
+AC(q) = \frac{C(q)}{q} = \frac{100 + 2q}{q} = \frac{100}{q} + 2
+\]
+
+\begin{itemize}[leftmargin=*]
+    \item Make 1 cookie: $AC(1) = \frac{100}{1} + 2 = \$102$ per cookie (ouch!)
+    \item Make 10 cookies: $AC(10) = \frac{100}{10} + 2 = \$12$ per cookie
+    \item Make 100 cookies: $AC(100) = \frac{100}{100} + 2 = \$3$ per cookie
+\end{itemize}
+
+The fixed cost (\$100) gets spread over more cookies, so AC goes down!
+
+\newpage
+
+\section{Why Do We Care?}
+
+\subsection*{For Problem Set 3:}
+
+\textbf{Short-Run Equilibrium (Question 2a):}
+\begin{itemize}[leftmargin=*]
+    \item Firms produce where \textbf{p = MC}
+    \item This maximizes profit for each firm
+\end{itemize}
+
+\textbf{Long-Run Equilibrium (Question 2b):}
+\begin{itemize}[leftmargin=*]
+    \item Firms still produce where \textbf{p = MC} (profit max)
+    \item But also: \textbf{p = min AC} (zero profit condition)
+    \item So we need: \textbf{MC = AC} to find equilibrium!
+\end{itemize}
+
+\section{Your Problem Set Example}
+
+For Problem Set 3, Question 2:
+
+\textbf{Given:} $C(q) = f(N) + \alpha q^2$
+
+\subsection*{Find MC:}
+\begin{align*}
+MC(q) &= \frac{dC}{dq} = \frac{d}{dq}\left(f(N) + \alpha q^2\right) \\
+&= 0 + 2\alpha q \\
+&= 2\alpha q
+\end{align*}
+
+\subsection*{Find AC:}
+\begin{align*}
+AC(q) &= \frac{C(q)}{q} = \frac{f(N) + \alpha q^2}{q} \\
+&= \frac{f(N)}{q} + \alpha q
+\end{align*}
+
+\subsection*{For Long-Run Equilibrium, set MC = AC:}
+\begin{align*}
+2\alpha q &= \frac{f(N)}{q} + \alpha q \\
+\alpha q &= \frac{f(N)}{q} \\
+\alpha q^2 &= f(N) \\
+q^* &= \sqrt{\frac{f(N)}{\alpha}}
+\end{align*}
+
+That's how you solve it!
+
+\section{Quick Reference}
+
+\begin{tcolorbox}[colback=yellow!10, colframe=orange!75!black, title=Summary:]
+\begin{align*}
+\text{Cost Function: } & C(q) = \text{total cost of producing } q \text{ units} \\[0.3cm]
+\text{Marginal Cost: } & MC(q) = C'(q) = \text{cost of one more unit} \\[0.3cm]
+\text{Average Cost: } & AC(q) = \frac{C(q)}{q} = \text{cost per unit} \\[0.5cm]
+\text{Profit Max: } & p = MC \\[0.3cm]
+\text{Zero Profit (LR): } & p = \min AC \\[0.3cm]
+\text{LR Equilibrium: } & MC = AC
+\end{align*}
+\end{tcolorbox}
+
+\end{document}

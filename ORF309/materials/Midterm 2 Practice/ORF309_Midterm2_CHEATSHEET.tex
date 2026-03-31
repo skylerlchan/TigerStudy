@@ -1,0 +1,303 @@
+\documentclass[7pt,landscape]{extarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[landscape,margin=0.25in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{tcolorbox}
+
+% Colors
+\definecolor{header}{RGB}{0,51,102}
+\definecolor{critical}{RGB}{220,20,60}
+
+% Compact everything
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlist{nosep, leftmargin=8pt}
+\titlespacing*{\section}{0pt}{2pt}{1pt}
+\titlespacing*{\subsection}{0pt}{1pt}{0.5pt}
+
+% Section formatting
+\titleformat{\section}{\normalsize\bfseries\color{header}}{\thesection}{0.3em}{}
+\titleformat{\subsection}{\small\bfseries\color{header}}{\thesubsection}{0.3em}{}
+
+% Compact box
+\newtcolorbox{compactbox}[1][]{
+  colback=yellow!5,
+  colframe=critical,
+  boxrule=0.5pt,
+  arc=0.5mm,
+  left=0.5pt,right=0.5pt,top=0.5pt,bottom=0.5pt,
+  #1
+}
+
+\pagestyle{empty}
+\setlength{\columnsep}{8pt}
+
+\begin{document}
+
+\noindent\textbf{ORF309 MIDTERM 2 CHEAT SHEET} -- Poisson, Random Walks, Joint Densities
+
+\vspace{1pt}
+
+\begin{multicols}{3}
+\raggedcolumns
+
+\section*{1. POISSON PROCESSES ★★★}
+
+\subsection*{Basic Facts}
+$N(t) \sim \text{Poisson}(\lambda t)$
+\begin{align*}
+P(N(t) = k) &= \frac{(\lambda t)^k e^{-\lambda t}}{k!} \\
+E[N(t)] &= \text{Var}(N(t)) = \lambda t
+\end{align*}
+
+\subsection*{Thinning (MOST IMPORTANT!)}
+\begin{compactbox}
+If arrivals $\sim$ Poisson($\lambda$), each Type A w/ prob $p$:
+$$\boxed{\text{Type A} \sim \text{Poisson}(\lambda p)}$$
+\end{compactbox}
+
+\textbf{Example:} Customers at rate 2/min, 40\% coffee \\
+$\Rightarrow$ Coffee orders: Poisson$(2 \times 0.4 = 0.8$/min$)$
+
+\subsection*{Superposition}
+Independent Poisson($\lambda_1$) + Poisson($\lambda_2$) \\
+$= $ Poisson($\lambda_1 + \lambda_2$)
+
+\subsection*{Competing Processes}
+Process A at rate $\lambda_A$, B at rate $\lambda_B$:
+\begin{align*}
+P(\text{A before B}) &= \frac{\lambda_A}{\lambda_A + \lambda_B} \\
+E[\text{time}] &= \frac{1}{\lambda_A + \lambda_B}
+\end{align*}
+
+\subsection*{Conditional Expectation}
+\begin{compactbox}
+Given $n$ arrivals occurred:
+$$\boxed{E[T \mid N(T) = n] = \frac{n}{\lambda}}$$
+\end{compactbox}
+
+\textbf{Example:} 10 customers at rate 2/min \\
+$\Rightarrow E[T] = 10/2 = 5$ min
+
+\section*{2. RANDOM WALKS ★★★}
+
+\subsection*{Setup}
+\begin{itemize}
+\item States: $a, \ldots, i, \ldots, b$ (barriers at $a$, $b$)
+\item Start at $i$, move w/ probs $p_\uparrow, p_\downarrow, p_\leftrightarrow$
+\end{itemize}
+
+\subsection*{First-Step: Hitting Probability}
+$p(i) = P(\text{hit } b \text{ before } a \mid \text{start } i)$
+
+\begin{compactbox}
+\textbf{Recursive:}
+$$p(i) = p_\uparrow p(i+1) + p_\downarrow p(i-1) + p_\leftrightarrow p(i)$$
+\textbf{Boundaries:} $p(a) = 0$, $p(b) = 1$
+\end{compactbox}
+
+\textbf{Symmetric shortcut} ($p_\uparrow = p_\downarrow = 1/2$):
+$$\boxed{p(i) = \frac{i-a}{b-a}}$$
+
+\subsection*{First-Step: Expected Time}
+$\mu(i) = E[\text{time to barrier} \mid \text{start } i]$
+
+\begin{compactbox}
+\textbf{Recursive:}
+$$\mu(i) = \mathbf{1} + p_\uparrow \mu(i+1) + p_\downarrow \mu(i-1) + p_\leftrightarrow \mu(i)$$
+\textbf{Boundaries:} $\mu(a) = 0$, $\mu(b) = 0$
+
+\textcolor{critical}{\textbf{DON'T FORGET THE +1!}}
+\end{compactbox}
+
+\textbf{Symmetric shortcut:}
+$$\boxed{\mu(i) = (i-a)(b-i)}$$
+
+\subsection*{Problem-Solving Steps}
+1. Draw diagram, identify $p(i)$ or $\mu(i)$ \\
+2. Check if symmetric → use shortcut \\
+3. Write boundaries \\
+4. Write equations for all middle states \\
+5. Solve system
+
+\section*{3. JOINT/CONDITIONAL DENSITIES ★★★}
+
+\subsection*{Key Relationships}
+\begin{align*}
+f_{X|Y}(x|y) &= \frac{f_{X,Y}(x,y)}{f_Y(y)} \\
+f_{X,Y}(x,y) &= f_{Y|X}(y|x) \cdot f_X(x) \\
+f_X(x) &= \int f_{X,Y}(x,y) \, dy
+\end{align*}
+
+\subsection*{Law of Total Expectation}
+\begin{compactbox}
+$$\boxed{E[Y] = E[E[Y|X]]}$$
+$$= \int E[Y|X=x] \cdot f_X(x) \, dx$$
+\end{compactbox}
+
+\subsection*{The $Y = UX$ Transform (Common!)}
+$U \sim \text{Unif}[0,1]$ indep. of $X$, $Y = UX$:
+\begin{align*}
+f_{Y|X}(y|x) &= \frac{1}{x} \quad (0 < y < x) \\
+E[Y|X=x] &= \frac{x}{2} \\
+f_{X,Y}(x,y) &= \frac{f_X(x)}{x} \quad (0 < y < x)
+\end{align*}
+
+\textcolor{critical}{\textbf{Always specify range!}}
+
+\subsection*{Strategy}
+\begin{itemize}
+\item Need $E[Y]$? → Try $E[E[Y|X]]$
+\item Building joint? → $f_{X,Y} = f_{Y|X} \cdot f_X$
+\item Draw picture of region!
+\end{itemize}
+
+\section*{4. EXPONENTIAL ★★}
+
+$T \sim \text{Exp}(\lambda)$:
+\begin{align*}
+f(t) &= \lambda e^{-\lambda t} \quad (t > 0) \\
+P(T > t) &= e^{-\lambda t} \\
+E[T] &= \frac{1}{\lambda} \quad \text{(NOT } \lambda\text{!)} \\
+\text{Var}(T) &= \frac{1}{\lambda^2}
+\end{align*}
+
+\subsection*{Memoryless Property}
+\begin{compactbox}
+$$P(T > s+t \mid T > s) = P(T > t)$$
+\end{compactbox}
+
+\subsection*{Min/Max of Exponentials}
+$T_1 \sim \text{Exp}(\lambda_1)$, $T_2 \sim \text{Exp}(\lambda_2)$ indep:
+\begin{align*}
+\min(T_1, T_2) &\sim \text{Exp}(\lambda_1 + \lambda_2) \\
+P(T_1 < T_2) &= \frac{\lambda_1}{\lambda_1 + \lambda_2} \\
+E[\max(T_1, T_2)] &= \frac{1}{\lambda_1} + \frac{1}{\lambda_2} - \frac{1}{\lambda_1+\lambda_2}
+\end{align*}
+
+\columnbreak
+
+\section*{5. BROWNIAN MOTION ★}
+
+$B(t)$ standard BM:
+\begin{align*}
+B(0) &= 0 \\
+B(t) &\sim N(0, t) \\
+E[B(t)] &= 0, \quad \text{Var}(B(t)) = t \\
+B(t) - B(s) &\sim N(0, t-s) \quad (t > s)
+\end{align*}
+
+\textbf{Conditional:}
+\begin{align*}
+E[B(t) \mid B(s) = x] &= x \\
+E[B(t)^2 \mid B(s) = x] &= x^2 + (t-s)
+\end{align*}
+
+\textbf{Geometric BM:} $S(t) = S_0 e^{B(t)}$ (stocks)
+
+\section*{PATTERN RECOGNITION}
+
+\begin{tabular}{p{2.5cm}p{2cm}}
+\hline
+\textbf{See} & \textbf{Use} \\
+\hline
+Types/categories & Thinning \\
+Which first? & Competing \\
+Given $n$ events & $E[T]=n/\lambda$ \\
+Position/game & Random walk \\
+Prob reaching? & $p(i)$ equations \\
+Expected time? & $\mu(i)$ (+1!) \\
+Two variables & Joint PDF \\
+$Y = UX$ & $f_{Y|X}=1/x$ \\
+Waiting time & Exponential \\
+Min/first & Sum rates \\
+\hline
+\end{tabular}
+
+\section*{COMMON MISTAKES}
+
+\begin{enumerate}
+\item Forgetting +1 in $\mu(i)$ formula
+\item Not using thinning for types
+\item Confusing $\lambda$ with $1/\lambda$
+\item Wrong boundaries: $\mu(a)=\mu(b)=0$
+\item Not specifying range for $f_{X,Y}$
+\item Not checking symmetry first
+\end{enumerate}
+
+\section*{OTHER (BACKUP)}
+
+\textbf{Bin}$(n,p)$: $E=np$, Var$=np(1-p)$ \quad \textbf{Geom}$(p)$: $E=1/p$ \quad \textbf{Unif}$[a,b]$: $E=\frac{a+b}{2}$
+
+\textbf{Normal}: $E=\mu$, Var$=\sigma^2$, $Z \sim N(0,1)$ \quad \textbf{Gamma}$(k,\lambda)$: $E=k/\lambda$, Var$=k/\lambda^2$
+
+\end{multicols}
+
+\newpage
+
+\noindent\textbf{ORF309 MIDTERM 2 CHEAT SHEET (PAGE 2) -- Worked Examples}
+
+\vspace{1pt}
+
+\begin{multicols}{3}
+\raggedcolumns
+
+\section*{POISSON EXAMPLES}
+
+\subsection*{Ex 1-3: Poisson Basics}
+Thinning: $2 \times 0.4 = 0.8$/min \quad Competing: $P(\text{Uber 1st}) = \frac{6}{10}$ \quad Conditional: $E[T|N=10] = 5$ min
+
+\subsection*{Ex 4: Thinning + Competing}
+\textbf{Q:} Coffee shop: 2/min arrive, 40\% coffee, 20\% food. P(4 coffee before 1st food)?
+
+\textbf{A:} $\lambda_c = 0.8$, $\lambda_f = 0.4$. Among c+f only, each is c w/ prob 2/3:
+$$P = \left(\frac{2}{3}\right)^4 \cdot \frac{1}{3} = \frac{16}{243}$$
+
+\section*{RANDOM WALK EXAMPLES}
+
+\subsection*{Ex 5-7: Random Walk}
+Symm 0--4, start 2: $p(2) = \frac{2}{4}$, $\mu(2) = 2 \cdot 2 = 4$ \quad Biased: write equations, solve system
+
+\section*{JOINT DENSITY EXAMPLES}
+
+\subsection*{Ex 8: $Y = UX$ Transform}
+$P(X>x) = 1/x^2 \Rightarrow f_X = 2/x^3$. $E[Y|X=x] = x/2 \Rightarrow E[Y] = \frac{1}{2}E[X] = 1$
+
+\subsection*{Ex 9-10: Joint/Conditional}
+$f_{X,Y}(x,y) = \frac{2}{x^4}$ for $0<y<x$, $x \geq 1$ \quad $f_Y(1) = \frac{2}{3}$ \quad $P(X>2|Y=1) = \frac{1}{8}$
+
+\section*{EXPONENTIAL EXAMPLES}
+
+\subsection*{Ex 11-14: Exponential}
+Exp(2): $E = 0.5$, $P(>3) = e^{-6}$ \quad Min(6,4): $E = 0.1$hr \quad Max(1/8,1/4): $E = 8+4-8/3 = 9.33$hr
+
+\section*{BROWNIAN MOTION EXAMPLES}
+
+\subsection*{Ex 15-18: BM}
+Var$(B(5)) = 5$ \quad $B(5)-B(2) \sim N(0,3)$ \quad $E[B(5)^2|B(2)=3] = 12$
+
+Geom BM: $S(t)=e^{B(t)}$, $P(S(2) \geq S(1)^2) = P(B(2)-2B(1) \geq 0) = 0.5$
+
+\section*{QUICK REFS}
+
+$P(A|B) = \frac{P(A \cap B)}{P(B)}$ \quad $E[aX+bY] = aE[X]+bE[Y]$ \quad Var$(X) = E[X^2]-(E[X])^2$
+
+Indep: $f_{X,Y} = f_X \cdot f_Y$ \quad IBP: $\int u dv = uv - \int v du$
+
+\section*{EXAM STRATEGY}
+
+\textbf{Time:} 35 min/Q, 5 min check. \textbf{Approach:} Read, identify technique, write setup, show work, check sense.
+
+\textbf{Partial credit:} Write formulas, define variables, explain approach. \textbf{Check:} $P \in [0,1]$? PDF = 1? Units?
+
+\vspace{2pt}
+
+\textbf{Key:} +1 in $\mu(i)$ | Thinning for types | $E[T] = 1/\lambda$ | Range for PDFs | Big 3 = 75\%!
+
+\end{multicols}
+
+\end{document}

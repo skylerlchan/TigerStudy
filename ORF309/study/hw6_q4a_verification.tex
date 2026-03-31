@@ -1,0 +1,287 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+
+\title{\textbf{Homework 6, Question 4a Verification} \\ \large Solution Check and Explanation}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem Statement}
+
+Let $\{N_t\}$ be a Poisson process with rate $\lambda$.
+
+\textbf{Compute:} $P(N_4 = 5 \mid N_9 = 13)$
+
+\section{Your Solution: Step-by-Step Verification}
+
+\begin{tcolorbox}[colback=green!10!white,colframe=green!75!black,title=\textbf{VERDICT: YOUR WORK IS CORRECT! ✓}]
+Your approach is exactly right. You properly used:
+\begin{itemize}
+    \item Bayes' rule / definition of conditional probability
+    \item Independence of increments (crucial!)
+    \item Poisson PMF formulas
+    \item Algebraic simplification
+\end{itemize}
+This is the standard, rigorous way to solve this problem.
+\end{tcolorbox}
+
+\subsection{Step 1: Apply Definition of Conditional Probability ✓}
+
+You wrote:
+\[
+P(N_4 = 5 \mid N_9 = 13) = \frac{P(N_4 = 5, N_9 = 13)}{P(N_9 = 13)}
+\]
+
+\textbf{Why this is correct:} This is the definition of conditional probability.
+
+\textcolor{green!60!black}{\textbf{✓ CORRECT}}
+
+\subsection{Step 2: Rewrite Joint Probability Using Increments ✓}
+
+You wrote:
+\[
+P(N_4 = 5, N_9 = 13) = P(N_4 = 5, N_9 - N_4 = 8)
+\]
+
+\textbf{Why this is correct:} If $N_4 = 5$ and $N_9 = 13$, then the increment $N_9 - N_4 = 13 - 5 = 8$. This is just rewriting the same event.
+
+\textcolor{green!60!black}{\textbf{✓ CORRECT}}
+
+\subsection{Step 3: Use Independence of Increments ✓}
+
+You wrote:
+\[
+P(N_4 = 5, N_9 - N_4 = 8) = P(N_4 = 5) \cdot P(N_9 - N_4 = 8)
+\]
+
+\textbf{Why this is correct:} This uses the \textbf{independence of increments} property of Poisson processes:
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Independence of Increments]
+For a Poisson process, non-overlapping increments are independent.
+
+Specifically: $N_4$ (events in $[0, 4]$) and $N_9 - N_4$ (events in $(4, 9]$) are independent random variables.
+\end{tcolorbox}
+
+\textcolor{green!60!black}{\textbf{✓ CORRECT - This is the key insight!}}
+
+\subsection{Step 4: Apply Poisson PMF Formulas ✓}
+
+You wrote:
+\begin{align*}
+P(N_4 = 5) &= \frac{e^{-4\lambda}(4\lambda)^5}{5!} \\
+P(N_9 - N_4 = 8) &= \frac{e^{-5\lambda}(5\lambda)^8}{8!} \\
+P(N_9 = 13) &= \frac{e^{-9\lambda}(9\lambda)^{13}}{13!}
+\end{align*}
+
+\textbf{Why this is correct:}
+\begin{itemize}
+    \item $N_4 \sim \text{Poisson}(4\lambda)$ (events in time interval of length 4)
+    \item $N_9 - N_4 \sim \text{Poisson}(5\lambda)$ (events in time interval of length $9-4=5$)
+    \item $N_9 \sim \text{Poisson}(9\lambda)$ (events in time interval of length 9)
+\end{itemize}
+
+Each uses the standard Poisson PMF: $P(X = k) = \frac{e^{-\mu}\mu^k}{k!}$
+
+\textcolor{green!60!black}{\textbf{✓ CORRECT}}
+
+\subsection{Step 5: Substitute Into Conditional Probability ✓}
+
+You wrote:
+\[
+P(N_4 = 5 \mid N_9 = 13) = \frac{\frac{e^{-4\lambda}(4\lambda)^5}{5!} \cdot \frac{e^{-5\lambda}(5\lambda)^8}{8!}}{\frac{e^{-9\lambda}(9\lambda)^{13}}{13!}}
+\]
+
+\textbf{Why this is correct:} Direct substitution of the formulas from Steps 1, 3, and 4.
+
+\textcolor{green!60!black}{\textbf{✓ CORRECT}}
+
+\subsection{Step 6: Simplify ✓}
+
+You wrote:
+\[
+= \frac{e^{-4\lambda} \cdot e^{-5\lambda}}{e^{-9\lambda}} \cdot \frac{(4\lambda)^5 \cdot (5\lambda)^8}{(9\lambda)^{13}} \cdot \frac{13!}{5! \cdot 8!}
+\]
+
+Then:
+\[
+= \frac{e^{-9\lambda}}{e^{-9\lambda}} \cdot \frac{\lambda^5 \cdot \lambda^8}{\lambda^{13}} \cdot \frac{4^5 \cdot 5^8}{9^{13}} \cdot \frac{13!}{5! \cdot 8!}
+\]
+
+\textbf{Why this is correct:}
+\begin{itemize}
+    \item Exponentials: $e^{-4\lambda} \cdot e^{-5\lambda} = e^{-9\lambda}$ ✓ (cancels with denominator)
+    \item Powers of $\lambda$: $\lambda^5 \cdot \lambda^8 = \lambda^{13}$ ✓ (cancels with denominator)
+    \item Factorials: $\frac{13!}{5! \cdot 8!} = \binom{13}{5}$ ✓
+\end{itemize}
+
+\textcolor{green!60!black}{\textbf{✓ CORRECT}}
+
+\subsection{Step 7: Final Form ✓}
+
+You wrote:
+\[
+= \binom{13}{5} \left(\frac{4}{9}\right)^5 \left(\frac{5}{9}\right)^8
+\]
+
+\textbf{Why this is correct:} After all cancellations:
+\[
+\frac{4^5 \cdot 5^8}{9^{13}} = \frac{4^5}{9^5} \cdot \frac{5^8}{9^8} = \left(\frac{4}{9}\right)^5 \left(\frac{5}{9}\right)^8
+\]
+
+\textcolor{green!60!black}{\textbf{✓ CORRECT}}
+
+\subsection{Step 8: Numerical Calculation ✓}
+
+You calculated:
+\[
+\binom{13}{5} \left(\frac{4}{9}\right)^5 \left(\frac{5}{9}\right)^8 \approx 0.203
+\]
+
+\textbf{Verification:}
+\begin{itemize}
+    \item $\binom{13}{5} = 1287$
+    \item $(4/9)^5 \approx 0.01734$
+    \item $(5/9)^8 \approx 0.00907$
+    \item Product: $1287 \times 0.01734 \times 0.00907 \approx 0.2025$
+\end{itemize}
+
+\textcolor{green!60!black}{\textbf{✓ CORRECT (0.203 or 20.3\%)}}
+
+\section{Why Your Method Works: The Big Picture}
+
+Your solution brilliantly demonstrates a fundamental strategy for Poisson process problems:
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=orange!75!black,title=Problem-Solving Strategy]
+\textbf{When finding conditional probabilities for Poisson processes:}
+\begin{enumerate}
+    \item Use Bayes' rule: $P(A \mid B) = \frac{P(A, B)}{P(B)}$
+    \item Rewrite joint events using \textbf{increments}
+    \item Apply \textbf{independence of increments} to split the joint probability
+    \item Use Poisson PMF formulas for each term
+    \item Simplify (often $\lambda$ cancels out!)
+\end{enumerate}
+\end{tcolorbox}
+
+\subsection{Why $\lambda$ Cancels Out}
+
+Notice something remarkable: **the final answer doesn't depend on $\lambda$!**
+
+This makes intuitive sense:
+\begin{itemize}
+    \item We're asking: ``Given 13 arrivals by time 9, what's the probability that 5 of them arrived by time 4?''
+    \item The \textit{rate} doesn't matter—only the \textit{proportion} of time: $\frac{4}{9}$ of the time has passed
+    \item Each of the 13 arrivals is ``equally likely'' to have arrived in $[0, 4]$ vs $(4, 9]$
+\end{itemize}
+
+\section{The Direct Formula (Shortcut)}
+
+Your derivation proves this general result:
+
+\begin{tcolorbox}[colback=purple!5!white,colframe=purple!75!black,title=Conditional Distribution Formula]
+For a Poisson process $\{N_t\}$ with rate $\lambda$, and $0 < t < s$:
+\[
+\boxed{(N_t \mid N_s = n) \sim \text{Binomial}\left(n, \frac{t}{s}\right)}
+\]
+
+In other words:
+\[
+P(N_t = k \mid N_s = n) = \binom{n}{k} \left(\frac{t}{s}\right)^k \left(1 - \frac{t}{s}\right)^{n-k}
+\]
+\end{tcolorbox}
+
+For this problem: $t = 4$, $s = 9$, $n = 13$, $k = 5$:
+\[
+P(N_4 = 5 \mid N_9 = 13) = \binom{13}{5} \left(\frac{4}{9}\right)^5 \left(\frac{5}{9}\right)^8
+\]
+
+\textbf{Your work derived this formula from first principles!}
+
+\section{Intuition: Why Binomial?}
+
+Think of it this way:
+
+\begin{center}
+\textit{``Given 13 arrivals happened by time 9, what's the probability that exactly 5 of them arrived by time 4?''}
+\end{center}
+
+Each of the 13 arrivals has probability $\frac{4}{9}$ of arriving in $[0, 4]$ (since time 4 is $\frac{4}{9}$ of the way to time 9).
+
+So we're doing 13 independent trials (one for each arrival), each with success probability $\frac{4}{9}$, and asking for exactly 5 successes.
+
+That's exactly a \textbf{Binomial(13, 4/9)} distribution!
+
+\section{Common Mistakes (You Avoided These!)}
+
+\subsection{Mistake 1: Forgetting Independence}
+
+\textcolor{red}{\textbf{Wrong:}} Not recognizing that $N_4$ and $N_9 - N_4$ are independent
+
+\textcolor{green!60!black}{\textbf{You did it right:}} You explicitly used independence to split the joint probability
+
+\subsection{Mistake 2: Incorrect Increment Distribution}
+
+\textcolor{red}{\textbf{Wrong:}} Thinking $(N_9 - N_4) \sim \text{Poisson}(9\lambda - 4\lambda) = \text{Poisson}(5\lambda)$ by subtracting parameters
+
+\textcolor{green!60!black}{\textbf{You did it right:}} You correctly identified that the increment over an interval of length 5 has parameter $5\lambda$
+
+\subsection{Mistake 3: Arithmetic Errors}
+
+\textcolor{red}{\textbf{Wrong:}} Messing up the simplification (forgetting to cancel $\lambda$, etc.)
+
+\textcolor{green!60!black}{\textbf{You did it right:}} Your algebra is clean and all cancellations are correct
+
+\section{Summary and Grade}
+
+\begin{tcolorbox}[colback=green!20!white,colframe=green!75!black,title=Final Assessment]
+\textbf{Is your work correct?} \textbf{YES! ✓}
+
+\textbf{Is this the right process?} \textbf{YES! ✓}
+
+\textbf{Is this the right answer?} \textbf{YES! ✓}
+
+\vspace{0.3cm}
+
+\textbf{Grade: 10/10}
+
+Your solution demonstrates:
+\begin{itemize}
+    \item Deep understanding of Poisson process properties
+    \item Correct application of independence of increments
+    \item Clean algebraic manipulation
+    \item Correct final answer ($\approx 0.203$ or $20.3\%$)
+\end{itemize}
+
+This is exactly how the problem should be solved. Excellent work!
+\end{tcolorbox}
+
+\section{Key Formulas for Reference}
+
+\subsection{Poisson Process Basics}
+\begin{itemize}
+    \item $N_t \sim \text{Poisson}(\lambda t)$ for a Poisson process with rate $\lambda$
+    \item PMF: $P(N_t = k) = \frac{e^{-\lambda t}(\lambda t)^k}{k!}$
+    \item Mean: $\mathbb{E}(N_t) = \lambda t$
+    \item Variance: $\text{Var}(N_t) = \lambda t$
+\end{itemize}
+
+\subsection{Independence of Increments}
+For $0 \leq s < t < u$:
+\begin{itemize}
+    \item $N_t - N_s$ and $N_u - N_t$ are independent
+    \item $N_t - N_s \sim \text{Poisson}(\lambda(t - s))$
+\end{itemize}
+
+\subsection{Conditional Distribution}
+For $0 < t < s$:
+\[
+(N_t \mid N_s = n) \sim \text{Binomial}\left(n, \frac{t}{s}\right)
+\]
+
+\end{document}

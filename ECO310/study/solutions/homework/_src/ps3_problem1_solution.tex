@@ -1,0 +1,159 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+
+\title{ECO 310 Problem Set 3 \\ Problem 1 Solution}
+\author{Cost Functions and Monopoly}
+\date{Due: April 2, 2026}
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem 1: Cost Functions and Monopoly}
+
+\subsection*{Part (a): Finding the Cost Function}
+
+\textbf{Given:}
+\begin{itemize}
+    \item Production technology: $q = 1 + \sqrt{L}$
+    \item Wage rate: $w = \$2$ per labor unit
+\end{itemize}
+
+\textbf{Find:} The firm's cost function $C(q)$
+
+\vspace{0.3cm}
+
+\textbf{Solution:}
+
+To find the cost function, we need to:
+\begin{enumerate}
+    \item Invert the production function to express $L$ as a function of $q$
+    \item Multiply by the wage rate
+\end{enumerate}
+
+\textbf{Step 1: Invert the production function}
+
+Starting with the production function:
+\begin{align*}
+    q &= 1 + \sqrt{L}
+\end{align*}
+
+Solving for $L$:
+\begin{align*}
+    q - 1 &= \sqrt{L} \\
+    (q - 1)^2 &= L
+\end{align*}
+
+So the labor demand function is: $L(q) = (q - 1)^2$
+
+\textbf{Step 2: Calculate the cost function}
+
+Since each labor unit costs $\$2$:
+\begin{align*}
+    C(q) &= w \cdot L(q) \\
+    &= 2(q - 1)^2
+\end{align*}
+
+\textbf{Domain note:} Since $\sqrt{L} \geq 0$, we have $q \geq 1$. Notice that when $L = 0$, the firm produces $q = 1$ unit (this is like a ``free'' output from the production technology).
+
+\vspace{0.3cm}
+
+\fbox{\textbf{Answer:} $C(q) = 2(q - 1)^2$ for $q \geq 1$}
+
+\vspace{0.2cm}
+
+Equivalently, expanding: $C(q) = 2q^2 - 4q + 2$
+
+\newpage
+
+\subsection*{Part (b): Monopolist's Optimal Quantity and Price}
+
+\textbf{Given:}
+\begin{itemize}
+    \item The firm is a monopolist
+    \item Demand curve: $Q^D(P) = 200 - 5P$
+    \item Cost function from part (a): $C(q) = 2(q-1)^2$
+\end{itemize}
+
+\textbf{Find:} How much will the monopolist sell, and at what price?
+
+\vspace{0.3cm}
+
+\textbf{Solution:}
+
+\textbf{Step 1: Find the inverse demand curve}
+
+From $Q^D(P) = 200 - 5P$, solve for $P$:
+\begin{align*}
+    Q &= 200 - 5P \\
+    5P &= 200 - Q \\
+    P(q) &= 40 - \frac{q}{5}
+\end{align*}
+
+\textbf{Step 2: Write the profit function}
+
+Revenue:
+\begin{align*}
+    R(q) = P(q) \cdot q = \left(40 - \frac{q}{5}\right) \cdot q = 40q - \frac{q^2}{5}
+\end{align*}
+
+Expanding the cost:
+\begin{align*}
+    C(q) = 2(q - 1)^2 = 2q^2 - 4q + 2
+\end{align*}
+
+Profit:
+\begin{align*}
+    \pi(q) &= R(q) - C(q) \\
+    &= 40q - \frac{q^2}{5} - 2q^2 + 4q - 2 \\
+    &= 44q - \frac{q^2}{5} - \frac{10q^2}{5} - 2 \\
+    &= 44q - \frac{11q^2}{5} - 2
+\end{align*}
+
+\textbf{Step 3: Maximize profit (first-order condition)}
+
+\begin{align*}
+    \frac{d\pi}{dq} &= 44 - \frac{22q}{5} = 0 \\
+    44 &= \frac{22q}{5} \\
+    220 &= 22q \\
+    q^* &= 10
+\end{align*}
+
+\textbf{Step 4: Find the optimal price}
+
+\begin{align*}
+    P^* = 40 - \frac{q^*}{5} = 40 - \frac{10}{5} = 40 - 2 = 38
+\end{align*}
+
+\textbf{Verification:}
+\begin{itemize}
+    \item Second-order condition: $\frac{d^2\pi}{dq^2} = -\frac{22}{5} < 0$ \checkmark (maximum)
+    \item Demand check: $Q^D(38) = 200 - 5(38) = 200 - 190 = 10$ \checkmark
+\end{itemize}
+
+\vspace{0.3cm}
+
+\fbox{\parbox{0.9\textwidth}{
+\textbf{Answer:}
+\begin{itemize}[leftmargin=1cm]
+    \item Quantity sold: $q^* = 10$ units
+    \item Price: $P^* = \$38$
+\end{itemize}
+}}
+
+\vspace{0.3cm}
+
+\textbf{Economic Interpretation:}
+
+The monopolist restricts output to 10 units (compared to what would occur in perfect competition) and charges $\$38$ per unit. The monopolist earns profit:
+\begin{align*}
+    \pi^* &= R(10) - C(10) \\
+    &= 40(10) - \frac{100}{5} - 2(10-1)^2 \\
+    &= 400 - 20 - 162 \\
+    &= \$218
+\end{align*}
+
+\end{document}

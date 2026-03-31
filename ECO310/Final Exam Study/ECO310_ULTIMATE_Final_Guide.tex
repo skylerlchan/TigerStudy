@@ -1,0 +1,1485 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.6in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multicol}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+\usepackage{mdframed}
+
+% Colors
+\definecolor{criticalcolor}{RGB}{220,20,60}
+\definecolor{examplecolor}{RGB}{0,100,0}
+\definecolor{warningcolor}{RGB}{255,140,0}
+\definecolor{headercolor}{RGB}{25,25,112}
+\definecolor{formulacolor}{RGB}{0,51,102}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textbf{ECO310 Final Exam - THE ULTIMATE GUIDE}}
+\fancyhead[R]{\small Page \thepage}
+\fancyfoot[C]{\small Master these concepts, ace the exam!}
+
+% Section formatting
+\titleformat{\section}{\LARGE\bfseries\color{headercolor}}{\thesection}{1em}{}[\titlerule]
+\titleformat{\subsection}{\Large\bfseries\color{headercolor}}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\large\bfseries\color{formulacolor}}{\thesubsubsection}{1em}{}
+
+% Custom boxes
+\newtcolorbox{criticalbox}[1][]{
+  colback=criticalcolor!5,
+  colframe=criticalcolor,
+  fonttitle=\bfseries,
+  title={\textcolor{white}{★ CRITICAL - MASTER THIS FIRST}},
+  #1
+}
+
+\newtcolorbox{examplebox}[1][]{
+  colback=examplecolor!5,
+  colframe=examplecolor!80,
+  fonttitle=\bfseries,
+  title={WORKED EXAMPLE},
+  #1
+}
+
+\newtcolorbox{formulabox}[1][]{
+  colback=formulacolor!5,
+  colframe=formulacolor,
+  fonttitle=\bfseries,
+  title={KEY FORMULAS},
+  #1
+}
+
+\newtcolorbox{warningbox}[1][]{
+  colback=warningcolor!5,
+  colframe=warningcolor,
+  fonttitle=\bfseries,
+  title={⚠ COMMON MISTAKE - AVOID THIS!},
+  #1
+}
+
+\newtcolorbox{strategybox}[1][]{
+  colback=blue!5,
+  colframe=blue!70,
+  fonttitle=\bfseries,
+  title={PROBLEM-SOLVING STRATEGY},
+  #1
+}
+
+% Compact lists
+\setlist{nosep, leftmargin=*}
+
+\begin{document}
+
+% Title Page
+\begin{titlepage}
+\centering
+\vspace*{1cm}
+
+{\Huge\bfseries\color{criticalcolor} THE ULTIMATE\par}
+\vspace{0.3cm}
+{\Huge\bfseries ECO310 FINAL EXAM\par}
+\vspace{0.3cm}
+{\Huge\bfseries STUDY GUIDE\par}
+
+\vspace{1cm}
+{\Large\textit{Everything You Need to Ace This Exam}\par}
+
+\vspace{1.5cm}
+
+\begin{tcolorbox}[colback=yellow!10,colframe=orange,width=0.9\textwidth,arc=3mm]
+\centering
+\large
+\textbf{One Guide. All Topics. Step-by-Step.}\\[0.3cm]
+Choice Under Uncertainty + Markets Theory\\
+From Zero to Hero in 3-4 Days
+\end{tcolorbox}
+
+\vspace{1cm}
+
+{\large\textbf{What's Inside:}\par}
+\begin{itemize}[leftmargin=2cm]
+  \item ✓ Beginner-friendly explanations with real-world examples
+  \item ✓ Every formula you need (color-coded by importance)
+  \item ✓ 20+ fully worked examples
+  \item ✓ Pattern recognition guide (when to use what technique)
+  \item ✓ Common mistakes and how to avoid them
+  \item ✓ Step-by-step problem-solving strategies
+\end{itemize}
+
+\vfill
+
+{\large Created: March 31, 2026\par}
+{\large Post-Midterm Content: Lectures 7-14\par}
+
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+% Quick Start Guide
+\section*{START HERE: Quick Navigation}
+\addcontentsline{toc}{section}{START HERE: Quick Navigation}
+
+\begin{tcolorbox}[colback=yellow!20,colframe=orange!80,arc=3mm]
+\textbf{First Time Learning?} Read in order: Section 1 → 2 → 3 → 4
+
+\textbf{Need Quick Review?} Go straight to ``Formula Sheets'' (Section 6)
+
+\textbf{Doing Practice Problems?} Use ``Pattern Recognition Guide'' (Section 5)
+
+\textbf{Last-Minute Cramming?} Focus on Sections 1, 3, and 6 only
+\end{tcolorbox}
+
+\subsection*{The Big 2 Topics (Guaranteed on Exam)}
+
+\begin{enumerate}[leftmargin=*]
+  \item \textbf{Choice Under Uncertainty} (Section 1) - 50\% of final exam
+    \begin{itemize}
+      \item Expected utility, risk aversion, insurance, portfolio choice
+      \item Master the certainty equivalent and risk premium
+    \end{itemize}
+
+  \item \textbf{Markets} (Section 2-4) - 50\% of final exam
+    \begin{itemize}
+      \item Cost functions, profit maximization
+      \item Perfect competition vs. monopoly
+      \item General equilibrium and welfare economics
+    \end{itemize}
+\end{enumerate}
+
+\subsection*{How to Use This Guide}
+
+\textbf{Day 1:} Read Section 1 (Uncertainty), do all examples, try 3 practice problems
+
+\textbf{Day 2:} Read Sections 2-3 (Firms \& Monopoly), do all examples, try 3 practice problems
+
+\textbf{Day 3:} Read Section 4 (General Equilibrium), review all sections, do full practice exam
+
+\textbf{Day 4:} Review Section 6 (formulas), do another practice exam, make cheat sheet
+
+\newpage
+
+\section{CHOICE UNDER UNCERTAINTY - The First Half}
+
+\begin{criticalbox}
+\textbf{Why This Matters:} Core microeconomics topic. Covers 50\% of final exam material.
+
+Master expected utility, risk aversion, and the certainty equivalent - these appear in almost every problem!
+\end{criticalbox}
+
+\subsection{The Big Picture: Why Uncertainty Matters}
+
+\subsubsection{Real-World Examples}
+
+Until now, we've assumed consumers know exactly what will happen. But in reality:
+\begin{itemize}
+  \item Should you buy insurance? (Pay certain premium to avoid uncertain loss)
+  \item How to invest your savings? (Risky stocks vs. safe bonds)
+  \item Should you accept a job offer with uncertain bonus?
+\end{itemize}
+
+\textbf{The key question:} How do people make decisions when outcomes are uncertain?
+
+\subsection{Lotteries and Expected Value}
+
+\subsubsection{What is a Lottery?}
+
+A \textbf{lottery} is a random outcome with different prizes, each occurring with some probability.
+
+\textbf{Notation:} $L = (x_1, p_1; x_2, p_2; \ldots; x_n, p_n)$
+\begin{itemize}
+  \item $x_i$ = outcome $i$ (usually money)
+  \item $p_i$ = probability of outcome $i$
+  \item $\sum_{i=1}^n p_i = 1$ (probabilities sum to 1)
+\end{itemize}
+
+\begin{examplebox}
+\textbf{Example:} A coin flip lottery:
+\[
+L = (\$100, 0.5; \$0, 0.5)
+\]
+
+Win \$100 with 50\% chance, win \$0 with 50\% chance.
+\end{examplebox}
+
+\subsubsection{Expected Value}
+
+The \textbf{expected value} is the average outcome if you played the lottery many times.
+
+\begin{formulabox}
+\textbf{Expected Value:}
+\[
+\boxed{EV(L) = \sum_{i=1}^n p_i x_i}
+\]
+
+This is just a weighted average of outcomes!
+\end{formulabox}
+
+\begin{examplebox}
+\textbf{Problem:} Find the expected value of $L = (\$100, 0.5; \$0, 0.5)$
+
+\textbf{Solution:}
+\[
+EV(L) = 0.5 \times 100 + 0.5 \times 0 = \boxed{\$50}
+\]
+
+On average, you expect to win \$50.
+\end{examplebox}
+
+\subsection{Expected Utility Theory}
+
+\begin{criticalbox}
+\textbf{KEY INSIGHT:} People don't maximize expected value - they maximize expected utility!
+
+This is the foundation of everything in this section.
+\end{criticalbox}
+
+\subsubsection{The Problem with Expected Value}
+
+Consider two lotteries:
+\begin{itemize}
+  \item Lottery A: Win \$1 million with 100\% probability
+  \item Lottery B: Win \$10 million with 10\% probability, \$0 with 90\% probability
+\end{itemize}
+
+\textbf{Expected values:}
+\begin{align*}
+EV(A) &= \$1,000,000 \\
+EV(B) &= 0.1 \times 10,000,000 + 0.9 \times 0 = \$1,000,000
+\end{align*}
+
+Same expected value! But most people prefer A (guaranteed money) over B (risky gamble).
+
+\textbf{Why?} Because utility is not linear in money!
+
+\subsubsection{Utility Functions}
+
+A \textbf{utility function} $u(x)$ assigns a ``happiness level'' to wealth level $x$.
+
+\begin{formulabox}
+\textbf{Expected Utility:}
+\[
+\boxed{EU(L) = \sum_{i=1}^n p_i \cdot u(x_i)}
+\]
+
+People choose the lottery with highest expected utility, not highest expected value!
+\end{formulabox}
+
+\subsubsection{The Von Neumann-Morgenstern (vNM) Axioms}
+
+Expected utility theory relies on four axioms about rational preferences:
+
+\begin{enumerate}
+  \item \textbf{Completeness:} Can compare any two lotteries
+  \item \textbf{Transitivity:} If $L_1 \succ L_2$ and $L_2 \succ L_3$, then $L_1 \succ L_3$
+  \item \textbf{Continuity:} Smooth preferences (no jumps)
+  \item \textbf{Independence:} If $L_1 \succ L_2$, then mixing both with a third lottery $L_3$ preserves the preference
+\end{enumerate}
+
+\textbf{Result:} If someone satisfies these axioms, their preferences can be represented by expected utility!
+
+\subsection{Risk Aversion}
+
+\begin{criticalbox}
+\textbf{MOST IMPORTANT CONCEPT:} Risk aversion determines all behavior under uncertainty!
+
+Master this and you'll ace half the exam.
+\end{criticalbox}
+
+\subsubsection{What is Risk Aversion?}
+
+A person is \textbf{risk averse} if they prefer a certain amount over a lottery with the same expected value.
+
+\begin{examplebox}
+\textbf{Example:} Consider lottery $L = (\$100, 0.5; \$0, 0.5)$ with $EV = \$50$
+
+A risk-averse person prefers \$50 for sure over the lottery.
+
+A risk-loving person prefers the lottery over \$50 for sure.
+
+A risk-neutral person is indifferent.
+\end{examplebox}
+
+\subsubsection{Mathematical Definition}
+
+\begin{formulabox}[colback=yellow!20,colframe=orange!80]
+\textbf{RISK AVERSION AND CONCAVITY:}
+
+A person with utility $u(x)$ is:
+\begin{itemize}
+  \item \textbf{Risk averse} if $u$ is \textbf{concave} (curves down): $u''(x) < 0$
+  \item \textbf{Risk neutral} if $u$ is \textbf{linear}: $u''(x) = 0$
+  \item \textbf{Risk loving} if $u$ is \textbf{convex} (curves up): $u''(x) > 0$
+\end{itemize}
+
+\textbf{Key property of risk aversion:}
+\[
+\boxed{u(EV(L)) > EU(L)}
+\]
+
+Utility of expected value exceeds expected utility!
+\end{formulabox}
+
+\subsubsection{Why Concavity = Risk Aversion}
+
+\textbf{Intuition:} Concave utility means diminishing marginal utility of wealth.
+\begin{itemize}
+  \item Going from \$0 to \$50 gives a lot of utility
+  \item Going from \$50 to \$100 gives less additional utility
+  \item So losing \$50 hurts more than gaining \$50 helps!
+  \item Therefore, prefer \$50 for sure over 50-50 gamble of \$0 or \$100
+\end{itemize}
+
+\begin{examplebox}
+\textbf{Example:} Let $u(x) = \sqrt{x}$ (concave!)
+
+Lottery: $L = (100, 0.5; 0, 0.5)$, so $EV(L) = 50$
+
+\textbf{Expected utility:}
+\[
+EU(L) = 0.5 \times \sqrt{100} + 0.5 \times \sqrt{0} = 0.5 \times 10 + 0 = 5
+\]
+
+\textbf{Utility of expected value:}
+\[
+u(EV(L)) = u(50) = \sqrt{50} \approx 7.07
+\]
+
+Since $7.07 > 5$, we have $u(EV) > EU$, confirming risk aversion!
+\end{examplebox}
+
+\subsection{Certainty Equivalent and Risk Premium}
+
+\begin{criticalbox}
+\textbf{EXAM FAVORITE:} These concepts appear in 80\% of uncertainty problems!
+\end{criticalbox}
+
+\subsubsection{Certainty Equivalent (CE)}
+
+The \textbf{certainty equivalent} is the guaranteed amount that makes you indifferent to the lottery.
+
+\begin{formulabox}
+\textbf{Certainty Equivalent:}
+\[
+\boxed{u(CE) = EU(L)}
+\]
+
+Find CE by solving: $u(CE) = \sum_i p_i \cdot u(x_i)$
+\end{formulabox}
+
+\textbf{Interpretation:} CE is the smallest amount you'd accept to give up the lottery.
+
+\begin{examplebox}
+\textbf{Problem:} You have $u(x) = \sqrt{x}$ and face lottery $L = (100, 0.5; 0, 0.5)$. Find CE.
+
+\textbf{Solution:}
+
+\textbf{Step 1:} Calculate $EU(L)$
+\[
+EU(L) = 0.5 \times \sqrt{100} + 0.5 \times \sqrt{0} = 5
+\]
+
+\textbf{Step 2:} Solve $u(CE) = EU(L)$
+\[
+\sqrt{CE} = 5 \implies CE = 25
+\]
+
+\textbf{Answer:} $CE = \$25$
+
+You'd accept \$25 for sure instead of the lottery. Even though the lottery has expected value \$50, you only value it at \$25 because you're risk averse!
+\end{examplebox}
+
+\subsubsection{Risk Premium (RP)}
+
+The \textbf{risk premium} measures how much you'd pay to avoid risk.
+
+\begin{formulabox}
+\textbf{Risk Premium:}
+\[
+\boxed{RP = EV(L) - CE}
+\]
+
+This is the maximum you'd pay to eliminate uncertainty!
+\end{formulabox}
+
+\begin{examplebox}
+\textbf{Continuing previous example:}
+
+$EV(L) = \$50$, $CE = \$25$
+
+\textbf{Risk premium:}
+\[
+RP = 50 - 25 = \boxed{\$25}
+\]
+
+You'd pay up to \$25 to avoid the gamble and get the expected value for sure.
+\end{examplebox}
+
+\subsubsection{Relationship Between CE, RP, and EV}
+
+\begin{tcolorbox}[colback=blue!5,colframe=blue!70]
+\textbf{For risk-averse individuals:}
+\[
+CE < EV(L) \quad \text{and} \quad RP > 0
+\]
+
+\textbf{For risk-neutral individuals:}
+\[
+CE = EV(L) \quad \text{and} \quad RP = 0
+\]
+
+\textbf{For risk-loving individuals:}
+\[
+CE > EV(L) \quad \text{and} \quad RP < 0
+\]
+\end{tcolorbox}
+
+\subsection{Common Utility Functions}
+
+\subsubsection{1. Square Root: $u(x) = \sqrt{x}$}
+
+\textbf{Properties:}
+\begin{itemize}
+  \item $u'(x) = \frac{1}{2\sqrt{x}} > 0$ (increasing)
+  \item $u''(x) = -\frac{1}{4x^{3/2}} < 0$ (concave, risk averse)
+  \item Easy to work with!
+\end{itemize}
+
+\subsubsection{2. Logarithmic: $u(x) = \ln(x)$}
+
+\textbf{Properties:}
+\begin{itemize}
+  \item $u'(x) = \frac{1}{x} > 0$ (increasing)
+  \item $u''(x) = -\frac{1}{x^2} < 0$ (concave, risk averse)
+  \item Very risk averse for small $x$
+\end{itemize}
+
+\subsubsection{3. CARA: $u(x) = -e^{-ax}$ where $a > 0$}
+
+\textbf{Properties:}
+\begin{itemize}
+  \item Constant Absolute Risk Aversion
+  \item $u'(x) = ae^{-ax} > 0$ (increasing)
+  \item $u''(x) = -a^2e^{-ax} < 0$ (concave, risk averse)
+  \item Risk aversion doesn't depend on wealth level!
+\end{itemize}
+
+\subsubsection{4. CRRA: $u(x) = \frac{x^{1-\gamma}}{1-\gamma}$ where $\gamma > 0$}
+
+\textbf{Properties:}
+\begin{itemize}
+  \item Constant Relative Risk Aversion
+  \item When $\gamma = 1$: $u(x) = \ln(x)$
+  \item When $\gamma = 0$: $u(x) = x$ (risk neutral)
+  \item Commonly used in finance!
+\end{itemize}
+
+\subsection{Insurance}
+
+\begin{criticalbox}
+\textbf{STANDARD EXAM QUESTION:} Insurance problems test your understanding of risk aversion!
+\end{criticalbox}
+
+\subsubsection{The Setup}
+
+You have initial wealth $W$ and face potential loss $L$ with probability $p$.
+
+\textbf{Without insurance:}
+\begin{itemize}
+  \item Good state (no loss): wealth = $W$ with probability $1-p$
+  \item Bad state (loss): wealth = $W - L$ with probability $p$
+\end{itemize}
+
+\textbf{Expected utility without insurance:}
+\[
+EU_{\text{no ins}} = (1-p) \cdot u(W) + p \cdot u(W-L)
+\]
+
+\textbf{With insurance:} Pay premium $\pi$ to get coverage $K$ if loss occurs
+\begin{itemize}
+  \item Good state: wealth = $W - \pi$ with probability $1-p$
+  \item Bad state: wealth = $W - \pi - L + K$ with probability $p$
+\end{itemize}
+
+\textbf{Expected utility with insurance:}
+\[
+EU_{\text{ins}} = (1-p) \cdot u(W-\pi) + p \cdot u(W-\pi-L+K)
+\]
+
+\subsubsection{Actuarially Fair Insurance}
+
+Insurance is \textbf{actuarially fair} if the premium equals expected payout:
+\[
+\boxed{\pi = p \cdot K}
+\]
+
+\textbf{Big Result:} Risk-averse people will buy full insurance ($K = L$) if it's actuarially fair!
+
+\begin{examplebox}
+\textbf{Problem:} You have $W = \$100$ and face 25\% chance of losing $L = \$60$. Your utility is $u(x) = \sqrt{x}$. An insurance company offers to cover the loss for premium $\pi = \$15$.
+
+\textbf{(a)} Is this insurance actuarially fair?
+
+\textbf{Solution (a):}
+\[
+\text{Fair premium} = p \cdot L = 0.25 \times 60 = \$15
+\]
+
+Yes! $\pi = \$15$ equals expected payout.
+
+\textbf{(b)} Should you buy it?
+
+\textbf{Solution (b):}
+
+\textbf{Without insurance:}
+\[
+EU_{\text{no}} = 0.75 \times \sqrt{100} + 0.25 \times \sqrt{40} = 0.75 \times 10 + 0.25 \times 6.32 \approx 9.08
+\]
+
+\textbf{With insurance:}
+\[
+EU_{\text{ins}} = 1.0 \times \sqrt{100 - 15} = \sqrt{85} \approx 9.22
+\]
+
+Since $9.22 > 9.08$, \textbf{YES, buy insurance!}
+
+You end up with \$85 for sure, which you prefer to the risky lottery.
+\end{examplebox}
+
+\subsection{Portfolio Choice}
+
+\subsubsection{The Setup}
+
+You have wealth $W$ to allocate between:
+\begin{itemize}
+  \item \textbf{Safe asset:} Returns $r_f$ (certain)
+  \item \textbf{Risky asset:} Returns $r_h$ with probability $p$, $r_l$ with probability $1-p$ where $r_h > r_f > r_l$
+\end{itemize}
+
+Let $\alpha$ = fraction invested in risky asset.
+
+\textbf{Final wealth:}
+\begin{itemize}
+  \item Good state: $W_h = W[(1-\alpha)(1+r_f) + \alpha(1+r_h)]$
+  \item Bad state: $W_l = W[(1-\alpha)(1+r_f) + \alpha(1+r_l)]$
+\end{itemize}
+
+\textbf{Expected utility:}
+\[
+EU(\alpha) = p \cdot u(W_h) + (1-p) \cdot u(W_l)
+\]
+
+\textbf{Goal:} Choose $\alpha^*$ to maximize $EU(\alpha)$!
+
+\subsubsection{First-Order Condition}
+
+\begin{formulabox}
+\textbf{Optimal Portfolio FOC:}
+\[
+\boxed{\frac{dEU}{d\alpha} = p \cdot u'(W_h) \cdot \frac{dW_h}{d\alpha} + (1-p) \cdot u'(W_l) \cdot \frac{dW_l}{d\alpha} = 0}
+\]
+
+Where:
+\begin{align*}
+\frac{dW_h}{d\alpha} &= W(r_h - r_f) \\
+\frac{dW_l}{d\alpha} &= W(r_l - r_f)
+\end{align*}
+\end{formulabox}
+
+\begin{examplebox}
+\textbf{Problem:} You have $W = \$100$ and $u(x) = \ln(x)$. Safe asset returns 0\%, risky asset returns +20\% or -10\% with equal probability. Find optimal $\alpha$.
+
+\textbf{Solution:}
+
+$r_f = 0$, $r_h = 0.2$, $r_l = -0.1$, $p = 0.5$
+
+\textbf{Final wealth:}
+\begin{align*}
+W_h &= 100[(1-\alpha)(1) + \alpha(1.2)] = 100(1 + 0.2\alpha) \\
+W_l &= 100[(1-\alpha)(1) + \alpha(0.9)] = 100(1 - 0.1\alpha)
+\end{align*}
+
+\textbf{FOC:}
+\[
+0.5 \cdot \frac{1}{W_h} \cdot 20 + 0.5 \cdot \frac{1}{W_l} \cdot (-10) = 0
+\]
+
+\[
+\frac{10}{100(1+0.2\alpha)} = \frac{5}{100(1-0.1\alpha)}
+\]
+
+\[
+\frac{10}{1+0.2\alpha} = \frac{5}{1-0.1\alpha}
+\]
+
+Cross-multiply:
+\[
+10(1-0.1\alpha) = 5(1+0.2\alpha)
+\]
+\[
+10 - \alpha = 5 + \alpha
+\]
+\[
+5 = 2\alpha \implies \boxed{\alpha^* = 2.5 = 250\%}
+\]
+
+Wait, this is >100\%! This means \textbf{leverage} - borrow money to invest more in risky asset!
+\end{examplebox}
+
+\warningbox{
+\textbf{Watch out for corner solutions!}
+
+If FOC gives $\alpha > 1$, check if borrowing is allowed.
+
+If FOC gives $\alpha < 0$, check if short-selling is allowed.
+
+If neither allowed, optimal is $\alpha^* = 0$ or $\alpha^* = 1$ (corner solution).
+}
+
+\newpage
+
+\section{PRODUCER THEORY - Firms and Costs}
+
+\begin{criticalbox}
+\textbf{Why This Matters:} Foundation for understanding markets!
+
+Master cost functions and you'll breeze through monopoly and competition problems.
+\end{criticalbox}
+
+\subsection{Production Functions}
+
+\subsubsection{Definition}
+
+A \textbf{production function} shows how inputs (labor $L$, capital $K$) are transformed into output $q$.
+
+\begin{formulabox}
+\textbf{Production Function:}
+\[
+\boxed{q = f(L, K)}
+\]
+
+\textbf{Common examples:}
+\begin{itemize}
+  \item Linear: $q = aL + bK$
+  \item Cobb-Douglas: $q = AL^\alpha K^\beta$
+  \item Square root: $q = \sqrt{L}$ or $q = a + \sqrt{L}$
+\end{itemize}
+\end{formulabox}
+
+\subsection{Cost Functions}
+
+\subsubsection{From Production to Cost}
+
+\textbf{The process:}
+
+\textbf{Step 1:} Start with production function $q = f(L, K)$
+
+\textbf{Step 2:} Invert to express input in terms of output
+\begin{itemize}
+  \item Example: $q = \sqrt{L} \implies L = q^2$
+\end{itemize}
+
+\textbf{Step 3:} Multiply by input prices
+\begin{itemize}
+  \item If labor costs $w$ per unit: $C(q) = w \cdot L(q)$
+  \item If capital costs $r$ per unit: add $r \cdot K(q)$
+\end{itemize}
+
+\begin{examplebox}
+\textbf{Problem:} Firm has $q = 2\sqrt{L}$ where $w = \$9$ per unit. Find $C(q)$.
+
+\textbf{Solution:}
+
+\textbf{Step 1:} Invert production function
+\[
+q = 2\sqrt{L} \implies \frac{q}{2} = \sqrt{L} \implies L = \frac{q^2}{4}
+\]
+
+\textbf{Step 2:} Multiply by wage
+\[
+C(q) = w \cdot L = 9 \cdot \frac{q^2}{4} = \boxed{\frac{9q^2}{4}}
+\]
+\end{examplebox}
+
+\subsubsection{Cost Concepts}
+
+\begin{formulabox}
+\textbf{Total Cost:}
+\[
+C(q) = FC + VC(q)
+\]
+where $FC$ = fixed cost, $VC(q)$ = variable cost
+
+\textbf{Marginal Cost (MC):}
+\[
+\boxed{MC(q) = \frac{dC}{dq} = C'(q)}
+\]
+Cost of producing one more unit.
+
+\textbf{Average Cost (AC):}
+\[
+\boxed{AC(q) = \frac{C(q)}{q}}
+\]
+Cost per unit.
+
+\textbf{Average Variable Cost (AVC):}
+\[
+\boxed{AVC(q) = \frac{VC(q)}{q}}
+\]
+\end{formulabox}
+
+\subsubsection{Key Relationships}
+
+\begin{tcolorbox}[colback=blue!5,colframe=blue!70]
+\textbf{Important facts:}
+\begin{itemize}
+  \item MC intersects AC at minimum of AC
+  \item If MC < AC, then AC is decreasing
+  \item If MC > AC, then AC is increasing
+  \item Firms shut down if $P < \min AVC$ (short run)
+\end{itemize}
+\end{tcolorbox}
+
+\newpage
+
+\section{PERFECT COMPETITION vs. MONOPOLY}
+
+\begin{criticalbox}
+\textbf{KEY DISTINCTION:} Perfect competition → price takers. Monopoly → price setters.
+
+This difference drives all results!
+\end{criticalbox}
+
+\subsection{Perfect Competition}
+
+\subsubsection{Characteristics}
+
+\begin{itemize}
+  \item Many small firms
+  \item Homogeneous product (all firms sell identical goods)
+  \item Free entry and exit
+  \item Perfect information
+\end{itemize}
+
+\textbf{Result:} Firms are \textbf{price takers} - they take market price $P$ as given.
+
+\subsubsection{Firm's Problem}
+
+\begin{formulabox}
+\textbf{Competitive Firm's Profit:}
+\[
+\boxed{\Pi(q) = P \cdot q - C(q)}
+\]
+
+\textbf{FOC (profit maximization):}
+\[
+\boxed{P = MC(q)}
+\]
+
+Firms produce where price equals marginal cost!
+\end{formulabox}
+
+\subsubsection{Supply Curve}
+
+A competitive firm's supply curve is its MC curve above minimum AVC.
+
+\textbf{Shutdown rule:} If $P < \min AVC$, produce $q = 0$ (shut down).
+
+\subsubsection{Long-Run Equilibrium}
+
+In long run, free entry/exit drives profits to zero:
+
+\begin{formulabox}
+\textbf{Long-Run Equilibrium Conditions:}
+\begin{enumerate}
+  \item $P = MC$ (profit maximization)
+  \item $P = AC$ (zero profit condition from free entry)
+  \item Therefore: $\boxed{P = MC = \min AC}$
+\end{enumerate}
+
+Firms produce at minimum efficient scale!
+\end{formulabox}
+
+\begin{examplebox}
+\textbf{Problem:} A competitive firm has $C(q) = q^2 + 4q + 4$. Market price is $P = \$12$. Find optimal output.
+
+\textbf{Solution:}
+
+\textbf{Step 1:} Find MC
+\[
+MC(q) = C'(q) = 2q + 4
+\]
+
+\textbf{Step 2:} Set $P = MC$
+\[
+12 = 2q + 4 \implies 8 = 2q \implies \boxed{q^* = 4}
+\]
+
+\textbf{Check profit:}
+\[
+\Pi = P \cdot q - C(q) = 12 \times 4 - (16 + 16 + 4) = 48 - 36 = \$12 > 0
+\]
+
+Firm makes positive profit! (But in long run, entry would drive profit to zero)
+\end{examplebox}
+
+\subsection{Monopoly}
+
+\subsubsection{Characteristics}
+
+\begin{itemize}
+  \item Single firm (only seller)
+  \item No close substitutes
+  \item Barriers to entry (prevent competition)
+\end{itemize}
+
+\textbf{Result:} Firm is \textbf{price setter} - it faces entire market demand curve.
+
+\subsubsection{Demand and Revenue}
+
+The monopolist faces market demand $Q^D(P)$ or inverse demand $P^D(Q)$.
+
+\begin{formulabox}
+\textbf{Monopolist's Revenue:}
+\[
+R(Q) = P^D(Q) \cdot Q
+\]
+
+\textbf{Marginal Revenue:}
+\[
+\boxed{MR(Q) = \frac{dR}{dQ} = P^D(Q) + Q \cdot \frac{dP^D}{dQ}}
+\]
+
+Since $\frac{dP^D}{dQ} < 0$ (downward sloping demand), we have:
+\[
+\boxed{MR(Q) < P^D(Q)}
+\]
+
+\textbf{Marginal revenue is less than price!}
+\end{formulabox}
+
+\subsubsection{Why MR < P?}
+
+To sell one more unit, monopolist must lower price. This has two effects:
+\begin{enumerate}
+  \item \textbf{Gain:} Revenue from extra unit sold at price $P$ ($+P$)
+  \item \textbf{Loss:} Lower price on all previous units ($-Q \cdot \Delta P$)
+\end{enumerate}
+
+Net effect: $MR = P + Q \cdot \frac{dP}{dQ} < P$
+
+\subsubsection{Monopoly Profit Maximization}
+
+\begin{formulabox}[colback=yellow!20,colframe=orange!80]
+\textbf{Monopolist's Problem:}
+\[
+\max_Q \Pi(Q) = R(Q) - C(Q) = P^D(Q) \cdot Q - C(Q)
+\]
+
+\textbf{FOC:}
+\[
+\boxed{MR(Q) = MC(Q)}
+\]
+
+\textbf{Steps to solve:}
+\begin{enumerate}
+  \item Find $MR(Q)$ from demand
+  \item Find $MC(Q)$ from cost function
+  \item Set $MR = MC$ and solve for $Q^*$
+  \item Find price: $P^* = P^D(Q^*)$
+\end{enumerate}
+\end{formulabox}
+
+\subsubsection{MR Formula for Linear Demand}
+
+\begin{tcolorbox}[colback=yellow!10,colframe=orange]
+\textbf{SHORTCUT:} If inverse demand is linear $P = a - bQ$, then:
+\[
+\boxed{MR = a - 2bQ}
+\]
+
+MR has same intercept but \textbf{twice the slope}!
+\end{tcolorbox}
+
+\begin{examplebox}
+\textbf{Problem:} Monopolist has $C(Q) = Q^2 + 10$ and faces demand $Q^D(P) = 50 - P$. Find optimal quantity and price.
+
+\textbf{Solution:}
+
+\textbf{Step 1:} Convert to inverse demand
+\[
+Q = 50 - P \implies P^D(Q) = 50 - Q
+\]
+
+\textbf{Step 2:} Find MR
+\[
+MR(Q) = 50 - 2Q \quad \text{(double the slope!)}
+\]
+
+\textbf{Step 3:} Find MC
+\[
+MC(Q) = C'(Q) = 2Q
+\]
+
+\textbf{Step 4:} Set $MR = MC$
+\[
+50 - 2Q = 2Q \implies 50 = 4Q \implies \boxed{Q^* = 12.5}
+\]
+
+\textbf{Step 5:} Find price
+\[
+P^* = P^D(12.5) = 50 - 12.5 = \boxed{P^* = 37.5}
+\]
+
+\textbf{Profit:}
+\[
+\Pi = 37.5 \times 12.5 - (12.5^2 + 10) = 468.75 - 166.25 = \boxed{\$302.50}
+\]
+\end{examplebox}
+
+\subsection{Comparing Perfect Competition and Monopoly}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\toprule
+\textbf{Feature} & \textbf{Perfect Competition} & \textbf{Monopoly} \\
+\midrule
+Number of firms & Many & One \\
+Profit max condition & $P = MC$ & $MR = MC$ \\
+Price vs. MC & $P = MC$ & $P > MC$ \\
+Output level & Higher & Lower \\
+Price level & Lower & Higher \\
+Profit (long run) & Zero (free entry) & Positive (barriers) \\
+Efficiency & Efficient & Inefficient (DWL) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Key insight:} Monopoly creates deadweight loss by restricting output to raise price!
+
+\newpage
+
+\section{GENERAL EQUILIBRIUM AND WELFARE}
+
+\begin{criticalbox}
+\textbf{BIG PICTURE:} How do markets interact? When are outcomes efficient?
+\end{criticalbox}
+
+\subsection{Partial vs. General Equilibrium}
+
+\textbf{Partial equilibrium:} Analyze one market in isolation (what we've done so far)
+
+\textbf{General equilibrium:} Analyze all markets simultaneously, accounting for interactions
+
+\subsection{Exchange Economy - The Edgeworth Box}
+
+\subsubsection{Setup}
+
+Two consumers (A and B), two goods (X and Y).
+
+\textbf{Endowments:}
+\begin{itemize}
+  \item Consumer A starts with $(\omega_A^X, \omega_A^Y)$
+  \item Consumer B starts with $(\omega_B^X, \omega_B^Y)$
+\end{itemize}
+
+\textbf{Total resources:} $\bar{X} = \omega_A^X + \omega_B^X$, $\bar{Y} = \omega_A^Y + \omega_B^Y$
+
+\textbf{Question:} Can they trade to make both better off?
+
+\subsubsection{Pareto Efficiency}
+
+An allocation is \textbf{Pareto efficient} if you can't make someone better off without making someone else worse off.
+
+\begin{formulabox}
+\textbf{Pareto Efficiency Condition:}
+\[
+\boxed{MRS_A = MRS_B}
+\]
+
+Marginal rates of substitution must be equal!
+
+If $MRS_A \neq MRS_B$, there are gains from trade.
+\end{formulabox}
+
+\subsubsection{First Welfare Theorem}
+
+\begin{tcolorbox}[colback=green!5,colframe=green!70]
+\textbf{FIRST WELFARE THEOREM:}
+
+If markets are competitive and complete, the equilibrium is Pareto efficient.
+
+\textbf{Translation:} Free markets lead to efficient outcomes (under ideal conditions)!
+\end{tcolorbox}
+
+\subsubsection{Second Welfare Theorem}
+
+\begin{tcolorbox}[colback=green!5,colframe=green!70]
+\textbf{SECOND WELFARE THEOREM:}
+
+Any Pareto efficient allocation can be achieved as a competitive equilibrium with appropriate redistribution.
+
+\textbf{Translation:} Can achieve any efficient outcome by redistributing endowments, then letting markets work!
+\end{tcolorbox}
+
+\subsection{Consumer and Producer Surplus}
+
+\subsubsection{Consumer Surplus (CS)}
+
+The difference between what consumers are willing to pay and what they actually pay.
+
+\textbf{Graphically:} Area under demand curve, above price.
+
+\begin{formulabox}
+\textbf{Consumer Surplus:}
+\[
+\boxed{CS = \int_0^Q P^D(q) \, dq - P \cdot Q}
+\]
+\end{formulabox}
+
+\subsubsection{Producer Surplus (PS)}
+
+The difference between what producers receive and their marginal cost.
+
+\textbf{Graphically:} Area above supply curve (MC), below price.
+
+\begin{formulabox}
+\textbf{Producer Surplus:}
+\[
+\boxed{PS = P \cdot Q - \int_0^Q MC(q) \, dq}
+\]
+\end{formulabox}
+
+\subsubsection{Total Surplus and Deadweight Loss}
+
+\begin{formulabox}
+\textbf{Total Surplus:}
+\[
+\boxed{TS = CS + PS}
+\]
+
+This measures total welfare in the market.
+
+\textbf{Deadweight Loss (DWL):}
+\[
+\boxed{DWL = TS_{\text{efficient}} - TS_{\text{actual}}}
+\]
+
+Lost welfare from inefficiency (e.g., monopoly).
+\end{formulabox}
+
+\textbf{Perfect competition:} $DWL = 0$ (efficient)
+
+\textbf{Monopoly:} $DWL > 0$ (inefficient - monopolist restricts output)
+
+\newpage
+
+\section{PATTERN RECOGNITION GUIDE}
+
+\begin{strategybox}
+\textbf{How to identify problem types and choose the right approach}
+\end{strategybox}
+
+\subsection{Uncertainty Problems}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{p{4cm}p{4cm}p{6cm}}
+\toprule
+\textbf{Key Words} & \textbf{What to Do} & \textbf{Formula to Use} \\
+\midrule
+``Expected value'' & Calculate weighted average & $EV = \sum p_i x_i$ \\
+\midrule
+``Expected utility'' & Calculate $\sum p_i u(x_i)$ & $EU = \sum p_i u(x_i)$ \\
+\midrule
+``Certainty equivalent'' & Solve $u(CE) = EU$ & $u(CE) = EU(L)$ \\
+\midrule
+``Risk premium'' & Find $EV - CE$ & $RP = EV - CE$ \\
+\midrule
+``Risk averse'' & Check concavity & $u''(x) < 0$ \\
+\midrule
+``Insurance'' & Compare EU with/without & Set up lottery, calculate both \\
+\midrule
+``Portfolio'' & Maximize $EU(\alpha)$ & Take FOC: $\frac{dEU}{d\alpha} = 0$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Producer/Cost Problems}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{p{4cm}p{4cm}p{6cm}}
+\toprule
+\textbf{Key Words} & \textbf{What to Do} & \textbf{Formula to Use} \\
+\midrule
+``Production function'' & Invert to get input(output) & $q = f(L) \implies L(q)$ \\
+\midrule
+``Cost function'' & Multiply input by price & $C(q) = w \cdot L(q)$ \\
+\midrule
+``Marginal cost'' & Take derivative of $C(q)$ & $MC = C'(q)$ \\
+\midrule
+``Average cost'' & Divide cost by quantity & $AC = C(q)/q$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Market Structure Problems}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{p{4cm}p{4cm}p{6cm}}
+\toprule
+\textbf{Key Words} & \textbf{Type} & \textbf{Profit Max Rule} \\
+\midrule
+``Competitive firm'', ``price taker'' & Perfect Competition & $P = MC$ \\
+\midrule
+``Monopolist'', ``only firm'', ``faces demand'' & Monopoly & $MR = MC$ \\
+\midrule
+``Long-run equilibrium'', ``free entry'' & Long-run Competition & $P = MC = \min AC$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Decision Tree for Solving Problems}
+
+\begin{enumerate}
+  \item \textbf{Is there uncertainty?}
+    \begin{itemize}
+      \item YES → Go to Section 1 (Uncertainty)
+      \item NO → Continue to step 2
+    \end{itemize}
+
+  \item \textbf{Is it about a firm?}
+    \begin{itemize}
+      \item YES → Continue to step 3
+      \item NO → Check if it's general equilibrium (Section 4)
+    \end{itemize}
+
+  \item \textbf{What market structure?}
+    \begin{itemize}
+      \item Many firms, price taker → Perfect competition (Section 3.1)
+      \item One firm, faces demand → Monopoly (Section 3.2)
+    \end{itemize}
+
+  \item \textbf{What's the question?}
+    \begin{itemize}
+      \item Find cost function → Invert production function (Section 2.2)
+      \item Find optimal quantity → Set MR = MC (Section 3)
+      \item Find price → Use demand curve (monopoly) or given (competition)
+    \end{itemize}
+\end{enumerate}
+
+\newpage
+
+\section{FORMULA SHEET - EVERYTHING YOU NEED}
+
+\subsection{Uncertainty Formulas}
+
+\begin{tcolorbox}[colback=formulacolor!5,colframe=formulacolor,title={\textbf{Expected Value \& Utility}}]
+\textbf{Expected Value:}
+\[
+EV(L) = \sum_{i=1}^n p_i x_i
+\]
+
+\textbf{Expected Utility:}
+\[
+EU(L) = \sum_{i=1}^n p_i \cdot u(x_i)
+\]
+
+\textbf{Certainty Equivalent:}
+\[
+u(CE) = EU(L)
+\]
+
+\textbf{Risk Premium:}
+\[
+RP = EV(L) - CE
+\]
+
+\textbf{Risk Aversion:}
+\begin{itemize}
+  \item Risk averse: $u''(x) < 0$ (concave), $CE < EV$, $RP > 0$
+  \item Risk neutral: $u''(x) = 0$ (linear), $CE = EV$, $RP = 0$
+  \item Risk loving: $u''(x) > 0$ (convex), $CE > EV$, $RP < 0$
+\end{itemize}
+\end{tcolorbox}
+
+\subsection{Common Utility Functions}
+
+\begin{tcolorbox}[colback=formulacolor!5,colframe=formulacolor,title={\textbf{Utility Functions}}]
+\textbf{Square Root:} $u(x) = \sqrt{x}$
+\begin{itemize}
+  \item $u'(x) = \frac{1}{2\sqrt{x}}$, $u''(x) = -\frac{1}{4x^{3/2}} < 0$ (risk averse)
+\end{itemize}
+
+\textbf{Logarithmic:} $u(x) = \ln(x)$
+\begin{itemize}
+  \item $u'(x) = \frac{1}{x}$, $u''(x) = -\frac{1}{x^2} < 0$ (risk averse)
+\end{itemize}
+
+\textbf{CARA:} $u(x) = -e^{-ax}$ where $a > 0$
+\begin{itemize}
+  \item Constant absolute risk aversion
+\end{itemize}
+
+\textbf{CRRA:} $u(x) = \frac{x^{1-\gamma}}{1-\gamma}$ where $\gamma > 0$
+\begin{itemize}
+  \item Constant relative risk aversion
+  \item When $\gamma = 1$: $u(x) = \ln(x)$
+\end{itemize}
+\end{tcolorbox}
+
+\subsection{Cost Functions}
+
+\begin{tcolorbox}[colback=formulacolor!5,colframe=formulacolor,title={\textbf{Costs}}]
+\textbf{Total Cost:}
+\[
+C(q) = FC + VC(q)
+\]
+
+\textbf{Marginal Cost:}
+\[
+MC(q) = \frac{dC}{dq} = C'(q)
+\]
+
+\textbf{Average Cost:}
+\[
+AC(q) = \frac{C(q)}{q}
+\]
+
+\textbf{Average Variable Cost:}
+\[
+AVC(q) = \frac{VC(q)}{q}
+\]
+\end{tcolorbox}
+
+\subsection{Perfect Competition}
+
+\begin{tcolorbox}[colback=formulacolor!5,colframe=formulacolor,title={\textbf{Competitive Firms}}]
+\textbf{Profit:}
+\[
+\Pi(q) = P \cdot q - C(q)
+\]
+
+\textbf{Profit Maximization:}
+\[
+P = MC(q)
+\]
+
+\textbf{Shutdown Rule:}
+\[
+\text{Produce if } P \geq \min AVC, \text{ else } q = 0
+\]
+
+\textbf{Long-Run Equilibrium:}
+\[
+P = MC = \min AC \quad \text{(zero profit)}
+\]
+\end{tcolorbox}
+
+\subsection{Monopoly}
+
+\begin{tcolorbox}[colback=yellow!20,colframe=orange!80,title={\textbf{Monopoly - MOST IMPORTANT}}]
+\textbf{Revenue:}
+\[
+R(Q) = P^D(Q) \cdot Q
+\]
+
+\textbf{Marginal Revenue:}
+\[
+MR(Q) = P^D(Q) + Q \cdot \frac{dP^D}{dQ}
+\]
+
+\textbf{For linear demand} $P = a - bQ$:
+\[
+\boxed{MR = a - 2bQ} \quad \text{(twice the slope!)}
+\]
+
+\textbf{Profit Maximization:}
+\[
+MR(Q) = MC(Q)
+\]
+
+\textbf{Then find price:}
+\[
+P^* = P^D(Q^*)
+\]
+
+\textbf{Key fact:}
+\[
+MR < P \quad \text{(MR is always less than price)}
+\]
+\end{tcolorbox}
+
+\subsection{Welfare}
+
+\begin{tcolorbox}[colback=formulacolor!5,colframe=formulacolor,title={\textbf{Consumer \& Producer Surplus}}]
+\textbf{Consumer Surplus:}
+\[
+CS = \int_0^Q P^D(q) \, dq - P \cdot Q
+\]
+(Area under demand, above price)
+
+\textbf{Producer Surplus:}
+\[
+PS = P \cdot Q - \int_0^Q MC(q) \, dq
+\]
+(Area above MC, below price)
+
+\textbf{Total Surplus:}
+\[
+TS = CS + PS
+\]
+
+\textbf{Deadweight Loss:}
+\[
+DWL = TS_{\text{efficient}} - TS_{\text{actual}}
+\]
+\end{tcolorbox}
+
+\subsection{General Equilibrium}
+
+\begin{tcolorbox}[colback=formulacolor!5,colframe=formulacolor,title={\textbf{Pareto Efficiency}}]
+\textbf{Pareto Efficiency Condition:}
+\[
+MRS_A = MRS_B
+\]
+
+\textbf{First Welfare Theorem:} Competitive equilibrium is Pareto efficient
+
+\textbf{Second Welfare Theorem:} Any Pareto efficient allocation can be achieved as competitive equilibrium with redistribution
+\end{tcolorbox}
+
+\newpage
+
+\section{COMMON MISTAKES TO AVOID}
+
+\begin{warningbox}
+\textbf{Mistake 1: Confusing EV and EU}
+
+Don't use $EV = \sum p_i x_i$ when asked for expected utility!
+
+✓ Correct: $EU = \sum p_i u(x_i)$
+\end{warningbox}
+
+\begin{warningbox}
+\textbf{Mistake 2: Forgetting to invert production function}
+
+Can't just replace $L$ with $q$ in production function!
+
+✗ Wrong: $q = \sqrt{L} \implies C(q) = w\sqrt{q}$
+
+✓ Correct: $q = \sqrt{L} \implies L = q^2 \implies C(q) = wq^2$
+\end{warningbox}
+
+\begin{warningbox}
+\textbf{Mistake 3: Using $P = MC$ for monopoly}
+
+Monopolists set $MR = MC$, not $P = MC$!
+
+✗ Wrong: $P = MC$ (this is perfect competition)
+
+✓ Correct: $MR = MC$ (for monopoly)
+\end{warningbox}
+
+\begin{warningbox}
+\textbf{Mistake 4: Wrong MR for linear demand}
+
+If $P = a - bQ$, then $MR = a - 2bQ$ (not $a - bQ$!)
+
+Remember: MR has twice the slope of demand!
+\end{warningbox}
+
+\begin{warningbox}
+\textbf{Mistake 5: Forgetting demand vs. inverse demand}
+
+$Q^D(P)$ tells you quantity at given price.
+
+$P^D(Q)$ tells you price at given quantity.
+
+For monopoly revenue: $R(Q) = P^D(Q) \cdot Q$ (use inverse demand!)
+\end{warningbox}
+
+\begin{warningbox}
+\textbf{Mistake 6: Not checking for corner solutions}
+
+If portfolio FOC gives $\alpha > 1$ or $\alpha < 0$, check constraints!
+
+May need corner solution: $\alpha^* = 0$ or $\alpha^* = 1$
+\end{warningbox}
+
+\newpage
+
+\section*{Final Checklist - Are You Ready?}
+
+\begin{tcolorbox}[colback=green!10,colframe=green!70,arc=3mm]
+\textbf{Before the exam, make sure you can:}
+
+\subsection*{Uncertainty}
+\begin{itemize}
+  \item[$\square$] Calculate expected value and expected utility
+  \item[$\square$] Find certainty equivalent by solving $u(CE) = EU$
+  \item[$\square$] Calculate risk premium: $RP = EV - CE$
+  \item[$\square$] Determine if utility function is risk averse (check $u''(x) < 0$)
+  \item[$\square$] Solve insurance problems (compare EU with/without insurance)
+  \item[$\square$] Solve portfolio choice problems (maximize $EU(\alpha)$ with FOC)
+\end{itemize}
+
+\subsection*{Producer Theory}
+\begin{itemize}
+  \item[$\square$] Invert production function to get input as function of output
+  \item[$\square$] Derive cost function: $C(q) = w \cdot L(q)$
+  \item[$\square$] Calculate marginal cost: $MC = C'(q)$
+  \item[$\square$] Calculate average cost: $AC = C(q)/q$
+\end{itemize}
+
+\subsection*{Perfect Competition}
+\begin{itemize}
+  \item[$\square$] Set $P = MC$ to find optimal quantity
+  \item[$\square$] Apply shutdown rule: produce if $P \geq \min AVC$
+  \item[$\square$] Understand long-run equilibrium: $P = MC = \min AC$
+\end{itemize}
+
+\subsection*{Monopoly}
+\begin{itemize}
+  \item[$\square$] Convert demand to inverse demand
+  \item[$\square$] Calculate MR (for linear demand: twice the slope!)
+  \item[$\square$] Set $MR = MC$ to find optimal $Q$
+  \item[$\square$] Find price using demand curve: $P^* = P^D(Q^*)$
+  \item[$\square$] Remember: $MR < P$ always for monopolist!
+\end{itemize}
+
+\subsection*{General Equilibrium \& Welfare}
+\begin{itemize}
+  \item[$\square$] Understand Pareto efficiency: $MRS_A = MRS_B$
+  \item[$\square$] Know First Welfare Theorem (competition → efficiency)
+  \item[$\square$] Calculate consumer and producer surplus
+  \item[$\square$] Understand deadweight loss from monopoly
+\end{itemize}
+\end{tcolorbox}
+
+\vspace{1cm}
+
+\begin{center}
+\begin{tcolorbox}[colback=yellow!20,colframe=orange!80,width=0.9\textwidth,arc=5mm]
+\centering
+\LARGE\textbf{You've got this!}
+
+\large Master the formulas, practice the problems, and trust your preparation.
+
+\textbf{Good luck on the final exam!}
+\end{tcolorbox}
+\end{center}
+
+\end{document}

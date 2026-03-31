@@ -14,7 +14,7 @@ Chuh also argues that instead of focusing on pinning down and defining Asian Ame
 In your estimation, how do these arguments by Chuh contribute to "Asian American politics" as we've discussed it thus far?
 
 
-## Replies (10 top-level)
+## Replies (11 top-level)
 
 
 ---
@@ -98,3 +98,16 @@ Chuh asks us to rethink what Asian American politics is trying to achieve. For a
 Growing up, I heard this tension all the time. A lot of Asian adults around me would say that white Americans were trying to hold us back because we were “too qualified” or doing too well in certain areas. At the same time those same communities often avoided politics. There was this sense that staying quiet was safer that we had achieved a kind of fragile success under the “model minority” label, and speaking out might threaten that position. When Asian Americans do stay out of political debates, they get criticized by activists for not using their platform or privilege. The model minority status can feel like some validation like we are tolerated as long as we perform, succeed, and don’t disrupt anything. We want to prove we belong, to protect the little stability we’ve gained, even if that means not challenging the system too openly.
 
 I think this is where Chuh’s argument clicks. She suggests that chasing recognition as a “good” or “successful” minority keeps us invested in the very structure that defines and limits us. Instead of just proving we deserve to be here, she pushes us to question why  belonging depends on performance at all. The desire for validation makes sense historically, but it also shows how unstable and conditional our place in the nation-state really is. This reminds me of our class discussion on Okihiro’s text, especially what it really means to be “yellow” and what that position means for Asian people trying to fit into white society. We’ve never really had a stable racial position in the United States. We’re constantly shifting depending on how we’re perceived or what role we’re expected to play. It also connects to how we talked about survival being a major theme in our recent conversations.
+
+
+---
+
+**Salvatore Palizzolo** (2026-03-14):
+
+Chuh’s arguments promoting a “subjectless discourse” counter previous ideas of strategic essentialism and panethnic entrepreneurship, and, in my view, provide an account of the more modern problems faced by Asian American studies.
+
+Chuh argues that subjecthood is no longer the ideal. With “the end of the dominance of the nation-state as the preeminent unit of global organization” and the fact that justice takes different forms at different times, Chuh calls for a new strategy: a “deconstructive attitude” (3). In a shift from previous ways of thinking among Asian American intellectuals, Chuh claims “difference as anterior to and irresolvable in identity” (8). She emphasizes that by reducing away these differences, “a ‘subject’ only becomes recognizable and can act as such by conforming to certain regulatory matrices” (9). Further, adherence to subjectivity can lead to “problematic assumptions of essential identities” (10). Thus, Chuh recommends “strategic anti-essentialism,” allowing a reinvestigation into what political justice may mean for whom (10).
+
+Chuh also critiques the “Asian American” label. For one, Chuh highlights its promotion of “foreign within” and paradigms like that of the model minority (11). It follows US nationalism’s “promotion of identity over difference” (13). It is a panethnic identifier that allowed a claim to America during a time of perpetual alienism. However, its use as a tool of panethnic entrepreneurship is increasingly inadequate and “homogenizes diversity such that recognizing ‘differences among’ fractures its intelligibility” (21). Connecting back to the idea of subjectless discourse, Chuh claims that the term “implies a normative subject” (21). I think Chuh as such finds an important weakness of panethnicity while addressing the Asian American label, which Chuh says “sustains norms of behavior and identity” (22).
+
+Chuh clarifies her goal: “The point is not to work toward resolving differences … but is instead to insist on the productiveness of dissensus in demonstrating the impossibility of any objectivity” (28). I appreciate that Chuh recognizes the pitfalls of attempting to reconcile differences within heterogeneous Asian America. I do agree that fitting into subjecthood and citizenship should no longer be the end goal, but I am uneasy about Chuh’s focus on difference, something I wonder could lead to further fracturing.

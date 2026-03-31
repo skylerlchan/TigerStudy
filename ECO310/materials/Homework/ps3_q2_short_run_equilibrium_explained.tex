@@ -1,0 +1,159 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+
+% Custom colors
+\definecolor{boxblue}{RGB}{230,240,255}
+\definecolor{boxgreen}{RGB}{230,255,240}
+
+\title{\textbf{Problem Set 3, Question 2(a)} \\ Short-Run Equilibrium Explained}
+\author{ECO310: Math Intermediate Microeconomics}
+\date{Spring 2026}
+
+\begin{document}
+\maketitle
+
+\section{What is Short-Run Equilibrium?}
+\textit{(Lecture 11-12, slide 31)}
+
+\begin{tcolorbox}[colback=boxblue, colframe=blue!50!black, title=From the slides:]
+``In equilibrium, demand equals supply. Equilibrium price: the price $p$ at which $Q^S(p) = Q^D(p)$''
+
+\vspace{0.3cm}
+``This is the \textbf{ONLY} requirement for a SR equilibrium''
+\end{tcolorbox}
+
+\subsection*{In Plain English:}
+
+\textbf{Short-run equilibrium} is when the market clears:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Supply = Demand}
+    \item The number of firms $N$ is \textbf{fixed} (firms can't enter or exit in the short run)
+    \item Each firm produces whatever maximizes their profit at the market price
+\end{itemize}
+
+\section{Problem 2(a) Setup}
+
+\subsection*{Given:}
+\begin{itemize}[leftmargin=*]
+    \item Market demand: $Q^D(p) = 200 - 5p$
+    \item $N = 10$ firms (fixed in short run)
+    \item Each firm has cost: $C(q) = f(N) + \alpha q^2$
+    \begin{itemize}
+        \item For part (a): we're just told $N = 10$, and $\alpha > 0$
+        \item $f(N)$ is a ``fixed cost'' that depends on how many firms are in the market
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Find:} The short-run equilibrium price
+
+\newpage
+
+\section{Solution Steps}
+\textit{(Following Lecture 11-12, slides 17-21, 29-31)}
+
+\subsection{Step 1: Find each firm's supply curve}
+
+Each \textbf{price-taking firm} maximizes profit by producing where \textbf{$p = MC$} (Lecture 11-12, slide 7)
+
+\vspace{0.3cm}
+\textbf{Cost function:}
+\[
+C(q) = f(N) + \alpha q^2
+\]
+
+\textbf{Marginal cost:}
+\[
+MC(q) = \frac{dC}{dq} = 2\alpha q
+\]
+
+\textbf{Each firm's supply curve} (Lecture 11-12, slide 20):
+\begin{align*}
+p &= MC \\
+p &= 2\alpha q \\
+q &= \frac{p}{2\alpha} \quad \leftarrow \text{ This is each firm's supply curve } q^S(p)
+\end{align*}
+
+\subsection{Step 2: Find market supply}
+\textit{(Lecture 11-12, slides 29-30)}
+
+\begin{tcolorbox}[colback=boxgreen, colframe=green!50!black]
+\textbf{From the slides:} ``To derive market supply, we add up the individual market supply curves across firms''
+\end{tcolorbox}
+
+With $N = 10$ firms:
+\[
+Q^S(p) = N \times q^S(p) = 10 \times \frac{p}{2\alpha} = \frac{5p}{\alpha}
+\]
+
+\subsection{Step 3: Set supply = demand}
+\textit{(Lecture 11-12, slide 31)}
+
+\textbf{Equilibrium condition:}
+\begin{align*}
+Q^S(p) &= Q^D(p) \\
+\frac{5p}{\alpha} &= 200 - 5p \\
+\frac{5p}{\alpha} + 5p &= 200 \\
+5p\left(\frac{1}{\alpha} + 1\right) &= 200 \\
+5p\left(\frac{1 + \alpha}{\alpha}\right) &= 200 \\
+p &= \frac{200\alpha}{5(1 + \alpha)} \\
+p^* &= \frac{40\alpha}{1 + \alpha}
+\end{align*}
+
+\begin{tcolorbox}[colback=yellow!10, colframe=orange!75!black, title=Final Answer:]
+\Large
+\[
+\boxed{p^* = \frac{40\alpha}{1 + \alpha}}
+\]
+\end{tcolorbox}
+
+\newpage
+
+\section{Key Differences: Short Run vs. Long Run}
+
+\begin{center}
+\begin{tabular}{p{6cm}|p{6cm}}
+\toprule
+\textbf{Short Run (SR)} & \textbf{Long Run (LR)} \\
+\midrule
+Number of firms $N$ is \textbf{fixed} & Firms can \textbf{enter/exit} \\
+\addlinespace
+Only condition: Supply = Demand & Additional condition: Firms make \textbf{zero profit} \\
+\addlinespace
+Firms might make profit or loss & $p = \min AC$ (firms break even) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{0.5cm}
+
+\begin{tcolorbox}[colback=boxblue, colframe=blue!50!black]
+\textbf{From slide 32:} ``If firms currently in the market are making money, new firms will come in... if firms are losing money, some will exit''
+\end{tcolorbox}
+
+\vspace{0.3cm}
+
+In the \textbf{short run}, we don't worry about profits yet --- we just find where supply meets demand with the current number of firms!
+
+\section{Intuition Check}
+
+Think of it like a farmers market:
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Short run:} There are 10 farmers at the market today (can't change)
+    \item Each farmer decides how much to produce based on the market price
+    \item The price adjusts until the total amount farmers bring = total amount customers want
+    \item Some farmers might make money, some might lose money, but they're stuck there for today
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textit{That's short-run equilibrium!}
+
+\end{document}

@@ -1,0 +1,1094 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{multicol}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+
+% Colors
+\definecolor{criticalcolor}{RGB}{220,20,60}
+\definecolor{highcolor}{RGB}{255,140,0}
+\definecolor{mediumcolor}{RGB}{70,130,180}
+\definecolor{headercolor}{RGB}{25,25,112}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small ORF309 Midterm 2 Study Guide}
+\fancyhead[R]{\small March 31, 2026}
+\fancyfoot[C]{\thepage}
+
+% Section formatting
+\titleformat{\section}{\Large\bfseries\color{headercolor}}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries\color{headercolor}}{\thesubsection}{1em}{}
+
+% Custom boxes
+\newtcolorbox{criticalbox}{
+  colback=criticalcolor!5,
+  colframe=criticalcolor,
+  fonttitle=\bfseries,
+  title=CRITICAL PRIORITY
+}
+
+\newtcolorbox{highbox}{
+  colback=highcolor!5,
+  colframe=highcolor,
+  fonttitle=\bfseries,
+  title=HIGH PRIORITY
+}
+
+\newtcolorbox{tipbox}{
+  colback=blue!5,
+  colframe=blue!70,
+  fonttitle=\bfseries,
+  title=Key Insight
+}
+
+\begin{document}
+
+% Title Page
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+
+{\Huge\bfseries ORF309 Midterm 2\par}
+\vspace{0.5cm}
+{\LARGE\bfseries Comprehensive Study Guide\par}
+\vspace{2cm}
+
+{\Large Analysis of 7 Past Exams\par}
+\vspace{0.3cm}
+{\large Topics, Frequencies, and Learning Strategy\par}
+
+\vspace{3cm}
+
+{\large Created: March 31, 2026\par}
+
+\vfill
+
+{\large\textbf{Exam Coverage:} Slides 7--23 (Post-Midterm 1)\par}
+\vspace{0.5cm}
+{\large\textbf{Exams Analyzed:} F2025, S2025, F2022, S2022, 2021, 2019, 2017\par}
+
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section{Executive Summary}
+
+\begin{tipbox}
+\textbf{Bottom Line:} This exam is highly predictable! Three topics appear in 100\% of exams and account for $\sim$75\% of the total points. Master these three techniques and you'll be well-prepared.
+\end{tipbox}
+
+\subsection{Critical Statistics}
+
+Based on analysis of 7 past Midterm 2 exams:
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Slides Covered:} 7--23 (everything after Midterm 1)
+  \item \textbf{Exam Format:} 3 questions, 30 points each, 90 total points
+  \item \textbf{Time:} 105 minutes for problems + 15 minutes for submission
+  \item \textbf{Most Predictable Topics:} Poisson Processes, Random Walks, Joint Densities
+\end{itemize}
+
+\subsection{The Big Three Topics}
+
+\begin{enumerate}[leftmargin=*]
+  \item \textbf{Poisson Processes} (Slides 16--19): Appears in \textcolor{criticalcolor}{7/7 exams (100\%)}
+  \begin{itemize}
+    \item Average weight: $\sim$40\% of exam
+    \item Key techniques: Thinning, superposition, competing processes, conditional expectations
+  \end{itemize}
+
+  \item \textbf{Random Walks \& First-Step Analysis} (Slides 20--22): Appears in \textcolor{criticalcolor}{7/7 exams (100\%)}
+  \begin{itemize}
+    \item Average weight: $\sim$35\% of exam
+    \item Key techniques: Hitting probabilities, expected hitting times, gambler's ruin
+  \end{itemize}
+
+  \item \textbf{Joint \& Conditional Densities} (Slides 11--13): Appears in \textcolor{criticalcolor}{6/7 exams (86\%)}
+  \begin{itemize}
+    \item Average weight: $\sim$25\% of exam
+    \item Key techniques: Building joint PDFs, conditional expectations, law of total expectation
+  \end{itemize}
+\end{enumerate}
+
+\subsection{Also Important}
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Exponential Distribution \& Lifetimes} (Slides 11, 14--15): 5/7 exams (71\%)
+  \item \textbf{Brownian Motion} (Slide 23): 3/7 exams (43\%), increasingly common in recent exams
+\end{itemize}
+
+\newpage
+
+\section{Topic Frequency Analysis}
+
+\begin{table}[h]
+\centering
+\caption{Topic Appearance Frequency Across 7 Past Exams}
+\begin{tabularx}{\textwidth}{Xlcc}
+\toprule
+\textbf{Topic} & \textbf{Frequency} & \textbf{Slides} & \textbf{Priority} \\
+\midrule
+Poisson Processes & \textcolor{criticalcolor}{7/7 (100\%)} & 16--19 & CRITICAL \\
+Random Walks & \textcolor{criticalcolor}{7/7 (100\%)} & 20--22 & CRITICAL \\
+Joint/Conditional Densities & \textcolor{criticalcolor}{6/7 (86\%)} & 11--13 & CRITICAL \\
+Law of Total Expectation & \textcolor{criticalcolor}{6/7 (86\%)} & 11--12 & CRITICAL \\
+Thinning Property & \textcolor{criticalcolor}{6/7 (86\%)} & 17 & CRITICAL \\
+First-Step Analysis & \textcolor{criticalcolor}{7/7 (100\%)} & 20--21 & CRITICAL \\
+Exponential/Lifetimes & \textcolor{highcolor}{5/7 (71\%)} & 11, 14--15 & HIGH \\
+Competing Processes & \textcolor{highcolor}{5/7 (71\%)} & 16--17 & HIGH \\
+Biased Random Walks & \textcolor{highcolor}{4/7 (57\%)} & 22 & HIGH \\
+Brownian Motion & \textcolor{mediumcolor}{3/7 (43\%)} & 23 & MEDIUM-HIGH \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Critical Priority Topics}
+
+\begin{criticalbox}
+Learn these topics FIRST. They appear in 80\%+ of exams and account for $\sim$75\% of exam content.
+\end{criticalbox}
+
+\subsection{Poisson Processes}
+
+\textbf{Frequency:} 7/7 exams (100\%) \quad \textbf{Weight:} $\sim$40\% of exam \quad \textbf{Slides:} 16--19
+
+\subsubsection{Key Concepts}
+
+\paragraph{1. Basic Poisson Definition}
+If arrivals happen at rate $\lambda$ (per unit time):
+\begin{itemize}
+  \item Number of arrivals $N(t) \sim \text{Poisson}(\lambda t)$
+  \item $P(N(t) = k) = \frac{(\lambda t)^k e^{-\lambda t}}{k!}$
+  \item $E[N(t)] = \lambda t$, \quad $\text{Var}(N(t)) = \lambda t$
+\end{itemize}
+
+\paragraph{2. Thinning Property} \textcolor{criticalcolor}{(APPEARS IN 6/7 EXAMS)}
+
+\begin{tcolorbox}[colback=yellow!10,colframe=orange!80,title=Thinning - Most Important Concept]
+If customers arrive at rate $\lambda$ and each customer is ``type A'' with probability $p$ (independently):
+\[
+\text{Type A arrivals form Poisson process with rate } \lambda p
+\]
+
+\textbf{Example:} Customers arrive at rate 2/min, 40\% order coffee
+\[
+\Rightarrow \text{Coffee orders are Poisson}(2 \times 0.4 = 0.8\text{/min})
+\]
+\end{tcolorbox}
+
+\paragraph{3. Superposition/Merging}
+Multiple independent Poisson processes combine:
+\[
+\text{If } N_1(t) \sim \text{Poisson}(\lambda_1 t), \, N_2(t) \sim \text{Poisson}(\lambda_2 t) \text{ independent}
+\]
+\[
+\Rightarrow N_1(t) + N_2(t) \sim \text{Poisson}((\lambda_1 + \lambda_2)t)
+\]
+
+\paragraph{4. Competing Processes} \textcolor{highcolor}{(APPEARS IN 5/7 EXAMS)}
+
+Process A at rate $\lambda_A$, Process B at rate $\lambda_B$ (independent):
+\begin{align*}
+P(\text{A happens first}) &= \frac{\lambda_A}{\lambda_A + \lambda_B} \\
+E[\text{time until first event}] &= \frac{1}{\lambda_A + \lambda_B}
+\end{align*}
+
+\paragraph{5. Conditional Expectations} \textcolor{criticalcolor}{(APPEARS IN 5/7 EXAMS)}
+
+\begin{tcolorbox}[colback=yellow!10,colframe=orange!80,title=Conditional Expectation with Poisson]
+Given that exactly $n$ events occurred:
+\[
+E[\text{Time} \mid N(T) = n] = \frac{n}{\lambda}
+\]
+
+\textbf{Example:} Given 10 customers arrived at rate 2/min:
+\[
+E[T \mid N(T) = 10] = \frac{10}{2} = 5 \text{ minutes}
+\]
+\end{tcolorbox}
+
+\subsubsection{Example Question Types}
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{F2025 Q3:} Coffee shop with multiple product types (thinning + conditional expectation)
+  \item \textbf{S2025 Q3:} Taxi arrivals vs passenger arrivals (competing processes)
+  \item \textbf{2022F Q1:} Turkey arrivals with weight thresholds (thinning with exponential)
+  \item \textbf{2022S Q1:} Chicken crossing road (conditional expectation)
+  \item \textbf{2019 Q1:} Plagues arriving (thinning with acceptance probability)
+\end{itemize}
+
+\newpage
+
+\subsection{Random Walks \& First-Step Analysis}
+
+\textbf{Frequency:} 7/7 exams (100\%) \quad \textbf{Weight:} $\sim$35\% of exam \quad \textbf{Slides:} 20--22
+
+\subsubsection{Key Concepts}
+
+\paragraph{Random Walk Setup}
+\begin{itemize}
+  \item Start at position $S_0$ (usually between barriers $a$ and $b$)
+  \item Each step: move $+1$, $-1$, or stay, with given probabilities
+  \item Continue until hitting $a$ or $b$ (boundaries)
+  \item Hitting time: $T = \min\{n \geq 0 : S_n = a \text{ or } S_n = b\}$
+\end{itemize}
+
+\paragraph{First-Step Analysis for HITTING PROBABILITY}
+
+\begin{tcolorbox}[colback=yellow!10,colframe=orange!80,title=First-Step Analysis - Hitting Probability]
+Define: $p(i) = P(\text{hit } b \text{ before } a \mid \text{start at } i)$
+
+\textbf{Recursive formula:}
+\[
+p(i) = p_{\text{up}} \cdot p(i+1) + p_{\text{down}} \cdot p(i-1) + p_{\text{stay}} \cdot p(i)
+\]
+
+\textbf{Boundary conditions:}
+\[
+p(a) = 0, \quad p(b) = 1
+\]
+
+\textbf{Solve the system of equations for all intermediate states!}
+\end{tcolorbox}
+
+\paragraph{First-Step Analysis for EXPECTED TIME}
+
+\begin{tcolorbox}[colback=red!10,colframe=red!80,title=First-Step Analysis - Expected Time]
+Define: $\mu(i) = E[\text{time to hit boundary} \mid \text{start at } i]$
+
+\textbf{Recursive formula:}
+\[
+\mu(i) = \mathbf{1} + p_{\text{up}} \cdot \mu(i+1) + p_{\text{down}} \cdot \mu(i-1) + p_{\text{stay}} \cdot \mu(i)
+\]
+
+\textbf{DON'T FORGET THE ``+1''!} (Most common mistake)
+
+\textbf{Boundary conditions:}
+\[
+\mu(a) = 0, \quad \mu(b) = 0
+\]
+\end{tcolorbox}
+
+\paragraph{Special Case: Symmetric Random Walk}
+
+When $P(+1) = P(-1) = 1/2$:
+\begin{align*}
+p(i) &= \frac{i - a}{b - a} \\
+\mu(i) &= (i - a)(b - i)
+\end{align*}
+
+\paragraph{Biased Random Walk} \textcolor{highcolor}{(APPEARS IN 4/7 EXAMS)}
+
+When $P(+1) \neq P(-1)$:
+\begin{itemize}
+  \item Use first-step analysis and solve system of equations
+  \item OR use characteristic equation: $r = pr + q/r$ where $p = P(+1)$, $q = P(-1)$
+  \item Solve: $pr^2 - r + q = 0 \Rightarrow r = \frac{q}{p}$ (if $p \neq q$)
+\end{itemize}
+
+\subsubsection{Problem-Solving Steps}
+
+\begin{enumerate}[leftmargin=*]
+  \item Draw a diagram with states $a$, $i$, $b$
+  \item Identify what you're solving for: $p(i)$ or $\mu(i)$
+  \item Write the recursive formula (don't forget ``+1'' for $\mu$!)
+  \item Write boundary conditions
+  \item Solve the system of equations (usually 2--3 equations)
+\end{enumerate}
+
+\subsubsection{Example Question Types}
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{F2025 Q2:} Gambler with laziness parameter (modified random walk)
+  \item \textbf{S2025 Q1:} Flight price movement (biased walk with first-step analysis)
+  \item \textbf{2022F Q3:} Indigestion problem (hitting time analysis)
+  \item \textbf{2022S Q2:} Easter bunny with $\pm 1$, $\pm 2$ jumps (modified random walk)
+  \item \textbf{2021 Q3:} Time warp dance (asymmetric steps)
+  \item \textbf{2019 Q3:} Israelites in desert (biased walk with drift)
+  \item \textbf{2017 Q3:} Asymmetric casino game (biased walk with $+1/-2$)
+\end{itemize}
+
+\newpage
+
+\subsection{Continuous Random Variables: Joint \& Conditional Densities}
+
+\textbf{Frequency:} 6/7 exams (86\%) \quad \textbf{Weight:} $\sim$25\% of exam \quad \textbf{Slides:} 11--13
+
+\subsubsection{Key Concepts}
+
+\paragraph{1. Joint PDF $f_{X,Y}(x,y)$}
+\begin{itemize}
+  \item Probability density for two continuous random variables
+  \item Must integrate to 1: $\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f_{X,Y}(x,y) \, dx \, dy = 1$
+  \item \textbf{Always specify the range!} (e.g., ``for $0 < y < x < \infty$'')
+\end{itemize}
+
+\paragraph{2. Marginal PDF from Joint}
+\begin{align*}
+f_X(x) &= \int_{-\infty}^{\infty} f_{X,Y}(x,y) \, dy \quad \text{(integrate over } y\text{)} \\
+f_Y(y) &= \int_{-\infty}^{\infty} f_{X,Y}(x,y) \, dx \quad \text{(integrate over } x\text{)}
+\end{align*}
+
+\paragraph{3. Conditional PDF}
+\begin{align*}
+f_{X|Y}(x|y) &= \frac{f_{X,Y}(x,y)}{f_Y(y)} \\
+f_{Y|X}(y|x) &= \frac{f_{X,Y}(x,y)}{f_X(x)}
+\end{align*}
+
+\paragraph{4. Building Joint PDF from Conditional}
+\begin{align*}
+f_{X,Y}(x,y) &= f_{X|Y}(x|y) \cdot f_Y(y) \\
+f_{X,Y}(x,y) &= f_{Y|X}(y|x) \cdot f_X(x)
+\end{align*}
+
+\paragraph{5. Law of Total Expectation} \textcolor{criticalcolor}{(SUPER IMPORTANT)}
+
+\begin{tcolorbox}[colback=yellow!10,colframe=orange!80,title=Law of Total Expectation (Tower Property)]
+\[
+E[Y] = E[E[Y|X]]
+\]
+
+In integral form:
+\[
+E[Y] = \int_{-\infty}^{\infty} E[Y|X=x] \cdot f_X(x) \, dx
+\]
+
+\textbf{Incredibly useful for computing expectations!}
+\end{tcolorbox}
+
+\paragraph{6. Common Transformation: $Y = UX$}
+
+When $U \sim \text{Uniform}[0,1]$ independent of $X$:
+\begin{itemize}
+  \item Given $X = x$, $Y$ is uniform on $[0, x]$
+  \item $f_{Y|X}(y|x) = \frac{1}{x}$ for $0 < y < x$
+  \item $f_{X,Y}(x,y) = f_{Y|X}(y|x) \cdot f_X(x) = \frac{1}{x} f_X(x)$ for $0 < y < x$
+\end{itemize}
+
+\subsubsection{Problem-Solving Strategy}
+
+\begin{enumerate}[leftmargin=*]
+  \item Identify what's given (conditional or marginal?)
+  \item Build joint PDF using $f_{X,Y}(x,y) = f_{X|Y}(x|y) \cdot f_Y(y)$ or $f_{Y|X}(y|x) \cdot f_X(x)$
+  \item \textbf{Check the range carefully!} Draw a picture if needed
+  \item For expectations: use law of total expectation $E[Y] = E[E[Y|X]]$
+\end{enumerate}
+
+\subsubsection{Example Question Types}
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{F2025 Q1:} Insurance payments $Y = UX$ (joint density, conditional probability)
+  \item \textbf{S2025 Q2:} Flight delay with weather index (joint density, conditional probabilities)
+  \item \textbf{2022F Q2:} Pie eaten by dog (conditional expectation with gamma distribution)
+\end{itemize}
+
+\newpage
+
+\section{High Priority Topics}
+
+\begin{highbox}
+Learn these topics after mastering the Critical Priority topics. They appear in 40--80\% of exams.
+\end{highbox}
+
+\subsection{Exponential Distribution \& Lifetimes}
+
+\textbf{Frequency:} 5/7 exams (71\%) \quad \textbf{Weight:} $\sim$15\% of exam \quad \textbf{Slides:} 11, 14--15
+
+\subsubsection{Exponential Distribution Basics}
+
+If $T \sim \text{Exp}(\lambda)$:
+\begin{align*}
+\text{PDF:} \quad & f(t) = \lambda e^{-\lambda t} \quad \text{for } t > 0 \\
+\text{CDF:} \quad & F(t) = 1 - e^{-\lambda t} \\
+\text{Survival:} \quad & P(T > t) = e^{-\lambda t} \\
+\text{Mean:} \quad & E[T] = \frac{1}{\lambda} \\
+\text{Variance:} \quad & \text{Var}(T) = \frac{1}{\lambda^2}
+\end{align*}
+
+\subsubsection{Memoryless Property}
+
+\begin{tcolorbox}[colback=yellow!10,colframe=orange!80,title=Memoryless Property - KEY!]
+\[
+P(T > s + t \mid T > s) = P(T > t)
+\]
+
+\textbf{Interpretation:} The distribution ``doesn't remember the past''
+
+\textbf{Key fact:} Exponential is the ONLY continuous distribution with this property!
+\end{tcolorbox}
+
+\subsubsection{Minimum of Independent Exponentials}
+
+If $T_1 \sim \text{Exp}(\lambda_1)$ and $T_2 \sim \text{Exp}(\lambda_2)$ are independent:
+\begin{align*}
+\min(T_1, T_2) &\sim \text{Exp}(\lambda_1 + \lambda_2) \\
+P(T_1 < T_2) &= \frac{\lambda_1}{\lambda_1 + \lambda_2} \\
+E[\min(T_1, T_2)] &= \frac{1}{\lambda_1 + \lambda_2}
+\end{align*}
+
+\textbf{Connection to Poisson:} This relates to competing Poisson processes!
+
+\subsubsection{Maximum of Exponentials}
+
+\begin{align*}
+E[\max(T_1, T_2)] &= \frac{1}{\lambda_1} + \frac{1}{\lambda_2} - \frac{1}{\lambda_1 + \lambda_2}
+\end{align*}
+
+No simple closed form for the distribution of $\max(T_1, T_2)$.
+
+\subsubsection{Example Question Types}
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{2022S Q1:} Chicken crossing with exponential wait time
+  \item \textbf{2019 Q2:} Bread rising and proofing (max of exponentials)
+  \item \textbf{2017 Q2:} Smoker vs non-smoker lifetimes (hazard rates)
+\end{itemize}
+
+\subsection{Brownian Motion}
+
+\textbf{Frequency:} 3/7 exams (43\%) \quad \textbf{Weight:} $\sim$20\% when it appears \quad \textbf{Slides:} 23
+
+\textbf{Note:} Increasingly common in recent exams!
+
+\subsubsection{Standard Brownian Motion Definition}
+
+$B(t)$ is a \textit{standard Brownian motion} if:
+\begin{enumerate}
+  \item $B(0) = 0$ (starts at origin)
+  \item $B(t)$ has continuous paths
+  \item $B(t)$ has independent increments
+  \item $B(t) - B(s) \sim N(0, t-s)$ for $t > s$
+\end{enumerate}
+
+\subsubsection{Key Properties}
+
+\begin{align*}
+E[B(t)] &= 0 \\
+\text{Var}(B(t)) &= t \\
+B(t) &\sim N(0, t) \\
+E[B(t)^2] &= t \quad \text{(since } \text{Var} = E[X^2] - (E[X])^2 = E[X^2]\text{)}
+\end{align*}
+
+\subsubsection{Conditional Expectations}
+
+For $t > s$:
+\begin{align*}
+E[B(t) \mid B(s) = x] &= x \\
+E[B(t)^2 \mid B(s) = x] &= x^2 + (t - s)
+\end{align*}
+
+\subsubsection{Common Application: Stock Prices}
+
+Geometric Brownian motion:
+\[
+S(t) = S_0 \cdot e^{B(t)}
+\]
+Used extensively in financial modeling.
+
+\subsubsection{Example Question Types}
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{2022S Q3:} Stock price $S(t) = e^{B(t)}$ (probabilities with BM)
+  \item \textbf{2021 Q1:} Two ants doing independent Brownian motion (distance calculation)
+\end{itemize}
+
+\newpage
+
+\section{Key Formulas \& Techniques}
+
+\subsection{Poisson Processes}
+
+\begin{tcolorbox}[colback=blue!5,colframe=blue!70,title=Poisson Process Formulas]
+If $N(t) \sim \text{Poisson}(\lambda t)$:
+\begin{align*}
+P(N(t) = k) &= \frac{(\lambda t)^k e^{-\lambda t}}{k!} \\
+E[N(t)] &= \lambda t \\
+\text{Var}(N(t)) &= \lambda t
+\end{align*}
+
+\textbf{Thinning:} If arrivals are rate $\lambda$, each type A with probability $p$:
+\[
+\Rightarrow \text{Type A arrivals are Poisson}(\lambda p)
+\]
+
+\textbf{Competing:}
+\[
+P(\text{A before B}) = \frac{\lambda_A}{\lambda_A + \lambda_B}
+\]
+
+\textbf{Conditional:}
+\[
+E[T \mid N(T) = n] = \frac{n}{\lambda}
+\]
+\end{tcolorbox}
+
+\subsection{Random Walk First-Step Analysis}
+
+\begin{tcolorbox}[colback=blue!5,colframe=blue!70,title=First-Step Analysis Formulas]
+\textbf{For hitting probability $p(i)$:}
+\[
+p(i) = p_{\text{up}} \cdot p(i+1) + p_{\text{down}} \cdot p(i-1) + p_{\text{stay}} \cdot p(i)
+\]
+\textbf{Boundaries:} $p(a) = 0$, $p(b) = 1$
+
+\vspace{0.3cm}
+
+\textbf{For expected hitting time $\mu(i)$:}
+\[
+\mu(i) = \mathbf{1} + p_{\text{up}} \cdot \mu(i+1) + p_{\text{down}} \cdot \mu(i-1) + p_{\text{stay}} \cdot \mu(i)
+\]
+\textbf{Boundaries:} $\mu(a) = 0$, $\mu(b) = 0$
+
+\vspace{0.3cm}
+
+\textbf{For symmetric walk ($p = q = 1/2$):}
+\begin{align*}
+p(i) &= \frac{i - a}{b - a} \\
+\mu(i) &= (i - a)(b - i)
+\end{align*}
+\end{tcolorbox}
+
+\subsection{Exponential Distribution}
+
+\begin{tcolorbox}[colback=blue!5,colframe=blue!70,title=Exponential Distribution Formulas]
+If $T \sim \text{Exp}(\lambda)$:
+\begin{align*}
+f(t) &= \lambda e^{-\lambda t} \\
+E[T] &= \frac{1}{\lambda} \\
+P(T > t) &= e^{-\lambda t}
+\end{align*}
+
+\textbf{Memoryless:} $P(T > s+t \mid T > s) = P(T > t)$
+
+\vspace{0.3cm}
+
+\textbf{Min of exponentials:}
+\begin{align*}
+\min(T_1, T_2) &\sim \text{Exp}(\lambda_1 + \lambda_2) \\
+P(T_1 < T_2) &= \frac{\lambda_1}{\lambda_1 + \lambda_2}
+\end{align*}
+\end{tcolorbox}
+
+\subsection{Continuous Random Variables}
+
+\begin{tcolorbox}[colback=blue!5,colframe=blue!70,title=Joint \& Conditional Density Formulas]
+\textbf{Joint to Marginal:}
+\[
+f_X(x) = \int_{-\infty}^{\infty} f_{X,Y}(x,y) \, dy
+\]
+
+\textbf{Conditional:}
+\[
+f_{X|Y}(x|y) = \frac{f_{X,Y}(x,y)}{f_Y(y)}
+\]
+
+\textbf{Law of Total Expectation:}
+\begin{align*}
+E[Y] &= E[E[Y|X]] \\
+&= \int_{-\infty}^{\infty} E[Y|X=x] \cdot f_X(x) \, dx
+\end{align*}
+\end{tcolorbox}
+
+\subsection{Brownian Motion}
+
+\begin{tcolorbox}[colback=blue!5,colframe=blue!70,title=Brownian Motion Formulas]
+If $B(t)$ is standard Brownian motion:
+\begin{align*}
+B(0) &= 0 \\
+E[B(t)] &= 0 \\
+\text{Var}(B(t)) &= t \\
+B(t) &\sim N(0,t) \\
+B(t) - B(s) &\sim N(0, t-s) \quad \text{for } t > s
+\end{align*}
+
+\textbf{Conditional:}
+\begin{align*}
+E[B(t)^2 \mid B(s) = x] &= x^2 + (t-s) \quad \text{for } t > s
+\end{align*}
+\end{tcolorbox}
+
+\newpage
+
+\section{Common Mistakes to Avoid}
+
+\subsection{Poisson Processes}
+
+\begin{itemize}[leftmargin=*]
+  \item[\textcolor{red}{$\times$}] Forgetting to use thinning when events split into types
+  \item[\textcolor{red}{$\times$}] Not recognizing when to use conditional expectation $E[T \mid N = n]$
+  \item[\textcolor{green!60!black}{$\checkmark$}] Always check if arrivals split by type $\rightarrow$ use thinning
+\end{itemize}
+
+\subsection{Random Walks}
+
+\begin{itemize}[leftmargin=*]
+  \item[\textcolor{red}{$\times$}] Forgetting the ``+1'' in the expected time formula: $\mu(i) = \mathbf{1} + \cdots$
+  \item[\textcolor{red}{$\times$}] Wrong boundary conditions (should be 0 at both barriers for $\mu$)
+  \item[\textcolor{green!60!black}{$\checkmark$}] Write out the recursive formula carefully with all probabilities
+\end{itemize}
+
+\subsection{Joint Densities}
+
+\begin{itemize}[leftmargin=*]
+  \item[\textcolor{red}{$\times$}] Not checking the range/support of the distribution
+  \item[\textcolor{red}{$\times$}] Forgetting to normalize (density must integrate to 1)
+  \item[\textcolor{green!60!black}{$\checkmark$}] Always specify the region where $f(x,y) > 0$
+\end{itemize}
+
+\subsection{Exponential}
+
+\begin{itemize}[leftmargin=*]
+  \item[\textcolor{red}{$\times$}] Confusing rate $\lambda$ with mean (mean = $1/\lambda$)
+  \item[\textcolor{red}{$\times$}] Not using memoryless property when applicable
+  \item[\textcolor{green!60!black}{$\checkmark$}] Remember: min of exponentials $\rightarrow$ sum of rates
+\end{itemize}
+
+\newpage
+
+\section{Detailed Exam Breakdown}
+
+\subsection{Fall 2025 Midterm}
+
+\textbf{Q1 (Insurance --- 30 pts):} Joint/Conditional Densities, Transformations ($Y = UX$)
+\begin{itemize}
+  \item Topics: Continuous RVs, conditional probability, tail distributions
+  \item Slides: 11--13
+\end{itemize}
+
+\textbf{Q2 (Sleepy Gambler --- 30 pts):} Modified Random Walk with laziness parameter
+\begin{itemize}
+  \item Topics: First-step analysis, hitting probabilities, expected hitting times
+  \item Slides: 20--21
+\end{itemize}
+
+\textbf{Q3 (Coffee Shop --- 30 pts):} Poisson with Thinning, Conditional Expectation
+\begin{itemize}
+  \item Topics: Thinning property, conditional expectations, Poisson processes
+  \item Slides: 16--18
+\end{itemize}
+
+\subsection{Spring 2025 Midterm}
+
+\textbf{Q1 (Flight Prices --- 30 pts):} Biased Random Walk with barriers
+\begin{itemize}
+  \item Topics: First-step analysis, hitting probabilities, expected times
+  \item Slides: 20--22
+\end{itemize}
+
+\textbf{Q2 (Weather Index --- 30 pts):} Joint Density, Exponential conditioning
+\begin{itemize}
+  \item Topics: Joint PDFs, conditional probabilities with continuous RVs
+  \item Slides: 11--13, 14--15
+\end{itemize}
+
+\textbf{Q3 (Taxi Stop --- 30 pts):} Competing Poisson Processes
+\begin{itemize}
+  \item Topics: Poisson processes, conditional expectations, competing processes
+  \item Slides: 16--18
+\end{itemize}
+
+\subsection{Fall 2022 Midterm}
+
+\textbf{Q1 (Turkeys --- 30 pts):} Poisson with Thinning, Competing Processes
+\begin{itemize}
+  \item Topics: Thinning (exponential threshold), competing Poisson vs customer arrivals
+  \item Slides: 16--18
+\end{itemize}
+
+\textbf{Q2 (Pie --- 30 pts):} Conditional Expectation, Gamma Distribution
+\begin{itemize}
+  \item Topics: Law of total expectation, conditional expectations with continuous RVs
+  \item Slides: 11--13
+\end{itemize}
+
+\textbf{Q3 (Indigestion --- 30 pts):} Random Walk, Hitting Time
+\begin{itemize}
+  \item Topics: Discrete random walk, probability of never hitting barrier
+  \item Slides: 20--21
+\end{itemize}
+
+\subsection{Spring 2022 Midterm}
+
+\textbf{Q1 (Chicken Crossing --- 30 pts):} Poisson + Exponential, Conditional Expectation
+\begin{itemize}
+  \item Topics: Poisson count, conditional expectation given count
+  \item Slides: 16--18, 11
+\end{itemize}
+
+\textbf{Q2 (Easter Bunny --- 30 pts):} Random Walk with jumps of $\pm 1$, $\pm 2$
+\begin{itemize}
+  \item Topics: Modified random walk, first-step analysis
+  \item Slides: 20--22
+\end{itemize}
+
+\textbf{Q3 (Stock Price --- 30 pts):} Brownian Motion, $e^{B(t)}$
+\begin{itemize}
+  \item Topics: Brownian motion properties, probabilities with BM
+  \item Slides: 23
+\end{itemize}
+
+\subsection{2021 Midterm}
+
+\textbf{Q1 (Tiger-ants --- 30 pts):} Two Independent Brownian Motions
+\begin{itemize}
+  \item Topics: Conditional expectations with BM, distance between BMs
+  \item Slides: 23
+\end{itemize}
+
+\textbf{Q2 (Fruity Yogurt --- 30 pts):} Poisson with Thinning (two-stage)
+\begin{itemize}
+  \item Topics: Thinning with multiple probabilities, conditional expectations
+  \item Slides: 16--18
+\end{itemize}
+
+\textbf{Q3 (Time Warp --- 30 pts):} Modified Random Walk
+\begin{itemize}
+  \item Topics: First-step analysis with asymmetric steps
+  \item Slides: 20--22
+\end{itemize}
+
+\subsection{2019 Midterm}
+
+\textbf{Q1 (Plagues --- 30 pts):} Poisson with Thinning/Acceptance
+\begin{itemize}
+  \item Topics: Thinning with acceptance probability, types of events
+  \item Slides: 16--18
+\end{itemize}
+
+\textbf{Q2 (Matzot --- 30 pts):} Max of Two Exponentials
+\begin{itemize}
+  \item Topics: Expected max, probability calculations with exponentials
+  \item Slides: 11, 14--15
+\end{itemize}
+
+\textbf{Q3 (Desert --- 30 pts):} Random Walk with Drift
+\begin{itemize}
+  \item Topics: Biased random walk, first-step analysis
+  \item Slides: 20--22
+\end{itemize}
+
+\subsection{2017 Midterm}
+
+\textbf{Q1 (Twitter --- 30 pts):} Multiple Competing Poisson Processes
+\begin{itemize}
+  \item Topics: Superposition, competing processes, conditional expectations
+  \item Slides: 16--18
+\end{itemize}
+
+\textbf{Q2 (Smoking --- 30 pts):} Hazard Functions, Lifetimes
+\begin{itemize}
+  \item Topics: Hazard rate, probability one outlasts another
+  \item Slides: 14--15
+\end{itemize}
+
+\textbf{Q3 (Asymmetric Game --- 30 pts):} Biased Random Walk ($+1/-2$)
+\begin{itemize}
+  \item Topics: First-step analysis with asymmetric steps
+  \item Slides: 20--22
+\end{itemize}
+
+\newpage
+
+\section{Study Strategy \& Learning Roadmap}
+
+\subsection{Suggested 4-Day Study Plan}
+
+\subsubsection{Day 1: Poisson Processes (6--8 hours)}
+
+\textbf{Morning (3--4 hours):}
+\begin{itemize}[leftmargin=*]
+  \item Read Slides 16--19 carefully
+  \item Take notes on thinning, superposition, competing processes
+  \item Work through slide examples
+\end{itemize}
+
+\textbf{Afternoon (3--4 hours):}
+\begin{itemize}[leftmargin=*]
+  \item Practice F2025 Q3 (Coffee shop)
+  \item Practice S2025 Q3 (Taxi stop)
+  \item Practice 2019 Q1 (Plagues)
+  \item Check solutions, understand every step
+\end{itemize}
+
+\textbf{Evening Review:}
+\begin{itemize}[leftmargin=*]
+  \item Can you explain thinning without looking at notes?
+  \item Can you set up competing process problems?
+\end{itemize}
+
+\subsubsection{Day 2: Random Walks (6--8 hours)}
+
+\textbf{Morning (3--4 hours):}
+\begin{itemize}[leftmargin=*]
+  \item Read Slides 20--22 carefully
+  \item Focus on first-step analysis technique
+  \item Write out formula templates
+\end{itemize}
+
+\textbf{Afternoon (3--4 hours):}
+\begin{itemize}[leftmargin=*]
+  \item Practice F2025 Q2 (Sleepy gambler)
+  \item Practice S2025 Q1 (Flight prices)
+  \item Practice 2017 Q3 (Asymmetric game)
+\end{itemize}
+
+\textbf{Evening Review:}
+\begin{itemize}[leftmargin=*]
+  \item Write first-step formulas from memory
+  \item Check: do you remember the ``+1'' for expected time?
+\end{itemize}
+
+\subsubsection{Day 3: Joint Densities + Mixed Practice (6--8 hours)}
+
+\textbf{Morning (2--3 hours):}
+\begin{itemize}[leftmargin=*]
+  \item Read Slides 11--13
+  \item Focus on conditional densities and law of total expectation
+  \item Work through examples
+\end{itemize}
+
+\textbf{Afternoon (3--4 hours):}
+\begin{itemize}[leftmargin=*]
+  \item Practice F2025 Q1 (Insurance)
+  \item Practice S2025 Q2 (Weather index)
+  \item Do a FULL timed practice exam (F2025 or S2025)
+\end{itemize}
+
+\textbf{Evening (1--2 hours):}
+\begin{itemize}[leftmargin=*]
+  \item Quick review of Exponential (Slides 11, 14--15)
+  \item If time: Brownian Motion basics (Slide 23)
+\end{itemize}
+
+\subsubsection{Day 4: Final Review + Weak Areas (4--6 hours)}
+
+\textbf{Morning (2--3 hours):}
+\begin{itemize}[leftmargin=*]
+  \item Do another full timed practice exam
+  \item Identify weak topics
+\end{itemize}
+
+\textbf{Afternoon (2--3 hours):}
+\begin{itemize}[leftmargin=*]
+  \item Focus on problems you got wrong
+  \item Review key formulas
+  \item Create/refine your cheat sheet
+\end{itemize}
+
+\textbf{Evening:}
+\begin{itemize}[leftmargin=*]
+  \item Light review, no new material
+  \item Get good sleep before exam!
+\end{itemize}
+
+\subsection{Emergency 2-Day Crash Plan}
+
+If you only have 2 days:
+
+\subsubsection{Day 1: Poisson + Random Walks ONLY (10--12 hours)}
+\begin{itemize}[leftmargin=*]
+  \item These are 100\% guaranteed to appear
+  \item Master thinning and first-step analysis
+  \item Do F2025 Q2, Q3 and S2025 Q1, Q3
+\end{itemize}
+
+\subsubsection{Day 2: Joint Densities + Full Practice (10--12 hours)}
+\begin{itemize}[leftmargin=*]
+  \item Learn conditional density basics
+  \item Do 2 full timed practice exams
+  \item Focus on understanding solutions
+\end{itemize}
+
+\textbf{Note:} Skip Brownian Motion if pressed for time. Focus on the big 3!
+
+\subsection{How to Learn Each Topic Effectively}
+
+\subsubsection{1. Read Slides First}
+\begin{itemize}[leftmargin=*]
+  \item Don't rush, understand each example
+  \item Write down key formulas in your own notes
+  \item Try to explain concepts in your own words
+\end{itemize}
+
+\subsubsection{2. Practice Problems Immediately}
+\begin{itemize}[leftmargin=*]
+  \item Don't just read solutions!
+  \item Attempt problem yourself first (even if you struggle)
+  \item Then check solution and understand each step
+\end{itemize}
+
+\subsubsection{3. Pattern Recognition}
+\begin{itemize}[leftmargin=*]
+  \item Notice: ``When I see X, I should use technique Y''
+  \item Example: ``When I see `types of customers' $\rightarrow$ Thinning!''
+  \item Example: ``When I see `hitting probability' $\rightarrow$ First-step analysis!''
+\end{itemize}
+
+\subsubsection{4. Active Recall}
+\begin{itemize}[leftmargin=*]
+  \item After learning a topic, close your notes
+  \item Try to write key formulas from memory
+  \item Explain the technique out loud to yourself
+\end{itemize}
+
+\subsubsection{5. Interleaved Practice}
+\begin{itemize}[leftmargin=*]
+  \item Don't do 10 Poisson problems in a row
+  \item Mix topics: Poisson $\rightarrow$ Random Walk $\rightarrow$ Joint Density
+  \item Helps you recognize which technique to use
+\end{itemize}
+
+\newpage
+
+\section{Quick Reference: Which Technique When?}
+
+\begin{table}[h]
+\centering
+\caption{Problem Type Recognition Guide}
+\begin{tabularx}{\textwidth}{lX}
+\toprule
+\textbf{When you see...} & \textbf{Use this technique} \\
+\midrule
+``Poisson process'' + ``types/categories'' & \textbf{Thinning} \\
+``random walk'' + ``probability of hitting'' & \textbf{First-Step Analysis (hitting prob)} \\
+``random walk'' + ``expected time'' & \textbf{First-Step Analysis (expected time)} \\
+``given that $N(t) = n$'' & \textbf{Conditional Expectation} with Poisson \\
+``exponential'' + ``minimum'' or ``first to occur'' & \textbf{Min of Exponentials} \\
+``joint density'' or ``$f(x,y)$'' & Set up \textbf{Joint PDF}, check range \\
+``given $X = x$, find $E[Y]$'' & \textbf{Conditional Expectation/Conditional Density} \\
+``Brownian motion'' or ``$B(t)$'' & Use \textbf{BM properties} ($E[B(t)] = 0$, Var $= t$) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Practice Problem Recommendations}
+
+\subsection{Must-Do Problems (Do these first!)}
+
+\begin{enumerate}[leftmargin=*]
+  \item \textbf{F2025 Q3} --- Poisson thinning + conditional expectation
+  \item \textbf{F2025 Q2} --- Random walk with modified probabilities
+  \item \textbf{S2025 Q1} --- Biased random walk first-step analysis
+  \item \textbf{S2025 Q3} --- Competing Poisson processes
+  \item \textbf{2022F Q1} --- Poisson with exponential threshold
+  \item \textbf{2022S Q1} --- Poisson + exponential conditional
+\end{enumerate}
+
+\subsection{Good Practice Problems}
+
+\begin{enumerate}[leftmargin=*,start=7]
+  \item \textbf{F2025 Q1} --- Joint density $Y = UX$
+  \item \textbf{S2025 Q2} --- Joint density with exponentials
+  \item \textbf{2021 Q2} --- Poisson two-stage thinning
+  \item \textbf{2019 Q3} --- Biased random walk
+\end{enumerate}
+
+\subsection{Advanced/Optional}
+
+\begin{enumerate}[leftmargin=*,start=11]
+  \item \textbf{2022S Q3} --- Brownian motion (stock prices)
+  \item \textbf{2021 Q1} --- Two Brownian motions
+  \item \textbf{2017 Q2} --- Hazard functions
+\end{enumerate}
+
+\newpage
+
+\section{Exam Day Tips}
+
+\begin{enumerate}[leftmargin=*]
+  \item \textbf{Read the problem carefully} --- identify which technique to use
+  \item \textbf{Write down what you know} --- given distributions, parameters, etc.
+  \item \textbf{Set up the problem} --- define random variables clearly
+  \item \textbf{Show your work} --- partial credit is awarded!
+  \item \textbf{Check boundary conditions} --- especially for random walks
+  \item \textbf{Simplify your answer} --- reduce fractions, combine terms
+  \item \textbf{Sanity check} --- does your answer make intuitive sense?
+\end{enumerate}
+
+\section{Knowledge Check: Are You Ready?}
+
+Before the exam, you should be able to:
+
+\subsection{Poisson Processes}
+\begin{itemize}[leftmargin=*]
+  \item[$\square$] Explain what thinning means and when to use it
+  \item[$\square$] Set up $P(\text{A before B})$ for competing processes
+  \item[$\square$] Use $E[T \mid N=n]$ correctly
+\end{itemize}
+
+\subsection{Random Walks}
+\begin{itemize}[leftmargin=*]
+  \item[$\square$] Write first-step analysis formula from memory
+  \item[$\square$] Remember to include ``+1'' for expected time formula
+  \item[$\square$] Identify and write correct boundary conditions
+  \item[$\square$] Solve a system of 2--3 linear equations
+\end{itemize}
+
+\subsection{Joint/Conditional Densities}
+\begin{itemize}[leftmargin=*]
+  \item[$\square$] Build joint PDF from conditional + marginal
+  \item[$\square$] Specify correct range for density
+  \item[$\square$] Use law of total expectation $E[Y] = E[E[Y|X]]$
+  \item[$\square$] Find marginal from joint PDF
+\end{itemize}
+
+\subsection{Exponential}
+\begin{itemize}[leftmargin=*]
+  \item[$\square$] Know memoryless property
+  \item[$\square$] Set up min of exponentials
+  \item[$\square$] Remember $E[T] = 1/\lambda$ (not $\lambda$!)
+\end{itemize}
+
+\newpage
+
+\section{Final Motivation}
+
+\begin{tipbox}
+\textbf{Remember:}
+\begin{itemize}[leftmargin=*]
+  \item You have a clear roadmap now!
+  \item Topics are well-defined and learnable
+  \item Focus on understanding, not memorizing
+  \item Past students have done this successfully
+  \item You can learn a lot in a focused few days
+\end{itemize}
+\end{tipbox}
+
+\subsection{Strategy for Success}
+
+\begin{enumerate}[leftmargin=*]
+  \item Don't try to learn everything perfectly
+  \item Focus on high-frequency topics first
+  \item Understand the \textbf{TECHNIQUES}, not just formulas
+  \item Practice with actual exam problems
+  \item Learn from mistakes
+\end{enumerate}
+
+\subsection{You've Got This!}
+
+The fact that you're being proactive and strategic shows you have what it takes to succeed.
+
+\vspace{1cm}
+
+\begin{center}
+\large\textbf{Now stop reading and start learning!}
+
+\vspace{0.5cm}
+
+Good luck! You can do this!
+\end{center}
+
+\end{document}

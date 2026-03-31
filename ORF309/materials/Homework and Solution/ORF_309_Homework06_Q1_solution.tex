@@ -1,0 +1,109 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{ORF 309 Homework 6 - Question 1 Solution}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Question 1: Heart Attack Model}
+
+\subsection*{Setup}
+\begin{itemize}
+    \item Lifetime $L$ has hazard rate $h(t)$:
+    \begin{align*}
+        h(t) = \begin{cases}
+            a & \text{if } t < T \\
+            b & \text{if } t \geq T
+        \end{cases}
+    \end{align*}
+    \item $T \sim \text{Expon}(\mu)$ is the random time of heart attack
+    \item Before heart attack: hazard rate $a$
+    \item After heart attack: hazard rate $b$
+\end{itemize}
+
+\subsection*{Part (a): Expected Lifetime $\mathbb{E}(L)$}
+
+We need to condition on whether the person dies before or after the heart attack.
+
+\textbf{Key relationships:}
+\begin{itemize}
+    \item Hazard rate $h(t)$ relates to survival function $S(t) = P(L > t)$ by:
+    $$h(t) = -\frac{d}{dt}\ln S(t)$$
+    \item Therefore: $S(t) = \exp\left(-\int_0^t h(s)ds\right)$
+\end{itemize}
+
+\textbf{Conditional on $T = \tau$:}
+
+The cumulative hazard up to time $t$ is:
+$$H(t|\tau) = \int_0^t h(s|\tau) ds = \begin{cases}
+    at & \text{if } t < \tau \\
+    a\tau + b(t-\tau) & \text{if } t \geq \tau
+\end{cases}$$
+
+So the survival function is:
+$$S(t|\tau) = \begin{cases}
+    e^{-at} & \text{if } t < \tau \\
+    e^{-a\tau - b(t-\tau)} = e^{-(a-b)\tau - bt} & \text{if } t \geq \tau
+\end{cases}$$
+
+The conditional expected lifetime is:
+\begin{align*}
+\mathbb{E}(L|T=\tau) &= \int_0^\infty S(t|\tau) dt \\
+&= \int_0^\tau e^{-at} dt + \int_\tau^\infty e^{-(a-b)\tau - bt} dt \\
+&= \frac{1-e^{-a\tau}}{a} + e^{-(a-b)\tau} \int_\tau^\infty e^{-bt} dt \\
+&= \frac{1-e^{-a\tau}}{a} + e^{-(a-b)\tau} \cdot \frac{e^{-b\tau}}{b} \\
+&= \frac{1-e^{-a\tau}}{a} + \frac{e^{-a\tau}}{b}
+\end{align*}
+
+\textbf{Unconditional expectation:}
+
+Since $T \sim \text{Expon}(\mu)$, we have $f_T(\tau) = \mu e^{-\mu \tau}$ for $\tau \geq 0$.
+
+\begin{align*}
+\mathbb{E}(L) &= \int_0^\infty \mathbb{E}(L|T=\tau) \cdot \mu e^{-\mu\tau} d\tau \\
+&= \int_0^\infty \left[\frac{1-e^{-a\tau}}{a} + \frac{e^{-a\tau}}{b}\right] \mu e^{-\mu\tau} d\tau \\
+&= \frac{\mu}{a}\int_0^\infty (1-e^{-a\tau})e^{-\mu\tau} d\tau + \frac{\mu}{b}\int_0^\infty e^{-(a+\mu)\tau} d\tau \\
+&= \frac{\mu}{a}\left[\frac{1}{\mu} - \frac{1}{a+\mu}\right] + \frac{\mu}{b(a+\mu)} \\
+&= \frac{1}{a} - \frac{\mu}{a(a+\mu)} + \frac{\mu}{b(a+\mu)} \\
+&= \frac{1}{a} + \frac{\mu}{a+\mu}\left(\frac{1}{b} - \frac{1}{a}\right)
+\end{align*}
+
+\textbf{Final answer:}
+$$\boxed{\mathbb{E}(L) = \frac{1}{a} + \frac{\mu}{a+\mu}\left(\frac{1}{b} - \frac{1}{a}\right) = \frac{b + \mu}{a(a+\mu)} + \frac{\mu}{b(a+\mu)}}$$
+
+Or more simply:
+$$\boxed{\mathbb{E}(L) = \frac{1}{a} - \frac{\mu}{a(a+\mu)} + \frac{\mu}{b(a+\mu)}}$$
+
+\subsection*{Part (b): Probability of dying before heart attack}
+
+We want $P(L < T)$.
+
+\textbf{Method 1: Direct calculation}
+
+Given $T = \tau$, the person dies before heart attack if $L < \tau$. The probability is:
+$$P(L < \tau | T = \tau) = 1 - S(\tau^-|\tau) = 1 - e^{-a\tau}$$
+
+Therefore:
+\begin{align*}
+P(L < T) &= \int_0^\infty P(L < \tau | T = \tau) \cdot f_T(\tau) d\tau \\
+&= \int_0^\infty (1 - e^{-a\tau}) \mu e^{-\mu\tau} d\tau \\
+&= \int_0^\infty \mu e^{-\mu\tau} d\tau - \int_0^\infty \mu e^{-(a+\mu)\tau} d\tau \\
+&= 1 - \frac{\mu}{a+\mu}
+\end{align*}
+
+\textbf{Final answer:}
+$$\boxed{P(L < T) = \frac{a}{a+\mu}}$$
+
+\textbf{Interpretation:} The probability of dying from natural causes (before heart attack) is $\frac{a}{a+\mu}$, which makes intuitive sense:
+\begin{itemize}
+    \item If natural death rate $a$ is high, more likely to die naturally
+    \item If heart attack rate $\mu$ is high, more likely to have heart attack first
+    \item The ratio $\frac{a}{a+\mu}$ captures this competition
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring 2026 Academic Calendar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        /* Progress Section */
+        .progress-section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .progress-section h2 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .course-progress {
+            margin-bottom: 20px;
+        }
+
+        .course-progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .course-name {
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        .grade-earned {
+            font-size: 1.2em;
+            font-weight: 700;
+        }
+
+        .progress-bar {
+            height: 30px;
+            background: #e9ecef;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.9em;
+            transition: width 0.3s ease;
+        }
+
+        .orf309-fill { background: linear-gradient(90deg, #2196F3, #1976D2); }
+        .eco310-fill { background: linear-gradient(90deg, #9c27b0, #7b1fa2); }
+        .asa201-fill { background: linear-gradient(90deg, #ff9800, #f57c00); }
+        .mus262-fill { background: linear-gradient(90deg, #4caf50, #388e3c); }
+
+        .legend {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+        }
+
+        .legend-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+        }
+
+        .calendar-container {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 1400px;
+            margin: 0 auto 20px auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .month-divider {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.8em;
+            font-weight: 700;
+            border-radius: 8px;
+            margin: 10px 0 15px 0;
+        }
+
+        .weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+
+        .weekday {
+            text-align: center;
+            font-weight: 700;
+            padding: 10px;
+            color: #495057;
+            font-size: 0.9em;
+        }
+
+        .days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+
+        .day {
+            min-height: 120px;
+            padding: 8px;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            position: relative;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .day:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .day.empty {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+        }
+
+        .day.past {
+            opacity: 0.5;
+        }
+
+        .day-number {
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+
+        .day.today .day-number {
+            background: #ffc107;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1em;
+        }
+
+        .assignment-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 4px;
+        }
+
+        .assignment {
+            font-size: 0.75em;
+            margin: 3px 0;
+            padding: 3px 5px;
+            border-radius: 4px;
+            line-height: 1.3;
+            display: flex;
+            align-items: flex-start;
+            gap: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .assignment:hover {
+            transform: translateX(3px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .assignment-weight {
+            font-weight: 700;
+            color: #d32f2f;
+            font-size: 0.85em;
+            margin-left: auto;
+            white-space: nowrap;
+        }
+
+        .prep-reminder {
+            background: #fff3cd !important;
+            border: 1px dashed #ffc107 !important;
+            font-style: italic;
+            transition: opacity 0.3s, height 0.3s;
+        }
+
+        .prep-reminder.hidden {
+            display: none;
+        }
+
+        .toggle-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1em;
+            margin-top: 15px;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .toggle-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .toggle-button:active {
+            transform: translateY(0px);
+        }
+
+        .highlight {
+            background: #fff9c4 !important;
+            font-weight: 700 !important;
+            border: 2px solid #fbc02d !important;
+        }
+
+        /* Course colors */
+        .orf309-bg { background: #e3f2fd; }
+        .eco310-bg { background: #f3e5f5; }
+        .asa201-bg { background: #fff3e0; }
+        .mus262-bg { background: #e8f5e9; }
+
+        .orf309-dot { background: #2196F3; }
+        .eco310-dot { background: #9c27b0; }
+        .asa201-dot { background: #ff9800; }
+        .mus262-dot { background: #4caf50; }
+
+        /* Modal for assignment details */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2em;
+            cursor: pointer;
+            color: #6c757d;
+        }
+
+        .modal-close:hover {
+            color: #000;
+        }
+
+        .modal h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .modal-section {
+            margin: 15px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .modal-section strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #495057;
+        }
+
+        .finals-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        .finals-section h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .finals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .final-item {
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .final-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .final-item.orf309 { background: #e3f2fd; border-color: #2196F3; }
+        .final-item.eco310 { background: #f3e5f5; border-color: #9c27b0; }
+        .final-item.asa201 { background: #fff3e0; border-color: #ff9800; }
+        .final-item.mus262 { background: #e8f5e9; border-color: #4caf50; }
+
+        .final-date {
+            font-weight: 700;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+
+        .final-course {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.85em;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .final-weight {
+            font-weight: 700;
+            color: #d32f2f;
+            font-size: 1.1em;
+        }
+
+        .notes {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .notes h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .note-item {
+            margin: 15px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #6c757d;
+        }
+
+        @media (max-width: 768px) {
+            .months-container {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .day {
+                min-height: 100px;
+            }
+
+            .assignment {
+                font-size: 0.7em;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎓 Spring 2026 Academic Calendar</h1>
+            <p>Last Updated: March 22, 2026</p>
+        </div>
+
+        <!-- PROGRESS TRACKER -->
+        <div class="progress-section">
+            <h2>📊 Course Progress Tracker</h2>
+
+            <div class="course-progress">
+                <div class="course-progress-header">
+                    <span class="course-name">ORF309 - Probability</span>
+                    <span class="grade-earned">~0% earned</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill orf309-fill" style="width: 0%;">
+                        Check Canvas for weighting
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-progress">
+                <div class="course-progress-header">
+                    <span class="course-name">ECO310 - Microeconomics</span>
+                    <span class="grade-earned">~0% earned of 100%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill eco310-fill" style="width: 0%;">
+                        0% of 100% (Midterm done: 20-30%)
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-progress">
+                <div class="course-progress-header">
+                    <span class="course-name">ASA201 - Asian American Studies</span>
+                    <span class="grade-earned">~41% earned of 100%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill asa201-fill" style="width: 41%;">
+                        41% (Midterm 20% + Posts ~19% + Presentations 1.4%)
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-progress">
+                <div class="course-progress-header">
+                    <span class="course-name">MUS262 - Jazz History</span>
+                    <span class="grade-earned">~27.5% earned of 100%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill mus262-fill" style="width: 27.5%;">
+                        27.5% (Midterm 20% + Quiz1 7.5%)
+                    </div>
+                </div>
+            </div>
+
+            <p style="margin-top: 15px; color: #6c757d; font-size: 0.9em;">
+                <strong>Note:</strong> Progress is estimated based on completed work. Click assignments to see weights.
+            </p>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-dot orf309-dot"></div>
+                <span>ORF309</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot eco310-dot"></div>
+                <span>ECO310</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot asa201-dot"></div>
+                <span>ASA201</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot mus262-dot"></div>
+                <span>MUS262</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background: #ffc107;"></div>
+                <span>⚡ Prep Day (toggleable)</span>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-bottom: 20px;">
+            <button class="toggle-button" onclick="togglePrepReminders()">
+                <span id="toggleText">Hide Prep Reminders ⚡</span>
+            </button>
+        </div>
+
+        <div class="months-container">
+            <!-- MARCH 2026 -->
+            <div class="month-card">
+                <div class="month-header">March 2026</div>
+                <div class="calendar">
+                    <div class="weekdays">
+                        <div class="weekday">Sun</div>
+                        <div class="weekday">Mon</div>
+                        <div class="weekday">Tue</div>
+                        <div class="weekday">Wed</div>
+                        <div class="weekday">Thu</div>
+                        <div class="weekday">Fri</div>
+                        <div class="weekday">Sat</div>
+                    </div>
+                    <div class="days">
+                        <!-- Previous month days -->
+                        <div class="day empty"></div>
+                        <div class="day empty"></div>
+                        <div class="day empty"></div>
+                        <div class="day empty"></div>
+                        <div class="day empty"></div>
+                        <div class="day empty"></div>
+                        <div class="day past"><div class="day-number">1</div></div>
+
+                        <!-- Week 2-4 (past) -->
+                        <div class="day past"><div class="day-number">2</div></div>
+                        <div class="day past"><div class="day-number">3</div></div>
+                        <div class="day past"><div class="day-number">4</div></div>
+                        <div class="day past"><div class="day-number">5</div></div>
+                        <div class="day past"><div class="day-number">6</div></div>
+                        <div class="day past"><div class="day-number">7</div></div>
+                        <div class="day past"><div class="day-number">8</div></div>
+
+                        <div class="day past"><div class="day-number">9</div></div>
+                        <div class="day past"><div class="day-number">10</div></div>
+                        <div class="day past"><div class="day-number">11</div></div>
+                        <div class="day past"><div class="day-number">12</div></div>
+                        <div class="day past"><div class="day-number">13</div></div>
+                        <div class="day past"><div class="day-number">14</div></div>
+                        <div class="day past"><div class="day-number">15</div></div>
+
+                        <div class="day past"><div class="day-number">16</div></div>
+                        <div class="day past"><div class="day-number">17</div></div>
+                        <div class="day past"><div class="day-number">18</div></div>
+                        <div class="day past"><div class="day-number">19</div></div>
+                        <div class="day past"><div class="day-number">20</div></div>
+                        <div class="day past"><div class="day-number">21</div></div>
+                        <div class="day today"><div class="day-number">22</div></div>
+
+                        <!-- Current week -->
+                        <div class="day"><div class="day-number">23</div></div>
+                        <div class="day">
+                            <div class="day-number">24</div>
+                            <div class="assignment asa201-bg" onclick="showModal('asa201-post')">
+                                <span class="assignment-dot asa201-dot"></span>
+                                <span>Discussion Post @ 9pm</span>
+                                <span class="assignment-weight">0.87%</span>
+                            </div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">25</div>
+                            <div class="assignment mus262-bg" onclick="showModal('mus262-presentation')">
+                                <span class="assignment-dot mus262-dot"></span>
+                                <span>Class Presentations</span>
+                                <span class="assignment-weight">15%</span>
+                            </div>
+                            <div class="assignment prep-reminder">
+                                <span>⚡ Prep for Quiz #2</span>
+                            </div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">26</div>
+                            <div class="assignment asa201-bg" onclick="showModal('asa201-post')">
+                                <span class="assignment-dot asa201-dot"></span>
+                                <span>Discussion Post @ 9pm</span>
+                                <span class="assignment-weight">0.87%</span>
+                            </div>
+                            <div class="assignment orf309-bg" onclick="showModal('orf309-hw')">
+                                <span class="assignment-dot orf309-dot"></span>
+                                <span>ORF309 Homework</span>
+                                <span class="assignment-weight">TBA</span>
+                            </div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">27</div>
+                            <div class="assignment mus262-bg" onclick="showModal('mus262-quiz2')">
+                                <span class="assignment-dot mus262-dot"></span>
+                                <span>Quiz #2</span>
+                                <span class="assignment-weight">7.5%</span>
+                            </div>
+                        </div>
+                        <div class="day"><div class="day-number">28</div></div>
+                        <div class="day"><div class="day-number">29</div></div>
+
+                        <!-- Next week -->
+                        <div class="day"><div class="day-number">30</div></div>
+                        <div class="day highlight">
+                            <div class="day-number">31</div>
+                            <div class="assignment" style="background: #fbc02d; color: white; font-weight: 700;" onclick="showModal('asa201-presentation1')">
+                                <span>⭐ ASA201 PRESENTATION</span>
+                                <span class="assignment-weight" style="color: white;">0.68%</span>
+                            </div>
+                            <div class="assignment prep-reminder">
+                                <span>⚡ Start ECO310 PS3</span>
+                            </div>
+                        </div>
+                        <div class="day empty"></div>
+                        <div class="day empty"></div>
+                        <div class="day empty"></div>
+                        <div class="day empty"></div>
+                        <div class="day empty"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- APRIL 2026 -->
+            <div class="month-card">
+                <div class="month-header">April 2026</div>
+                <div class="calendar">
+                    <div class="weekdays">
+                        <div class="weekday">Sun</div>
+                        <div class="weekday">Mon</div>
+                        <div class="weekday">Tue</div>
+                        <div class="weekday">Wed</div>
+                        <div class="weekday">Thu</div>
+                        <div class="weekday">Fri</div>
+                        <div class="weekday">Sat</div>
+                    </div>
+                    <div class="days">
+                        <!-- Week 1 -->
+                        <div class="day empty"></div>
+                        <div class="day empty"></div>
+                        <div class="day empty"></div>
+                        <!-- April 1 = Wednesday -->
+                        <div class="day">
+                            <div class="day-number">1</div>
+                            <div class="assignment mus262-bg" onclick="showModal('mus262-presentation')">
+                                <span class="assignment-dot mus262-dot"></span>
+                                <span>Class Presentations</span>
+                                <span class="assignment-weight">15%</span>
+                            </div>
+                            <div class="assignment prep-reminder">
+                                <span>⚡ Finalize PS3</span>
+                            </div>
+                        </div>
+                        <!-- April 2 = Thursday -->
+                        <div class="day">
+                            <div class="day-number">2</div>
+                            <div class="assignment asa201-bg" onclick="showModal('asa201-post')">
+                                <span class="assignment-dot asa201-dot"></span>
+                                <span>Discussion Post @ 9pm</span>
+                                <span class="assignment-weight">0.87%</span>
+                            </div>
+                            <div class="assignment orf309-bg" onclick="showModal('orf309-hw')">
+                                <span class="assignment-dot orf309-dot"></span>
+                                <span>ORF309 Homework</span>
+                                <span class="assignment-weight">TBA</span>
+                            </div>
+                        </div>
+                        <!-- April 3 = Friday -->
+                        <div class="day">
+                            <div class="day-number">3</div>
+                            <div class="assignment mus262-bg" onclick="showModal('mus262-presentation')">
+                                <span class="assignment-dot mus262-dot"></span>
+                                <span>Class Presentations</span>
+                                <span class="assignment-weight">15%</span>
+                            </div>
+                            <div class="assignment eco310-bg" onclick="showModal('eco310-ps3')">
+                                <span class="assignment-dot eco310-dot"></span>
+                                <span><strong>Problem Set 3 DUE</strong></span>
+                                <span class="assignment-weight">5%</span>
+                            </div>
+                        </div>
+                        <!-- April 4 = Saturday -->
+                        <div class="day"><div class="day-number">4</div></div>
+
+                        <!-- Week 2 -->
+                        <div class="day">
+                            <div class="day-number">5</div>
+                            <div class="assignment prep-reminder">
+                                <span>⚡ Rehearse Presentation</span>
+                            </div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">6</div>
+                            <div class="assignment prep-reminder">
+                                <span>⚡ Final Presentation Prep</span>
+                            </div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">7</div>
+                            <div class="assignment asa201-bg" onclick="showModal('asa201-post')">
+                                <span class="assignment-dot asa201-dot"></span>
+                                <span>Discussion Post @ 9pm</span>
+                                <span class="assignment-weight">0.87%</span>
+                            </div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">8</div>
+                            <div class="assignment mus262-bg" onclick="showModal('mus262-presentation')">
+                                <span class="assignment-dot mus262-dot"></span>
+                                <span>Class Presentations</span>
+                                <span class="assignment-weight">15%</span>
+                            </div>
+                            <div class="assignment asa201-bg" onclick="showModal('asa201-post')">
+                                <span class="assignment-dot asa201-dot"></span>
+                                <span>Discussion Post @ 9pm</span>
+                                <span class="assignment-weight">0.87%</span>
+                            </div>
+                            <div class="assignment orf309-bg" onclick="showModal('orf309-hw')">
+                                <span class="assignment-dot orf309-dot"></span>
+                                <span>ORF309 Homework</span>
+                                <span class="assignment-weight">TBA</span>
+                            </div>
+                        </div>
+                        <div class="day"><div class="day-number">9</div></div>
+                        <div class="day">
+                            <div class="day-number">10</div>
+                            <div class="assignment prep-reminder">
+                                <span>⚡ Start PS4</span>
+                            </div>
+                        </div>
+                        <div class="day"><div class="day-number">11</div></div>
+
+                        <!-- Week 3 -->
+                        <div class="day"><div class="day-number">12</div></div>
+                        <div class="day">
+                            <div class="day-number">13</div>
+                            <div class="assignment eco310-bg" onclick="showModal('eco310-ps4')">
+                                <span class="assignment-dot eco310-dot"></span>
+                                <span><strong>Problem Set 4 DUE</strong></span>
+                                <span class="assignment-weight">5%</span>
+                            </div>
+                        </div>
+                        <div class="day highlight">
+                            <div class="day-number">14</div>
+                            <div class="assignment" style="background: #fbc02d; color: white; font-weight: 700;" onclick="showModal('asa201-presentation2')">
+                                <span>⭐ ASA201 PRESENTATION</span>
+                                <span class="assignment-weight" style="color: white;">0.68%</span>
+                            </div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">15</div>
+                            <div class="assignment mus262-bg" onclick="showModal('mus262-presentation')">
+                                <span class="assignment-dot mus262-dot"></span>
+                                <span>Class Presentations</span>
+                                <span class="assignment-weight">15%</span>
+                            </div>
+                            <div class="assignment asa201-bg" onclick="showModal('asa201-post')">
+                                <span class="assignment-dot asa201-dot"></span>
+                                <span>Discussion Post @ 9pm</span>
+                                <span class="assignment-weight">0.87%</span>
+                            </div>
+                            <div class="assignment orf309-bg" onclick="showModal('orf309-hw')">
+                                <span class="assignment-dot orf309-dot"></span>
+                                <span>ORF309 Homework</span>
+                                <span class="assignment-weight">TBA</span>
+                            </div>
+                        </div>
+                        <div class="day"><div class="day-number">16</div></div>
+                        <div class="day"><div class="day-number">17</div></div>
+                        <div class="day"><div class="day-number">18</div></div>
+
+                        <!-- Week 4 -->
+                        <div class="day"><div class="day-number">19</div></div>
+                        <div class="day">
+                            <div class="day-number">20</div>
+                            <div class="assignment prep-reminder">
+                                <span>⚡ Start PS5 (FINAL PSET)</span>
+                            </div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">21</div>
+                            <div class="assignment asa201-bg" onclick="showModal('asa201-post')">
+                                <span class="assignment-dot asa201-dot"></span>
+                                <span>Discussion Post @ 9pm</span>
+                                <span class="assignment-weight">0.87%</span>
+                            </div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">22</div>
+                            <div class="assignment mus262-bg" onclick="showModal('mus262-presentation')">
+                                <span class="assignment-dot mus262-dot"></span>
+                                <span>Class Presentations</span>
+                                <span class="assignment-weight">15%</span>
+                            </div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">23</div>
+                            <div class="assignment asa201-bg" onclick="showModal('asa201-post')">
+                                <span class="assignment-dot asa201-dot"></span>
+                                <span>Discussion Post @ 9pm</span>
+                                <span class="assignment-weight">0.87%</span>
+                            </div>
+                            <div class="assignment orf309-bg" onclick="showModal('orf309-hw')">
+                                <span class="assignment-dot orf309-dot"></span>
+                                <span>ORF309 Homework</span>
+                                <span class="assignment-weight">TBA</span>
+                            </div>
+                            <div class="assignment eco310-bg" onclick="showModal('eco310-ps5')">
+                                <span class="assignment-dot eco310-dot"></span>
+                                <span><strong>PS 5 DUE (FINAL)</strong></span>
+                                <span class="assignment-weight">5%</span>
+                            </div>
+                        </div>
+                        <div class="day">
+                            <div class="day-number">24</div>
+                        </div>
+                        <div class="day"><div class="day-number">25</div></div>
+
+                        <!-- Week 5 -->
+                        <div class="day"><div class="day-number">26</div></div>
+                        <div class="day"><div class="day-number">27</div></div>
+                        <div class="day">
+                            <div class="day-number">28</div>
+                            <div class="assignment asa201-bg" onclick="showModal('asa201-post')">
+                                <span class="assignment-dot asa201-dot"></span>
+                                <span>Discussion Post @ 9pm</span>
+                                <span class="assignment-weight">0.87%</span>
+                            </div>
+                        </div>
+                        <div class="day"><div class="day-number">29</div></div>
+                        <div class="day">
+                            <div class="day-number">30</div>
+                            <div class="assignment asa201-bg" onclick="showModal('asa201-post')">
+                                <span class="assignment-dot asa201-dot"></span>
+                                <span>Discussion Post @ 9pm</span>
+                                <span class="assignment-weight">0.87%</span>
+                            </div>
+                            <div class="assignment orf309-bg" onclick="showModal('orf309-hw')">
+                                <span class="assignment-dot orf309-dot"></span>
+                                <span>ORF309 Homework</span>
+                                <span class="assignment-weight">TBA</span>
+                            </div>
+                        </div>
+                        <div class="day empty"></div>
+                        <div class="day empty"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MAY 2026 -->
+            <div class="month-card">
+                <div class="month-header">May 2026 - Finals Week</div>
+                <div class="calendar">
+                    <div class="weekdays">
+                        <div class="weekday">Sun</div>
+                        <div class="weekday">Mon</div>
+                        <div class="weekday">Tue</div>
+                        <div class="weekday">Wed</div>
+                        <div class="weekday">Thu</div>
+                        <div class="weekday">Fri</div>
+                        <div class="weekday">Sat</div>
+                    </div>
+                    <div class="days">
+                        <!-- Week 1 -->
+                        <div class="day empty"></div>
+                        <div class="day empty"></div>
+                        <div class="day empty"></div>
+                        <div class="day empty"></div>
+                        <div class="day empty"></div>
+                        <!-- May 1 = Friday -->
+                        <div class="day">
+                            <div class="day-number">1</div>
+                        </div>
+                        <!-- May 2 = Saturday -->
+                        <div class="day">
+                            <div class="day-number">2</div>
+                        </div>
+
+                        <!-- Week 2 -->
+                        <!-- May 3 = Sunday -->
+                        <div class="day">
+                            <div class="day-number">3</div>
+                        </div>
+                        <!-- May 4 = Monday -->
+                        <div class="day">
+                            <div class="day-number">4</div>
+                            <div class="assignment asa201-bg" onclick="showModal('asa201-post')">
+                                <span class="assignment-dot asa201-dot"></span>
+                                <span>Discussion Post @ 9pm</span>
+                                <span class="assignment-weight">0.87%</span>
+                            </div>
+                        </div>
+                        <!-- May 5 = Tuesday -->
+                        <div class="day">
+                            <div class="day-number">5</div>
+                        </div>
+                        <!-- May 6 = Wednesday -->
+                        <div class="day">
+                            <div class="day-number">6</div>
+                            <div class="assignment asa201-bg" onclick="showModal('asa201-post')">
+                                <span class="assignment-dot asa201-dot"></span>
+                                <span>Discussion Post @ 9pm</span>
+                                <span class="assignment-weight">0.87%</span>
+                            </div>
+                            <div class="assignment orf309-bg" onclick="showModal('orf309-hw')">
+                                <span class="assignment-dot orf309-dot"></span>
+                                <span>ORF309 Homework</span>
+                                <span class="assignment-weight">TBA</span>
+                            </div>
+                        </div>
+                        <!-- May 7 = Thursday -->
+                        <div class="day">
+                            <div class="day-number">7</div>
+                        </div>
+                        <!-- May 8 = Friday -->
+                        <div class="day">
+                            <div class="day-number">8</div>
+                        </div>
+                        <!-- May 9 = Saturday -->
+                        <div class="day highlight">
+                            <div class="day-number">9</div>
+                            <div class="assignment" style="background: linear-gradient(135deg, #ff9800, #f57c00); color: white; font-weight: 700;" onclick="showModal('asa201-final')">
+                                <span>🎓 ASA201 FINAL</span>
+                                <span class="assignment-weight" style="color: white;">25%</span>
+                            </div>
+                            <div style="font-size: 0.7em; margin-top: 3px;">8:30am-11:30am</div>
+                            <div style="font-size: 0.65em; color: #6c757d;">TBA</div>
+                        </div>
+
+                        <!-- Week 3 -->
+                        <!-- May 10 = Sunday -->
+                        <div class="day highlight">
+                            <div class="day-number">10</div>
+                            <div class="assignment" style="background: linear-gradient(135deg, #4caf50, #388e3c); color: white; font-weight: 700;" onclick="showModal('mus262-final')">
+                                <span>🎓 MUS262 FINAL</span>
+                                <span class="assignment-weight" style="color: white;">30%</span>
+                            </div>
+                            <div style="font-size: 0.7em; margin-top: 3px;">4:00pm-7:00pm</div>
+                            <div style="font-size: 0.65em; color: #6c757d;">TBA</div>
+                        </div>
+                        <!-- May 11 = Monday -->
+                        <div class="day">
+                            <div class="day-number">11</div>
+                            <div class="assignment prep-reminder">
+                                <span>⚡ Study for finals</span>
+                            </div>
+                        </div>
+                        <!-- May 12 = Tuesday -->
+                        <div class="day highlight">
+                            <div class="day-number">12</div>
+                            <div class="assignment" style="background: linear-gradient(135deg, #2196F3, #1976D2); color: white; font-weight: 700; margin-bottom: 5px;" onclick="showModal('orf309-final')">
+                                <span>🎓 ORF309 FINAL</span>
+                                <span class="assignment-weight" style="color: white;">TBA</span>
+                            </div>
+                            <div style="font-size: 0.7em; margin-bottom: 3px;">12:30pm-3:30pm</div>
+                            <div style="font-size: 0.65em; color: #6c757d; margin-bottom: 5px;">Friend Cen 101</div>
+                            <div class="assignment" style="background: linear-gradient(135deg, #9c27b0, #7b1fa2); color: white; font-weight: 700;" onclick="showModal('eco310-final')">
+                                <span>🎓 ECO310 FINAL</span>
+                                <span class="assignment-weight" style="color: white;">50-60%</span>
+                            </div>
+                            <div style="font-size: 0.7em; margin-top: 3px;">4:00pm-7:00pm</div>
+                            <div style="font-size: 0.65em; color: #6c757d;">McDonnell A02</div>
+                        </div>
+                        <!-- May 13 = Wednesday -->
+                        <div class="day">
+                            <div class="day-number">13</div>
+                        </div>
+                        <!-- May 14 = Thursday (Last Day) -->
+                        <div class="day" style="background: #e8f5e9; border: 2px solid #4caf50;">
+                            <div class="day-number" style="color: #4caf50; font-weight: 700;">14</div>
+                            <div style="font-size: 0.75em; font-weight: 700; color: #4caf50; text-align: center; margin-top: 5px;">🎉 SEMESTER ENDS</div>
+                        </div>
+                        <!-- May 15 = Friday -->
+                        <div class="day empty"></div>
+                        <!-- May 16 = Saturday -->
+                        <div class="day empty"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FINALS SUMMARY -->
+        <div class="finals-section">
+            <h2>📚 Finals Summary - May 9-14, 2026</h2>
+            <div class="finals-grid">
+                <div class="final-item asa201" onclick="showModal('asa201-final')">
+                    <div class="final-date">Friday, May 9</div>
+                    <div style="font-size: 1.2em; font-weight: 700; margin: 5px 0;">8:30am - 11:30am</div>
+                    <div class="final-course" style="background: #ff9800;">ASA201</div>
+                    <div>Final Exam on Canvas</div>
+                    <div class="final-weight">Worth: 25% of final grade</div>
+                    <small>Location TBA</small>
+                </div>
+                <div class="final-item mus262" onclick="showModal('mus262-final')">
+                    <div class="final-date">Saturday, May 10</div>
+                    <div style="font-size: 1.2em; font-weight: 700; margin: 5px 0;">4:00pm - 7:00pm</div>
+                    <div class="final-course" style="background: #4caf50;">MUS262</div>
+                    <div><strong>Final Paper DUE</strong> (10 pages)</div>
+                    <div class="final-weight">Worth: 30% of final grade</div>
+                    <small>Research paper • Thesis required • MLA format • Location TBA</small>
+                </div>
+                <div class="final-item orf309" onclick="showModal('orf309-final')">
+                    <div class="final-date">Tuesday, May 12</div>
+                    <div style="font-size: 1.2em; font-weight: 700; margin: 5px 0;">12:30pm - 3:30pm</div>
+                    <div class="final-course" style="background: #2196F3;">ORF309</div>
+                    <div><strong>FINAL EXAM</strong> (IN PERSON)</div>
+                    <div class="final-weight">Worth: TBA (check Canvas)</div>
+                    <small>📍 Friend Center 101</small>
+                </div>
+                <div class="final-item eco310" onclick="showModal('eco310-final')">
+                    <div class="final-date">Tuesday, May 12</div>
+                    <div style="font-size: 1.2em; font-weight: 700; margin: 5px 0;">4:00pm - 7:00pm</div>
+                    <div class="final-course" style="background: #9c27b0;">ECO310</div>
+                    <div><strong>FINAL EXAM</strong> (IN PERSON)</div>
+                    <div class="final-weight">Worth: 50-60% of final grade</div>
+                    <small>📍 McDonnell Hall A02 • Most important exam</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- NOTES -->
+        <div class="notes">
+            <h3>📝 Important Notes</h3>
+            <div class="note-item">
+                <strong>ASA201 Discussion Posts (0.87% each):</strong> 250 words due every Monday and Wednesday @ 9pm. You need 21 posts (23 minus 2 presentation days) = ~18% of grade. Weekly presentations (2 total) = 1.36% of 15%.
+            </div>
+            <div class="note-item">
+                <strong>ORF309 Homework:</strong> Check Canvas each week for Wednesday homework. Weighting TBA.
+            </div>
+            <div class="note-item">
+                <strong>ECO310 Problem Sets:</strong> Each worth ~5%, but only best 4 of 5 count toward your 20% homework grade. You have one 24-hour extension available.
+            </div>
+            <div class="note-item">
+                <strong>MUS262:</strong> Oral presentations happen on Mar 25, Apr 1, 3, 8, 15, 22. Check Canvas for YOUR specific date. Presentation worth 15% of grade. Quiz #2 (March 27) is worth 7.5%.
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL -->
+    <div id="assignmentModal" class="modal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script>
+        const assignmentDetails = {
+            'asa201-post': {
+                title: 'ASA201 Discussion Post',
+                weight: '0.87% of final grade',
+                courseWeight: '20% total (23 posts)',
+                dueTime: '9:00pm',
+                requirements: '250 words responding to prompt or offering analysis of week\'s readings/viewings',
+                tips: 'Post before 9pm to avoid late penalty. No post needed on presentation days.',
+                prepTime: 'Same day (1-2 hours)'
+            },
+            'orf309-hw': {
+                title: 'ORF309 Homework',
+                weight: 'TBA - Check Canvas',
+                courseWeight: 'Part of homework grade',
+                dueTime: 'Wednesday (check Canvas)',
+                requirements: 'Problem sets covering probability and stochastic processes',
+                tips: 'Start 2-3 days early. Attend office hours if stuck.',
+                prepTime: '2-3 days recommended'
+            },
+            'mus262-quiz2': {
+                title: 'MUS262 Quiz #2',
+                weight: '7.5% of final grade',
+                courseWeight: '15% total (2 quizzes)',
+                dueTime: 'In class',
+                requirements: 'Covers material from Weeks 1-4 (Early Jazz through Bebop)',
+                tips: 'Review listening assignments and study guides. Know key artists and characteristics.',
+                prepTime: '2-3 days of review'
+            },
+            'eco310-ps3': {
+                title: 'ECO310 Problem Set 3',
+                weight: '~5% of final grade',
+                courseWeight: 'Best 4 of 5 count (20% total)',
+                dueTime: 'Thursday, April 3',
+                requirements: 'Mathematical microeconomics problems covering markets and equilibrium',
+                tips: 'Attend precepts for practice. This is one of 5 - your best 4 count!',
+                prepTime: 'Start 3-4 days early'
+            },
+            'eco310-ps4': {
+                title: 'ECO310 Problem Set 4',
+                weight: '~5% of final grade',
+                courseWeight: 'Best 4 of 5 count (20% total)',
+                dueTime: 'Monday, April 13',
+                requirements: 'Covers firm behavior and supply',
+                tips: 'You can drop one problem set or use 24-hour extension',
+                prepTime: 'Start 3-4 days early'
+            },
+            'eco310-ps5': {
+                title: 'ECO310 Problem Set 5 (FINAL)',
+                weight: '~5% of final grade',
+                courseWeight: 'Best 4 of 5 count (20% total)',
+                dueTime: 'Thursday, April 23',
+                requirements: 'Final problem set - likely game theory and information economics',
+                tips: 'This is your LAST problem set. Make it count!',
+                prepTime: 'Start 3-4 days early'
+            },
+            'mus262-presentation': {
+                title: 'MUS262 Oral Presentations (Class Days)',
+                weight: '15% of final grade (your specific presentation)',
+                courseWeight: 'Major grade component',
+                dueTime: 'Various dates: Mar 25, Apr 1, 3, 8, 15, 22',
+                requirements: '10-minute presentation on approved topic. Topics approved week of March 18.',
+                tips: 'Check which date is YOUR presentation. Rehearse multiple times. Time yourself!',
+                prepTime: '3-5 days of preparation recommended'
+            },
+            'asa201-final': {
+                title: 'ASA201 Final Exam',
+                weight: '25% of final grade',
+                courseWeight: 'Largest single assignment',
+                dueTime: 'Saturday, May 9 @ 12:00pm',
+                requirements: 'Take-home exam covering entire semester',
+                tips: 'Start early in finals period. Review all readings and essays.',
+                prepTime: 'Start May 6-7'
+            },
+            'mus262-final': {
+                title: 'MUS262 Final Paper',
+                weight: '30% of final grade',
+                courseWeight: 'Largest assignment of the semester',
+                dueTime: 'Sunday, May 10 @ 7:00pm',
+                requirements: '10 pages, double spaced. Thesis required. MLA format. Can cover Early Jazz through 21st Century Modernists.',
+                tips: 'Start research in mid-April. Pick a focused topic. Get sources early.',
+                prepTime: 'Start research April 15-20'
+            },
+            'eco310-final': {
+                title: 'ECO310 Final Exam',
+                weight: '50-60% of final grade',
+                courseWeight: 'MOST IMPORTANT - In person mandatory',
+                dueTime: 'Tuesday, May 12, 4:00-7:00pm',
+                requirements: 'Comprehensive exam covering all material. In-person, department mandated.',
+                tips: 'This is worth more than HALF your grade. Start reviewing early May.',
+                prepTime: 'Study May 5-12'
+            },
+            'orf309-final': {
+                title: 'ORF309 Final Exam',
+                weight: 'TBA - Check Canvas',
+                courseWeight: 'Major component',
+                dueTime: 'TBA',
+                requirements: 'Comprehensive probability and stochastic processes exam',
+                tips: 'Date not posted yet. Check Canvas regularly for updates.',
+                prepTime: 'TBA - likely 5-7 days'
+            },
+            'asa201-presentation1': {
+                title: 'ASA201 Weekly Presentation #1',
+                weight: '0.68% of final grade',
+                courseWeight: '15% total (22 presentations)',
+                dueTime: 'Tuesday, March 31 (in class)',
+                requirements: '5-minute presentation on "Model Minority or Myth?" (Vivian Day Gonzalez reading). Focus on one central idea to discuss with class.',
+                tips: 'Not just a summary - pose a question, clarification, or connection to current events. No Canvas post needed this day.',
+                prepTime: 'Prepare 2-3 days early'
+            },
+            'asa201-presentation2': {
+                title: 'ASA201 Weekly Presentation #2',
+                weight: '0.68% of final grade',
+                courseWeight: '15% total (22 presentations)',
+                dueTime: 'Tuesday, April 14 (in class)',
+                requirements: '5-minute presentation on Stranger Intimacy (Nayan Shah reading). Focus on one central idea to discuss with class.',
+                tips: 'Not just a summary - pose a question, clarification, or connection to current events. No Canvas post needed this day.',
+                prepTime: 'Prepare 2-3 days early'
+            }
+        };
+
+        function showModal(assignmentKey) {
+            const modal = document.getElementById('assignmentModal');
+            const modalBody = document.getElementById('modalBody');
+            const details = assignmentDetails[assignmentKey];
+
+            if (!details) return;
+
+            modalBody.innerHTML = `
+                <h3>${details.title}</h3>
+                <div class="modal-section">
+                    <strong>Grade Weight:</strong>
+                    <div style="font-size: 1.3em; color: #d32f2f; font-weight: 700;">${details.weight}</div>
+                    <div style="color: #6c757d; margin-top: 5px;">${details.courseWeight}</div>
+                </div>
+                <div class="modal-section">
+                    <strong>Due:</strong>
+                    <div>${details.dueTime}</div>
+                </div>
+                <div class="modal-section">
+                    <strong>Requirements:</strong>
+                    <div>${details.requirements}</div>
+                </div>
+                <div class="modal-section">
+                    <strong>Recommended Prep Time:</strong>
+                    <div>${details.prepTime}</div>
+                </div>
+                <div class="modal-section" style="background: #fff3cd;">
+                    <strong>💡 Tips:</strong>
+                    <div>${details.tips}</div>
+                </div>
+            `;
+
+            modal.classList.add('active');
+        }
+
+        function closeModal(event) {
+            const modal = document.getElementById('assignmentModal');
+            if (!event || event.target === modal) {
+                modal.classList.remove('active');
+            }
+        }
+
+        // Toggle prep reminders
+        let prepRemindersVisible = true;
+        function togglePrepReminders() {
+            prepRemindersVisible = !prepRemindersVisible;
+            const prepReminders = document.querySelectorAll('.prep-reminder');
+            const toggleText = document.getElementById('toggleText');
+
+            prepReminders.forEach(reminder => {
+                if (prepRemindersVisible) {
+                    reminder.classList.remove('hidden');
+                } else {
+                    reminder.classList.add('hidden');
+                }
+            });
+
+            toggleText.textContent = prepRemindersVisible ? 'Hide Prep Reminders ⚡' : 'Show Prep Reminders ⚡';
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,349 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+
+\title{\textbf{Homework 6, Question 4b Explained} \\ \large Conditional Distribution of Poisson Process}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem Statement}
+
+Let $\{N_t\}$ be a Poisson process with rate $\lambda$.
+
+\textbf{Question 4b:} For any $t, s \geq 0$, what is the conditional distribution of $N_t$ given $N_s = n$?
+
+\begin{tcolorbox}[colback=red!10!white,colframe=red!75!black,title=Key Observation]
+This question is asking for the \textbf{general formula} for ALL values of $t$ and $s$, not just one specific case.
+
+The answer depends on the relationship between $t$ and $s$:
+\begin{itemize}
+    \item \textbf{Case 1:} $t < s$ (we're asking about an EARLIER time)
+    \item \textbf{Case 2:} $t = s$ (same time)
+    \item \textbf{Case 3:} $t > s$ (we're asking about a LATER time)
+\end{itemize}
+\end{tcolorbox}
+
+\section{Case 1: When $t < s$ (Earlier Time)}
+
+\subsection{Setup}
+
+You're at time $s$ and you know $N_s = n$ arrivals have occurred.
+
+\textbf{Question:} What's the distribution of $N_t$ (arrivals by an \textit{earlier} time $t$)?
+
+\begin{verbatim}
+Time:    0           t           s
+         |-----------|-----------|
+
+Events:  [   N_t    ][  N_s-N_t ]
+
+         [      N_s = n         ]
+\end{verbatim}
+
+\subsection{Intuition}
+
+Think of it this way:
+\begin{itemize}
+    \item You have $n$ arrivals total by time $s$
+    \item Each arrival is ``equally likely'' to have occurred anywhere in $[0, s]$
+    \item Time $t$ represents $\frac{t}{s}$ of the total time interval
+    \item So each of the $n$ arrivals has probability $\frac{t}{s}$ of being in $[0, t]$
+\end{itemize}
+
+This is like flipping $n$ coins, each with success probability $\frac{t}{s}$!
+
+\subsection{Answer for Case 1}
+
+\begin{tcolorbox}[colback=green!10!white,colframe=green!75!black,title={Case 1: $t < s$}]
+\[
+\boxed{(N_t \mid N_s = n) \sim \text{Binomial}\left(n, \frac{t}{s}\right)}
+\]
+
+Explicitly:
+\[
+P(N_t = k \mid N_s = n) = \binom{n}{k} \left(\frac{t}{s}\right)^k \left(1 - \frac{t}{s}\right)^{n-k} \quad \text{for } k = 0, 1, \ldots, n
+\]
+\end{tcolorbox}
+
+\textbf{Note:} Question 4a was exactly this case with $t = 4$, $s = 9$, $n = 13$, $k = 5$!
+
+\subsection{Properties for Case 1}
+
+\begin{itemize}
+    \item \textbf{Mean:} $\mathbb{E}(N_t \mid N_s = n) = n \cdot \frac{t}{s}$
+    \item \textbf{Variance:} $\text{Var}(N_t \mid N_s = n) = n \cdot \frac{t}{s} \cdot \left(1 - \frac{t}{s}\right) = n \cdot \frac{t}{s} \cdot \frac{s-t}{s}$
+    \item \textbf{Support:} $N_t$ can be $0, 1, 2, \ldots, n$ (can't exceed $n$!)
+\end{itemize}
+
+\section{Case 2: When $t = s$ (Same Time)}
+
+\subsection{Setup}
+
+You're asking: ``Given $N_s = n$, what is $N_t$ when $t = s$?''
+
+\subsection{Answer for Case 2}
+
+\begin{tcolorbox}[colback=blue!10!white,colframe=blue!75!black,title={Case 2: $t = s$}]
+\[
+\boxed{(N_t \mid N_s = n) = n \quad \text{with probability 1}}
+\]
+
+This is a \textbf{degenerate distribution} (deterministic).
+\end{tcolorbox}
+
+\textbf{Why?} If $t = s$, then $N_t = N_s = n$ for certain. There's no randomness!
+
+You can think of this as Binomial$(n, 1)$ where every ``trial'' succeeds, so you always get $n$.
+
+\section{Case 3: When $t > s$ (Later Time)}
+
+\subsection{Setup}
+
+You're at time $s$ and you know $N_s = n$ arrivals have occurred.
+
+\textbf{Question:} What's the distribution of $N_t$ (arrivals by a \textit{later} time $t$)?
+
+\begin{verbatim}
+Time:    0           s           t
+         |-----------|-----------|
+
+Events:  [   N_s=n  ][ N_t - N_s]
+
+         [        N_t           ]
+\end{verbatim}
+
+\subsection{Key Insight}
+
+We can write:
+\[
+N_t = N_s + (N_t - N_s)
+\]
+
+We \textbf{know} $N_s = n$ (given), and $(N_t - N_s)$ represents \textbf{future arrivals} in $(s, t]$.
+
+By the \textbf{memoryless property} of Poisson processes:
+\begin{itemize}
+    \item Future increments are \textbf{independent} of past history
+    \item So $(N_t - N_s)$ is independent of $N_s = n$
+    \item $(N_t - N_s) \sim \text{Poisson}(\lambda(t - s))$ regardless of what happened before time $s$
+\end{itemize}
+
+\subsection{Answer for Case 3}
+
+\begin{tcolorbox}[colback=purple!10!white,colframe=purple!75!black,title={Case 3: $t > s$}]
+\[
+\boxed{(N_t \mid N_s = n) = n + \text{Poisson}(\lambda(t - s))}
+\]
+
+More explicitly:
+\[
+(N_t \mid N_s = n) \sim n + Y \quad \text{where } Y \sim \text{Poisson}(\lambda(t-s))
+\]
+
+Or writing out the PMF:
+\[
+P(N_t = k \mid N_s = n) = \begin{cases}
+\frac{e^{-\lambda(t-s)}[\lambda(t-s)]^{k-n}}{(k-n)!} & \text{if } k \geq n \\
+0 & \text{if } k < n
+\end{cases}
+\]
+\end{tcolorbox}
+
+\textbf{Important:} $N_t$ cannot be less than $n$ because we already have $n$ arrivals by time $s$!
+
+\subsection{Properties for Case 3}
+
+\begin{itemize}
+    \item \textbf{Mean:} $\mathbb{E}(N_t \mid N_s = n) = n + \lambda(t - s)$
+    \item \textbf{Variance:} $\text{Var}(N_t \mid N_s = n) = \lambda(t - s)$
+    \item \textbf{Support:} $N_t$ can be $n, n+1, n+2, \ldots$ (must be at least $n$!)
+\end{itemize}
+
+\subsection{Why This Makes Sense}
+
+\textbf{Interpretation:}
+\begin{quote}
+``I know there were $n$ arrivals by time $s$. How many will there be by the later time $t$?''
+\end{quote}
+
+\textbf{Answer:}
+\begin{itemize}
+    \item We \textbf{definitely} have the $n$ arrivals that already happened
+    \item \textbf{Plus} however many more arrive in $(s, t]$
+    \item Future arrivals follow Poisson$(\lambda(t-s))$ because the process ``restarts'' at time $s$
+\end{itemize}
+
+\section{Complete Answer to 4b}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=orange!75!black,title=Complete Answer to Question 4b]
+For a Poisson process $\{N_t\}$ with rate $\lambda$, the conditional distribution of $N_t$ given $N_s = n$ is:
+
+\vspace{0.3cm}
+
+\textbf{Case 1: If $t < s$}
+\[
+(N_t \mid N_s = n) \sim \text{Binomial}\left(n, \frac{t}{s}\right)
+\]
+
+\vspace{0.3cm}
+
+\textbf{Case 2: If $t = s$}
+\[
+N_t = n \quad \text{(deterministic)}
+\]
+
+\vspace{0.3cm}
+
+\textbf{Case 3: If $t > s$}
+\[
+(N_t \mid N_s = n) = n + \text{Poisson}(\lambda(t-s))
+\]
+\end{tcolorbox}
+
+\section{Detailed Comparison}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Property} & \textbf{$t < s$} & \textbf{$t = s$} & \textbf{$t > s$} \\
+\hline
+Distribution & Binomial$(n, \frac{t}{s})$ & Deterministic & $n$ + Poisson$(\lambda(t-s))$ \\
+\hline
+Mean & $n \cdot \frac{t}{s}$ & $n$ & $n + \lambda(t-s)$ \\
+\hline
+Variance & $n \cdot \frac{t}{s}(1-\frac{t}{s})$ & $0$ & $\lambda(t-s)$ \\
+\hline
+Support & $\{0, 1, \ldots, n\}$ & $\{n\}$ & $\{n, n+1, n+2, \ldots\}$ \\
+\hline
+Depends on $\lambda$? & NO & NO & YES \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Examples}
+
+\subsection{Example 1: Case 1 ($t < s$)}
+
+Given: $\lambda = 3$ per hour, $N_9 = 13$ (13 arrivals by 9 hours)
+
+\textbf{Find:} $P(N_4 = 5 \mid N_9 = 13)$
+
+\textbf{Solution:} Since $t = 4 < s = 9$, use Case 1:
+\[
+(N_4 \mid N_9 = 13) \sim \text{Binomial}\left(13, \frac{4}{9}\right)
+\]
+\[
+P(N_4 = 5 \mid N_9 = 13) = \binom{13}{5}\left(\frac{4}{9}\right)^5\left(\frac{5}{9}\right)^8 \approx 0.203
+\]
+
+This is exactly Question 4a!
+
+\subsection{Example 2: Case 3 ($t > s$)}
+
+Given: $\lambda = 2$ per hour, $N_3 = 5$ (5 arrivals by 3 hours)
+
+\textbf{Find:} Distribution of $N_7$ (arrivals by 7 hours)
+
+\textbf{Solution:} Since $t = 7 > s = 3$, use Case 3:
+\[
+(N_7 \mid N_3 = 5) = 5 + \text{Poisson}(\lambda(t-s)) = 5 + \text{Poisson}(2 \times 4) = 5 + \text{Poisson}(8)
+\]
+
+So:
+\begin{itemize}
+    \item $\mathbb{E}(N_7 \mid N_3 = 5) = 5 + 8 = 13$ arrivals
+    \item $\text{Var}(N_7 \mid N_3 = 5) = 8$
+    \item $P(N_7 = 10 \mid N_3 = 5) = P(\text{Poisson}(8) = 5) = \frac{e^{-8} \cdot 8^5}{5!} \approx 0.092$
+\end{itemize}
+
+\subsection{Example 3: Case 2 ($t = s$)}
+
+Given: $N_5 = 7$
+
+\textbf{Find:} Distribution of $N_5$
+
+\textbf{Solution:} Since $t = s = 5$, use Case 2:
+\[
+(N_5 \mid N_5 = 7) = 7 \quad \text{with probability 1}
+\]
+
+This is trivial but shows the completeness of the formula!
+
+\section{Why Case 1 and Case 3 Are Different}
+
+\begin{tcolorbox}[colback=gray!10!white,colframe=gray!75!black,title=Key Difference]
+\textbf{Case 1 ($t < s$): Looking at the PAST}
+\begin{itemize}
+    \item We're conditioning on information about the FUTURE (relative to time $t$)
+    \item The $n$ arrivals by time $s$ are ``split'' between $[0,t]$ and $(t,s]$
+    \item Answer: Binomial (NO $\lambda$ needed!)
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Case 3 ($t > s$): Looking at the FUTURE}
+\begin{itemize}
+    \item We're conditioning on information about the PAST (relative to time $t$)
+    \item We have $n$ known arrivals, plus future random arrivals
+    \item Answer: $n$ + Poisson (DOES need $\lambda$!)
+\end{itemize}
+\end{tcolorbox}
+
+\section{Common Mistakes}
+
+\subsection{Mistake 1: Using the Wrong Case}
+
+\textcolor{red}{\textbf{Wrong:}} Using Binomial formula when $t > s$
+
+\textcolor{green!60!black}{\textbf{Correct:}} Always check if $t < s$, $t = s$, or $t > s$ first!
+
+\subsection{Mistake 2: Thinking $\lambda$ Always Cancels}
+
+\textcolor{red}{\textbf{Wrong:}} ``The answer never depends on $\lambda$''
+
+\textcolor{green!60!black}{\textbf{Correct:}} When $t < s$, $\lambda$ cancels. When $t > s$, you NEED $\lambda$!
+
+\subsection{Mistake 3: Wrong Support}
+
+\textcolor{red}{\textbf{Wrong:}} Thinking $N_t$ can be any non-negative integer in all cases
+
+\textcolor{green!60!black}{\textbf{Correct:}}
+\begin{itemize}
+    \item If $t < s$: $N_t \in \{0, 1, \ldots, n\}$ (can't exceed $n$)
+    \item If $t > s$: $N_t \in \{n, n+1, n+2, \ldots\}$ (must be at least $n$)
+\end{itemize}
+
+\section{Why This Is Important}
+
+This question tests your understanding of:
+\begin{enumerate}
+    \item \textbf{Conditional probability} for stochastic processes
+    \item \textbf{Independence of increments} (for Case 3)
+    \item \textbf{Uniform distribution of arrival times} (for Case 1)
+    \item \textbf{Memoryless property} of Poisson processes
+\end{enumerate}
+
+It's one of the most fundamental results in Poisson process theory!
+
+\section{Summary}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Key Takeaways]
+\begin{itemize}
+    \item Question 4b asks for a \textbf{general formula} for all $t$ and $s$
+    \item The answer has \textbf{THREE cases} depending on whether $t < s$, $t = s$, or $t > s$
+    \item \textbf{Past} ($t < s$): Binomial$(n, t/s)$ - splits the $n$ arrivals
+    \item \textbf{Present} ($t = s$): Deterministic $n$
+    \item \textbf{Future} ($t > s$): $n$ + Poisson$(\lambda(t-s))$ - known + new arrivals
+    \item Question 4a was just Case 1 with specific numbers
+\end{itemize}
+\end{tcolorbox}
+
+\end{document}

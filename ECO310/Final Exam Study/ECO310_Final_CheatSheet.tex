@@ -1,0 +1,380 @@
+\documentclass[8pt,landscape,letterpaper]{extarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.3in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{booktabs}
+
+% Colors
+\definecolor{headercolor}{RGB}{25,25,112}
+\definecolor{formulacolor}{RGB}{0,51,102}
+\definecolor{criticalcolor}{RGB}{220,20,60}
+
+% Compact spacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlist{nosep, leftmargin=10pt}
+\titlespacing*{\section}{0pt}{4pt}{2pt}
+\titlespacing*{\subsection}{0pt}{3pt}{1pt}
+
+% Section formatting
+\titleformat{\section}{\large\bfseries\color{headercolor}}{\thesection}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries\color{formulacolor}}{\thesubsection}{0.5em}{}
+
+% Custom boxes
+\newtcolorbox{keybox}[1][]{
+  colback=yellow!10,
+  colframe=orange!80,
+  boxrule=0.5pt,
+  arc=2mm,
+  left=2pt,
+  right=2pt,
+  top=2pt,
+  bottom=2pt,
+  #1
+}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries\color{criticalcolor} ECO310 FINAL EXAM CHEAT SHEET}\\
+\vspace{2pt}
+{\small Choice Under Uncertainty + Markets Theory}
+\end{center}
+
+\begin{multicols}{3}
+\setlength{\columnseprule}{0.4pt}
+
+\section*{UNCERTAINTY}
+
+\subsection*{Expected Value \& Utility}
+\begin{keybox}
+\textbf{Expected Value:} $EV(L) = \sum_i p_i x_i$
+
+\textbf{Expected Utility:} $EU(L) = \sum_i p_i u(x_i)$
+
+\textbf{Certainty Equivalent:} $u(CE) = EU(L)$
+
+\textbf{Risk Premium:} $RP = EV - CE$
+\end{keybox}
+
+\subsection*{Risk Aversion}
+\begin{itemize}
+\item \textbf{Risk Averse:} $u''(x) < 0$ (concave)
+  \begin{itemize}
+  \item $CE < EV$, $RP > 0$
+  \item Prefers certainty over gamble
+  \end{itemize}
+\item \textbf{Risk Neutral:} $u''(x) = 0$ (linear)
+  \begin{itemize}
+  \item $CE = EV$, $RP = 0$
+  \end{itemize}
+\item \textbf{Risk Loving:} $u''(x) > 0$ (convex)
+  \begin{itemize}
+  \item $CE > EV$, $RP < 0$
+  \end{itemize}
+\end{itemize}
+
+\textbf{Key Property:} Risk averse $\iff u(EV) > EU$
+
+\subsection*{Common Utility Functions}
+\begin{tabular}{ll}
+\toprule
+\textbf{Function} & \textbf{Derivatives} \\
+\midrule
+$u(x) = \sqrt{x}$ & $u' = \frac{1}{2\sqrt{x}}$, $u'' = -\frac{1}{4x^{3/2}}$ \\
+$u(x) = \ln(x)$ & $u' = \frac{1}{x}$, $u'' = -\frac{1}{x^2}$ \\
+$u(x) = x^\alpha$ & $u' = \alpha x^{\alpha-1}$, $u'' = \alpha(\alpha-1)x^{\alpha-2}$ \\
+\bottomrule
+\end{tabular}
+
+\textbf{Note:} For $u(x) = \sqrt{x}$ or $\ln(x)$: Risk averse (concave)
+
+\subsection*{Insurance}
+\textbf{Setup:} Wealth $W$, loss $L$ w/ prob $p$
+
+\textbf{Without Insurance:}
+\[
+EU = (1-p) u(W) + p u(W-L)
+\]
+
+\textbf{With Insurance:} Premium $\pi$, coverage $K$
+\[
+EU = (1-p) u(W-\pi) + p u(W-\pi-L+K)
+\]
+
+\textbf{Actuarially Fair:} $\pi = pK$
+
+\textbf{Key Result:} Risk-averse person buys full insurance ($K=L$) if actuarially fair
+
+\subsection*{Portfolio Choice}
+\textbf{Setup:} Wealth $W$, fraction $\alpha$ in risky asset
+
+\textbf{Safe return:} $r_f$ (certain)
+
+\textbf{Risky return:} $r_h$ w/ prob $p$, $r_l$ w/ prob $1-p$
+
+\textbf{Final Wealth:}
+\begin{align*}
+W_h &= W[(1-\alpha)(1+r_f) + \alpha(1+r_h)] \\
+W_l &= W[(1-\alpha)(1+r_f) + \alpha(1+r_l)]
+\end{align*}
+
+\textbf{Expected Utility:}
+\[
+EU(\alpha) = p \cdot u(W_h) + (1-p) \cdot u(W_l)
+\]
+
+\textbf{FOC:}
+\begin{keybox}
+\[
+p \cdot u'(W_h) \cdot W(r_h - r_f) + (1-p) \cdot u'(W_l) \cdot W(r_l - r_f) = 0
+\]
+\end{keybox}
+
+\textbf{Check:} If $\alpha^* > 1$ or $< 0$, may be corner solution
+
+\columnbreak
+
+\section*{COST FUNCTIONS}
+
+\subsection*{Deriving Costs from Production}
+\textbf{Step 1:} Start with $q = f(L)$
+
+\textbf{Step 2:} Invert: solve for $L(q)$
+
+\textbf{Step 3:} Multiply by wage: $C(q) = w \cdot L(q)$
+
+\textbf{Example:} $q = \sqrt{L}$, $w = 4$
+\begin{align*}
+&q = \sqrt{L} \implies L = q^2 \\
+&C(q) = 4q^2
+\end{align*}
+
+\subsection*{Cost Concepts}
+\begin{keybox}
+\textbf{Total Cost:} $C(q) = FC + VC(q)$
+
+\textbf{Marginal Cost:} $MC(q) = C'(q)$
+
+\textbf{Average Cost:} $AC(q) = \frac{C(q)}{q}$
+
+\textbf{AVC:} $AVC(q) = \frac{VC(q)}{q}$
+\end{keybox}
+
+\textbf{Key Facts:}
+\begin{itemize}
+\item MC intersects AC at $\min AC$
+\item If $MC < AC$, then AC decreasing
+\item If $MC > AC$, then AC increasing
+\end{itemize}
+
+\section*{PERFECT COMPETITION}
+
+\subsection*{Characteristics}
+\begin{itemize}
+\item Many firms, homogeneous product
+\item Firms are \textbf{price takers}
+\item Take price $P$ as given
+\end{itemize}
+
+\subsection*{Profit Maximization}
+\begin{keybox}
+\textbf{Profit:} $\Pi(q) = P \cdot q - C(q)$
+
+\textbf{FOC:} $\boxed{P = MC(q)}$
+
+Produce where price equals marginal cost!
+\end{keybox}
+
+\textbf{Shutdown Rule:} Produce if $P \geq \min AVC$
+
+Otherwise $q = 0$ (shut down)
+
+\subsection*{Long-Run Equilibrium}
+Free entry/exit drives profit to zero:
+\begin{keybox}
+\[
+\boxed{P = MC = \min AC}
+\]
+\end{keybox}
+
+Firms produce at minimum efficient scale.
+
+\textbf{Zero Economic Profit:} $\Pi = 0$ in long run
+
+\section*{MONOPOLY}
+
+\subsection*{Characteristics}
+\begin{itemize}
+\item Single firm (only seller)
+\item Firm is \textbf{price setter}
+\item Faces entire market demand
+\end{itemize}
+
+\subsection*{Demand \& Revenue}
+\textbf{Demand:} $Q^D(P)$ or inverse $P^D(Q)$
+
+\textbf{Revenue:} $R(Q) = P^D(Q) \cdot Q$
+
+\textbf{Marginal Revenue:}
+\begin{keybox}
+\[
+MR(Q) = P^D(Q) + Q \cdot \frac{dP^D}{dQ}
+\]
+
+Since demand slopes down: $\boxed{MR < P}$
+\end{keybox}
+
+\subsection*{MR for Linear Demand}
+\begin{keybox}
+If $P = a - bQ$, then $\boxed{MR = a - 2bQ}$
+
+\textbf{Same intercept, TWICE the slope!}
+\end{keybox}
+
+\subsection*{Profit Maximization}
+\begin{keybox}
+\textbf{Profit:} $\Pi(Q) = P^D(Q) \cdot Q - C(Q)$
+
+\textbf{FOC:} $\boxed{MR(Q) = MC(Q)}$
+\end{keybox}
+
+\textbf{Steps:}
+\begin{enumerate}[leftmargin=10pt]
+\item Convert to inverse demand: $P^D(Q)$
+\item Find MR (for linear: double slope)
+\item Find MC from $C(Q)$
+\item Set $MR = MC$, solve for $Q^*$
+\item Find price: $P^* = P^D(Q^*)$
+\end{enumerate}
+
+\columnbreak
+
+\section*{COMPETITION vs MONOPOLY}
+
+\begin{tabular}{lcc}
+\toprule
+\textbf{Feature} & \textbf{Competition} & \textbf{Monopoly} \\
+\midrule
+\# of firms & Many & One \\
+Profit max & $P = MC$ & $MR = MC$ \\
+Price vs MC & $P = MC$ & $P > MC$ \\
+Output & Higher & Lower \\
+Price & Lower & Higher \\
+LR Profit & Zero & Positive \\
+Efficiency & Yes & No (DWL) \\
+\bottomrule
+\end{tabular}
+
+\section*{WELFARE}
+
+\subsection*{Surplus Measures}
+\textbf{Consumer Surplus (CS):}
+\[
+CS = \int_0^Q P^D(q) \, dq - P \cdot Q
+\]
+Area under demand, above price
+
+\textbf{Producer Surplus (PS):}
+\[
+PS = P \cdot Q - \int_0^Q MC(q) \, dq
+\]
+Area above MC, below price
+
+\textbf{Total Surplus:} $TS = CS + PS$
+
+\textbf{Deadweight Loss:}
+\[
+DWL = TS_{\text{efficient}} - TS_{\text{actual}}
+\]
+
+\subsection*{Welfare Theorems}
+\begin{keybox}
+\textbf{First Welfare Theorem:}
+
+Competitive equilibrium is Pareto efficient
+
+\textbf{Second Welfare Theorem:}
+
+Any Pareto efficient allocation achievable via redistribution + competition
+\end{keybox}
+
+\section*{GENERAL EQUILIBRIUM}
+
+\subsection*{Pareto Efficiency}
+\textbf{Definition:} Can't make someone better off without making someone else worse off
+
+\textbf{Condition:}
+\begin{keybox}
+\[
+\boxed{MRS_A = MRS_B}
+\]
+\end{keybox}
+
+If $MRS_A \neq MRS_B$, gains from trade exist
+
+\subsection*{Edgeworth Box}
+\textbf{Setup:} 2 consumers, 2 goods
+
+\textbf{Endowments:} $(\omega_A^X, \omega_A^Y)$, $(\omega_B^X, \omega_B^Y)$
+
+\textbf{Contract Curve:} Set of Pareto efficient allocations
+
+\textbf{Competitive Equilibrium:} Where budget lines tangent to indifference curves at same point
+
+\section*{QUICK REFERENCE}
+
+\subsection*{Key Derivatives}
+\begin{align*}
+\frac{d}{dx}(x^n) &= nx^{n-1} \\
+\frac{d}{dx}(\ln x) &= \frac{1}{x} \\
+\frac{d}{dx}(e^x) &= e^x \\
+\frac{d}{dx}(\sqrt{x}) &= \frac{1}{2\sqrt{x}}
+\end{align*}
+
+\subsection*{Problem Type Recognition}
+\textbf{``Expected value''} $\rightarrow$ $\sum p_i x_i$
+
+\textbf{``Expected utility''} $\rightarrow$ $\sum p_i u(x_i)$
+
+\textbf{``Certainty equivalent''} $\rightarrow$ Solve $u(CE) = EU$
+
+\textbf{``Risk premium''} $\rightarrow$ $EV - CE$
+
+\textbf{``Insurance''} $\rightarrow$ Compare $EU$ with/without
+
+\textbf{``Portfolio''} $\rightarrow$ Maximize $EU(\alpha)$
+
+\textbf{``Cost function''} $\rightarrow$ Invert production function
+
+\textbf{``Competitive firm''} $\rightarrow$ $P = MC$
+
+\textbf{``Monopolist''} $\rightarrow$ $MR = MC$
+
+\textbf{``Long-run''} $\rightarrow$ $P = MC = \min AC$
+
+\subsection*{Common Mistakes}
+\begin{itemize}
+\item Don't confuse EV and EU!
+\item Must invert production function first
+\item Monopoly uses $MR = MC$ not $P = MC$
+\item For linear demand: MR has 2× slope
+\item Convert demand to inverse for monopoly
+\item Check corner solutions in portfolio
+\end{itemize}
+
+\end{multicols}
+
+\begin{center}
+\begin{tcolorbox}[colback=yellow!20,colframe=orange!80,width=0.95\textwidth,arc=3mm,boxrule=1pt]
+\centering
+\textbf{MASTER THESE 5 THINGS:} (1) Expected Utility vs EV, (2) Certainty Equivalent, (3) MR for Linear Demand, (4) $P=MC$ (competition) vs $MR=MC$ (monopoly), (5) Inverting Production Functions
+\end{tcolorbox}
+\end{center}
+
+\end{document}

@@ -1,0 +1,237 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+
+% Custom colors
+\definecolor{boxblue}{RGB}{230,240,255}
+\definecolor{boxgreen}{RGB}{230,255,240}
+\definecolor{boxpink}{RGB}{255,230,240}
+
+\title{\textbf{Problem Set 3, Question 2(b)} \\ Long-Run Equilibrium Explained}
+\author{ECO310: Math Intermediate Microeconomics}
+\date{Spring 2026}
+
+\begin{document}
+\maketitle
+
+\section{The Key Difference: What Happens in the Long Run?}
+\textit{(Lecture 11-12, slides 32-37)}
+
+\subsection*{Short-Run Equilibrium (Recap)}
+
+\begin{tcolorbox}[colback=boxblue, colframe=blue!50!black, title=Short Run:]
+\begin{itemize}[leftmargin=*]
+    \item Number of firms $N$ is \textbf{FIXED}
+    \item \textbf{Only condition:} Supply = Demand
+    \item Firms might make \textbf{profits or losses}
+    \item We don't care about entry/exit yet
+\end{itemize}
+\end{tcolorbox}
+
+\subsection*{Long-Run Equilibrium}
+
+\begin{tcolorbox}[colback=boxpink, colframe=red!50!black, title=Long Run:]
+\begin{itemize}[leftmargin=*]
+    \item Number of firms $N$ \textbf{ADJUSTS} (firms can enter/exit)
+    \item \textbf{Two conditions:}
+    \begin{enumerate}
+        \item Supply = Demand
+        \item \textbf{All firms make ZERO profit} (break even)
+    \end{enumerate}
+    \item Price settles at $p = \min AC$ (minimum average cost)
+\end{itemize}
+\end{tcolorbox}
+
+\section{Why Zero Profits in the Long Run?}
+\textit{(Lecture 11-12, slides 32-35)}
+
+\begin{tcolorbox}[colback=boxgreen, colframe=green!50!black]
+\textbf{From the slides:}
+
+``If firms currently in the market are making money, new firms will come in, shifting supply to the right, thus decreasing the SR equilibrium price''
+
+``If firms are losing money, some will exit, shifting supply to the left, thus increasing the SR equilibrium price''
+
+``These adjustments keep happening until no firms want to enter or exit --- only when profits are zero for all firms!''
+\end{tcolorbox}
+
+\subsection*{The Logic:}
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{If $p > \min AC$:} Firms make positive profit $\Rightarrow$ new firms enter $\Rightarrow$ supply increases $\Rightarrow$ price falls
+    \item \textbf{If $p < \min AC$:} Firms make losses $\Rightarrow$ firms exit $\Rightarrow$ supply decreases $\Rightarrow$ price rises
+    \item \textbf{Equilibrium:} $p = \min AC$ $\Rightarrow$ profit = 0 $\Rightarrow$ no incentive to enter or exit
+\end{enumerate}
+
+\newpage
+
+\section{Long-Run Equilibrium Conditions}
+\textit{(Lecture 11-12, slide 36)}
+
+In long-run equilibrium with identical firms:
+
+\begin{tcolorbox}[colback=yellow!10, colframe=orange!75!black, title=LR Equilibrium Conditions:]
+\begin{align}
+p &= MC \quad \text{(profit maximization)} \\
+p &= \min AC \quad \text{(zero profit condition)}
+\end{align}
+
+\textbf{This means:} $MC = AC$ at the equilibrium quantity!
+\end{tcolorbox}
+
+\section{How to Find LR Equilibrium}
+\textit{(Lecture 11-12, slide 37)}
+
+\subsection*{Step 1: Find equilibrium quantity per firm}
+
+Set $MC = AC$ and solve for $q^*$:
+\[
+MC(q) = AC(q)
+\]
+
+\subsection*{Step 2: Find equilibrium price}
+
+Evaluate either $MC$ or $AC$ at $q^*$:
+\[
+p^* = MC(q^*) = AC(q^*)
+\]
+
+\subsection*{Step 3: Find equilibrium number of firms}
+
+Use demand curve with supply = demand:
+\[
+N \cdot q^* = Q^D(p^*)
+\]
+
+Solve for $N$:
+\[
+N = \frac{Q^D(p^*)}{q^*}
+\]
+
+\newpage
+
+\section{Problem 2(b) Solution}
+
+\subsection*{Given:}
+\begin{itemize}[leftmargin=*]
+    \item Market demand: $Q^D(p) = 200 - 5p$
+    \item Each firm has cost: $C(q) = f(N) + \alpha q^2$
+    \item In LR, firms can enter/exit freely
+\end{itemize}
+
+\subsection*{Find:} Each firm's quantity, the price, in LR equilibrium
+
+\subsection{Step 1: Find $MC$ and $AC$}
+
+\textbf{Marginal Cost:}
+\[
+MC(q) = \frac{dC}{dq} = 2\alpha q
+\]
+
+\textbf{Average Cost:}
+\[
+AC(q) = \frac{C(q)}{q} = \frac{f(N) + \alpha q^2}{q} = \frac{f(N)}{q} + \alpha q
+\]
+
+\subsection{Step 2: Find equilibrium quantity per firm}
+
+Set $MC = AC$:
+\begin{align*}
+2\alpha q &= \frac{f(N)}{q} + \alpha q \\
+2\alpha q - \alpha q &= \frac{f(N)}{q} \\
+\alpha q &= \frac{f(N)}{q} \\
+\alpha q^2 &= f(N) \\
+q^* &= \sqrt{\frac{f(N)}{\alpha}}
+\end{align*}
+
+\subsection{Step 3: Find equilibrium price}
+
+\begin{align*}
+p^* &= MC(q^*) = 2\alpha q^* \\
+&= 2\alpha \sqrt{\frac{f(N)}{\alpha}} \\
+&= 2\sqrt{\alpha f(N)}
+\end{align*}
+
+\textbf{Or using $AC$:}
+\begin{align*}
+p^* &= AC(q^*) = \frac{f(N)}{q^*} + \alpha q^* \\
+&= \frac{f(N)}{\sqrt{f(N)/\alpha}} + \alpha \sqrt{\frac{f(N)}{\alpha}} \\
+&= \sqrt{\alpha f(N)} + \sqrt{\alpha f(N)} \\
+&= 2\sqrt{\alpha f(N)} \quad \checkmark
+\end{align*}
+
+\begin{tcolorbox}[colback=yellow!10, colframe=orange!75!black, title=Final Answer for 2(b):]
+\Large
+\begin{align*}
+\text{Quantity per firm: } & \boxed{q^* = \sqrt{\frac{f(N)}{\alpha}}} \\[0.3cm]
+\text{Price: } & \boxed{p^* = 2\sqrt{\alpha f(N)}}
+\end{align*}
+\end{tcolorbox}
+
+\newpage
+
+\section{Comparison: SR vs. LR Example}
+\textit{(Lecture 11-12, slides 39-41)}
+
+\subsection*{Example from class:}
+\begin{itemize}
+    \item Each firm: $C(q) = q^2 + 1$
+    \item Demand: $Q^D(p) = 100 - 5p$
+\end{itemize}
+
+\subsection*{Short-Run Equilibrium (N = 10 fixed):}
+
+\begin{itemize}[leftmargin=*]
+    \item Each firm: $MC = 2q \Rightarrow q = \frac{p}{2}$
+    \item Market supply: $Q^S = 10 \times \frac{p}{2} = 5p$
+    \item Equilibrium: $5p = 100 - 5p \Rightarrow p^{SR} = 10$
+    \item Each firm produces: $q = 5$
+    \item \textbf{Number of firms: $N = 10$ (fixed)}
+\end{itemize}
+
+\textbf{Check profits:}
+\begin{align*}
+\pi &= pq - C(q) = 10(5) - (5^2 + 1) \\
+&= 50 - 26 = 24 > 0 \quad \text{(making profit!)}
+\end{align*}
+
+\subsection*{Long-Run Equilibrium:}
+
+\begin{itemize}[leftmargin=*]
+    \item Set $MC = AC$: $2q = q + \frac{1}{q} \Rightarrow q^* = 1$
+    \item Price: $p^* = MC(1) = 2$
+    \item Market demand: $Q^D(2) = 100 - 5(2) = 90$
+    \item Number of firms: $N = \frac{90}{1} = 90$
+\end{itemize}
+
+\textbf{Check profits:}
+\begin{align*}
+\pi &= pq - C(q) = 2(1) - (1^2 + 1) \\
+&= 2 - 2 = 0 \quad \text{(zero profit!)}
+\end{align*}
+
+\begin{tcolorbox}[colback=boxgreen, colframe=green!50!black]
+\textbf{What happened?}
+
+In the SR, 10 firms were making \$24 profit each $\Rightarrow$ new firms entered $\Rightarrow$ price fell from \$10 to \$2 $\Rightarrow$ now 90 firms each make zero profit.
+\end{tcolorbox}
+
+\section{Key Takeaways}
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Short Run:} Fixed $N$ $\Rightarrow$ just set supply = demand $\Rightarrow$ firms might profit/lose
+
+    \item \textbf{Long Run:} Free entry/exit $\Rightarrow$ $p = \min AC$ $\Rightarrow$ zero profit $\Rightarrow$ $N$ adjusts
+
+    \item \textbf{LR price is lower:} More firms enter $\Rightarrow$ more competition $\Rightarrow$ lower price
+
+    \item \textbf{Finding LR equilibrium:} Set $MC = AC$ to find $q^*$ and $p^*$, then use demand to find $N$
+\end{enumerate}
+
+\end{document}

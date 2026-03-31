@@ -1,0 +1,10 @@
+# Environment variables with secrets
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# OS files
+.DS_Store

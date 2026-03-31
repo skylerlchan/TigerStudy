@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Acceleration System</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+            background: #0a0a0f;
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 48px;
+        }
+
+        /* Current State Diagnosis */
+        .diagnosis {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 56px;
+        }
+
+        .diag-card {
+            background: #111118;
+            border: 1px solid #1a1a24;
+            border-radius: 16px;
+            padding: 28px;
+        }
+
+        .diag-card h3 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #555;
+            margin-bottom: 16px;
+        }
+
+        .leak {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #1a1a24;
+        }
+
+        .leak:last-child { border-bottom: none; }
+
+        .leak-bar-container {
+            flex: 1;
+            height: 6px;
+            background: #1a1a24;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .leak-bar {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 1s ease;
+        }
+
+        .leak-label {
+            font-size: 0.85rem;
+            min-width: 180px;
+        }
+
+        .leak-pct {
+            font-size: 0.8rem;
+            color: #555;
+            min-width: 36px;
+            text-align: right;
+        }
+
+        .red { background: #ff4444; }
+        .orange { background: #ff8c00; }
+        .yellow { background: #ffd000; }
+
+        /* The System */
+        .section-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #444;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 32px;
+        }
+
+        /* Three pillars */
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 56px;
+        }
+
+        .pillar {
+            background: #111118;
+            border: 1px solid #1a1a24;
+            border-radius: 16px;
+            padding: 32px 28px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pillar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+        }
+
+        .pillar.memorize::before { background: linear-gradient(90deg, #6366f1, #818cf8); }
+        .pillar.output::before { background: linear-gradient(90deg, #10b981, #34d399); }
+        .pillar.protect::before { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+
+        .pillar-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #1a1a24;
+            position: absolute;
+            top: 16px;
+            right: 20px;
+        }
+
+        .pillar h2 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .pillar .tagline {
+            font-size: 0.8rem;
+            color: #555;
+            margin-bottom: 24px;
+        }
+
+        .technique {
+            background: #0a0a0f;
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+
+        .technique:last-child { margin-bottom: 0; }
+
+        .technique h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #e0e0e0;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .technique p {
+            font-size: 0.8rem;
+            color: #777;
+            line-height: 1.5;
+        }
+
+        .badge {
+            font-size: 0.6rem;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-purple { background: #6366f122; color: #818cf8; }
+        .badge-green { background: #10b98122; color: #34d399; }
+        .badge-amber { background: #f59e0b22; color: #fbbf24; }
+        .badge-red { background: #ff444422; color: #ff6666; }
+
+        .effectiveness {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .eff-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .eff-dot.filled { background: #818cf8; }
+        .eff-dot.empty { background: #1a1a24; }
+
+        .eff-label {
+            font-size: 0.7rem;
+            color: #555;
+            margin-left: 4px;
+        }
+
+        /* Daily flow */
+        .daily-flow {
+            background: #111118;
+            border: 1px solid #1a1a24;
+            border-radius: 16px;
+            padding: 36px;
+            margin-bottom: 56px;
+        }
+
+        .daily-flow h2 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 28px;
+        }
+
+        .timeline {
+            display: flex;
+            gap: 0;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 28px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #1a1a24;
+        }
+
+        .time-block {
+            flex: 1;
+            position: relative;
+            padding-top: 48px;
+        }
+
+        .time-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            position: absolute;
+            top: 23px;
+            left: 24px;
+            z-index: 1;
+        }
+
+        .time-label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 0.75rem;
+            color: #555;
+            font-weight: 600;
+        }
+
+        .time-content {
+            background: #0a0a0f;
+            border-radius: 10px;
+            padding: 16px;
+            margin-right: 12px;
+        }
+
+        .time-content h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .time-content p {
+            font-size: 0.75rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* What to stop */
+        .stop-start {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 56px;
+        }
+
+        .stop-card, .start-card {
+            background: #111118;
+            border: 1px solid #1a1a24;
+            border-radius: 16px;
+            padding: 28px;
+        }
+
+        .stop-card h3 { color: #ff4444; font-size: 1rem; margin-bottom: 20px; }
+        .start-card h3 { color: #10b981; font-size: 1rem; margin-bottom: 20px; }
+
+        .item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #1a1a24;
+        }
+
+        .item-row:last-child { border-bottom: none; }
+
+        .item-name { font-size: 0.85rem; }
+
+        .item-impact {
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .impact-waste { background: #ff444415; color: #ff6666; }
+        .impact-gain { background: #10b98115; color: #34d399; }
+
+        /* Assignment pipeline */
+        .pipeline {
+            background: #111118;
+            border: 1px solid #1a1a24;
+            border-radius: 16px;
+            padding: 36px;
+            margin-bottom: 56px;
+        }
+
+        .pipeline h2 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 28px;
+        }
+
+        .pipe-steps {
+            display: flex;
+            gap: 16px;
+            align-items: stretch;
+        }
+
+        .pipe-step {
+            flex: 1;
+            background: #0a0a0f;
+            border-radius: 12px;
+            padding: 20px;
+            position: relative;
+        }
+
+        .pipe-step::after {
+            content: '\2192';
+            position: absolute;
+            right: -14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #333;
+            font-size: 1.2rem;
+        }
+
+        .pipe-step:last-child::after { display: none; }
+
+        .pipe-time {
+            font-size: 0.7rem;
+            color: #10b981;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .pipe-step h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #e0e0e0;
+            margin-bottom: 6px;
+        }
+
+        .pipe-step p {
+            font-size: 0.75rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .pipe-step .tool-tag {
+            display: inline-block;
+            font-size: 0.65rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: #1a1a24;
+            color: #888;
+            margin-top: 8px;
+        }
+
+        /* Comparison */
+        .comparison {
+            background: #111118;
+            border: 1px solid #1a1a24;
+            border-radius: 16px;
+            padding: 36px;
+            margin-bottom: 40px;
+        }
+
+        .comparison h2 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 28px;
+        }
+
+        .comp-row {
+            display: grid;
+            grid-template-columns: 140px 1fr 1fr;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid #1a1a24;
+            align-items: center;
+        }
+
+        .comp-row:last-child { border-bottom: none; }
+
+        .comp-label {
+            font-size: 0.8rem;
+            color: #555;
+            font-weight: 600;
+        }
+
+        .comp-before, .comp-after {
+            font-size: 0.8rem;
+            padding: 8px 14px;
+            border-radius: 8px;
+        }
+
+        .comp-before {
+            background: #ff444410;
+            color: #ff6666;
+        }
+
+        .comp-after {
+            background: #10b98110;
+            color: #34d399;
+        }
+
+        .comp-header {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #444;
+            padding-bottom: 8px;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #333;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Learning Acceleration System</h1>
+    <p class="subtitle">Reduce cognitive load. Maximize retention per minute. Reclaim bandwidth for building.</p>
+
+    <!-- Diagnosis -->
+    <div class="diagnosis">
+        <div class="diag-card">
+            <h3>Where Your Time Is Leaking</h3>
+            <div class="leak">
+                <span class="leak-label">Context-switching (school / build)</span>
+                <div class="leak-bar-container"><div class="leak-bar red" style="width: 85%"></div></div>
+                <span class="leak-pct">85%</span>
+            </div>
+            <div class="leak">
+                <span class="leak-label">Low-yield study methods</span>
+                <div class="leak-bar-container"><div class="leak-bar red" style="width: 75%"></div></div>
+                <span class="leak-pct">75%</span>
+            </div>
+            <div class="leak">
+                <span class="leak-label">Writing / transcription bottleneck</span>
+                <div class="leak-bar-container"><div class="leak-bar orange" style="width: 65%"></div></div>
+                <span class="leak-pct">65%</span>
+            </div>
+            <div class="leak">
+                <span class="leak-label">Unstructured task management</span>
+                <div class="leak-bar-container"><div class="leak-bar yellow" style="width: 50%"></div></div>
+                <span class="leak-pct">50%</span>
+            </div>
+        </div>
+        <div class="diag-card">
+            <h3>Cognitive Budget (Current)</h3>
+            <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 8px;">
+                <div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                        <span style="font-size: 0.85rem;">School overhead</span>
+                        <span style="font-size: 0.85rem; color: #ff4444;">~60%</span>
+                    </div>
+                    <div class="leak-bar-container" style="height: 20px; border-radius: 6px;">
+                        <div class="leak-bar red" style="width: 60%; border-radius: 6px;"></div>
+                    </div>
+                </div>
+                <div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                        <span style="font-size: 0.85rem;">Building / projects</span>
+                        <span style="font-size: 0.85rem; color: #818cf8;">~25%</span>
+                    </div>
+                    <div class="leak-bar-container" style="height: 20px; border-radius: 6px;">
+                        <div class="leak-bar" style="width: 25%; border-radius: 6px; background: #6366f1;"></div>
+                    </div>
+                </div>
+                <div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                        <span style="font-size: 0.85rem;">Remaining capacity</span>
+                        <span style="font-size: 0.85rem; color: #555;">~15%</span>
+                    </div>
+                    <div class="leak-bar-container" style="height: 20px; border-radius: 6px;">
+                        <div class="leak-bar" style="width: 15%; border-radius: 6px; background: #333;"></div>
+                    </div>
+                </div>
+                <div style="margin-top: 12px; padding-top: 16px; border-top: 1px solid #1a1a24;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                        <span style="font-size: 0.85rem; color: #10b981;">Target: school</span>
+                        <span style="font-size: 0.85rem; color: #10b981;">~30%</span>
+                    </div>
+                    <div class="leak-bar-container" style="height: 20px; border-radius: 6px;">
+                        <div class="leak-bar" style="width: 30%; border-radius: 6px; background: #10b981;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Three Pillars -->
+    <div class="section-label">THE SYSTEM</div>
+    <div class="section-title">Three Pillars of Acceleration</div>
+
+    <div class="pillars">
+        <!-- Pillar 1: Memorize -->
+        <div class="pillar memorize">
+            <div class="pillar-number">01</div>
+            <h2>Memorize Faster</h2>
+            <p class="tagline">Maximum retention per minute invested</p>
+
+            <div class="technique">
+                <h4>Spaced Repetition (Anki) <span class="badge badge-purple">Highest ROI</span></h4>
+                <p>Create atomic flashcards after every class. Review 15 min/day. Material moves to long-term memory in 3-4 cycles. 2-3x better retention than cramming.</p>
+                <div class="effectiveness">
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot filled"></div>
+                    <span class="eff-label">Evidence strength</span>
+                </div>
+            </div>
+
+            <div class="technique">
+                <h4>Active Recall <span class="badge badge-purple">Critical</span></h4>
+                <p>Close the book. Write everything you remember. Check what you missed. The struggle of retrieval is what encodes memory -- not re-reading.</p>
+                <div class="effectiveness">
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot filled"></div>
+                    <span class="eff-label">Evidence strength</span>
+                </div>
+            </div>
+
+            <div class="technique">
+                <h4>Interleaving</h4>
+                <p>Alternate subjects in study blocks (3 subjects x 80 min, not 1 subject x 4 hrs). Builds flexible retrieval pathways.</p>
+                <div class="effectiveness">
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot empty"></div>
+                    <span class="eff-label">Evidence strength</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pillar 2: Output Faster -->
+        <div class="pillar output">
+            <div class="pillar-number">02</div>
+            <h2>Output Faster</h2>
+            <p class="tagline">Eliminate the transcription tax</p>
+
+            <div class="technique">
+                <h4>Voice-First Drafting <span class="badge badge-green">You're doing this</span></h4>
+                <p>Speak at 130-150 wpm instead of typing at 40-80. Use Whisper Flow for transcription, then clean up. You've already started this.</p>
+                <div class="effectiveness">
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot empty"></div>
+                    <span class="eff-label">Speed gain</span>
+                </div>
+            </div>
+
+            <div class="technique">
+                <h4>AI Drafting Pipeline</h4>
+                <p>Voice-record your thinking (5-10 min) &rarr; Transcribe &rarr; AI structures into essay/report &rarr; You edit and refine. 30-45 min vs 3-4 hours.</p>
+                <div class="effectiveness">
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot filled"></div>
+                    <span class="eff-label">Speed gain</span>
+                </div>
+            </div>
+
+            <div class="technique">
+                <h4>Template Library</h4>
+                <p>Build reusable templates for common assignment types (essays, lab reports, analyses). Never start from zero.</p>
+                <div class="effectiveness">
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot empty"></div>
+                    <div class="eff-dot empty"></div>
+                    <span class="eff-label">Speed gain</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pillar 3: Protect Bandwidth -->
+        <div class="pillar protect">
+            <div class="pillar-number">03</div>
+            <h2>Protect Bandwidth</h2>
+            <p class="tagline">Hard boundaries between school and building</p>
+
+            <div class="technique">
+                <h4>Time Blocking <span class="badge badge-amber">Foundation</span></h4>
+                <p>School tasks get specific calendar blocks. When the block ends, school is done. No bleeding into build time. No "I'll just finish this."</p>
+                <div class="effectiveness">
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot empty"></div>
+                    <span class="eff-label">Impact</span>
+                </div>
+            </div>
+
+            <div class="technique">
+                <h4>Strategic Minimum Viable Effort</h4>
+                <p>Identify which courses matter to you and invest deeply. For the rest, find the minimum effort for the grade you need. Not every class deserves 100%.</p>
+                <div class="effectiveness">
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot filled"></div>
+                    <span class="eff-label">Impact</span>
+                </div>
+            </div>
+
+            <div class="technique">
+                <h4>Batch Processing</h4>
+                <p>Group similar school tasks together (all writing Mon, all problem sets Wed). Reduces context-switching penalty by up to 40%.</p>
+                <div class="effectiveness">
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot filled"></div>
+                    <div class="eff-dot empty"></div>
+                    <div class="eff-dot empty"></div>
+                    <span class="eff-label">Impact</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Assignment Pipeline -->
+    <div class="pipeline">
+        <h2>Assignment Speed Pipeline</h2>
+        <p style="font-size: 0.8rem; color: #555; margin-top: -20px; margin-bottom: 24px;">Old way: 3-4 hours &nbsp;&rarr;&nbsp; New way: 30-45 minutes</p>
+
+        <div class="pipe-steps">
+            <div class="pipe-step">
+                <div class="pipe-time">5 min</div>
+                <h4>Voice Dump</h4>
+                <p>Record yourself talking through the topic. Don't structure, just think out loud.</p>
+                <span class="tool-tag">Whisper Flow</span>
+            </div>
+            <div class="pipe-step">
+                <div class="pipe-time">2 min</div>
+                <h4>Transcribe</h4>
+                <p>Whisper converts speech to text automatically.</p>
+                <span class="tool-tag">Whisper</span>
+            </div>
+            <div class="pipe-step">
+                <div class="pipe-time">3 min</div>
+                <h4>AI Structure</h4>
+                <p>Feed transcript to AI with assignment requirements. Get structured draft back.</p>
+                <span class="tool-tag">Claude / ChatGPT</span>
+            </div>
+            <div class="pipe-step">
+                <div class="pipe-time">20 min</div>
+                <h4>Edit & Refine</h4>
+                <p>Apply your judgment. Add nuance. Fix voice. This is where actual thinking goes.</p>
+                <span class="tool-tag">Your brain</span>
+            </div>
+            <div class="pipe-step">
+                <div class="pipe-time">5 min</div>
+                <h4>Final Check</h4>
+                <p>AI proofreads for errors, formatting, citations. You do final pass.</p>
+                <span class="tool-tag">AI + You</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Daily Flow -->
+    <div class="daily-flow">
+        <h2>Daily System (30 min school overhead)</h2>
+
+        <div class="timeline">
+            <div class="time-block">
+                <span class="time-label">Morning</span>
+                <div class="time-dot" style="background: #6366f1;"></div>
+                <div class="time-content">
+                    <h4 style="color: #818cf8;">Anki Review</h4>
+                    <p>15 min. Review due cards. Non-negotiable. This maintains everything you've ever learned.</p>
+                </div>
+            </div>
+            <div class="time-block">
+                <span class="time-label">After class</span>
+                <div class="time-dot" style="background: #10b981;"></div>
+                <div class="time-content">
+                    <h4 style="color: #34d399;">Card Creation</h4>
+                    <p>5 min per class. Create atomic flashcards from key concepts while fresh.</p>
+                </div>
+            </div>
+            <div class="time-block">
+                <span class="time-label">Study block</span>
+                <div class="time-dot" style="background: #f59e0b;"></div>
+                <div class="time-content">
+                    <h4 style="color: #fbbf24;">Active Recall</h4>
+                    <p>Interleaved subjects. Test yourself, don't re-read. Use the assignment pipeline for any written work.</p>
+                </div>
+            </div>
+            <div class="time-block">
+                <span class="time-label">Before bed</span>
+                <div class="time-dot" style="background: #8b5cf6;"></div>
+                <div class="time-content">
+                    <h4 style="color: #a78bfa;">10-min Reconstruct</h4>
+                    <p>Close eyes. Mentally reconstruct the day's key material. Sleep consolidates what you reviewed.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stop / Start -->
+    <div class="stop-start">
+        <div class="stop-card">
+            <h3>Stop Doing</h3>
+            <div class="item-row">
+                <span class="item-name">Re-reading notes / textbook</span>
+                <span class="item-impact impact-waste">near-zero retention</span>
+            </div>
+            <div class="item-row">
+                <span class="item-name">Highlighting</span>
+                <span class="item-impact impact-waste">feels productive, isn't</span>
+            </div>
+            <div class="item-row">
+                <span class="item-name">Cramming before exams</span>
+                <span class="item-impact impact-waste">gone in 48 hrs</span>
+            </div>
+            <div class="item-row">
+                <span class="item-name">Writing assignments from scratch</span>
+                <span class="item-impact impact-waste">3-4 hrs wasted</span>
+            </div>
+            <div class="item-row">
+                <span class="item-name">Equal effort across all courses</span>
+                <span class="item-impact impact-waste">misallocated energy</span>
+            </div>
+            <div class="item-row">
+                <span class="item-name">Studying without a timer</span>
+                <span class="item-impact impact-waste">Parkinson's law</span>
+            </div>
+        </div>
+        <div class="start-card">
+            <h3>Start Doing</h3>
+            <div class="item-row">
+                <span class="item-name">Anki every morning (15 min)</span>
+                <span class="item-impact impact-gain">2-3x retention</span>
+            </div>
+            <div class="item-row">
+                <span class="item-name">Active recall after every class</span>
+                <span class="item-impact impact-gain">encodes instantly</span>
+            </div>
+            <div class="item-row">
+                <span class="item-name">Voice-draft all written work</span>
+                <span class="item-impact impact-gain">2x writing speed</span>
+            </div>
+            <div class="item-row">
+                <span class="item-name">AI pipeline for assignments</span>
+                <span class="item-impact impact-gain">saves hours/week</span>
+            </div>
+            <div class="item-row">
+                <span class="item-name">Hard time blocks for school</span>
+                <span class="item-impact impact-gain">protects build time</span>
+            </div>
+            <div class="item-row">
+                <span class="item-name">Triage courses by ROI</span>
+                <span class="item-impact impact-gain">focus where it matters</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Before / After -->
+    <div class="comparison">
+        <h2>Before vs After</h2>
+        <div class="comp-row">
+            <span class="comp-header"></span>
+            <span class="comp-header">CURRENT</span>
+            <span class="comp-header">WITH SYSTEM</span>
+        </div>
+        <div class="comp-row">
+            <span class="comp-label">Study method</span>
+            <span class="comp-before">Re-read, highlight, cram</span>
+            <span class="comp-after">Anki + active recall + interleaving</span>
+        </div>
+        <div class="comp-row">
+            <span class="comp-label">Retention</span>
+            <span class="comp-before">Forget within days</span>
+            <span class="comp-after">Permanent long-term memory</span>
+        </div>
+        <div class="comp-row">
+            <span class="comp-label">Assignment time</span>
+            <span class="comp-before">3-4 hours per assignment</span>
+            <span class="comp-after">30-45 minutes per assignment</span>
+        </div>
+        <div class="comp-row">
+            <span class="comp-label">Writing process</span>
+            <span class="comp-before">Type from blank page</span>
+            <span class="comp-after">Voice &rarr; AI structure &rarr; edit</span>
+        </div>
+        <div class="comp-row">
+            <span class="comp-label">School bandwidth</span>
+            <span class="comp-before">~60% of cognitive budget</span>
+            <span class="comp-after">~30% of cognitive budget</span>
+        </div>
+        <div class="comp-row">
+            <span class="comp-label">Build time</span>
+            <span class="comp-before">~25% (fragmented)</span>
+            <span class="comp-after">~50% (protected blocks)</span>
+        </div>
+        <div class="comp-row">
+            <span class="comp-label">Exam prep</span>
+            <span class="comp-before">Cram the night before</span>
+            <span class="comp-after">Already know it (SRS)</span>
+        </div>
+    </div>
+
+    <p class="footer-note">System based on Ebbinghaus (1885), Roediger & Karpicke (2006), Dunlosky et al. (2013), Cepeda et al. (2006)</p>
+
+</body>
+</html>

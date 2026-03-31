@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring 2026 Assignment Calendar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .updated {
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 0.9em;
+        }
+
+        .legend {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+
+        .calendar-month {
+            margin-bottom: 40px;
+        }
+
+        .month-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            font-weight: 600;
+        }
+
+        .month-divider {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 15px;
+            font-weight: 700;
+            font-size: 1.1em;
+            text-align: center;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            background: #e0e0e0;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .dow-header {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            background: #e0e0e0;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px 8px 0 0;
+            overflow: hidden;
+            margin-bottom: 1px;
+        }
+
+        .dow-label {
+            text-align: center;
+            font-weight: 700;
+            color: #495057;
+            padding: 12px;
+            background: #f8f9fa;
+            font-size: 0.85em;
+            text-transform: uppercase;
+        }
+
+        .day {
+            min-height: 120px;
+            padding: 8px;
+            background: white;
+            position: relative;
+        }
+
+        .day.empty {
+            background: #fafafa;
+        }
+
+        .day.weekend {
+            background: #f8f9fa;
+        }
+
+        .day-number {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 0.95em;
+            margin-bottom: 6px;
+        }
+
+        .day.today .day-number {
+            background: #667eea;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .assignment {
+            margin: 3px 0;
+            padding: 5px 6px;
+            border-radius: 4px;
+            font-size: 0.75em;
+            line-height: 1.3;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .assignment:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .course-tag {
+            font-weight: 700;
+            font-size: 0.7em;
+            margin-bottom: 2px;
+        }
+
+        .assignment-text {
+            display: block;
+            line-height: 1.2;
+        }
+
+        /* Course colors */
+        .orf309 {
+            background: #e3f2fd;
+            border-left: 3px solid #2196F3;
+            color: #1565c0;
+        }
+
+        .eco310 {
+            background: #f3e5f5;
+            border-left: 3px solid #9c27b0;
+            color: #6a1b9a;
+        }
+
+        .asa201 {
+            background: #fff3e0;
+            border-left: 3px solid #ff9800;
+            color: #e65100;
+        }
+
+        .mus262 {
+            background: #e8f5e9;
+            border-left: 3px solid #4caf50;
+            color: #2e7d32;
+        }
+
+        .highlight {
+            background: #fff9c4 !important;
+            border-left: 3px solid #fbc02d !important;
+            color: #f57f17 !important;
+            font-weight: 600;
+        }
+
+        .time {
+            color: #6c757d;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .finals-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+
+        .finals-section h2 {
+            margin-bottom: 15px;
+        }
+
+        .final-exam {
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .final-exam strong {
+            font-size: 1.1em;
+        }
+
+        .notes-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .notes-section h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .note-item {
+            margin: 10px 0;
+            padding-left: 20px;
+            border-left: 3px solid #6c757d;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+            }
+            .assignment:hover {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🗓️ Spring 2026 Assignment Calendar</h1>
+        <p class="updated">Last Updated: March 22, 2026</p>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background: #2196F3;"></div>
+                <span>ORF309</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #9c27b0;"></div>
+                <span>ECO310</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #ff9800;"></div>
+                <span>ASA201</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #4caf50;"></div>
+                <span>MUS262</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #fbc02d;"></div>
+                <span>⭐ Your Presentations</span>
+            </div>
+        </div>
+
+        <div class="dow-header">
+            <div class="dow-label">Sun</div>
+            <div class="dow-label">Mon</div>
+            <div class="dow-label">Tue</div>
+            <div class="dow-label">Wed</div>
+            <div class="dow-label">Thu</div>
+            <div class="dow-label">Fri</div>
+            <div class="dow-label">Sat</div>
+        </div>
+        <div class="calendar-grid">
+            <!-- March 2026 -->
+            <div class="month-divider">March 2026</div>
+
+            <!-- Week 1 -->
+            <div class="day weekend"><div class="day-number">1</div></div>
+            <div class="day"><div class="day-number">2</div></div>
+            <div class="day"><div class="day-number">3</div></div>
+            <div class="day"><div class="day-number">4</div></div>
+            <div class="day"><div class="day-number">5</div></div>
+            <div class="day"><div class="day-number">6</div></div>
+            <div class="day weekend"><div class="day-number">7</div></div>
+
+            <!-- Week 2 -->
+            <div class="day weekend"><div class="day-number">8</div></div>
+            <div class="day"><div class="day-number">9</div></div>
+            <div class="day"><div class="day-number">10</div></div>
+            <div class="day"><div class="day-number">11</div></div>
+            <div class="day"><div class="day-number">12</div></div>
+            <div class="day"><div class="day-number">13</div></div>
+            <div class="day weekend"><div class="day-number">14</div></div>
+
+            <!-- Week 3 -->
+            <div class="day weekend"><div class="day-number">15</div></div>
+            <div class="day"><div class="day-number">16</div></div>
+            <div class="day"><div class="day-number">17</div></div>
+            <div class="day"><div class="day-number">18</div></div>
+            <div class="day"><div class="day-number">19</div></div>
+            <div class="day"><div class="day-number">20</div></div>
+            <div class="day weekend"><div class="day-number">21</div></div>
+
+            <!-- Week 4 -->
+            <div class="day weekend"><div class="day-number">22</div></div>
+            <div class="day today">
+                <div class="day-number">23</div>
+                <div class="assignment asa201">
+                    <div class="course-tag">ASA201</div>
+                    <div class="assignment-text">Discussion @ 9pm</div>
+                </div>
+            </div>
+            <div class="day"><div class="day-number">24</div></div>
+            <div class="day">
+                <div class="day-number">25</div>
+                <div class="assignment asa201">
+                    <div class="course-tag">ASA201</div>
+                    <div class="assignment-text">Discussion @ 9pm</div>
+                </div>
+                <div class="assignment orf309">
+                    <div class="course-tag">ORF309</div>
+                    <div class="assignment-text">HW 6 DUE</div>
+                </div>
+            </div>
+            <div class="day"><div class="day-number">26</div></div>
+            <div class="day">
+                <div class="day-number">27</div>
+                <div class="assignment mus262">
+                    <div class="course-tag">MUS262</div>
+                    <div class="assignment-text">Quiz #2</div>
+                </div>
+            </div>
+            <div class="day weekend"><div class="day-number">28</div></div>
+
+            <!-- Week 5 -->
+            <div class="day weekend"><div class="day-number">29</div></div>
+            <div class="day">
+                <div class="day-number">30</div>
+                <div class="assignment asa201">
+                    <div class="course-tag">ASA201</div>
+                    <div class="assignment-text">Discussion @ 9pm</div>
+                </div>
+            </div>
+            <div class="day"><div class="day-number">31</div></div>
+
+            <!-- April 2026 -->
+            <div class="day">
+                <div class="day-number">1</div>
+                <div class="assignment asa201">
+                    <div class="course-tag">ASA201</div>
+                    <div class="assignment-text">Discussion @ 9pm</div>
+                </div>
+                <div class="assignment orf309">
+                    <div class="course-tag">ORF309</div>
+                    <div class="assignment-text">HW 7 DUE</div>
+                </div>
+            </div>
+            <div class="day">
+                <div class="day-number">2</div>
+                <div class="assignment eco310">
+                    <div class="course-tag">ECO310</div>
+                    <div class="assignment-text"><strong>PS3 DUE</strong> 11:59pm</div>
+                </div>
+            </div>
+            <div class="day"><div class="day-number">3</div></div>
+            <div class="day weekend"><div class="day-number">4</div></div>
+
+            <!-- Week 2 -->
+            <div class="month-divider">April 2026</div>
+
+            <div class="day weekend"><div class="day-number">5</div></div>
+            <div class="day">
+                <div class="day-number">6</div>
+                <div class="assignment asa201">
+                    <div class="course-tag">ASA201</div>
+                    <div class="assignment-text">Discussion @ 9pm</div>
+                </div>
+            </div>
+            <div class="day"><div class="day-number">7</div></div>
+            <div class="day">
+                <div class="day-number">8</div>
+                <div class="assignment asa201">
+                    <div class="course-tag">ASA201</div>
+                    <div class="assignment-text">Discussion @ 9pm</div>
+                </div>
+                <div class="assignment orf309">
+                    <div class="course-tag">ORF309</div>
+                    <div class="assignment-text">HW 8 DUE</div>
+                </div>
+                <div class="assignment highlight mus262">
+                    <div class="course-tag">MUS262</div>
+                    <div class="assignment-text">⭐ YOUR PRESENTATION</div>
+                </div>
+            </div>
+            <div class="day"><div class="day-number">9</div></div>
+            <div class="day"><div class="day-number">10</div></div>
+            <div class="day weekend"><div class="day-number">11</div></div>
+            <div class="day weekend"><div class="day-number">12</div></div>
+
+            <!-- Week 3 -->
+            <div class="day">
+                <div class="day-number">13</div>
+                <div class="assignment asa201">
+                    <div class="course-tag">ASA201</div>
+                    <div class="assignment-text">Discussion @ 9pm</div>
+                </div>
+            </div>
+            <div class="day">
+                <div class="day-number">14</div>
+                <div class="assignment eco310">
+                    <div class="course-tag">ECO310</div>
+                    <div class="assignment-text"><strong>PS4 DUE</strong></div>
+                </div>
+            </div>
+            <div class="day">
+                <div class="day-number">15</div>
+                <div class="assignment asa201">
+                    <div class="course-tag">ASA201</div>
+                    <div class="assignment-text">Discussion @ 9pm</div>
+                </div>
+                <div class="assignment orf309">
+                    <div class="course-tag">ORF309</div>
+                    <div class="assignment-text">HW 9 DUE</div>
+                </div>
+            </div>
+            <div class="day"><div class="day-number">16</div></div>
+            <div class="day"><div class="day-number">17</div></div>
+            <div class="day weekend"><div class="day-number">18</div></div>
+            <div class="day weekend"><div class="day-number">19</div></div>
+
+            <!-- Week 4 -->
+            <div class="day">
+                <div class="day-number">20</div>
+                <div class="assignment asa201">
+                    <div class="course-tag">ASA201</div>
+                    <div class="assignment-text">Discussion @ 9pm</div>
+                </div>
+            </div>
+            <div class="day"><div class="day-number">21</div></div>
+            <div class="day">
+                <div class="day-number">22</div>
+                <div class="assignment asa201">
+                    <div class="course-tag">ASA201</div>
+                    <div class="assignment-text">Discussion @ 9pm</div>
+                </div>
+                <div class="assignment orf309">
+                    <div class="course-tag">ORF309</div>
+                    <div class="assignment-text">HW 10 DUE</div>
+                </div>
+            </div>
+            <div class="day"><div class="day-number">23</div></div>
+            <div class="day">
+                <div class="day-number">24</div>
+                <div class="assignment eco310">
+                    <div class="course-tag">ECO310</div>
+                    <div class="assignment-text"><strong>PS5 DUE</strong> (FINAL)</div>
+                </div>
+            </div>
+            <div class="day weekend"><div class="day-number">25</div></div>
+            <div class="day weekend"><div class="day-number">26</div></div>
+
+            <!-- Week 5 -->
+            <div class="day">
+                <div class="day-number">27</div>
+                <div class="assignment asa201">
+                    <div class="course-tag">ASA201</div>
+                    <div class="assignment-text">Discussion @ 9pm</div>
+                </div>
+            </div>
+            <div class="day"><div class="day-number">28</div></div>
+            <div class="day">
+                <div class="day-number">29</div>
+                <div class="assignment asa201">
+                    <div class="course-tag">ASA201</div>
+                    <div class="assignment-text">Discussion @ 9pm</div>
+                </div>
+                <div class="assignment orf309">
+                    <div class="course-tag">ORF309</div>
+                    <div class="assignment-text">HW 11 DUE</div>
+                </div>
+            </div>
+            <div class="day"><div class="day-number">30</div></div>
+
+            <!-- May 2026 -->
+            <div class="day"><div class="day-number">1</div></div>
+            <div class="day weekend"><div class="day-number">2</div></div>
+
+            <!-- Week 2 -->
+            <div class="month-divider">May 2026 - Finals</div>
+
+            <div class="day weekend"><div class="day-number">3</div></div>
+            <div class="day"><div class="day-number">4</div></div>
+            <div class="day"><div class="day-number">5</div></div>
+            <div class="day"><div class="day-number">6</div></div>
+            <div class="day"><div class="day-number">7</div></div>
+            <div class="day"><div class="day-number">8</div></div>
+            <!-- Week 3 -->
+            <div class="day weekend">
+                <div class="day-number">9</div>
+                <div class="assignment asa201">
+                    <div class="course-tag">ASA201</div>
+                    <div class="assignment-text"><strong>Final Exam</strong> 8:30am-11:30am (Canvas)</div>
+                </div>
+            </div>
+            <div class="day weekend">
+                <div class="day-number">10</div>
+                <div class="assignment mus262">
+                    <div class="course-tag">MUS262</div>
+                    <div class="assignment-text"><strong>Final Paper DUE</strong> 4-7pm (10 pages)</div>
+                </div>
+            </div>
+            <div class="day"><div class="day-number">11</div></div>
+            <div class="day">
+                <div class="day-number">12</div>
+                <div class="assignment orf309">
+                    <div class="course-tag">ORF309</div>
+                    <div class="assignment-text"><strong>FINAL EXAM</strong> 12:30-3:30pm (Friend Cen 101)</div>
+                </div>
+                <div class="assignment eco310">
+                    <div class="course-tag">ECO310</div>
+                    <div class="assignment-text"><strong>FINAL EXAM</strong> 4-7pm (McDonnell A02)</div>
+                </div>
+            </div>
+            <div class="day"><div class="day-number">13</div></div>
+            <div class="day"><div class="day-number">14</div></div>
+            <div class="day"><div class="day-number">15</div></div>
+            <div class="day weekend"><div class="day-number">16</div></div>
+
+            <!-- Week 4 -->
+            <div class="day weekend"><div class="day-number">17</div></div>
+            <div class="day"><div class="day-number">18</div></div>
+            <div class="day"><div class="day-number">19</div></div>
+            <div class="day"><div class="day-number">20</div></div>
+            <div class="day"><div class="day-number">21</div></div>
+            <div class="day"><div class="day-number">22</div></div>
+            <div class="day weekend"><div class="day-number">23</div></div>
+        </div>
+
+        <!-- NOTES -->
+        <div class="notes-section">
+            <h3>📝 Important Notes</h3>
+
+            <div class="note-item">
+                <strong>ASA201 Discussion Posts:</strong> 250 words due every Monday and Wednesday @ 9pm. Total of 23 posts over 12 weeks. No post needed on days you present.
+            </div>
+
+            <div class="note-item">
+                <strong>ORF309 Homework:</strong> Homework due every Wednesday. Check Canvas regularly for updates on specific assignments.
+            </div>
+
+            <div class="note-item">
+                <strong>ECO310 Grading:</strong> Best 4 of 5 problem sets count (20% of grade). You have one 24-hour extension available, or can drop one assignment.
+            </div>
+
+            <div class="note-item">
+                <strong>MUS262 Oral Presentation:</strong> Your presentation is April 9. Make sure your topic is approved by Dr. Clayton. 10-minute presentation.
+            </div>
+
+            <div class="note-item">
+                <strong>MUS262 Final Paper:</strong> Due May 10, 4-7pm. 10 pages, requires thesis and considerable research. MLA format citations.
+            </div>
+
+            <div class="note-item">
+                <strong>Finals Schedule:</strong> ASA201 (May 9, 8:30am-11:30am), MUS262 (May 10, 4-7pm), ORF309 (May 12, 12:30-3:30pm, Friend Cen 101), ECO310 (May 12, 4-7pm, McDonnell A02)
+            </div>
+        </div>
+    </div>
+</body>
+</html>

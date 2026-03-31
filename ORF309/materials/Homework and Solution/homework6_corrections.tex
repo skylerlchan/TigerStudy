@@ -1,0 +1,153 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{enumitem}
+
+\geometry{margin=1in}
+
+\title{ORF 309 Homework 6 - Corrections}
+\author{Corrected Solutions}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem 4b: Conditional Distribution of $N_t$ given $N_s = n$}
+
+\subsection*{Your Error}
+
+For the case when $t < s$, you wrote:
+\begin{equation*}
+P(N_t = k \mid N_s = n) = \binom{n}{k} \left(\frac{k}{s}\right)^k \left(1 - \frac{k}{s}\right)^{n-k}
+\end{equation*}
+
+\textcolor{red}{This is incorrect. You used $k/s$ instead of $t/s$ in the binomial probability.}
+
+\subsection*{Correct Answer}
+
+For $t < s$:
+
+Given $N_s = n$, the $n$ arrivals are uniformly distributed on $[0, s]$. Each arrival has probability $\frac{t}{s}$ of occurring before time $t$. Therefore, $N_t \mid N_s = n$ follows a binomial distribution with parameters $n$ and $p = \frac{t}{s}$.
+
+\begin{equation*}
+\boxed{P(N_t = k \mid N_s = n) = \binom{n}{k} \left(\frac{t}{s}\right)^k \left(1 - \frac{t}{s}\right)^{n-k}, \quad k = 0, 1, \ldots, n}
+\end{equation*}
+
+\subsection*{Complete Answer for Part (b)}
+
+The conditional distribution of $N_t$ given $N_s = n$ depends on whether $t \geq s$ or $t < s$:
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{For $t \geq s$:} $N_t \mid N_s = n \sim n + \text{Poisson}(\lambda(t-s))$
+    \begin{equation*}
+    P(N_t = k \mid N_s = n) = \frac{[\lambda(t-s)]^{k-n} e^{-\lambda(t-s)}}{(k-n)!}, \quad k = n, n+1, n+2, \ldots
+    \end{equation*}
+
+    \item \textbf{For $t < s$:} $N_t \mid N_s = n \sim \text{Binomial}\left(n, \frac{t}{s}\right)$
+    \begin{equation*}
+    P(N_t = k \mid N_s = n) = \binom{n}{k} \left(\frac{t}{s}\right)^k \left(1 - \frac{t}{s}\right)^{n-k}, \quad k = 0, 1, \ldots, n
+    \end{equation*}
+\end{itemize}
+
+\newpage
+
+\section*{Problem 5a: Joint Distribution and Independence of $R_n$ and $G_n$}
+
+\subsection*{Your Error}
+
+You stated: \textcolor{red}{``They are independent''}
+
+\textbf{This is incorrect.} $R_n$ and $G_n$ are \textbf{NOT independent}.
+
+\subsection*{Correct Answer}
+
+Let $R_n$ be the number of times the monkey pressed the red button and $G_n$ be the number of times the green button was pressed after $n$ total button presses.
+
+\subsubsection*{Joint Distribution}
+
+\begin{equation*}
+\boxed{P(R_n = r, G_n = g) = \begin{cases}
+\displaystyle\binom{n}{r} \left(\frac{1}{3}\right)^r \left(\frac{2}{3}\right)^g & \text{if } r + g = n, \, r, g \geq 0 \\[10pt]
+0 & \text{otherwise}
+\end{cases}}
+\end{equation*}
+
+Note: When $r + g = n$, we have $g = n - r$, so this can also be written as:
+\begin{equation*}
+P(R_n = r, G_n = n-r) = \binom{n}{r} \left(\frac{1}{3}\right)^r \left(\frac{2}{3}\right)^{n-r}
+\end{equation*}
+
+\subsubsection*{Independence}
+
+\textbf{$R_n$ and $G_n$ are NOT independent.}
+
+\textbf{Proof:}
+
+There is a deterministic constraint: $R_n + G_n = n$ always holds.
+
+This means if you know $R_n = r$, you automatically know $G_n = n - r$. They are perfectly dependent.
+
+More formally, for independence we would need:
+\begin{equation*}
+P(R_n = r, G_n = g) = P(R_n = r) \cdot P(G_n = g) \quad \text{for all } r, g
+\end{equation*}
+
+But this fails. For example:
+\begin{itemize}[leftmargin=*]
+    \item The left side is \textbf{zero} when $r + g \neq n$
+    \item However, $P(R_n = r) > 0$ and $P(G_n = g) > 0$ for many values where $r + g \neq n$
+    \item So the right side is positive while the left side is zero
+    \item Therefore, the equality fails and they are not independent
+\end{itemize}
+
+\subsection*{Marginal Distributions}
+
+For completeness:
+\begin{align*}
+R_n &\sim \text{Binomial}\left(n, \frac{1}{3}\right): \quad P(R_n = r) = \binom{n}{r} \left(\frac{1}{3}\right)^r \left(\frac{2}{3}\right)^{n-r}\\[5pt]
+G_n &\sim \text{Binomial}\left(n, \frac{2}{3}\right): \quad P(G_n = g) = \binom{n}{g} \left(\frac{2}{3}\right)^g \left(\frac{1}{3}\right)^{n-g}
+\end{align*}
+
+\newpage
+
+\section*{Problem 5b: Why ARE $R_N$ and $G_N$ Independent?}
+
+This is a beautiful contrast to part (a). When $N$ is random (Poisson), $R_N$ and $G_N$ \textbf{ARE independent}.
+
+\subsection*{Intuition}
+
+The key difference:
+\begin{itemize}[leftmargin=*]
+    \item In part (a), the \textbf{total number of button presses $n$ is fixed}, creating the constraint $R_n + G_n = n$
+    \item In part (b), the \textbf{total number $N$ is random and independent} of the colors chosen
+    \item By the thinning property of Poisson processes, $R_N$ and $G_N$ become independent Poisson random variables
+\end{itemize}
+
+\subsection*{Result}
+
+\begin{align*}
+R_N &\sim \text{Poisson}\left(\frac{a}{3}\right)\\[5pt]
+G_N &\sim \text{Poisson}\left(\frac{2a}{3}\right)\\[5pt]
+\end{align*}
+
+And they are \textbf{independent}, so:
+\begin{equation*}
+\boxed{P(R_N = r, G_N = g) = P(R_N = r) \cdot P(G_N = g) = \frac{(a/3)^r e^{-a/3}}{r!} \cdot \frac{(2a/3)^g e^{-2a/3}}{g!}}
+\end{equation*}
+
+This can be simplified to:
+\begin{equation*}
+P(R_N = r, G_N = g) = \frac{a^r}{3^r r!} \cdot \frac{(2a)^g}{3^g g!} \cdot e^{-a}
+\end{equation*}
+
+\subsection*{Key Takeaway}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Fixed total $n$}: $R_n$ and $G_n$ are NOT independent (constraint: $R_n + G_n = n$)
+    \item \textbf{Random total $N$}: $R_N$ and $G_N$ ARE independent (Poisson thinning)
+\end{itemize}
+
+\end{document}

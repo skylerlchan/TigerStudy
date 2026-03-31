@@ -1,0 +1,224 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+
+\title{\textbf{Homework 6, Question 4c Explanation} \\ \large Poisson Process with Random Classification}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem Statement}
+
+\textbf{Given:}
+\begin{itemize}[noitemsep]
+    \item $\{N_t\}$ is a Poisson process with rate $\lambda$
+    \item Each arrival is \textbf{independently} classified as:
+    \begin{itemize}
+        \item Woman with probability $\frac{1}{2}$
+        \item Man with probability $\frac{1}{2}$
+    \end{itemize}
+    \item The genders are independent of each other and of the arrival times
+    \item $M_t$ = number of women that arrived by time $t$
+\end{itemize}
+
+\textbf{Find:} $\mathbb{E}(N_t \mid M_t = m)$
+
+\section{Key Concept: Poisson Thinning}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Poisson Thinning Theorem]
+When you ``thin'' a Poisson process with rate $\lambda$ by randomly and independently classifying each arrival with probability $p$:
+\begin{itemize}
+    \item The ``successes'' form a Poisson process with rate $p\lambda$
+    \item The ``failures'' form a Poisson process with rate $(1-p)\lambda$
+    \item \textbf{These two processes are independent}
+\end{itemize}
+\end{tcolorbox}
+
+\subsection{Applying Thinning to Our Problem}
+
+In this problem, we're classifying each arrival as woman (probability $\frac{1}{2}$) or man (probability $\frac{1}{2}$):
+
+\begin{align*}
+M_t &= \text{number of women by time } t \sim \text{Poisson}\left(\frac{\lambda t}{2}\right) \\
+W_t &= \text{number of men by time } t \sim \text{Poisson}\left(\frac{\lambda t}{2}\right) \\
+N_t &= M_t + W_t \quad \text{(total arrivals)}
+\end{align*}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+\textbf{Crucial Fact:} $M_t$ and $W_t$ are \textbf{independent} random variables.
+\end{tcolorbox}
+
+\section{Solution}
+
+We want to find $\mathbb{E}(N_t \mid M_t = m)$.
+
+Since $N_t = M_t + W_t$, we can write:
+
+\begin{align}
+\mathbb{E}(N_t \mid M_t = m) &= \mathbb{E}(M_t + W_t \mid M_t = m) \notag \\
+&= \mathbb{E}(M_t \mid M_t = m) + \mathbb{E}(W_t \mid M_t = m) \label{eq:linearity}
+\end{align}
+
+\subsection{Step 1: Evaluate $\mathbb{E}(M_t \mid M_t = m)$}
+
+This is straightforward:
+\[
+\mathbb{E}(M_t \mid M_t = m) = m
+\]
+
+If we know $M_t = m$, then the expected value of $M_t$ is simply $m$.
+
+\subsection{Step 2: Evaluate $\mathbb{E}(W_t \mid M_t = m)$}
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black,title=Key Step: Using Independence]
+Since $M_t$ and $W_t$ are \textbf{independent}, conditioning on $M_t = m$ does not affect the distribution of $W_t$:
+\[
+\mathbb{E}(W_t \mid M_t = m) = \mathbb{E}(W_t)
+\]
+\end{tcolorbox}
+
+Therefore:
+\[
+\mathbb{E}(W_t) = \frac{\lambda t}{2}
+\]
+
+This is just the mean of a Poisson random variable with parameter $\frac{\lambda t}{2}$.
+
+\subsection{Step 3: Combine the Results}
+
+Substituting back into equation \eqref{eq:linearity}:
+
+\begin{align*}
+\mathbb{E}(N_t \mid M_t = m) &= m + \mathbb{E}(W_t) \\
+&= m + \frac{\lambda t}{2}
+\end{align*}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=orange!75!black,title=Final Answer]
+\[
+\boxed{\mathbb{E}(N_t \mid M_t = m) = m + \frac{\lambda t}{2}}
+\]
+\end{tcolorbox}
+
+Alternatively, since $\mathbb{E}(M_t) = \frac{\lambda t}{2}$, we can write:
+\[
+\boxed{\mathbb{E}(N_t \mid M_t = m) = m + \mathbb{E}(M_t)}
+\]
+
+\section{Intuition}
+
+Let's interpret what this result means:
+
+\begin{center}
+\textit{``Given that we observed $m$ women, how many total people do we expect?''}
+\end{center}
+
+\textbf{Answer:}
+\begin{itemize}
+    \item We know \textbf{for certain} there were $m$ women
+    \item The number of men is \textbf{independent} of the number of women (because each person's gender is determined independently)
+    \item So we expect the \textbf{average} number of men: $\mathbb{E}(W_t) = \frac{\lambda t}{2}$
+    \item Total expected = $m + \frac{\lambda t}{2}$
+\end{itemize}
+
+\subsection{Why Independence Matters}
+
+The key insight is that \textbf{independence} means:
+\begin{center}
+\textit{Knowing $M_t = m$ gives us no information about $W_t$}
+\end{center}
+
+Therefore:
+\[
+\mathbb{E}(W_t \mid M_t = m) = \mathbb{E}(W_t)
+\]
+
+If $M_t$ and $W_t$ were \textit{not} independent, we couldn't make this simplification!
+
+\section{Numerical Example}
+
+\textbf{Example:} Suppose $\lambda = 4$ arrivals per hour, $t = 2$ hours, and we observe $m = 3$ women.
+
+\textbf{What is the expected total number of arrivals?}
+
+\textbf{Solution:}
+\begin{align*}
+\mathbb{E}(N_t \mid M_t = 3) &= 3 + \frac{\lambda t}{2} \\
+&= 3 + \frac{4 \times 2}{2} \\
+&= 3 + 4 \\
+&= 7 \text{ arrivals}
+\end{align*}
+
+\textbf{Interpretation:}
+\begin{itemize}
+    \item We know there were 3 women
+    \item On average, we expect $\frac{4 \times 2}{2} = 4$ men
+    \item Total expected: $3 + 4 = 7$ people
+\end{itemize}
+
+\section{Common Mistakes to Avoid}
+
+\subsection{Mistake 1: Forgetting Independence}
+
+\textcolor{red}{\textbf{Wrong:}} ``Since we saw more women than expected, there must be fewer men''
+
+\textcolor{green!60!black}{\textbf{Correct:}} The number of men is independent of the number of women, so observing $M_t = m$ doesn't change our expectation for $W_t$.
+
+\subsection{Mistake 2: Using $\mathbb{E}(N_t)$ Instead}
+
+\textcolor{red}{\textbf{Wrong:}} $\mathbb{E}(N_t \mid M_t = m) = \mathbb{E}(N_t) = \lambda t$
+
+\textcolor{green!60!black}{\textbf{Correct:}} Conditioning on $M_t = m$ changes the expectation. We need to account for the fact that we \textit{know} there are $m$ women.
+
+\subsection{Mistake 3: Double Counting}
+
+\textcolor{red}{\textbf{Wrong:}} $\mathbb{E}(N_t \mid M_t = m) = m + \lambda t$ (counting $m$ women plus all expected arrivals)
+
+\textcolor{green!60!black}{\textbf{Correct:}} We add $m$ (known women) plus $\frac{\lambda t}{2}$ (expected men only), not all arrivals.
+
+\section{Related Facts}
+
+\subsection{Conditional Distribution}
+
+Not only is the conditional \textit{expectation} straightforward, but the full conditional \textit{distribution} is also simple:
+
+\[
+(N_t \mid M_t = m) \sim m + \text{Poisson}\left(\frac{\lambda t}{2}\right)
+\]
+
+In other words, $N_t$ given $M_t = m$ is distributed as $m$ (deterministic) plus an independent Poisson random variable with rate $\frac{\lambda t}{2}$.
+
+\subsection{Variance}
+
+What about $\text{Var}(N_t \mid M_t = m)$?
+
+\begin{align*}
+\text{Var}(N_t \mid M_t = m) &= \text{Var}(M_t + W_t \mid M_t = m) \\
+&= \text{Var}(m + W_t \mid M_t = m) \\
+&= \text{Var}(W_t \mid M_t = m) \\
+&= \text{Var}(W_t) \quad \text{(by independence)} \\
+&= \frac{\lambda t}{2}
+\end{align*}
+
+So the conditional variance equals the variance of $W_t$, which makes sense since $m$ is constant when conditioning on $M_t = m$.
+
+\section{Summary}
+
+\begin{tcolorbox}[colback=gray!5!white,colframe=gray!75!black,title=Key Takeaways]
+\begin{enumerate}
+    \item \textbf{Poisson thinning} splits a Poisson process into independent components
+    \item When random variables are \textbf{independent}, conditioning on one doesn't affect the other
+    \item The answer $m + \frac{\lambda t}{2}$ = (known women) + (expected men)
+    \item This generalizes: if probability of woman is $p$, then
+    \[
+    \mathbb{E}(N_t \mid M_t = m) = m + (1-p)\lambda t
+    \]
+\end{enumerate}
+\end{tcolorbox}
+
+\end{document}

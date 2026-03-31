@@ -10,7 +10,7 @@
 Prompt: Viet Thanh Nguyen makes the argument that Asian American racial identity has become *reified* (when, for example, human social relations such as "race" become treated as essential parts of human nature or the result of objective laws of nature) and thus commodified under global capitalism. This, in his view, has resulted in a binary choice between being assimilationist (model minority/a self-marketing "panethnic entrepreneur") and being an Asian American intellectual claiming oppositionality to power ("bad subject"/trading on the radical historical inheritance of the TWLF and 1968). What are some of the solutions he proposes to this limited choice? What is his assessment of the future of Asian America as a political category?
 
 
-## Replies (11 top-level)
+## Replies (12 top-level)
 
 
 ---
@@ -109,3 +109,14 @@ Nguyen is worried that Asian American identity, while once a tool for political 
 One way he does this is by challenging the resistance vs accommodation binary. He argues that Asian Americans have historically operated within capitalism while also resisting it, often at the same time which is ironic. Treating accommodation as failure ignores the reality that survival often requires flexibility. This matters because identity becomes weaker as a political tool once it is seen as “settled” or successful. When identity is packaged and sold like the expectation of a Japanese store selling sushi or a lifestyle for example, it feels less urgent
 
 Nguyen also converses with strategic essentialism in a way. When you collapse all Asian experiences into one body that condenses race, class, gender, and sexuality creates the illusion of unity while hiding internal contradictions. Looking forward, Nguyen is pessimistic about Asian America as a unified political category. He suggests it may fracture rather than hold, but sees that instability as necessary for more honest politics.
+
+
+---
+
+**Salvatore Palizzolo** (2026-03-13):
+
+Nguyen makes several claims about the contemporary shortcomings in understandings of the Asian American identity and how those shortcomings contribute to missed opportunities in its use as a political category, or even evince the inadequacy of the political category as a whole. One emphasis that Nguyen makes is that Asian American intellectuals, in their focus on resistance rather than accommodation, have failed to address the capitalist commodification of the Asian American identity, which a large portion of the Asian American population participates in. Recognizing this, Nguyen argues, is key to understanding what types of change are feasible for Asian Americans. Nguyen also "encourag[es] a move to dissensus rather than consensus" and a "move toward other constructions of political identity," as a result (23).
+
+Expanding upon the panethnicity and bad subject binary, Nguyen argues through a reading of Lois-Ann Yamanaka's novels that taking the Asian identity for granted reinforces the resistant bad subject characterization, and could actually lead to "interethnic and interclass strife among Asian populations" in the future (28). Nguyen then proposes that "perhaps the viability of Asian America as a political category with a clear ideological orientation is doomed" (28). Although Asian American is attempting to form an autonomous identity separate from blackness and whiteness in the effort to maintain political efficacy, Nguyen discourages this. He argues that claims to legitimacy in the nation through this method function "by denying affiliations with blackness," which were indeed imperative in the "founding notions of Asian American identity" (29). This could also lead to internal division between the model minority and bad subject, he argues, revealing which Asian American constituents are assimilable. Nguyen's suggestion is that Asian Americans make "ethical choices that concern their alliances and alignments" (30).
+
+I honestly do think Nguyen does tend to focus on the impossibilities and impracticalities, clearly delineating the shortcomings of certain ways of thinking adopted by his fellow Asian American intellectuals, but not providing many courses of action himself. And to be fair, Nguyen addresses this, stating "I seek not to be merely negative but instead to point out the limits of Asian America and, within those limits, what types of change can be enacted" (23). I appreciate his dedication to feasibility, although I do wish he would expand upon what steps Asian Americans and Asian American intellectuals can take. It is entirely possible that he does so throughout the remainder of *Race and Resistance*.

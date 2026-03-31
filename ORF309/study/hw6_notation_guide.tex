@@ -1,0 +1,282 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+
+\title{\textbf{How to READ the Notation} \\ \large Speaking Math Out Loud}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{The Problem}
+
+Mathematical notation looks like random symbols until you know how to read it. Let's fix that!
+
+\begin{tcolorbox}[colback=blue!10!white,colframe=blue!75!black]
+\textbf{Goal:} By the end of this guide, you'll be able to read any expression in this problem OUT LOUD in plain English.
+\end{tcolorbox}
+
+\section{Basic Symbols - How to Say Them}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Symbol} & \textbf{How to Say It} & \textbf{What It Means} \\
+\hline
+$N_t$ & ``N sub t'' or ``N at time t'' & Number of arrivals by time $t$ \\
+\hline
+$N_s$ & ``N sub s'' or ``N at time s'' & Number of arrivals by time $s$ \\
+\hline
+$N_4$ & ``N sub 4'' or ``N at time 4'' & Number of arrivals by time 4 \\
+\hline
+$N_9$ & ``N sub 9'' or ``N at time 9'' & Number of arrivals by time 9 \\
+\hline
+$N_{14}$ & ``N sub 14'' or ``N at time 14'' & Number of arrivals by time 14 \\
+\hline
+$\lambda$ & ``lambda'' & The rate (arrivals per unit time) \\
+\hline
+$n$ & ``n'' & A specific number (like 13) \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Reading Conditions - The Vertical Bar}
+
+The vertical bar $|$ means ``given that'' or ``if we know that''.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Symbol} & \textbf{How to Say It} \\
+\hline
+$(N_4 \mid N_9 = 13)$ & ``N-four given N-nine equals 13'' \\
+ & OR ``N at time 4, given that N at time 9 equals 13'' \\
+\hline
+$(N_t \mid N_s = n)$ & ``N-t given N-s equals n'' \\
+ & OR ``N at time t, given that N at time s equals n'' \\
+\hline
+$P(N_4 = 5 \mid N_9 = 13)$ & ``The probability that N-four equals 5, given N-nine equals 13'' \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Reading Complete Expressions}
+
+Let's read some actual expressions from the homework:
+
+\subsection{Example 1: $N_9 = 13$}
+
+\textbf{Mathematical:} $N_9 = 13$
+
+\textbf{Read as:} ``N sub nine equals thirteen''
+
+\textbf{Plain English:} ``There are 13 arrivals by time 9'' or ``By time 9, 13 customers have arrived''
+
+\subsection{Example 2: $P(N_4 = 5 \mid N_9 = 13)$}
+
+\textbf{Mathematical:} $P(N_4 = 5 \mid N_9 = 13)$
+
+\textbf{Read as:} ``The probability that N-four equals five, given that N-nine equals thirteen''
+
+\textbf{Plain English:} ``What's the probability there were 5 arrivals by time 4, if we know there were 13 arrivals by time 9?''
+
+\subsection{Example 3: $(N_t \mid N_s = n)$}
+
+\textbf{Mathematical:} $(N_t \mid N_s = n)$
+
+\textbf{Read as:} ``N-t, given N-s equals n''
+
+\textbf{Plain English:} ``The number of arrivals by time t, if we know there were n arrivals by time s''
+
+\subsection{Example 4: $N_9 - N_4 = 8$}
+
+\textbf{Mathematical:} $N_9 - N_4 = 8$
+
+\textbf{Read as:} ``N-nine minus N-four equals eight''
+
+\textbf{Plain English:} ``The number of arrivals between time 4 and time 9 equals 8''
+
+\textbf{Think:} If 13 arrived by time 9, and 5 arrived by time 4, then $13 - 5 = 8$ arrived between times 4 and 9.
+
+\subsection{Example 5: $(N_t \mid N_s = n) \sim \text{Binomial}(n, \frac{t}{s})$}
+
+\textbf{Mathematical:} $(N_t \mid N_s = n) \sim \text{Binomial}\left(n, \frac{t}{s}\right)$
+
+\textbf{Read as:} ``N-t given N-s equals n, follows a Binomial distribution with parameters n and t-over-s''
+
+\textbf{Plain English:} ``If we know there were n arrivals by time s, then the number of arrivals by the earlier time t follows a Binomial distribution where we do n trials, each with probability t/s''
+
+\subsection{Example 6: $N_t = n + \text{Poisson}(\lambda(t-s))$}
+
+\textbf{Mathematical:} $N_t = n + \text{Poisson}(\lambda(t-s))$
+
+\textbf{Read as:} ``N-t equals n plus a Poisson random variable with parameter lambda times quantity t-minus-s''
+
+\textbf{Plain English:} ``The number of arrivals by time t equals the n we already know about, plus a random number following Poisson with rate lambda times the time difference (t minus s)''
+
+\section{Common Confusing Notation}
+
+\subsection{Subscripts vs Variables}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=orange!75!black]
+\textbf{Important Distinction:}
+
+\begin{itemize}
+    \item $N_4$ means a SPECIFIC time: time 4 (4 hours, 4am, etc.)
+    \item $N_t$ means a VARIABLE time: time t (could be anything)
+    \item $N_s$ means another VARIABLE time: time s (different from t)
+\end{itemize}
+
+When you see $N_t$ and $N_s$, think: ``time t'' and ``time s'' where t and s are just placeholders for any two times.
+
+When you see $N_4$ and $N_9$, think: specific times 4 and 9.
+\end{tcolorbox}
+
+\subsection{What Does $\sim$ Mean?}
+
+The symbol $\sim$ means ``follows the distribution'' or ``is distributed as''.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Symbol} & \textbf{How to Say It} \\
+\hline
+$X \sim \text{Binomial}(n, p)$ & ``X follows a Binomial distribution with parameters n and p'' \\
+\hline
+$Y \sim \text{Poisson}(\lambda)$ & ``Y follows a Poisson distribution with parameter lambda'' \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Reading Question 4b}
+
+\textbf{The Question:} For any $t, s \geq 0$, what is the conditional distribution of $N_t$ given $N_s = n$?
+
+\textbf{Read as:} ``For any times t and s (both greater than or equal to zero), what is the conditional distribution of N-t, given that N-s equals n?''
+
+\textbf{Plain English:} ``Pick any two times, call them t and s. If I tell you that n arrivals happened by time s, what can you tell me about the distribution of arrivals by time t?''
+
+\section{Step-by-Step Reading Practice}
+
+Let's practice reading the answer to 4b:
+
+\subsection{Case 1 Answer}
+
+\textbf{Written:} $(N_t \mid N_s = n) \sim \text{Binomial}\left(n, \frac{t}{s}\right)$ when $t < s$
+
+\textbf{Read it slowly:}
+\begin{enumerate}
+    \item ``N-t'' - the number of arrivals by time t
+    \item ``given'' - if we know that
+    \item ``N-s equals n'' - there were n arrivals by time s
+    \item ``follows'' - has the distribution
+    \item ``Binomial'' - Binomial distribution
+    \item ``with n trials'' - we do n trials
+    \item ``and probability t-over-s'' - each with success probability t divided by s
+    \item ``when t is less than s'' - and this is when time t comes before time s
+\end{enumerate}
+
+\textbf{Put it together:} ``The number of arrivals by time t, given that there were n arrivals by time s, follows a Binomial distribution with n trials and probability t-over-s, when t is less than s.''
+
+\subsection{Case 3 Answer}
+
+\textbf{Written:} $(N_t \mid N_s = n) = n + \text{Poisson}(\lambda(t-s))$ when $t > s$
+
+\textbf{Read it slowly:}
+\begin{enumerate}
+    \item ``N-t'' - the number of arrivals by time t
+    \item ``given'' - if we know that
+    \item ``N-s equals n'' - there were n arrivals by time s
+    \item ``equals'' - is equal to
+    \item ``n plus'' - n (the known arrivals) plus
+    \item ``Poisson lambda times t-minus-s'' - a Poisson random variable with parameter lambda times the quantity t minus s
+    \item ``when t is greater than s'' - when time t comes after time s
+\end{enumerate}
+
+\textbf{Put it together:} ``The number of arrivals by time t, given there were n arrivals by time s, equals n plus a Poisson random variable with rate lambda times t-minus-s, when t is greater than s.''
+
+\section{The Actual Coffee Shop Example}
+
+Let's read the concrete example with numbers:
+
+\subsection{Example: $(N_4 \mid N_9 = 13) \sim \text{Binomial}(13, \frac{4}{9})$}
+
+\textbf{Symbol by symbol:}
+\begin{itemize}
+    \item $N_4$ = ``N at time 4'' = ``arrivals by 4am''
+    \item $\mid$ = ``given that''
+    \item $N_9 = 13$ = ``N at time 9 equals 13'' = ``13 arrivals by 9am''
+    \item $\sim$ = ``follows the distribution''
+    \item $\text{Binomial}(13, \frac{4}{9})$ = ``Binomial with 13 trials, probability 4/9''
+\end{itemize}
+
+\textbf{Full reading:} ``The number of arrivals by 4am, given that there were 13 arrivals by 9am, follows a Binomial distribution with 13 trials and success probability 4/9.''
+
+\textbf{Even simpler:} ``If 13 customers arrived by 9am, the number who arrived by 4am is like flipping 13 coins, each with a 4/9 chance of heads.''
+
+\section{Practice Problems}
+
+Try reading these yourself, then check the answers:
+
+\subsection{Problem 1}
+
+\textbf{Symbol:} $N_{14} = 28$
+
+\textbf{Your answer:} \underline{\hspace{8cm}}
+
+\textbf{Correct answer:} ``N at time 14 equals 28'' OR ``There are 28 arrivals by time 14''
+
+\subsection{Problem 2}
+
+\textbf{Symbol:} $P(N_t = k \mid N_s = n)$
+
+\textbf{Your answer:} \underline{\hspace{8cm}}
+
+\textbf{Correct answer:} ``The probability that N-t equals k, given N-s equals n'' OR ``The probability of k arrivals by time t, given n arrivals by time s''
+
+\subsection{Problem 3}
+
+\textbf{Symbol:} $(N_{10} \mid N_5 = 8) = 8 + \text{Poisson}(10)$
+
+\textbf{Your answer:} \underline{\hspace{8cm}}
+
+\textbf{Correct answer:} ``N at time 10, given N at time 5 equals 8, equals 8 plus Poisson with parameter 10'' OR ``Arrivals by time 10, given 8 arrivals by time 5, equals 8 plus a Poisson random variable with rate 10''
+
+\section{Quick Reference Card}
+
+\begin{tcolorbox}[colback=green!10!white,colframe=green!75!black,title=Notation Cheat Sheet]
+\begin{itemize}
+    \item $N_t$ = ``number of arrivals by time t''
+    \item $N_s = n$ = ``n arrivals happened by time s''
+    \item $\mid$ = ``given that'' or ``if we know''
+    \item $\sim$ = ``follows the distribution'' or ``is distributed as''
+    \item $(N_t \mid N_s = n)$ = ``arrivals by time t, given n arrivals by time s''
+    \item $N_t - N_s$ = ``arrivals BETWEEN time s and time t''
+    \item $\lambda$ = ``lambda'' = the rate
+    \item $\lambda(t-s)$ = ``lambda times t-minus-s'' = rate times time interval
+\end{itemize}
+\end{tcolorbox}
+
+\section{Tips for Reading Math}
+
+\begin{enumerate}
+    \item \textbf{Go slow:} Read symbol by symbol at first
+    \item \textbf{Say it out loud:} Hearing yourself helps
+    \item \textbf{Translate to English:} After reading symbols, say what it means
+    \item \textbf{Use concrete numbers:} Replace variables with actual numbers
+    \item \textbf{Draw it:} Sketch a timeline if it helps
+\end{enumerate}
+
+\begin{tcolorbox}[colback=blue!10!white,colframe=blue!75!black]
+\textbf{Remember:} The notation is just a shorthand. Every symbol has a plain English meaning. Once you know how to ``translate,'' the math becomes much easier!
+\end{tcolorbox}
+
+\end{document}

@@ -1,0 +1,162 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+
+\title{ORF309 Homework 6 - Question 1a}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Question 1a: Expected Lifetime}
+
+\subsection*{Problem Setup}
+
+We are modeling a person's lifetime $L$ where the person may experience a heart attack at random time $T$. The heart attack increases their risk of dying.
+
+\subsection*{Variable Definitions}
+
+\begin{itemize}
+    \item $L$ = Lifetime of the person (random variable we want to find $E[L]$)
+    \item $T$ = Time when heart attack occurs (random variable), where $T \sim \text{Expon}(\mu)$
+    \item $h(t)$ = Hazard rate at time $t$ (instantaneous risk of dying)
+    \begin{itemize}
+        \item $h(t) = a$ for $t < T$ (before heart attack)
+        \item $h(t) = b$ for $t \geq T$ (after heart attack, typically $b > a$)
+    \end{itemize}
+    \item $\tau$ = A specific value that $T$ could take (used when conditioning)
+    \item $a, b, \mu$ = Given constants (parameters)
+\end{itemize}
+
+\subsection*{Strategy}
+
+Since $L$ depends on the random variable $T$, we use the \textbf{Law of Total Expectation}:
+\[
+E[L] = \int_0^\infty E[L \mid T = \tau] \cdot f_T(\tau) \, d\tau
+\]
+
+where $f_T(\tau) = \mu e^{-\mu\tau}$ is the probability density of $T$.
+
+\textbf{Intuition:} First compute the expected lifetime for each possible heart attack time $\tau$, then average over all possible $\tau$ values weighted by their probability.
+
+\subsection*{Step 1: Find $E[L \mid T = \tau]$}
+
+Given that the heart attack occurs at time $T = \tau$, we need to find the expected lifetime.
+
+\subsubsection*{Step 1a: Cumulative Hazard $H(t)$}
+
+The cumulative hazard is the total accumulated risk from birth to time $t$:
+
+\begin{align*}
+H(t) &= \int_0^t h(s) \, ds
+\end{align*}
+
+\textbf{For $t < \tau$ (before heart attack):}
+\begin{align*}
+H(t) &= \int_0^t a \, ds = at
+\end{align*}
+
+\textbf{For $t \geq \tau$ (after heart attack):}
+\begin{align*}
+H(t) &= \int_0^\tau a \, ds + \int_\tau^t b \, ds = a\tau + b(t - \tau)
+\end{align*}
+
+\subsubsection*{Step 1b: Survival Function $S(t)$}
+
+The survival function is the probability of surviving past time $t$:
+\[
+S(t) = e^{-H(t)}
+\]
+
+\textbf{For $t < \tau$:}
+\[
+S(t) = e^{-at}
+\]
+
+\textbf{For $t \geq \tau$:}
+\[
+S(t) = e^{-a\tau - b(t-\tau)}
+\]
+
+\subsubsection*{Step 1c: Compute $E[L \mid T = \tau]$}
+
+Using the formula from survival analysis:
+\[
+E[L \mid T = \tau] = \int_0^\infty S(t) \, dt
+\]
+
+Split the integral at $\tau$:
+\begin{align*}
+E[L \mid T = \tau] &= \int_0^\tau e^{-at} \, dt + \int_\tau^\infty e^{-a\tau - b(t-\tau)} \, dt
+\end{align*}
+
+\textbf{First integral:}
+\begin{align*}
+\int_0^\tau e^{-at} \, dt &= \left[-\frac{1}{a}e^{-at}\right]_0^\tau = \frac{1}{a}(1 - e^{-a\tau})
+\end{align*}
+
+\textbf{Second integral} (substitute $v = t - \tau$, so $dv = dt$):
+\begin{align*}
+\int_\tau^\infty e^{-a\tau - b(t-\tau)} \, dt &= e^{-a\tau} \int_0^\infty e^{-bv} \, dv \\
+&= e^{-a\tau} \left[-\frac{1}{b}e^{-bv}\right]_0^\infty \\
+&= e^{-a\tau} \cdot \frac{1}{b} = \frac{e^{-a\tau}}{b}
+\end{align*}
+
+\textbf{Combining both integrals:}
+\begin{align*}
+E[L \mid T = \tau] &= \frac{1}{a}(1 - e^{-a\tau}) + \frac{e^{-a\tau}}{b} \\
+&= \frac{1}{a} - \frac{e^{-a\tau}}{a} + \frac{e^{-a\tau}}{b} \\
+&= \frac{1}{a} + e^{-a\tau}\left(\frac{1}{b} - \frac{1}{a}\right)
+\end{align*}
+
+\subsection*{Step 2: Average Over All Possible $\tau$ Values}
+
+Now we apply the Law of Total Expectation. Since $T \sim \text{Expon}(\mu)$ with density $f_T(\tau) = \mu e^{-\mu\tau}$:
+
+\begin{align*}
+E[L] &= \int_0^\infty E[L \mid T = \tau] \cdot \mu e^{-\mu\tau} \, d\tau \\
+&= \int_0^\infty \left[\frac{1}{a} + e^{-a\tau}\left(\frac{1}{b} - \frac{1}{a}\right)\right] \mu e^{-\mu\tau} \, d\tau
+\end{align*}
+
+Split into two integrals:
+\begin{align*}
+E[L] &= \frac{\mu}{a} \int_0^\infty e^{-\mu\tau} \, d\tau + \mu\left(\frac{1}{b} - \frac{1}{a}\right) \int_0^\infty e^{-a\tau}e^{-\mu\tau} \, d\tau \\
+&= \frac{\mu}{a} \int_0^\infty e^{-\mu\tau} \, d\tau + \mu\left(\frac{1}{b} - \frac{1}{a}\right) \int_0^\infty e^{-(a+\mu)\tau} \, d\tau
+\end{align*}
+
+\textbf{First integral:}
+\[
+\int_0^\infty e^{-\mu\tau} \, d\tau = \left[-\frac{1}{\mu}e^{-\mu\tau}\right]_0^\infty = \frac{1}{\mu}
+\]
+
+\textbf{Second integral:}
+\[
+\int_0^\infty e^{-(a+\mu)\tau} \, d\tau = \left[-\frac{1}{a+\mu}e^{-(a+\mu)\tau}\right]_0^\infty = \frac{1}{a+\mu}
+\]
+
+\subsection*{Final Simplification}
+
+Substituting back:
+\begin{align*}
+E[L] &= \frac{\mu}{a} \cdot \frac{1}{\mu} + \mu\left(\frac{1}{b} - \frac{1}{a}\right) \cdot \frac{1}{a+\mu} \\
+&= \frac{1}{a} + \frac{\mu}{b(a+\mu)} - \frac{\mu}{a(a+\mu)}
+\end{align*}
+
+To combine terms, find common denominator $a(a+\mu)$:
+\begin{align*}
+E[L] &= \frac{a+\mu}{a(a+\mu)} + \frac{\mu}{b(a+\mu)} - \frac{\mu}{a(a+\mu)} \\
+&= \frac{(a+\mu) - \mu}{a(a+\mu)} + \frac{\mu}{b(a+\mu)} \\
+&= \frac{a}{a(a+\mu)} + \frac{\mu}{b(a+\mu)} \\
+&= \frac{1}{a+\mu} + \frac{\mu}{b(a+\mu)} \\
+&= \frac{b + \mu}{b(a+\mu)}
+\end{align*}
+
+\subsection*{Answer}
+\[
+\boxed{E[L] = \frac{b + \mu}{b(a + \mu)}}
+\]
+
+\end{document}
