@@ -1,0 +1,2681 @@
+# ASA 201: Introduction to Asian American Culture & Difference
+
+**Date:** 2026-04-02
+
+
+## Summary
+
+### Core Text Themes
+
+- Reading centers on intersectionality: settler colonialism, anti-blackness, racial capitalism, heteropatriarchy as intertwined systems
+- West framed as site of opportunity — argument that this framing should be interrogated as a source of privilege, not neutral fact
+- Model minority stereotype upheld by South Asians renders Black and indigenous communities as “unmodel”
+- Canadian immigration initiatives post-pandemic used as example of model minority logic in action- Homogenized view of South Asian community benefits some at direct cost to Black and indigenous communities
+
+### Identity Labels & Racial Terminology
+
+- Question raised: where is the line between racial identification and stereotype-reinforcing labels?
+- “South Asian” felt limiting to some survey respondents; others (including Skyler) don’t experience it as such- Term “American” raised as comparatively less charged — but problematic for indigenous peoples who reject forced annexation into the American empire- Kashmir example: being called “South Asian” papers over colonized status and absorbs identity into BJP-defined Indian nationalism
+- Geography is not neutral — even a geographical descriptor like “South Asia” becomes politicized when contested territories are included
+- Deconstructive theory lens: words gain and retain power; who controls a term matters as much as what it denotes
+
+### Complicity & Responsibility
+
+- Reading argues acknowledging complicity reframes victimization — many factors at play, not a simple binary
+- Debate in class: complicity as passive vs. active framing
+- One view (Skyler): individuals are 100% responsible for their actions regardless of systemic context; passivity is an active choice- Counter: immigrants didn’t design the system they arrived into — fault and responsibility should be decoupled- Instructor’s synthesis: you can be blameless (not at fault) and still hold ethical responsibility, especially when actively benefiting from a settler society
+- Intention largely irrelevant to material impact — Indian immigrants reproducing settler colonialism regardless of intent
+- Parallel to model minority discussion: working hard without intending to harm still perpetuates the system
+- OpenAI engineer analogy raised: resigning and then condemning the system you helped build doesn’t resolve complicity
+
+### Research Ethics & Indigenous Communities
+
+- York University guidelines (p. 14): researchers must seek engagement with aboriginal communities and determine scope jointly
+- Author felt this became a deterrent — places burden on under-resourced indigenous communities to prioritize the researcher’s work- Guidelines were developed in consultation with indigenous communities, but conditions on the ground haven’t changed, making them onerous in practice- Class note: author doesn’t provide enough concrete examples of how the guidelines restricted their work
+- Structural underfunding and segregation of indigenous communities makes ethical research mandates harder to fulfill in practice
+- Extractive research dynamic: sociologists “studying refugees as a problem to be fixed” — same impulse applies to indigenous research
+- Heterogeneity within indigenous communities matters: some leaders welcome research (e.g., for federal funding access); others refuse all engagement
+- Instructor’s read: the guidelines section reflects the author’s defensiveness — written partly to forestall criticism while still pursuing academic career interests (tenure, publication)
+
+### Caste, Migration & Global Lens
+
+- Reading reframes Asian American studies as a global discipline — must understand political economy of origin countries
+- Who qualifies for Canada’s “meritocratic” immigration system is shaped by caste capital and literal capital before migration begins- Self-selection occurs upstream: access to education and wealth in India is caste-determined
+- Anti-blackness exists globally but is not expressed identically everywhere — US racial framework is not a universal mirror
+- Biopolitics thread: individual thriving is structurally dependent on the dispossession of others
+
+### Structural Reform vs. Individual Action
+
+- “The Undercommons” (Fred Moten & Stefano Harney) raised as a framework — entering institutions to redirect resources toward liberatory ends
+- Demand to simply “not do the research” rejected by most — too high a personal cost, and absence of scholarship doesn’t help indigenous communities either
+- Preferred structural reform: increase indigenous scholars in the academy so communities produce knowledge on their own terms
+- Risk flagged: framing this as “only indigenous people can study indigenous issues” could replicate segregation — distinction is changing ratios and admissions, not exclusion
+- Reconciliation in Canada: always present in political discourse but stops short of full sovereignty — more about integrating indigenous people into the state equitably
+- Symbolic gestures (renaming streets, indigenous art in airports) don’t change the structural settler colonial state
+
+### Next Steps
+
+- Skyler Chan
+- Read *The Undercommons* by Fred Moten & Stefano Harney (free PDF — instructor offered to share on screen)
+Chat with meeting transcript: https://notes.granola.ai/t/a1b3091b-47ae-44ac-a429-1c61fd2f6b4f
+
+
+---
+
+## Transcript
+
+**:** It definitely has.
+
+**:** A focus on intersectionality, which is a topic we definitely discuss specifically that's mentioned here on page five.
+
+**:** Is the intertwined processes of cellular colonialization. Settler colonialism, anti-blackness, racial political capitalism, heterovatri and ramism. And I think it's really interesting about this brought up because.
+
+**:** As you see, it's pervasive even in like the west, but it's definitely for years religiously and politically.
+
+**:** How servant aspects that are considered to be universal aren't really reserved for.
+
+**:** Block to in a bird class with chromosome.
+
+**:** Is a way to.
+
+**:** Come to that and.
+
+**:** You have.
+
+**:** To.
+
+**:** Figure out what that is.
+
+**:** Air vent.
+
+**:** Ure.
+
+**:** Let's.
+
+**:** Not look at some.
+
+**:** Hero side.
+
+**:** Sorry.
+
+**:** Yeah.
+
+**:** Maybe continue.
+
+**:** I.
+
+**:** Love to hear about it. It was basically done.
+
+**:** I think.
+
+**:** It was mentioned that the west was seen as like this length of opportunity for a lot of people in eastern how it was fraud that it should be framed, not just, but more so like framing this as such a source of privilege that can help more supply area. What do you think of at the end of the day? What is opportunity? It also seems like dreams and desires is really the source of.
+
+**:** The.
+
+**:** Second.
+
+**:** But it's the ultra.
+
+**:** Look at it from.
+
+**:** I think there's a great way of doing a full lens of why.
+
+**:** One pops certain others.
+
+**:** And then obviously.
+
+**:** On page six, the existence of model minority being upheld by South Asians that comes across the renders, indigenous black others as unmodel. So we see that there is kind of.
+
+**:** Like.
+
+**:** A phrase. There's not like, it's almost like two things can't be cases.
+
+**:** That much.
+
+**:** Other things.
+
+**:** Inside of the world.
+
+**:** Teach.
+
+**:** Er they have not.
+
+**:** One.
+
+**:** That's.
+
+**:** Not possible.
+
+**:** There's ways.
+
+**:** Like, you know, we.
+
+**:** See all of the.
+
+**:** Init.
+
+**:** Iatives that.
+
+**:** Were by candidates.
+
+**:** Who.
+
+**:** Helped have like.
+
+**:** A.
+
+**:** Helpful.
+
+**:** Worker wound.
+
+**:** Minority.
+
+**:** Of.
+
+**:** Immigrant more to.
+
+**:** Canada.
+
+**:** So post pandemic.
+
+**:** Which.
+
+**:** Is really interesting because.
+
+**:** How do this model.
+
+**:** Minority stereotyp.
+
+**:** E be the gray.
+
+**:** Warrant of these initiatives?
+
+**:** And those.
+
+**:** Of you harmful.
+
+**:** And perpetuating and of homogenized view for the salvation community, but then also as we see it comes to the cost of success for black and indigenous communities. So it's a question of who really genuinely benefits from this homogeneized view. And I think we've got some of these stuff a lot in class too.
+
+**:** And I thought it was really interesting how with this focus on intersectionality, the author, when conducting their survey, they mentioned how.
+
+**:** Like they're obviously they were consulting like people come from like different gender previous identification in the.
+
+**:** And there's the idea that there's a minority status associated person of color, but that's still just the fact that white.
+
+**:** Is still a set.
+
+**:** Tler.
+
+**:** So.
+
+**:** That kind of occup.
+
+**:** Ies the mid.
+
+**:** Line position in a new cast that is.
+
+**:** Enforced in the way. And I thought it was really interesting when I interviewed a bunch of individuals. They all had kids and different positions in the Indian task. Different socioeconom.
+
+**:** Ics status, anything like that. So they all kind of fit one engineer identity in Canada. So we literally see this get like.
+
+**:** How much navy played out in real time when they're all exhibiting one identity. And you can see that that kind of comes up direct like it's a direct result of these model minority encouraging initiatives. So I thought that was really interesting. Then again leading in a displacement of other regionalized groups.
+
+**:** And then one question I wanted to look at was.
+
+**:** There.
+
+**:** S.
+
+**:** Back when.
+
+**:** He.
+
+**:** Offered.
+
+**:** Conducting.
+
+**:** Her survey.
+
+**:** And.
+
+**:** They were.
+
+**:** Surveying artists.
+
+**:** They said.
+
+**:** How South.
+
+**:** Asian.
+
+**:** Was consider.
+
+**:** Ed also limiting.
+
+**:** Terms for.
+
+**:** A few individuals.
+
+**:** And also.
+
+**:** There's the generational gap between seeing one of the persons of color like first generation.
+
+**:** Or not.
+
+**:** Maybe even.
+
+**:** Consider themselves.
+
+**:** Not person color. As you see how your identity evolved as the generations.
+
+**:** Evolved in a certain place. So I wanted to look more into the idea of like.
+
+**:** South Asian or Asian being a term that promotes homogeneity.
+
+**:** Because I kind of was like I as someone who occupies that identity, I guess I don't find it as limiting. I just think it's like yeah.
+
+**:** That's my.
+
+**:** Like racial background. To me it's how does connotations.
+
+**:** But I'm curious about is there a line that we can draw between just racial identification and eliminating stereotype title and like where are there consequences to.
+
+**:** A certain word or words in.
+
+**:** Just human arbitrary.
+
+**:** Label.
+
+**:** And we have to.
+
+**:** Tie that.
+
+**:** Plus one.
+
+**:** Of my questions.
+
+**:** And then.
+
+**:** Talking a little bit more about.
+
+**:** Complic.
+
+**:** Ity.
+
+**:** Now.
+
+**:** By acknowled.
+
+**:** Ging the proceed and helps us rephrase the notion of this.
+
+**:** Binary.
+
+**:** That there's not always just a victimization complex for certain individuals more so that there are.
+
+**:** Many.
+
+**:** Different factors.
+
+**:** Coming into play.
+
+**:** Like you mentioned.
+
+**:** Before.
+
+**:** Interesting.
+
+**:** How like the.
+
+**:** Main.
+
+**:** Is pronounced like.
+
+**:** Some views in.
+
+**:** India.
+
+**:** Who.
+
+**:** Think.
+
+**:** Like.
+
+**:** First move.
+
+**:** Wanted to.
+
+**:** Act like.
+
+**:** Soviet.
+
+**:** Indian present.
+
+**:** Ing to sort of.
+
+**:** Un.
+
+**:** Exotic.
+
+**:** Ized eyes.
+
+**:** Certain.
+
+**:** Or like.
+
+**:** Tame.
+
+**:** Almost other Indians.
+
+**:** In.
+
+**:** Which.
+
+**:** I was really interesting. So these are.
+
+**:** Acts of colonial.
+
+**:** Settling in India.
+
+**:** And then you can inter.
+
+**:** Twine because it also creates like a culture mentality that can.
+
+**:** Be raised.
+
+**:** And comes.
+
+**:** From like.
+
+**:** Very noisy day.
+
+**:** Yesterday.
+
+**:** You found culture has become.
+
+**:** Fed forth.
+
+**:** That therefore reinforced.
+
+**:** In the west. So then this does help in the displacement of hours of.
+
+**:** Marginalized screws.
+
+**:** So okay.
+
+**:** And then back to.
+
+**:** My second question.
+
+**:** This is a little uplift through the first question.
+
+**:** So I've got the first question was about.
+
+**:** What is limiting versus what just identifying and convinced society things. And then my other question that I thought was really interesting was the guidelines for research involving Aboriginal social indigenous peoples on page 14.
+
+**:** I'll reread what the guidelines are.
+
+**:** Researchers.
+
+**:** Where the research is likely to affect the welfare of aboriginal.
+
+**:** Signs.
+
+**:** People's committee.
+
+**:** Work committees who have discussed particles along. These who shall seek invasion of the love.
+
+**:** In a transcendental community.
+
+**:** And product shopp.
+
+**:** Ing town jointly.
+
+**:** By research.
+
+**:** And public committ.
+
+**:** Ee.
+
+**:** And.
+
+**:** I was in the office.
+
+**:** And talks about how it was a trip for them.
+
+**:** Talking about the.
+
+**:** Difference in.
+
+**:** This approach.
+
+**:** In handover.
+
+**:** S in America.
+
+**:** I was thinking what should we think about motivation for having these guidelines?
+
+**:** To rethink.
+
+**:** It? Is active deterrent.
+
+**:** Like that is kind.
+
+**:** Of goal.
+
+**:** And also.
+
+**:** Back to the conversation of what do things informative, first genuine. Obviously at the beginning we have discreet signs of all those intersections.
+
+**:** So those are my two questions we can feel free to tackle one at a time.
+
+**:** Because they're.
+
+**:** Not completely related.
+
+**:** But those are what stuck out.
+
+**:** To me the most.
+
+**:** In this read.
+
+**:** Ing.
+
+**:** Okay great yeah, so you're highlighting a lot of really important interventions that is making. Maybe do you want to reiterate the question again all time.
+
+**:** Again? So first question is.
+
+**:** For the artists that they offer.
+
+**:** Actually page 19.
+
+**:** It says the quote some cannot use a micro south agent through the work.
+
+**:** To compete the.
+
+**:** Hydraulic model.
+
+**:** And you're.
+
+**:** Considered like three.
+
+**:** Burners. I was wondering what.
+
+**:** We think about the.
+
+**:** Line between.
+
+**:** Racial ident.
+
+**:** Ification and just.
+
+**:** Being like.
+
+**:** This person.
+
+**:** Ethnicity.
+
+**:** Which took her.
+
+**:** For your nationality.
+
+**:** And that.
+
+**:** Or.
+
+**:** The.
+
+**:** One's conn.
+
+**:** Otations and.
+
+**:** Panel.
+
+**:** Who gets to.
+
+**:** Decide.
+
+**:** That was question.
+
+**:** Number one.
+
+**:** Question.
+
+**:** Number two is the way in which one is motivated.
+
+**:** Is encouraging.
+
+**:** Doctor research.
+
+**:** Specifically.
+
+**:** In this study.
+
+**:** What do you think the motivation are behind it?
+
+**:** And back.
+
+**:** To what is consider.
+
+**:** Ed like a perform.
+
+**:** Ative trying to.
+
+**:** Make reparations versus what's in check when.
+
+**:** It's time to add.
+
+**:** Recreation.
+
+**:** Campaign.
+
+**:** S.
+
+**:** Great.
+
+**:** Questions.
+
+**:** First.
+
+**:** Like.
+
+**:** Opinions.
+
+**:** On.
+
+**:** Connotation.
+
+**:** That has to do with.
+
+**:** Labels.
+
+**:** Was it.
+
+**:** Just not.
+
+**:** Ation?
+
+**:** Yeah.
+
+**:** I think talk about the first one. I think like the semantics of.
+
+**:** Like.
+
+**:** Your identity is really important.
+
+**:** Like certain images that pop up.
+
+**:** Like me personally when I think about my identity it's really diverse in this sense.
+
+**:** That I think about, you know, I think about food, I think about culture. I think about family. But I don't really think about the denominations of it.
+
+**:** But I think it's really important to kind of have a dual perspective in a sense that this class is opening up to the fact that there is really a duality in the sense that there's really two sides of the picture and there's a society like there's a societal view and there's also like personal dude. And I think when you put those tune against each other you can see maybe sharing similarities but you can also see certain differences. And I think looking at both the intersection like intersections and the differences are really important.
+
+**:** And like this context.
+
+**:** I think like.
+
+**:** What's unique in this context is for example the model minority met when you when you look at somebody's identity and like it's portrayed oh they're hardworking.
+
+**:** Personally I would like to be called fire group like you can be viewed. You can view it as a good thing but then you can also see how it's a bad thing. So not always I think it's also important like a certain like descriptor to not just automatically associate them with like good or bad but recognize what's good in some of them and what's good and bad. But like just kind of recognizing both sides.
+
+**:** Yeah not making you automatic assumptions like we talked about last class as well in terms of associating certain like traits or politics with ethnicities and race, right?
+
+**:** Absolutely.
+
+**:** I think.
+
+**:** Something.
+
+**:** Interesting.
+
+**:** Though.
+
+**:** To like add on.
+
+**:** To this.
+
+**:** Discussion.
+
+**:** Like generalizing.
+
+**:** A person.
+
+**:** Like.
+
+**:** You know.
+
+**:** He's like.
+
+**:** Convocations with.
+
+**:** Like certain.
+
+**:** Attributes.
+
+**:** And whatnot.
+
+**:** Is like.
+
+**:** I.
+
+**:** Took a psych.
+
+**:** Ology class.
+
+**:** One semester.
+
+**:** And it was about like.
+
+**:** The development of language.
+
+**:** And.
+
+**:** Like something that like the.
+
+**:** Human brain does.
+
+**:** To.
+
+**:** Like learn language.
+
+**:** Like.
+
+**:** As an infin.
+
+**:** Ite stuff is like it has to.
+
+**:** Like general.
+
+**:** Ize a lot.
+
+**:** Of like you have to.
+
+**:** Generalize.
+
+**:** The grammar group.
+
+**:** Like general.
+
+**:** Ize like meet.
+
+**:** Ings and like.
+
+**:** Words and whatnot.
+
+**:** And so.
+
+**:** Like I think.
+
+**:** Like because.
+
+**:** Like.
+
+**:** Psycholog.
+
+**:** Ically.
+
+**:** Like.
+
+**:** We are.
+
+**:** Wired to.
+
+**:** Make.
+
+**:** Like general.
+
+**:** Ization.
+
+**:** Like I think.
+
+**:** It's like.
+
+**:** Interesting how.
+
+**:** High.
+
+**:** In this.
+
+**:** Context.
+
+**:** Like this.
+
+**:** I guess like the way.
+
+**:** I.
+
+**:** Approach it.
+
+**:** Like this is like.
+
+**:** The baseline.
+
+**:** Like no matter how someone.
+
+**:** Is portrayed.
+
+**:** And no matter how much.
+
+**:** We do to.
+
+**:** Like combat.
+
+**:** It and like.
+
+**:** Reform.
+
+**:** That like.
+
+**:** That will always.
+
+**:** Be the.
+
+**:** Date.
+
+**:** And like I feel like.
+
+**:** It's.
+
+**:** More.
+
+**:** Like the.
+
+**:** Reformation is.
+
+**:** More of.
+
+**:** A matter of like.
+
+**:** Performing.
+
+**:** The.
+
+**:** Generalization.
+
+**:** Itself.
+
+**:** Rather than like.
+
+**:** Comb.
+
+**:** Ating.
+
+**:** The.
+
+**:** Like.
+
+**:** So.
+
+**:** That was like.
+
+**:** My.
+
+**:** Take on.
+
+**:** Yeah.
+
+**:** I think that one.
+
+**:** S from psychology is really interesting.
+
+**:** Especially the idea of like you have to have something of the familiar to like have more of like.
+
+**:** A intended to explore.
+
+**:** Because at the end of the day this is only like kind of.
+
+**:** You can't speak about a certain subject if you don't.
+
+**:** Okay, this is going to be the most like rud.
+
+**:** Imentary way of saying.
+
+**:** It like we wouldn't be able to have if we didn't call like noticing or really losing the English word to be able to have this discussion.
+
+**:** Like you need to have some sort of common.
+
+**:** Dictionary to discuss certain things so I can see how generalization is important because like to me the idea of like yeah my grandparents were all born in India therefore I would give you that and I don't see like a connotation to that like I strictly like that is the syntax and that's what can be an identifying factor.
+
+**:** And I think when it becomes like south Asian obviously you're like there's been a lot of ethnic groups but like when you also think of the term.
+
+**:** I know we're talking about like a lot about like term Asian American and how that can have certain.
+
+**:** Has affected like people said right maybe.
+
+**:** You've just used the term like American.
+
+**:** I think.
+
+**:** That has a lot less.
+
+**:** People have a lot fewer charge to deal with about it.
+
+**:** And I think that's the shape because that seems to be a broader demonization of like what does this mean.
+
+**:** To be an American?
+
+**:** So I.
+
+**:** Don't know that I haven't answered to my question too of like what is the line that we can't draw.
+
+**:** Because I still do think at a certain point.
+
+**:** Like.
+
+**:** There still needs to be like some things are fact you know? I don't know I don't know if that even like freaked but I would speak like.
+
+**:** It was interesting though that the title of salvation could be like a father.
+
+**:** Come and I could see how it doesn't.
+
+**:** Homogenize as a group at the end of the day that's also just like our preachers. So maybe it's also a regional understanding of what that term means.
+
+**:** From my background that term doesn't.
+
+**:** Have signific.
+
+**:** Ance.
+
+**:** The way that it.
+
+**:** Does.
+
+**:** For.
+
+**:** The.
+
+**:** Indian.
+
+**:** Powers.
+
+**:** Yeah, I think one way to frame it is to refer back to how we were talking about you know the deconstructive theory right which is thinking about how the words gain and retain power or have material impact on it. Right. So we were talking about that in terms of you know subjectless discourse and thinking about kind of unpacking the idea of like a citizen or subject right and in this case you know I think some people would have quite a big issue with like the word hair being called American for example when we got to this talking about canopoly indigenous wine people one of their key kind of demands like we are not American right because they were forcibly annexed into into the American empire. Right? So there's that and then also thinking about south asian you know kind of what gives that or who kind of controls that term. I think that was part of your your initial question.
+
+**:** And that would be kind of whoever is the kind of dominant power in India right now. And you know I think a lot of thank goodness a lot of cashmere is right obviously who are colonized region of India may have a lot of issue with being called foundation right because they see it as papering over their status as column as people erasing their catch mirror identity for example and then also being absorbed into an identity that is being defined and shaped by the Indian state in particular the BJP, right, the Modi government.
+
+**:** Which is kind of islamophobic, Hindu nationalist fascist part. Right. So you know in many cases south Asia could have been this neutral geographical descriptor right but even geography is not innocent in many ways or neutral, right? Especially if let's say Kashmir gets lumped into what is considered a geote territory. Then that itself is politicized as well. Right? So we should always think about how these words carry and then enact power when we come up or when we say like where do we draw the line and who gets to make these decisions.
+
+**:** Right?
+
+**:** Yeah.
+
+**:** So that's a great question to race in relation to this.
+
+**:** Text.
+
+**:** Any other thoughts on that or anything on the second question.
+
+**:** Can I ask a follow up to this?
+
+**:** When we talk to professor ha and then I asked about.
+
+**:** Like I guess.
+
+**:** One's research and where the.
+
+**:** Opportunity versus subject.
+
+**:** Ivity and we were talking about how like you if you do it from like an art historian lens versus like a psychological is a different lens.
+
+**:** I'm wondering if this discussion as we're saying like how people in Kashmir can have different opinions and somewhat of like a different background, especially someone who I guess is more like allegiant to the multi government.
+
+**:** Do you think also it's a question of like what led, we look at the conversation in and from like what like if we're looking at from like I mean art from our art like that sort of conversation too. Do you think that.
+
+**:** Takes a significant.
+
+**:** Factor?
+
+**:** Do you mean lens as in like disciplinary or active orientation? Yeah, I mean you know and you know the historians in the room will be able to tell us that you know obviously there are like conservative historians and then there's like more progressive or radical historians who want to kind of reform or even revise a given history. Right. So there's huge kind of debates within academic disciplines on that very question. Some would say, you know, I think various conservative historians would say well these events happened in the past.
+
+**:** You know this this area was colonized or this nation was destroyed and taken over, absorbed. These are just this is just the course of human history and there's no kind of covering that or we shouldn't moralize these.
+
+**:** Acts. Whereas I think you know a lot of kind of progressive or radical historians would make the offskart, right? Is that these were asked violence and colonization and we should try and recover these histories that were destroyed or be able to tell histories from those colonized perspective.
+
+**:** Not so much like colonized.
+
+**:** Or right is that am I representing that accurately historians in the room or do you have.
+
+**:** Any.
+
+**:** Kind.
+
+**:** Of.
+
+**:** Question? I think it does depend on this lens that you apply to these histories. I think the point is that there is kind of no neutral way to present it. And that's, you know, we talked about that in the past with like usable histories, right? The way that people tell and narrate their own community's history for someone else's histories for a specific purpose.
+
+**:** Right? And that's how we should always think about it. Not as neutral occurrences. But unless we were there even then there's like kind of witness bias and so on. Right? So I would say.
+
+**:** So.
+
+**:** Any question to you was on page 14 when it was discussed that guidelines for the author to conduct their research.
+
+**:** Just like your opinion on.
+
+**:** What the guidelines were by your university and do you think they were meant to serve as active deterrent or that it's just a byproduct.
+
+**:** In that.
+
+**:** What.
+
+**:** We.
+
+**:** Want reparations.
+
+**:** Become.
+
+**:** For when a first.
+
+**:** Gen.
+
+**:** Genuine.
+
+**:** And.
+
+**:** That is our result.
+
+**:** Like.
+
+**:** Relate to the.
+
+**:** Conduct.
+
+**:** Ing of.
+
+**:** This study.
+
+**:** Yeah, and I guess I'll just add since I am Canadian and I am more familiar with a lot of these contexts like the one at York University for example and you know goes over some of the contexts as well. But just to kind of add the legislative multiculturalism of Canada which is like a point of pride for a lot of Canadians where like we're multicultural and you know we're not Americans because Americans are racist. Right. That's the kind of role way that a lot of comedians have formed their kind of cultural identity and political identity.
+
+**:** Is a very different context in the sense that there's like very specific ways that Canadians and the Canadian state deal with and talk about indigeneity and first nations.
+
+**:** People.
+
+**:** And it's a very direct conversation. Right there's always claims like prime ministers when they're trying to be elected.
+
+**:** Always have to address indigenous and first nation issues. They always talk about reconciliation, right? This idea that making right the wrongs of the past and so on, but it's never kind of like giving full sovereignty to first nations people it's like how do we bring them into the state in a more equitable way.
+
+**:** Right? So it's a very specific form of interacting and engaging with indigenous people.
+
+**:** That doesn't happen here. Right, I would say. You can correct me if it's like I'm wrong but you know there was not recent supreme court justice decision that was in favor of the kind of tribal.
+
+**:** Rights of, I forget which nation it was here in the US, but it was like a lot of people were very surprised. I think just as coresich was a proponent of giving these rights.
+
+**:** In their decision.
+
+**:** To.
+
+**:** Show these native.
+
+**:** Folks.
+
+**:** But those are usually just kind of like.
+
+**:** 12.
+
+**:** Lifts.
+
+**:** In how.
+
+**:** To.
+
+**:** Like have indigenous.
+
+**:** People in their conscious.
+
+**:** Ness.
+
+**:** In Canada it's much more present. It like kind of suffused in a lot of ways. And I think I've heard you brought it up in the canvas post but often in very superficial ways as well. Like you know naming streets in like we're changing the street name to like something that endures your quad language or having indigenous art plastered all over.
+
+**:** A train station or whatever happens to be. Have you been to the Vancouver airport? Is this like full of indigenous art, right? But that doesn't necessarily mean that there is a change in the structural separate colonial state. Right? You can see it just as window transfer, but it is much more overt in Canada. So just to lay that out there to kind of contextualize your question of finish money. What do we think of this kind of research guideline from Europe University?
+
+**:** Is it intentionally prohibitive? I think.
+
+**:** As in to deter research with indig.
+
+**:** Enous communities.
+
+**:** Or.
+
+**:** Audit industries.
+
+**:** Right?
+
+**:** Yeah. Yeah. What do you think?
+
+**:** Can you.
+
+**:** Repeat.
+
+**:** Questions?
+
+**:** Yeah, on page 14 this guideline from university about research involving aboriginal indigenous peoples.
+
+**:** I think she wants is wondering is this like written to be intentionally prohibitive like trying to get people to not do research on these communities? And if so, why?
+
+**:** Yeah, if it helps the next line that.
+
+**:** He also, while in theory this is a crucial principle given centuries of complicities of other institutions, we became a deterrent because the demand position on indigenous communities, that is to ask them to make my research their priority.
+
+**:** Yeah, I feel like.
+
+**:** I don't know.
+
+**:** I.
+
+**:** Haven't done research with like.
+
+**:** Native.
+
+**:** Communities or.
+
+**:** At least.
+
+**:** By.
+
+**:** Worked.
+
+**:** For like.
+
+**:** Serving.
+
+**:** And.
+
+**:** Like.
+
+**:** I don't know.
+
+**:** Being not.
+
+**:** Part of that community.
+
+**:** I think.
+
+**:** The best.
+
+**:** Thing to do is.
+
+**:** To come.
+
+**:** And just.
+
+**:** Sin.
+
+**:** And just.
+
+**:** Ask them any questions.
+
+**:** As they can.
+
+**:** Instead of.
+
+**:** Just taking his.
+
+**:** Opinions.
+
+**:** I.
+
+**:** Can see.
+
+**:** It.
+
+**:** Also like this.
+
+**:** Indigenous schol.
+
+**:** Arship.
+
+**:** There's.
+
+**:** A lot to be.
+
+**:** On.
+
+**:** Like who gets to sit at the table.
+
+**:** Who should be.
+
+**:** Speaking.
+
+**:** Of.
+
+**:** And I feel like.
+
+**:** I could see, I think, I think the guidelines.
+
+**:** I can see how the author felt.
+
+**:** Kind of.
+
+**:** Like.
+
+**:** Deterred from making, you know, studying and doing research on indigenous communities.
+
+**:** In Canada.
+
+**:** So.
+
+**:** I don't.
+
+**:** Know.
+
+**:** It's.
+
+**:** Like a.
+
+**:** Really tricky.
+
+**:** Situation, like especially if you're not.
+
+**:** Native.
+
+**:** Or in indigenous.
+
+**:** Background.
+
+**:** I don't know.
+
+**:** I feel like in scholarship.
+
+**:** I feel like as long as you're doing it respectfully.
+
+**:** Like.
+
+**:** From my friends that are either, they don't mind.
+
+**:** When you think it's.
+
+**:** Respectful, it's fine.
+
+**:** But even I have probably said things and they've been like, hey, like, this is what.
+
+**:** You should say.
+
+**:** In Hawaii.
+
+**:** They don't say.
+
+**:** Like.
+
+**:** Or is it, what's like, they refer to like the UF, if they refer to it as the continent.
+
+**:** Or.
+
+**:** Something.
+
+**:** Yeah. Like.
+
+**:** There's just, there's a lot of learning to do. So I could see how people might feel very nervous.
+
+**:** To go into those communities.
+
+**:** And do research.
+
+**:** Especially when it's academic because they might not seem.
+
+**:** Genuine.
+
+**:** Yeah, and it might seem extractive, right? We've talked about that in the refugee context with what Neil is very said about, you know, all the sociologists coming in to like study refugees as a problem to be fixed, right, which pathologizes refugees as something that needs to be fixed. Right? So the same impulse could take place here with indigenous communities as well, people coming in saying, like, how do we fix indigenous people?
+
+**:** Obviously, I think many, many indigenous folks would not like that.
+
+**:** But then I think it's important when you said not only in the sense that it is contextual and it's complicated in the sense that there are community members who might welcome that research because maybe they do want more funding like federal funding to come into the community.
+
+**:** To whatever build infrastructure, social services or whatever happens to be. Right. So there again, you know, this whole thing we've always been talking about, recognizing the heterogeneous nature of the given community, their different opinions, their different interests, and being able to kind of engage with that maybe not individual levels, but not just saying like, okay, well, indigenous.
+
+**:** People hate academic research.
+
+**:** So we're not.
+
+**:** Mentors.
+
+**:** Right? Because clearly there are differences there.
+
+**:** And that kind of gets to, I think one of your questions in canvas, Alex, about kind of indigenous folks also merge into complicity, right? If they are, if they become agents of the state, for example, which I think is very true for some tribal communities, right, it's like the leadership often is much more willing to work with state powers and agencies versus others who are like, we refuse in all respects. Right. So those are genuine conversations that are happening within these communities. And I think, yeah, it's important that I think respect that, the fact that there are going to be tensions, conflicts, conversations, discussions, debates within these communities rather than externally saying we're just going to tell you all how you feel type of thing.
+
+**:** As well.
+
+**:** Right? Good.
+
+**:** Thoughts on this?
+
+**:** Yeah. People like this part of the text, I felt a little bit confused.
+
+**:** Like I just can't like fully see the connection. I feel like I kind of wish I got more information from hey.
+
+**:** I'm not sure exactly it, but like.
+
+**:** To me.
+
+**:** Like the connection that's made between the university guidelines and.
+
+**:** Like.
+
+**:** How it's like a deterrent. I just don't fully see it.
+
+**:** Like to me like the keywords that I see in the university guidelines are like shell seeking like researchers shall seek engagement with rural community.
+
+**:** And like a joint determination of like the extent of.
+
+**:** Community engage.
+
+**:** Ment.
+
+**:** And then the author states how this asks.
+
+**:** Them to make my research their priority.
+
+**:** Like I wish I had more information to see how that like comes about.
+
+**:** Like in the research process.
+
+**:** Because I think the university guidelines to me seemed like.
+
+**:** Well intentioned, I think.
+
+**:** And it's committed to see.
+
+**:** General.
+
+**:** Chain.
+
+**:** Demanding. But and I feel like seeking engagement with the relative community of your research is like that's a very good thing.
+
+**:** But maybe the way in which the university is like delivering these guidelines or like wording it or like.
+
+**:** Formatting it is like.
+
+**:** Just.
+
+**:** Disadvantageous in some way. But I do wish I got more information about how maybe some like the difficulties that like was having and like asking indigenous communities.
+
+**:** To like participate in the research or something like that.
+
+**:** Yeah, good. I'm glad you brought that up because yeah maybe the author did not quite enough concrete examples of why they felt restricted by this. Right. And I think they do bring up this kind of difference as you know they're a graduate student they didn't have institutional support etc which I guess put the onus on the communities to kind of do more work to fulfill his research.
+
+**:** But yeah, the detail is not there in the specific passage.
+
+**:** Good point there.
+
+**:** Seemed like.
+
+**:** The.
+
+**:** Conditions.
+
+**:** Of like.
+
+**:** Man.
+
+**:** Dating pieces of that.
+
+**:** Cool practices.
+
+**:** These communities.
+
+**:** Are.
+
+**:** Like sever.
+
+**:** Ely like underfund.
+
+**:** Ed and segregated.
+
+**:** There's like.
+
+**:** A lot of like.
+
+**:** Structural issues.
+
+**:** With.
+
+**:** Group connecting.
+
+**:** This type of research.
+
+**:** On indigenous people.
+
+**:** So.
+
+**:** That makes.
+
+**:** Like.
+
+**:** The eth.
+
+**:** Ical mandates.
+
+**:** Of like how to.
+
+**:** Conduct this research.
+
+**:** A lot.
+
+**:** Harder.
+
+**:** Which is the.
+
+**:** Project.
+
+**:** Yeah, good point.
+
+**:** Absolutely.
+
+**:** And I think you know these guidelines as far as I know were absolutely kind of created in consultation with some indigenous communities, right? Like I can see the good intention behind it and what they were trying to accomplish with this. But I think yeah as you're saying when it meets the kind of conditions of the real world that I guess a little bit more complicated, which I think is what we've been trying to recognize with our conversation last class too right things work in theory and then they get a complicated one trying to implement them.
+
+**:** As you know they say right here in that next sentence.
+
+**:** As.
+
+**:** Chani wanted to know. Yeah, so I think that's important to recognize that it was well tension developed with indigenous folks. But then since the conditions that indigenous people are still living under in Canada haven't really changed then the guidelines become something onerous for the researcher.
+
+**:** Which is I think, you know, I feel like it's a little bit of a submerged point that is trying to make here which is that.
+
+**:** I think they're trying to say that there is this deep contradiction to their work which is that they feel that.
+
+**:** It's.
+
+**:** There's a large.
+
+**:** Unethical.
+
+**:** Part to.
+
+**:** What they're doing.
+
+**:** Right yet they're still doing it. So I think that that's the that's a really kind of interesting kind of mission here maybe or like trying to forestall some sort of criticism that they might get. I was at their one of their book launch talks and I think there was a kind of sense of like wanting to criticize this in the audience which was really interesting. So I think you can read a little bit more of that defensiveness in the writing.
+
+**:** Which is really interesting.
+
+**:** Right you know the fact is that this is still driven by needing to get an academic job, needing to get tenure and so on and so forth. Right. So the kind of career interests.
+
+**:** Still shape this research in its entirety even though these, you know, these kind of ethical conundrums or good intentions or whatever happens to be. So I see that's what I see coming out of that this little section on the research guidelines and how they're trying to grapple with it. Right. So I'm glad you brought that up to highlighted that first to discuss there.
+
+**:** Yeah.
+
+**:** Any other thoughts on that?
+
+**:** I think we talked a lot about in many different instances how.
+
+**:** Academics try and reflexively think about their own work.
+
+**:** As problematic or unethical, right especially. Remember when we were talking about historical archives.
+
+**:** And this kind of right to disappear or the right to go past not being understood fully by marketplace or by a story or whatever it is. Right. And oftentimes if you're an academic you need to find proof of something in an archive in order to publish your paper. Right. You need this hard evidence. And oftentimes if you're looking at colonial archives for example the subjects that are being written about colonized people or.
+
+**:** People of color are actively trying to not appear in these archives, right? They don't want to be captured by colonial knowledge production. Usually it's by like colonial police or judges who are writing these archival documents all together. So the fact is if your researcher trying to find the truth about decolonized subject in the archive you're like replicating the same logic as the judge, as the colonial administrator, the colonial police. Right. So I think there it's yeah very interesting contradiction in his type of academic work where you're like I want to do this work.
+
+**:** But I actually see how it.
+
+**:** Can be harmful.
+
+**:** Or.
+
+**:** Why replicating this kind of police logic, let's say.
+
+**:** And then seeing how people will criticize you about that.
+
+**:** And then putting a defense in your work.
+
+**:** Ahead of time to kind of like forestall them.
+
+**:** So yeah, I think that's a really interesting part of the work.
+
+**:** That I think a lot of other academic disciplines don't have to worry about that kind of thing right like you just do the work because you think it's important or you know a good job or whatever it is. So I see value in that type of self critique or self reflexiveness in a lot of ways.
+
+**:** Okay, let's take a five minute.
+
+**:** Point.
+
+**:** Of this kind of sound.
+
+**:** Ing over a question.
+
+**:** If.
+
+**:** You're having a self-reflections and you know what you're doing is rolling push will happen athletes, but you still keep, you still publish it. You're going to keep working the same line book and keep doing the same thing again and again.
+
+**:** Does it matter if you're self-reflecting on what is more personal to just keep doing it on that.
+
+**:** Point?
+
+**:** That is a great question and I think that's why a lot of these scholars were grappling with and I think some don't just do it as a type of.
+
+**:** Where somebody used.
+
+**:** I don't know the virtue signaling or for lack of a better word to say like I did I did my reflection. Yeah, I'm still going to do this work because of.
+
+**:** The job. Right.
+
+**:** So people can choose to criticize that. Absolutely.
+
+**:** I think a lot of other academ.
+
+**:** Ics might not.
+
+**:** But I do know that like you know in indigenous studies in subtle colonial studies there is like a lot of indigenous folks who are in those fields are openly critical of stuff like this and that's totally the right. And I think it's ongoing process of engaging with those critiques.
+
+**:** You know, I think a lot of people take it further into like a structural like trying to think structurally about how the economy has shaped. Right. Whose interests are driving this work? Is it gaining knowledge for the state?
+
+**:** Or is this work actually contributing back to the community whether it's because a lot of the times folks who get funding for example like I've you know I've done this type of thing where it's like you get funding from the university to do your research and then you actively funnel that money back into the communities that you're working with or studying.
+
+**:** In which case that's like.
+
+**:** You know there's this kind of whole school of thought called like the undercommons thinking about entering the university and trying to like steal as much as you can for better purposes.
+
+**:** Right. So take university funding and doing it before. So people have also criticized that. That's cool thought too.
+
+**:** Not engaged as much with structural trying to reform the university as possible, but there's lots of different ways of thinking about educ.
+
+**:** Ation.
+
+**:** Yeah.
+
+**:** That.
+
+**:** Makes sense.
+
+**:** What was that term?
+
+**:** You said?
+
+**:** The under commons. It's quite frank mowton and stefano hardy.
+
+**:** I will show you on the screen at the tv work.
+
+**:** Yeah, it's a free pdf if you want to read it.
+
+**:** Thinking a lot about doing academic workouts. I don't know maybe liberatory. Maybe not.
+
+**:** I was very annoyed by this.
+
+**:** One.
+
+**:** Recent someone who was working for.
+
+**:** Openai.
+
+**:** I think.
+
+**:** And then they.
+
+**:** Quit.
+
+**:** They res.
+
+**:** Igned and then said like now I condemn openai for what it's doing.
+
+**:** And I'm like okay well you fill up the system for that and then you're going to quit and then take a moral high ground like that doesn't make any sense to me. So I feel like that's similar. Right? If you really had such reservations then don't don't help them build.
+
+**:** The system.
+
+**:** I don't know how tech folks here feel about that. What's the full situation?
+
+**:** It was that open AI engineer who recently quit and then like wrote.
+
+**:** They kind of expose announcing open.
+
+**:** Ing is harmful. And like well you built it. So yeah that's very true why would you reside in that critique?
+
+**:** Right. I don't know if they recognize there's a lot of leaked documents about like the ones that haven't been released, the internal systems are like way more powerful than our current systems.
+
+**:** And maybe they didn't expect it to be that good which is also another issue. Like you just have no idea. This is a brand new field.
+
+**:** Anyways yeah that directory gets us back to this question of complicity.
+
+**:** Right.
+
+**:** And.
+
+**:** How deeply are we.
+
+**:** Complicit.
+
+**:** Or individually responsible as we engage in and reproduce all of the systems that we're capital university.
+
+**:** Open the tech industry is still on right.
+
+**:** And I think some of you wrote about this in your canvas quote.
+
+**:** S right about how.
+
+**:** We.
+
+**:** Ve had a is not trying to.
+
+**:** Like point the finger at the individual people but it's trying to encourage us to take a different path for a solidarity rather than complicity. Right. So yeah, I think that's an ongoing kind of open question. Does this type of what we call the dielectrical dynamic here between individual responsibility and then this type of light. You know you often hear people say like there's no ethical consumption.
+
+**:** Under capital.
+
+**:** Ism type of state where it's like well you do need food to survive. You can't just like not eat so that you don't reproduce capitalism. Right? But it's on different levels as well on different scales. Again that open AI engineer I would say is much more complicit than like a poor person who has to buy dinner from walmart.
+
+**:** Right.
+
+**:** So yeah, I think that's a dynamic we've been tracking across the entire class is this dialectic of like the individual versus the.
+
+**:** System.
+
+**:** And how much we can kind of like trace intention, how much is intention matter. I think that's what we talked about I think last week with the model minority discussion right I think David point was like you know a lot of people are trying to get by and they might reproduce sort of body conservative practices and ideas of like just working hard and maybe, I don't know, supporting the police because they insured you don't get robbed of your partner money.
+
+**:** You're trying to survive.
+
+**:** Right.
+
+**:** Like these different levels of engagement with, I think.
+
+**:** What most people would agree.
+
+**:** Are these kind.
+
+**:** Of like violent systems.
+
+**:** But like.
+
+**:** You understand.
+
+**:** That.
+
+**:** Engagement because of.
+
+**:** A need to survive.
+
+**:** Or safety or whatever it is.
+
+**:** Right.
+
+**:** And I think what Professor Hub, when he was talking, you know lecturing was saying like he doesn't really think individual intention matters.
+
+**:** And I think we're kind of getting a little bit of that from who had as well, right? The intention is not something that is the main factor here, especially when it comes to, you know, Indian immigrants taking part in reproducing cellular coils.
+
+**:** Right. It doesn't matter whether or not they want to or don't want to they're still doing it.
+
+**:** Materially.
+
+**:** Right? So that's what.
+
+**:** You could see the material impact of these practices as kind of the what matters most to indigenous people because that's what affects them the most.
+
+**:** Right. You can say all these things you do lab technology. You can do these kind of research policy things. But at the end of the day if you're still reproducing the system that is keeping them entirely impoverished then compared to.
+
+**:** Different.
+
+**:** Cultures.
+
+**:** Right. So yeah, these are these are very kind of important questions. So I'm glad you're bringing along.
+
+**:** Some of, I mean if you're working on doing indigenous sites for research as a career that obviously everybody care about when you're trying to grow like I survive a handful of your own benefit is.
+
+**:** Like.
+
+**:** It's almost like the halo flying in airplane group stuff like drink out.
+
+**:** Like plastic straw.
+
+**:** S. So often they're trying to avoid having as good intentions but it's like we don't want to look at the bigger.
+
+**:** Like even if you try to like any small thing.
+
+**:** You're trying to.
+
+**:** Yeah, so I think it's like there's no point in assigning blame as an point in.
+
+**:** Thinking about attention. It's like are you part of it? Are you reproducing? Are you part of it or not?
+
+**:** Right? So I think the most ethical demand I guess would be like don't do the work. Don't be an academic.
+
+**:** Right? And I think many people would refuse that demand, right? Because it's still, that's a huge material impact on yourself. So that we're thinking about our interest versus those of indigenous folks who are like the, you know, yeah, I think that's the kind of like foundation of the entire conversation.
+
+**:** Right.
+
+**:** Which one are you kind of like bringing to a logical conclusion makes it a very, very difficult.
+
+**:** One. It's like you have to kind of give up.
+
+**:** A lot of what you've worked for and what you see your life as in order to.
+
+**:** Do something that's material impactful.
+
+**:** That you see as wrong against something that you said.
+
+**:** At the same time, if you don't do any research in the.
+
+**:** Field and it's like there's nothing on indigenous studies and doesn't just have dogs. It doesn't mean people doing it.
+
+**:** Either way.
+
+**:** I think a lot of people, I guess people who made that demand would say that we need to support indigenous folks coming into the academy more like that should be the more important thing so that they can do research on their own communities and produce knowledge from their own perspectives rather than continuing to support outsiders doing this work.
+
+**:** Right. So that would be a structural reform of the academy that I think is quite important. And, you know, people see that from a kind of DEI lens or a kind of equity lens, which would be like just bringing more indigenous identified scholars into the academy.
+
+**:** Period. But then other people might see that as like we need like bringing those folks into like completely change how the system operates. Right? And that brings us again back to the original demand of american studies, which was a third world college. Right. That was the really kind of reformist structural critique of the academy. We need to form our own like little institution within the university to address exactly all the things.
+
+**:** We've just been talking.
+
+**:** About.
+
+**:** Right? So there's a little bit of a full circle moment and it also is this kind of like sad admission that's still kind of a very unfold demand.
+
+**:** For the federal.
+
+**:** Liberation.
+
+**:** Fund.
+
+**:** Right. So especially, I get kind of the university has just gotten.
+
+**:** A thousand times worse than it was.
+
+**:** Back then.
+
+**:** So, you know, that's a sacrament.
+
+**:** Al thing, I would say.
+
+**:** Good.
+
+**:** Amazing questions.
+
+**:** Yeah, other thoughts on any of that or the second question or the general points from the text that you thought were really interesting.
+
+**:** When you're saying like.
+
+**:** News.
+
+**:** So that.
+
+**:** These indigenous people.
+
+**:** Can start to go.
+
+**:** Through research and.
+
+**:** Find professionals.
+
+**:** In their own field.
+
+**:** On their own.
+
+**:** The econom.
+
+**:** Y think.
+
+**:** Like does that.
+
+**:** Not like.
+
+**:** Perpetuate.
+
+**:** More.
+
+**:** Structural.
+
+**:** Segregation?
+
+**:** And.
+
+**:** Making it.
+
+**:** Like.
+
+**:** So that.
+
+**:** Only people.
+
+**:** Of.
+
+**:** This like race.
+
+**:** Or ethnicity.
+
+**:** Can be.
+
+**:** Professionals.
+
+**:** Of their own field.
+
+**:** I.
+
+**:** Mean it could depending on how you implement.
+
+**:** It, I guess, right? Like saying only the digits identify people.
+
+**:** Can be an.
+
+**:** Indigenous person.
+
+**:** Any.
+
+**:** One.
+
+**:** Said that.
+
+**:** Right?
+
+**:** But.
+
+**:** Increasing the ratio or changing how emissions works and so on, I think that would not imply separ.
+
+**:** Ations.
+
+**:** From what.
+
+**:** I understood.
+
+**:** Is a lot.
+
+**:** Of people that were.
+
+**:** Indigenous.
+
+**:** For me.
+
+**:** Doing.
+
+**:** Scholarship.
+
+**:** Or.
+
+**:** Even just writing.
+
+**:** About them.
+
+**:** And.
+
+**:** There was like.
+
+**:** Something.
+
+**:** Years.
+
+**:** Ago.
+
+**:** Some.
+
+**:** Like these.
+
+**:** Up Princeton.
+
+**:** Felt like.
+
+**:** Non-media students writing about native issues.
+
+**:** They would get involved.
+
+**:** Even if they were.
+
+**:** Done for a long time with.
+
+**:** The article.
+
+**:** Even if.
+
+**:** They felt like.
+
+**:** They were into like their issues.
+
+**:** They were still like getting things longer to keep things that they just didn't agree with and it would cause.
+
+**:** Up a lot of conflict.
+
+**:** So I think it's just more.
+
+**:** So like.
+
+**:** I see.
+
+**:** What you're seeing.
+
+**:** But I guess like I see that for sure.
+
+**:** I also see.
+
+**:** How like.
+
+**:** Somebody.
+
+**:** Need.
+
+**:** Ed people.
+
+**:** And indigenous people.
+
+**:** And communities.
+
+**:** More.
+
+**:** Like their own.
+
+**:** Voices.
+
+**:** To.
+
+**:** Be spot.
+
+**:** Light.
+
+**:** And like.
+
+**:** The.
+
+**:** First kind of.
+
+**:** Pure.
+
+**:** Like thought research.
+
+**:** And stuff so that they actually articulate it in the way that they.
+
+**:** Want to.
+
+**:** Be.
+
+**:** Yeah, absolutely.
+
+**:** What else do we think about this idea of complicity?
+
+**:** A lot of times like.
+
+**:** When there's like studies done on.
+
+**:** Strict cult.
+
+**:** Ures.
+
+**:** And.
+
+**:** Constantly framing.
+
+**:** Up the subject.
+
+**:** S, the fact that they could also be climbing into the system.
+
+**:** And so I think having that dual perspective and identifying the situation as complicit is for the purpose even though it's not to frame them as like doing wrong because it's more so I feel like to identify the fact that they're working under power structures that are forced to sell like having to fit within the model minority framework and where it just reveals that they're being kind of placed into this capitalistic society where success is vital for survival. And so I think yeah it shows the duality in which a victim can also be causing or reproducing the system. But I think more importantly it's exposed to the system which is awesome.
+
+**:** Yeah, and I like the point you made in your campus post about how this idea of like working hard.
+
+**:** Can, without any specific intention, like I think 99% of people who are like I want to work hard and succeed in society are not like.
+
+**:** I'm going out there to reproduce subtler clinical society, right? Like the intention is not there. But if millions of people are doing it under this auspices of working hard and succeeding, that's the contradiction of the of society, right? It's like you need to use the survive word or thrive even. And that's what your incentivize to do. And you perpetuate this kind of violent system because of that need to thrive.
+
+**:** And so that kind of gets us a little bit back to that biopolitics again.
+
+**:** Right? Having to your health and survival and thriving with is dependent on a decision that other communities of people must not.
+
+**:** Thrive.
+
+**:** Right. So yeah, that's a very kind of because you're trying to geo as an individual trying to confront that very large structural.
+
+**:** Dynamic.
+
+**:** It's almost.
+
+**:** Impossible.
+
+**:** Right? Or it feels very overwhelming.
+
+**:** And impossible.
+
+**:** So that's an important kind of tension to point out. Absolutely.
+
+**:** I think what I also want to emphasize too is this idea of complicity and then pointing us towards caste, right? What day does is reminding us that.
+
+**:** You know, the racial and class system in America, in the US is not global.
+
+**:** I mean, it is global in the sense that like it has been exported to many countries.
+
+**:** But it's not every other country around the world's got a mirror image of the US.
+
+**:** Right. So certainly anti-blackness exists in the US and everywhere in the world. But that doesn't mean.
+
+**:** The way that people act on it or think about races identical in every other country.
+
+**:** In the world. Right. So, you know, I think most people, I would say most people in the US are not familiar with or even think about cast. Right. Most don't even know what it is and others would say it's unimportant.
+
+**:** That's my kind of very, very broad guess about the population of the US. Right. And so I think it's important to highlight that there is this very kind of.
+
+**:** Like.
+
+**:** Important structural hierarchy in South Day, short India, that defines society there at the moment and has for like centuries. And then also as many of you pointed out, your camp is close to findings the migration pattern from that region.
+
+**:** To places like Channel. Right. And I think that's bringing up the political economy of migration and immigration system is key.
+
+**:** Right. Because I think there's a temptation at least the Canadian government would say, well, this is a purely meritocratic system. If you worked hard and you have a lot of money and you can invest a million dollars in Canada, here's a visa or here's your current residency. Or if you have a good education from your home country, your highest doctor, whatever it is, welcome to canada. Right. We want highly skilled people to contribute to our economy.
+
+**:** But what the reading tells us to see is all the kind of self selection as many of you said in your campus post that occurs before that migration happens. Right. Who has access to become highly skilled and educated and all have all this cast capital and literal capital in order to qualify for that quote unquote marriage product immigration system.
+
+**:** Right.
+
+**:** So this, I think this is a great example of how we should think about Asian American studies as a global discipline.
+
+**:** Right. We have to understand the culture of society and political economy of the countries that we're studying immigration from.
+
+**:** In order to understand how it's taking place here on our soil.
+
+**:** Right. The more the old school way of studying Asian America was just like, oh, it's a bit of China tells us, let's look at like different racialized populations. And in the US, on US soil and we don't really have to think about what's going, what happens to bring them here.
+
+**:** Right. So I think that's an important distinction to make is like we're being asked to think very globally here about the dynamics under the microscope.
+
+**:** In our readings.
+
+**:** Any thoughts on that?
+
+**:** Yeah.
+
+**:** Exactly.
+
+**:** But.
+
+**:** I was thinking this idea.
+
+**:** Like.
+
+**:** Implicitity.
+
+**:** That.
+
+**:** I think.
+
+**:** Perhaps.
+
+**:** The.
+
+**:** Community in.
+
+**:** Canada.
+
+**:** Feel.
+
+**:** When.
+
+**:** They come over.
+
+**:** Because they did not.
+
+**:** Step up the.
+
+**:** System.
+
+**:** That they don't feel.
+
+**:** As responsible.
+
+**:** To sort of.
+
+**:** Dismantle.
+
+**:** It.
+
+**:** And I know that.
+
+**:** In the article.
+
+**:** It kind of suggest.
+
+**:** S that.
+
+**:** Acknowledging.
+
+**:** That.
+
+**:** Their complicities.
+
+**:** Like us start to.
+
+**:** Like.
+
+**:** Taking.
+
+**:** Responsibility.
+
+**:** And all.
+
+**:** But the thing is.
+
+**:** If.
+
+**:** Because.
+
+**:** The system was already.
+
+**:** Sort of set in.
+
+**:** Place for these.
+
+**:** In Canada.
+
+**:** Migrants to.
+
+**:** Come and work on this.
+
+**:** Indigenous.
+
+**:** Man.
+
+**:** Serv.
+
+**:** E, what was the question?
+
+**:** I missed?
+
+**:** Not questioning, but.
+
+**:** I just think that.
+
+**:** Oh.
+
+**:** I guess.
+
+**:** There's.
+
+**:** That.
+
+**:** How much.
+
+**:** Of.
+
+**:** The actual.
+
+**:** Sort of.
+
+**:** Respons.
+
+**:** Ibility.
+
+**:** Is it.
+
+**:** Actually for the.
+
+**:** Community.
+
+**:** To sort of get.
+
+**:** This.
+
+**:** Meddling process.
+
+**:** Started by.
+
+**:** Acknowledging that.
+
+**:** There was twist.
+
+**:** Ed.
+
+**:** Not.
+
+**:** The system.
+
+**:** And even though.
+
+**:** They are.
+
+**:** Perhaps.
+
+**:** More criminal.
+
+**:** Migra.
+
+**:** Tes to a new.
+
+**:** Country.
+
+**:** They are still.
+
+**:** I mean, is it.
+
+**:** A lot of.
+
+**:** Thoughts.
+
+**:** All of us?
+
+**:** Interesting.
+
+**:** Okay.
+
+**:** Skyler, oh, I was thinking you can go, no, okay, fine.
+
+**:** I live in this framework and actually really disagree on his perspective. I just want to put that there first.
+
+**:** I think complicity is actually such a, it's such a poor way of reasoning through the world.
+
+**:** Like I believe in the kind of the opposite, that we are actually 100% responsible for whatever actions we do, whether or not we're in it or not, not because we're in it, it's because we're in the system. We're actually 100% responsible for it. Now what we choose to do afterwards completely determines whether or not we actually believe in the cause or not.
+
+**:** I think the wording in this article is like these people just landed on an airplane and now they're just like sucked into this situation. This was passive.
+
+**:** But for me, this is active. Like they chose to come here. They didn't know about it, but they chose to come here still.
+
+**:** And then this obviously is, I guess extends a little bit, you know, it's also another controversial aspect. Like did we choose to even be born? Like there's also that thing. But I think having that framework of, you know, I guess settlers like over 100% responsible for their actions.
+
+**:** You realize that also like the indigenous people also are responsible 100% responsible for there being two.
+
+**:** And then both of them are, there's this interplay that goes on.
+
+**:** And I think that framework actually leads to real change because then when Indians don't take actions, they are explicitly saying that they don't care about the issue. And I think that is more powerful than saying, oh, you're just like kind of there passively in the system. I think that is a framework that should be continually, you know, that should be stated more often. That's my take on it. I don't know what your take on it, David is.
+
+**:** Because.
+
+**:** In theory, like.
+
+**:** There's nothing wrong with.
+
+**:** Say other problems.
+
+**:** Anyone coming from India.
+
+**:** To move to.
+
+**:** Candid and search by.
+
+**:** Something.
+
+**:** Else.
+
+**:** Right?
+
+**:** And.
+
+**:** That's not like they should.
+
+**:** Have said they're looking for these high school workers and because of that economic consultant privileges.
+
+**:** That police didn't have these and therefore like more than coming to Chanda.
+
+**:** But in theory, I think that's not there fault specifically, but it's definitely the responsibility.
+
+**:** I think like.
+
+**:** The candy was actually heard. It's like the dumb society itself is probably never like real life.
+
+**:** Like come to its own act in the interest of these minorities. And it's like even though like it's there, it's there like shortcomings and there's things that result in these.
+
+**:** Around in practice, they're not knowing notice or do anything about it unless the money happened like six. I read that.
+
+**:** The minorities in practice, it's the response to the movies no one else is going to do it.
+
+**:** For them.
+
+**:** I don't think that's.
+
+**:** Funny. Oh, so it's.
+
+**:** We rephrase that again. So it's the minorities that should take response, like that should advocate. It's not their fault.
+
+**:** Of thing, but in practice it's the responsibility because in practice the dominant side is not going to do anything for like they have to stick up for like.
+
+**:** They have to take action for their own community because no one wants to do it.
+
+**:** For this thing. Yeah. Okay. So then.
+
+**:** The implications of that is are they in their current state because.
+
+**:** They choose not to care about their own selves, which is actually a very uncomfortable truth.
+
+**:** Like people do self harm. Like people self sabotage themselves all the time.
+
+**:** Like eat unhealthy food and you're unhealthy and there's a reason why.
+
+**:** It's not their fault, but it's their responsibility. I think that's like.
+
+**:** A tough pill to swallow. Yeah, for sure. When is there responsibility?
+
+**:** I don't know if you're talking about the same like community. You're saying it's the responsibility of indigenous people to fix their own situation where you're saying for the Indian.
+
+**:** Responsibility.
+
+**:** As soon as you board up a game here, it's not their fault or anything.
+
+**:** But I guess also inherit self responsibility to fix something that wasn't broken in the first place.
+
+**:** But in practice, Canada is not going to change if they don't.
+
+**:** Try and speak about it.
+
+**:** Just like.
+
+**:** That's.
+
+**:** My.
+
+**:** Question.
+
+**:** Perhaps in that.
+
+**:** Process.
+
+**:** That will.
+
+**:** Also.
+
+**:** Indigenous.
+
+**:** Voices.
+
+**:** I.
+
+**:** Think there are people.
+
+**:** Who.
+
+**:** Do agree with.
+
+**:** That point.
+
+**:** We.
+
+**:** Have to fight for.
+
+**:** A while.
+
+**:** And.
+
+**:** We need more.
+
+**:** People to sort.
+
+**:** Of support.
+
+**:** Our.
+
+**:** But at the same time.
+
+**:** The people.
+
+**:** Who are talking about.
+
+**:** This are not.
+
+**:** Indigenous.
+
+**:** I think.
+
+**:** It goes back to.
+
+**:** My.
+
+**:** Brother of like.
+
+**:** People on.
+
+**:** Campus writing.
+
+**:** About.
+
+**:** Native.
+
+**:** Record issues.
+
+**:** And they're getting a lot.
+
+**:** Of things wrong.
+
+**:** So.
+
+**:** That's more of.
+
+**:** Like an ethical. I'm not saying that.
+
+**:** It.
+
+**:** Shouldn't.
+
+**:** Be done.
+
+**:** By the.
+
+**:** Kids.
+
+**:** What I.
+
+**:** Try to speak for.
+
+**:** To her.
+
+**:** Pop.
+
+**:** Ulation.
+
+**:** Yeah, I think there's a lot of really interesting interlocking dynamics that you're all tracing here. So I think talking about the idea of fault and then talking about the idea of responsibility.
+
+**:** And then also talking about like what do you do with that responsibility?
+
+**:** So saying that we have, you know, whatever it is immigrants have a responsibility to try and fix the society they're in.
+
+**:** Does not necessarily apply to speaking over as an item. Right? It could be the responsibility could be to support indigenous communities and all of their political demands.
+
+**:** Right. So now they're saying here this is what you should do. Actually, we're here to support you. Right. I think that's a lot of what a lot of marginalized communities demand is like don't come in and take the mic, right? You have to come in and support us. Right. So that could be one way that you choose to enact your responsibility. Right? And I think, you know, this whole idea that you can not be at fault, right? It's like you can create the system. A lot of people say that about like whatever, civil war era stuff. They say, oh, well my great grandfather, I was like, I know, I was like, why am I responsible for this? Right? So that's, I think that's an easy way that people use to shortcut that argument. They say I'm not fault for this. So I have no, I don't need to like care about this system. I didn't create it. Those are my ancestors.
+
+**:** Which completely ignores the way that like there's inherited wealth, et cetera. Right. But that's usually the argument.
+
+**:** So then if we, then we should not think so much about this idea of false, you can be completely blameless, but you can still have an ethical responsibility to try and fix something that you see is wrong. Right. Especially something that you're still, you're actively benefiting from now, right? Which is living in this settler society. Right. I think indigenous theorists like bird have come up with different terms to try and make these distinctions as well, right? Talking about how enslaved black people that were brought to the north american continent should not be called settlers, right? Because they didn't make the choice to come. You know, coming up with terms like horizons.
+
+**:** Right? So even though there was no choice to come, they're still here. And then, you know, lineages down the line, there are black folks who benefit from living in this separate society.
+
+**:** That is dispossessing indigenous people. Right. So, you know, indigenous people are trying to do this work as well to trace these different relationships to the land and the society and the intention or the forced migration that's taking place to arrive here. Right. So I think, you know, when we talk about refugees, many of them actively made a choice to come here, but not in the same way that an immigrant does who's like coming here to, you know, whatever. They were rich back in their country or decently well off, but wanted to make more money by coming to can, for example.
+
+**:** That's different from a refugee who is a forced migration. They're escaping for their lives and come to the country and often work very low, low wage jobs, etc. Right. So I think, you know, as we always say, I think it's important to distinguish between all these different categories, identities, situations and context, right? Which makes things quite complicated, kind of getting to this point about generalization. I think that is a lot of people make the market that that's been evolutionary process, right? Like we were raised over millennia to generalize about threats or harms or whatever. So we're kind of wired that way.
+
+**:** But that doesn't mean that that is how we have to operate forever. I think you were saying like we have to.
+
+**:** Do vague generalization, but complicated or think about the impacts of those things, right? So I think that's a good way of putting it and what we're being asked to do here with thinking about fault and responsibility in itself.
+
+**:** Right? Does that make sense or do folks have some pushback on that? I wouldn't be curious.
+
+**:** To clarify. Are you saying.
+
+**:** Like.
+
+**:** Do you.
+
+**:** Like the once in the upper like nature on site at.
+
+**:** Computer?
+
+**:** Need to act whilst they don't care about will.
+
+**:** Like again.
+
+**:** It was kind of. Well, I don't, you know, I think everyone has the responsibility, but not everyone's going to act on.
+
+**:** It. Right. I think the majority of people go back on the responsibilities.
+
+**:** Which is the reality, right? So you cannot be at fault. You can have a responsibility, but you can also not do anything.
+
+**:** About it. I think that's totally, I don't know if I would say fine, but you need to have some moral judgment around, I guess. But I think that's what happens to most people.
+
+**:** Right.
+
+**:** That, I think that's what happens after me, this class, right? We recognize all these injustices in the world we live in.
+
+**:** And most of us do not know.
+
+**:** That doesn't mean we don't have responsibilities.
+
+**:** So delinking some of these concepts, I think is really important, right? Just because even if you are at fault, I think a lot of people.
+
+**:** Reject the responsibility or don't recognize it and don't do anything about it. Right? So all of these things don't imply each other.
+
+**:** I think is what I'm trying to get.
+
+**:** Across.
+
+**:** At least that's how I'm understanding what upaday is talking about in terms of complic.
+
+**:** Ities, right? These are all these kind of interleukin intersections that we can see as imposing or implying a type of responsibility. And their suggestion is to push it towards solidarity, right? Rather than saying this individual person's wrong, this individual person is a settler, etc. It's more of a kind of structural reform that they're suggest.
+
+**:** Ing.
+
+**:** Yeah. Wait, so is the fact that.
+
+**:** Not much action has been done or people care about it means that it's not as important then. I mean.
+
+**:** If you're compelled, if you actually really believe something, you would do something about it. Like if that's, and that's kind of like.
+
+**:** Where that means this issue, like these indigenous issues isn't as.
+
+**:** Like it's important, but it's not important to the point. Like there's degrees of importance. There's degrees of like actions that a person could take.
+
+**:** So that's what I'm trying to understand. What do you mean by important?
+
+**:** Because if something's super important, like give your life depends on it, you're going to do it. Like if it's the right one. Well, I think that's the contradiction that we've been talking about is that largely our survival depends on their dispossess.
+
+**:** Ion.
+
+**:** Right. So it's, it doesn't feel important to us at all because we're like, hey, we're doing just fine.
+
+**:** We're like, actually we do help them.
+
+**:** Something like decolonizing candidate, for example, would mean, you know, the loss of millions and billions, trillions of dollars of capital land value and so on. Right. So I think it is very important.
+
+**:** But it doesn't feel important to most people who benefit from that system, right? I think that's the problem.
+
+**:** Well, on the flip side, the Indians are also indigenous people are also.
+
+**:** I guess, responsible for the people that.
+
+**:** Are coming in. I'm not.
+
+**:** Just not tracing.
+
+**:** You know, I think indigenous folks, since they have, you know, modes of self governance under the Sklor state are responsible in the sense that they, unlike tribal leaders, that's where we all.
+
+**:** Leaders and so on. So yeah, absolutely responsible for much of their own decision making. I don't think anyone's trying to resolve them and say they're just passing victims and have no.
+
+**:** Responsibility to have internal debate and discussion and so on.
+
+**:** But I think there's degrees of like, there's this complete separation in terms of like your position within the seller capital state.
+
+**:** Right? Okay.
+
+**:** Yeah.
+
+**:** Part of the.
+
+**:** Reason people don't.
+
+**:** Have.
+
+**:** To sort.
+
+**:** Of write these.
+
+**:** Injustices.
+
+**:** Go off of.
+
+**:** Them.
+
+**:** These communities.
+
+**:** That.
+
+**:** Activists.
+
+**:** I think.
+
+**:** What they throw.
+
+**:** Out, what they call.
+
+**:** Your.
+
+**:** Privilege.
+
+**:** I think like.
+
+**:** The word priv.
+
+**:** Ileges.
+
+**:** Kind of.
+
+**:** Implies idea.
+
+**:** Like.
+
+**:** A lot of these people.
+
+**:** Perhaps don't.
+
+**:** Feel that.
+
+**:** They don't see their.
+
+**:** Privilege.
+
+**:** This.
+
+**:** Is a little bit.
+
+**:** Unrelated.
+
+**:** But kind of like.
+
+**:** I was thinking.
+
+**:** Oh.
+
+**:** I called.
+
+**:** Like.
+
+**:** Explaining why.
+
+**:** Covid is a broke.
+
+**:** White person.
+
+**:** And.
+
+**:** Like when you used to.
+
+**:** Work representing.
+
+**:** All these people.
+
+**:** Privileged.
+
+**:** They could be able to antagonize.
+
+**:** It.
+
+**:** I'm not really.
+
+**:** That corrupt.
+
+**:** Or fellow.
+
+**:** These days.
+
+**:** So I think.
+
+**:** It's more so.
+
+**:** To see.
+
+**:** It as like.
+
+**:** When.
+
+**:** You kind.
+
+**:** Of shift it.
+
+**:** Or it's at cognitive.
+
+**:** Equivalence to show.
+
+**:** How these people.
+
+**:** May be white.
+
+**:** People or.
+
+**:** Like academic.
+
+**:** Experience is the.
+
+**:** Norm.
+
+**:** But then.
+
+**:** Non-white.
+
+**:** S experience.
+
+**:** A disadvantage.
+
+**:** That.
+
+**:** Hits a lot easier.
+
+**:** To sort of.
+
+**:** Get people on.
+
+**:** Board.
+
+**:** With.
+
+**:** The idea like that.
+
+**:** Rather than.
+
+**:** Tech.
+
+**:** Nice and people at the same.
+
+**:** Time.
+
+**:** Just the word.
+
+**:** Privilege itself.
+
+**:** Happens.
+
+**:** As.
+
+**:** A question of rhetoric.
+
+**:** That makes sense.
+
+**:** Right?
+
+**:** Like how do you message.
+
+**:** You know, shape your message the best to attain whatever it is you're trying to take.
+
+**:** On.
+
+**:** Actually.
+
+**:** That way.
+
+**:** Against or like supporting the fact that the amount of action equals.
+
+**:** The amount of belief.
+
+**:** I'm not a huge believer in that, which I like if you really care about something, you do something about it.
+
+**:** For each issue in terms of the cost to your personal self.
+
+**:** Like I think there are very extreme example if you're.
+
+**:** Like easiest example for me to make with the example.
+
+**:** Like.
+
+**:** Shelter.
+
+**:** Like.
+
+**:** World War II.
+
+**:** But not since you're new. It's like yes, right to do is to hide and it's not getting entrepreneurs.
+
+**:** But if you don't do it, do it and then find out.
+
+**:** Your entire baby.
+
+**:** Is dead. Yeah. Like I think that's a very extreme example, but I think my point is like there are different personal costs in each situation.
+
+**:** Whereas like even if this probably more important, I think that's probably one of the most important problems that the feds ever existed.
+
+**:** Maybe not as action at least. You don't average people take.
+
+**:** Is no reflective of how important the issue is being, the personal cost is much higher.
+
+**:** But like going on with that example, like that means they actually cared about the issue. Like they cared about. If they're willing to bear such personal cost, they really cared about Jews being safe. Like that.
+
+**:** Most people didn't. What that means most people didn't care. That's like the uncomfortable truth.
+
+**:** I guess.
+
+**:** It's like using issues that are important but like I guess action itself is does not dictate how important the issue is, I think.
+
+**:** Okay. So I guess that's where we disagree then. Like very strict like yeah.
+
+**:** To me action is like a pure like indicator of whether or not a person actually truly will bear personal cost. Like if you can sacrifice something to get something or to like to really believe in a goal that is how much you believe in it.
+
+**:** So I don't know. It's up to you. It's up to the person. Even I.
+
+**:** Look into this issue a lot too.
+
+**:** You're assuming like how important is an individual person to each individual person themselves. I think that was wrong because I was seeing the issues of jet report but not going to I was talking on the individual basis. We're 100%
